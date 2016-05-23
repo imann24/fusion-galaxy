@@ -1,0 +1,132 @@
+fileFormatVersion: 2
+guid: 9997cc6ed29ff4930be5d0c3557af37b
+timeCreated: 1436464092
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: spacebackground_and_UIAssets_0
+    21300002: spacebackground_and_UIAssets_1
+    21300004: spacebackground_and_UIAssets_2
+    21300006: spacebackground_and_UIAssets_3
+    21300008: spacebackground_and_UIAssets_4
+    21300010: spacebackground_and_UIAssets_5
+    21300012: spacebackground_and_UIAssets_6
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 5
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: spacebackground_and_UIAssets_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 784
+        width: 2048
+        height: 1264
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spacebackground_and_UIAssets_1
+      rect:
+        serializedVersion: 2
+        x: 44
+        y: 355
+        width: 414
+        height: 415
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spacebackground_and_UIAssets_2
+      rect:
+        serializedVersion: 2
+        x: 535
+        y: 363
+        width: 399
+        height: 399
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spacebackground_and_UIAssets_3
+      rect:
+        serializedVersion: 2
+        x: 1018
+        y: 361
+        width: 424
+        height: 413
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spacebackground_and_UIAssets_4
+      rect:
+        serializedVersion: 2
+        x: 1503
+        y: 219
+        width: 503
+        height: 509
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spacebackground_and_UIAssets_5
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 207
+        width: 730
+        height: 140
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spacebackground_and_UIAssets_6
+      rect:
+        serializedVersion: 2
+        x: 821
+        y: 0
+        width: 648
+        height: 350
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

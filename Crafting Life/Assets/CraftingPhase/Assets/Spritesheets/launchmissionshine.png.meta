@@ -1,0 +1,191 @@
+fileFormatVersion: 2
+guid: eb0f6d4322f9f45c19749b2d727379d7
+timeCreated: 1436986917
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: launchmissionshine_0
+    21300002: launchmissionshine_1
+    21300004: launchmissionshine_2
+    21300006: launchmissionshine_3
+    21300008: launchmissionshine_4
+    21300010: launchmissionshine_5
+    21300012: launchmissionshine_6
+    21300014: launchmissionshine_7
+    21300016: launchmissionshine_8
+    21300018: launchmissionshine_9
+    21300020: launchmissionshine_10
+    21300022: launchmissionshine_11
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 5
+  buildTargetSettings:
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: 13
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: launchmissionshine_0
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 850
+        width: 444
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: launchmissionshine_1
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 850
+        width: 444
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: launchmissionshine_2
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 850
+        width: 444
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: launchmissionshine_3
+      rect:
+        serializedVersion: 2
+        x: 1570
+        y: 850
+        width: 444
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: launchmissionshine_4
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 594
+        width: 444
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: launchmissionshine_5
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 594
+        width: 444
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: launchmissionshine_6
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 594
+        width: 444
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: launchmissionshine_7
+      rect:
+        serializedVersion: 2
+        x: 1570
+        y: 594
+        width: 444
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: launchmissionshine_8
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 338
+        width: 444
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: launchmissionshine_9
+      rect:
+        serializedVersion: 2
+        x: 546
+        y: 338
+        width: 444
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: launchmissionshine_10
+      rect:
+        serializedVersion: 2
+        x: 1058
+        y: 338
+        width: 444
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: launchmissionshine_11
+      rect:
+        serializedVersion: 2
+        x: 1570
+        y: 338
+        width: 444
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: UI_Assets
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,686 @@
+fileFormatVersion: 2
+guid: 429c78498fb2f6b44859160b67cc0228
+timeCreated: 1436819184
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: good_badships_elemspawn_0
+    21300002: good_badships_elemspawn_1
+    21300004: good_badships_elemspawn_2
+    21300006: good_badships_elemspawn_3
+    21300008: good_badships_elemspawn_4
+    21300010: good_badships_elemspawn_5
+    21300012: good_badships_elemspawn_6
+    21300014: good_badships_elemspawn_7
+    21300016: good_badships_elemspawn_8
+    21300018: good_badships_elemspawn_9
+    21300020: good_badships_elemspawn_10
+    21300022: good_badships_elemspawn_11
+    21300024: good_badships_elemspawn_12
+    21300026: good_badships_elemspawn_13
+    21300028: good_badships_elemspawn_14
+    21300030: good_badships_elemspawn_15
+    21300032: good_badships_elemspawn_16
+    21300034: good_badships_elemspawn_17
+    21300036: good_badships_elemspawn_18
+    21300038: good_badships_elemspawn_19
+    21300040: good_badships_elemspawn_20
+    21300042: good_badships_elemspawn_21
+    21300044: good_badships_elemspawn_22
+    21300046: good_badships_elemspawn_23
+    21300048: good_badships_elemspawn_24
+    21300050: good_badships_elemspawn_25
+    21300052: good_badships_elemspawn_26
+    21300054: good_badships_elemspawn_27
+    21300056: good_badships_elemspawn_28
+    21300058: good_badships_elemspawn_29
+    21300060: good_badships_elemspawn_30
+    21300062: good_badships_elemspawn_31
+    21300064: good_badships_elemspawn_32
+    21300066: good_badships_elemspawn_33
+    21300068: good_badships_elemspawn_34
+    21300070: good_badships_elemspawn_35
+    21300072: good_badships_elemspawn_36
+    21300074: good_badships_elemspawn_37
+    21300076: good_badships_elemspawn_38
+    21300078: good_badships_elemspawn_39
+    21300080: good_badships_elemspawn_40
+    21300082: good_badships_elemspawn_41
+    21300084: good_badships_elemspawn_42
+    21300086: good_badships_elemspawn_43
+    21300088: good_badships_elemspawn_44
+    21300090: good_badships_elemspawn_45
+    21300092: good_badships_elemspawn_46
+    21300094: good_badships_elemspawn_47
+    21300096: good_badships_elemspawn_48
+    21300098: good_badships_elemspawn_49
+    21300100: good_badships_elemspawn_50
+    21300102: good_badships_elemspawn_51
+    21300104: good_badships_elemspawn_52
+    21300106: good_badships_elemspawn_53
+    21300108: good_badships_elemspawn_54
+    21300110: good_badships_elemspawn_55
+    21300112: good_badships_elemspawn_56
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 5
+  buildTargetSettings:
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: 13
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: good_badships_elemspawn_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1748
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_1
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 1748
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_2
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 1748
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_3
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 1748
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_4
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 1748
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_5
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 1748
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_6
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 1748
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_7
+      rect:
+        serializedVersion: 2
+        x: 1372
+        y: 1748
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_8
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 1748
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_9
+      rect:
+        serializedVersion: 2
+        x: 1764
+        y: 1748
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1448
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_11
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 1448
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_12
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 1448
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_13
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 1448
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_14
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 1448
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_15
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 1448
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_16
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 1448
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_17
+      rect:
+        serializedVersion: 2
+        x: 1372
+        y: 1448
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_18
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 1448
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_19
+      rect:
+        serializedVersion: 2
+        x: 1764
+        y: 1448
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1148
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_21
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 1148
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_22
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 1148
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_23
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 1148
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_24
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 1148
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_25
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 1148
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_26
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 1148
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_27
+      rect:
+        serializedVersion: 2
+        x: 1372
+        y: 1148
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_28
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 1148
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_29
+      rect:
+        serializedVersion: 2
+        x: 1764
+        y: 1148
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_30
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 848
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_31
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 848
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_32
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 848
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_33
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 848
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_34
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 848
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_35
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 848
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_36
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 848
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_37
+      rect:
+        serializedVersion: 2
+        x: 1372
+        y: 848
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_38
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 848
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_39
+      rect:
+        serializedVersion: 2
+        x: 1764
+        y: 848
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 548
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_41
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 548
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_42
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 548
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_43
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 548
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_44
+      rect:
+        serializedVersion: 2
+        x: 784
+        y: 548
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_45
+      rect:
+        serializedVersion: 2
+        x: 980
+        y: 548
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_46
+      rect:
+        serializedVersion: 2
+        x: 1176
+        y: 548
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_47
+      rect:
+        serializedVersion: 2
+        x: 1372
+        y: 548
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_48
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 548
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_49
+      rect:
+        serializedVersion: 2
+        x: 1764
+        y: 548
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 248
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_51
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 248
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_52
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 248
+        width: 196
+        height: 300
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_53
+      rect:
+        serializedVersion: 2
+        x: 1537
+        y: 215
+        width: 256
+        height: 98
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_54
+      rect:
+        serializedVersion: 2
+        x: 1537
+        y: 313
+        width: 256
+        height: 100
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_55
+      rect:
+        serializedVersion: 2
+        x: 1793
+        y: 313
+        width: 255
+        height: 100
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: good_badships_elemspawn_56
+      rect:
+        serializedVersion: 2
+        x: 1793
+        y: 215
+        width: 255
+        height: 98
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

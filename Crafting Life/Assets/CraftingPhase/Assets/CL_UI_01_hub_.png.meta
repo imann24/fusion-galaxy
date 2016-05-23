@@ -1,0 +1,345 @@
+fileFormatVersion: 2
+guid: 9af0046b5ed154e7e9357ed97c908715
+timeCreated: 1436454684
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: CL_UI_01_hub__0
+    21300002: CL_UI_01_hub__1
+    21300004: CL_UI_01_hub__2
+    21300006: CL_UI_01_hub__3
+    21300008: CL_UI_01_hub__4
+    21300010: CL_UI_01_hub__5
+    21300012: CL_UI_01_hub__6
+    21300014: CL_UI_01_hub__7
+    21300016: CL_UI_01_hub__8
+    21300018: CL_UI_01_hub__9
+    21300020: CL_UI_01_hub__10
+    21300022: CL_UI_01_hub__11
+    21300024: CL_UI_01_hub__12
+    21300026: CL_UI_01_hub__13
+    21300028: CL_UI_01_hub__14
+    21300030: CL_UI_01_hub__15
+    21300032: CL_UI_01_hub__16
+    21300034: CL_UI_01_hub__17
+    21300036: CL_UI_01_hub__18
+    21300038: CL_UI_01_hub__19
+    21300040: CL_UI_01_hub__20
+    21300042: CL_UI_01_hub__21
+    21300044: CL_UI_01_hub__22
+    21300046: CL_UI_01_hub__23
+    21300048: CL_UI_01_hub__24
+    21300050: CL_UI_01_hub__25
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 5
+  buildTargetSettings:
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: 13
+    compressionQuality: 0
+  spriteSheet:
+    sprites:
+    - name: CL_UI_01_hub__0
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 1828
+        width: 190
+        height: 195
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_01_hub__1
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 1943
+        width: 109
+        height: 89
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_01_hub__2
+      rect:
+        serializedVersion: 2
+        x: 476
+        y: 1943
+        width: 85
+        height: 87
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_01_hub__3
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 1933
+        width: 50
+        height: 50
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_01_hub__4
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 1957
+        width: 358
+        height: 61
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 27, y: 20, z: 116, w: 20}
+    - name: CL_UI_01_hub__5
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 1755
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_01_hub__6
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 1712
+        width: 163
+        height: 179
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_01_hub__7
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 1867
+        width: 156
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_01_hub__8
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 1819
+        width: 156
+        height: 29
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_01_hub__9
+      rect:
+        serializedVersion: 2
+        x: 28
+        y: 1605
+        width: 703
+        height: 54
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_01_hub__10
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 1493
+        width: 52
+        height: 57
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_01_hub__11
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 1320
+        width: 202
+        height: 223
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_01_hub__12
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 1481
+        width: 76
+        height: 79
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_01_hub__13
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 1315
+        width: 208
+        height: 217
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_01_hub__14
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 520
+        width: 56
+        height: 773
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_01_hub__15
+      rect:
+        serializedVersion: 2
+        x: 737
+        y: 1813
+        width: 48
+        height: 42
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_01_hub__16
+      rect:
+        serializedVersion: 2
+        x: 824
+        y: 1813
+        width: 55
+        height: 69
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_01_hub__17
+      rect:
+        serializedVersion: 2
+        x: 915
+        y: 1813
+        width: 55
+        height: 75
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_01_hub__18
+      rect:
+        serializedVersion: 2
+        x: 1000
+        y: 1813
+        width: 82
+        height: 76
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_01_hub__19
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 1765
+        width: 398
+        height: 9
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_01_hub__20
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 1730
+        width: 398
+        height: 8
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_01_hub__21
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 1605
+        width: 20
+        height: 54
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_01_hub__22
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 1605
+        width: 20
+        height: 43
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_01_hub__23
+      rect:
+        serializedVersion: 2
+        x: 491
+        y: 1664
+        width: 21
+        height: 54
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_01_hub__24
+      rect:
+        serializedVersion: 2
+        x: 1320
+        y: 1880
+        width: 676
+        height: 142
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_01_hub__25
+      rect:
+        serializedVersion: 2
+        x: 1413
+        y: 1745
+        width: 490
+        height: 65
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

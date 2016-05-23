@@ -1,0 +1,3 @@
+Plugins contains the Neuro’motion SDK which is used for the Medical Implementation of this game, that encourages users to control their emotions via use of a heart rate monitor which provides feedback and makes the game harder or easier depending on the heart rate zone. None of this code should need to be modified, and the AddScene.unity scene is used to provide a UI to interface with the Low Energy Bluetooth Devices that serve as heart monitors for the game.
+
+As a note, no scripts within Plugins can see scripts outside of the folder, so if you do modify any plugin scripts, they will not be able to access other classes you’ve written.

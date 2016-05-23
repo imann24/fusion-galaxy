@@ -1,0 +1,384 @@
+fileFormatVersion: 2
+guid: fbe2bec08b8207448ba642138e7a4a20
+timeCreated: 1437491681
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: CL_UI_game menus__0
+    21300002: CL_UI_game menus__1
+    21300004: CL_UI_game menus__2
+    21300006: CL_UI_game menus__3
+    21300008: CL_UI_game menus__4
+    21300010: CL_UI_game menus__5
+    21300012: CL_UI_game menus__6
+    21300014: CL_UI_game menus__7
+    21300016: CL_UI_game menus__8
+    21300018: CL_UI_game menus__9
+    21300020: CL_UI_game menus__10
+    21300022: CL_UI_game menus__11
+    21300024: CL_UI_game menus__12
+    21300026: CL_UI_game menus__13
+    21300028: CL_UI_game menus__14
+    21300030: CL_UI_game menus__15
+    21300032: CL_UI_game menus__16
+    21300034: CL_UI_game menus__17
+    21300036: CL_UI_game menus__18
+    21300038: CL_UI_game menus__19
+    21300040: CL_UI_game menus__20
+    21300042: CL_UI_game menus__21
+    21300044: CL_UI_game menus__22
+    21300046: CL_UI_game menus__23
+    21300048: CL_UI_game menus__24
+    21300050: CL_UI_game menus__25
+    21300052: CL_UI_game menus__26
+    21300054: CL_UI_game menus__27
+    21300056: CL_UI_game menus__28
+    21300058: CL_UI_game menus__29
+    21300060: CL_UI_game menus__30
+    21300062: CL_UI_game menus__31
+    21300064: CL_UI_game menus__32
+    21300066: CL_UI_game menus__33
+    21300068: CL_UI_game menus__34
+    21300070: CL_UI_game menus__35
+    21300072: CL_UI_game menus__36
+    21300074: CL_UI_game menus__37
+    21300076: CL_UI_game menus__38
+    21300078: CL_UI_game menus__39
+    21300080: CL_UI_game menus__40
+    21300082: CL_UI_game menus__41
+    21300084: CL_UI_game menus__42
+    21300086: CL_UI_game menus__43
+    21300088: CL_UI_game menus__44
+    21300090: CL_UI_game menus__45
+    21300092: CL_UI_game menus__46
+    21300094: CL_UI_game menus__47
+    21300096: CL_UI_game menus__48
+    21300098: CL_UI_game menus__49
+    21300100: CL_UI_game menus__50
+    21300102: CL_UI_game menus__51
+    21300104: CL_UI_game menus__52
+    21300106: CL_UI_game menus__53
+    21300108: CL_UI_game menus__54
+    21300110: CL_UI_game menus__55
+    21300112: CL_UI_game menus__111
+    21300114: CL_UI_game menus__112
+    21300116: CL_UI_game menus__113
+    21300118: CL_UI_game menus__114
+    21300120: CL_UI_game menus__115
+    21300122: CL_UI_game menus__116
+    21300124: CL_UI_game menus__117
+    21300126: CL_UI_game menus__118
+    21300128: CL_UI_game menus__119
+    21300130: CL_UI_game menus__120
+    21300132: CL_UI_game menus__121
+    21300134: CL_UI_game menus__122
+    21300136: CL_UI_game menus__123
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 5
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: CL_UI_game menus__0
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 1800
+        width: 457
+        height: 167
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_game menus__1
+      rect:
+        serializedVersion: 2
+        x: 545
+        y: 1800
+        width: 210
+        height: 167
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_game menus__2
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 1888
+        width: 289
+        height: 79
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_game menus__3
+      rect:
+        serializedVersion: 2
+        x: 1272
+        y: 1888
+        width: 308
+        height: 79
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_game menus__4
+      rect:
+        serializedVersion: 2
+        x: 1689
+        y: 1888
+        width: 350
+        height: 79
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_game menus__5
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 1784
+        width: 160
+        height: 79
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_game menus__6
+      rect:
+        serializedVersion: 2
+        x: 1274
+        y: 1784
+        width: 382
+        height: 79
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_game menus__7
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 1548
+        width: 441
+        height: 167
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_game menus__8
+      rect:
+        serializedVersion: 2
+        x: 847
+        y: 1682
+        width: 371
+        height: 79
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_game menus__9
+      rect:
+        serializedVersion: 2
+        x: 1274
+        y: 1682
+        width: 234
+        height: 79
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_game menus__10
+      rect:
+        serializedVersion: 2
+        x: 856
+        y: 1540
+        width: 288
+        height: 28
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_game menus__11
+      rect:
+        serializedVersion: 2
+        x: 857
+        y: 1476
+        width: 1052
+        height: 142
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_game menus__12
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 1510
+        width: 19
+        height: 35
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_game menus__13
+      rect:
+        serializedVersion: 2
+        x: 1590
+        y: 1510
+        width: 17
+        height: 35
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_game menus__14
+      rect:
+        serializedVersion: 2
+        x: 1610
+        y: 1510
+        width: 17
+        height: 35
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_game menus__15
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 1296
+        width: 628
+        height: 167
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_game menus__16
+      rect:
+        serializedVersion: 2
+        x: 868
+        y: 1404
+        width: 36
+        height: 30
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_game menus__17
+      rect:
+        serializedVersion: 2
+        x: 1022
+        y: 1392
+        width: 77
+        height: 68
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_game menus__18
+      rect:
+        serializedVersion: 2
+        x: 1170
+        y: 1376
+        width: 134
+        height: 116
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_game menus__19
+      rect:
+        serializedVersion: 2
+        x: 1436
+        y: 1375
+        width: 19
+        height: 35
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_game menus__20
+      rect:
+        serializedVersion: 2
+        x: 1458
+        y: 1375
+        width: 19
+        height: 35
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_game menus__21
+      rect:
+        serializedVersion: 2
+        x: 1547
+        y: 1343
+        width: 99
+        height: 101
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_game menus__27
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 1185
+        width: 474
+        height: 98
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_game menus__33
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 1073
+        width: 327
+        height: 57
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_game menus__22
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 943
+        width: 448
+        height: 260
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_game menus__23
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 0
+        width: 1340
+        height: 832
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,3 @@
+Everything within the resources folder is loaded directly into the game. This is mostly useful for Resource.Load calls that allow you to directly access assets via file names. We use this to load in our element and powerup sprites dynamically. This implementation allows for new sprite assets and new elements and powerups to be created on the fly.
+
+Be careful not to add anything that you don’t need to access at runtime to this folder because it will negatively impact the build size.

@@ -1,0 +1,686 @@
+fileFormatVersion: 2
+guid: cd5a55cb16133014c8d5ad73cb34b9bf
+timeCreated: 1436811383
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: beam_downarrow_laneconversion_shield_0
+    21300002: beam_downarrow_laneconversion_shield_2
+    21300004: beam_downarrow_laneconversion_shield_4
+    21300006: beam_downarrow_laneconversion_shield_6
+    21300008: beam_downarrow_laneconversion_shield_8
+    21300010: beam_downarrow_laneconversion_shield_10
+    21300012: beam_downarrow_laneconversion_shield_12
+    21300014: beam_downarrow_laneconversion_shield_14
+    21300016: beam_downarrow_laneconversion_shield_16
+    21300018: beam_downarrow_laneconversion_shield_17
+    21300020: beam_downarrow_laneconversion_shield_18
+    21300022: beam_downarrow_laneconversion_shield_19
+    21300024: beam_downarrow_laneconversion_shield_20
+    21300026: beam_downarrow_laneconversion_shield_21
+    21300028: beam_downarrow_laneconversion_shield_22
+    21300030: beam_downarrow_laneconversion_shield_23
+    21300032: beam_downarrow_laneconversion_shield_24
+    21300034: beam_downarrow_laneconversion_shield_25
+    21300036: beam_downarrow_laneconversion_shield_26
+    21300038: beam_downarrow_laneconversion_shield_27
+    21300040: beam_downarrow_laneconversion_shield_28
+    21300042: beam_downarrow_laneconversion_shield_29
+    21300044: beam_downarrow_laneconversion_shield_30
+    21300046: beam_downarrow_laneconversion_shield_31
+    21300048: beam_downarrow_laneconversion_shield_32
+    21300050: beam_downarrow_laneconversion_shield_34
+    21300052: beam_downarrow_laneconversion_shield_36
+    21300054: beam_downarrow_laneconversion_shield_38
+    21300056: beam_downarrow_laneconversion_shield_39
+    21300058: beam_downarrow_laneconversion_shield_40
+    21300060: beam_downarrow_laneconversion_shield_41
+    21300062: beam_downarrow_laneconversion_shield_42
+    21300064: beam_downarrow_laneconversion_shield_43
+    21300066: beam_downarrow_laneconversion_shield_44
+    21300068: beam_downarrow_laneconversion_shield_45
+    21300070: beam_downarrow_laneconversion_shield_46
+    21300072: beam_downarrow_laneconversion_shield_47
+    21300074: beam_downarrow_laneconversion_shield_1
+    21300076: beam_downarrow_laneconversion_shield_3
+    21300078: beam_downarrow_laneconversion_shield_5
+    21300080: beam_downarrow_laneconversion_shield_7
+    21300082: beam_downarrow_laneconversion_shield_9
+    21300084: beam_downarrow_laneconversion_shield_11
+    21300086: beam_downarrow_laneconversion_shield_13
+    21300088: beam_downarrow_laneconversion_shield_15
+    21300090: beam_downarrow_laneconversion_shield_33
+    21300092: beam_downarrow_laneconversion_shield_35
+    21300094: beam_downarrow_laneconversion_shield_37
+    21300096: beam_downarrow_laneconversion_shield_48
+    21300098: beam_downarrow_laneconversion_shield_49
+    21300100: beam_downarrow_laneconversion_shield_50
+    21300102: beam_downarrow_laneconversion_shield_51
+    21300104: beam_downarrow_laneconversion_shield_52
+    21300106: beam_downarrow_laneconversion_shield_53
+    21300108: beam_downarrow_laneconversion_shield_54
+    21300110: beam_downarrow_laneconversion_shield_55
+    21300112: beam_downarrow_laneconversion_shield_56
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 0
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 5
+  buildTargetSettings:
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: 13
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: beam_downarrow_laneconversion_shield_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1536
+        width: 128
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_2
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1536
+        width: 128
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_4
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1536
+        width: 128
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1536
+        width: 128
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1536
+        width: 128
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_10
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 1536
+        width: 128
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_12
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1536
+        width: 128
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_14
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 1536
+        width: 128
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_16
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1536
+        width: 64
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_17
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 1536
+        width: 64
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_18
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1536
+        width: 64
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_19
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 1536
+        width: 64
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_20
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1536
+        width: 64
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_21
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 1536
+        width: 64
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_22
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 1536
+        width: 64
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_23
+      rect:
+        serializedVersion: 2
+        x: 1472
+        y: 1536
+        width: 64
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_24
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1536
+        width: 64
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_25
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 1536
+        width: 64
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_26
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 1536
+        width: 64
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_27
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 1536
+        width: 64
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_28
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 1536
+        width: 64
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_29
+      rect:
+        serializedVersion: 2
+        x: 1856
+        y: 1536
+        width: 64
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_30
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 1536
+        width: 64
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_31
+      rect:
+        serializedVersion: 2
+        x: 1984
+        y: 1536
+        width: 64
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1280
+        width: 128
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_34
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1280
+        width: 128
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_36
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1280
+        width: 128
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_38
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 64
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_39
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 1024
+        width: 64
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_40
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 1024
+        width: 64
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_41
+      rect:
+        serializedVersion: 2
+        x: 1216
+        y: 1024
+        width: 64
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_42
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 1024
+        width: 64
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_43
+      rect:
+        serializedVersion: 2
+        x: 1344
+        y: 1024
+        width: 64
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_44
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 1024
+        width: 64
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_45
+      rect:
+        serializedVersion: 2
+        x: 1472
+        y: 1024
+        width: 64
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_46
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1024
+        width: 64
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_47
+      rect:
+        serializedVersion: 2
+        x: 1600
+        y: 1024
+        width: 64
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1792
+        width: 128
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_3
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1792
+        width: 128
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_5
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 1792
+        width: 128
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_7
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 1792
+        width: 128
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_9
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1792
+        width: 128
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_11
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 1792
+        width: 128
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_13
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 1792
+        width: 128
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_15
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 1792
+        width: 128
+        height: 256
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_33
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 529
+        width: 150
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_35
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 529
+        width: 150
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_37
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 529
+        width: 150
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_48
+      rect:
+        serializedVersion: 2
+        x: 857
+        y: 529
+        width: 150
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_49
+      rect:
+        serializedVersion: 2
+        x: 1070
+        y: 529
+        width: 150
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_50
+      rect:
+        serializedVersion: 2
+        x: 1283
+        y: 529
+        width: 150
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_51
+      rect:
+        serializedVersion: 2
+        x: 1496
+        y: 529
+        width: 150
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_52
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 5
+        width: 150
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_53
+      rect:
+        serializedVersion: 2
+        x: 1709
+        y: 529
+        width: 150
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_54
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 529
+        width: 150
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_55
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 5
+        width: 150
+        height: 512
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: beam_downarrow_laneconversion_shield_56
+      rect:
+        serializedVersion: 2
+        x: 1468
+        y: 200
+        width: 241
+        height: 114
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

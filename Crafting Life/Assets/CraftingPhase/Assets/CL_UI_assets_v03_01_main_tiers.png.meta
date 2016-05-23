@@ -1,0 +1,216 @@
+fileFormatVersion: 2
+guid: b506a34c577ae49a4abb04cbcd9c761b
+timeCreated: 1434559880
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: CL_UI_assets_v03_01_main_tiers_0
+    21300002: CL_UI_assets_v03_01_main_tiers_1
+    21300004: CL_UI_assets_v03_01_main_tiers_2
+    21300006: CL_UI_assets_v03_01_main_tiers_3
+    21300008: CL_UI_assets_v03_01_main_tiers_4
+    21300010: CL_UI_assets_v03_01_main_tiers_5
+    21300012: CL_UI_assets_v03_01_main_tiers_6
+    21300014: CL_UI_assets_v03_01_main_tiers_7
+    21300016: CL_UI_assets_v03_01_main_tiers_8
+    21300018: CL_UI_assets_v03_01_main_tiers_9
+    21300020: CL_UI_assets_v03_01_main_tiers_10
+    21300022: CL_UI_assets_v03_01_main_tiers_11
+    21300024: CL_UI_assets_v03_01_main_tiers_12
+    21300026: CL_UI_assets_v03_01_main_tiers_13
+    21300028: CL_UI_assets_v03_01_main_tiers_14
+    21300030: CL_UI_assets_v03_01_main_tiers_15
+    21300032: CL_UI_assets_v03_01_main_tiers_16
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 5
+  buildTargetSettings:
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: 13
+    compressionQuality: 0
+  spriteSheet:
+    sprites:
+    - name: CL_UI_assets_v03_01_main_tiers_0
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 824
+        width: 220
+        height: 190
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_assets_v03_01_main_tiers_1
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 824
+        width: 220
+        height: 190
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_assets_v03_01_main_tiers_2
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 824
+        width: 220
+        height: 190
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_assets_v03_01_main_tiers_3
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 824
+        width: 220
+        height: 190
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_assets_v03_01_main_tiers_4
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 634
+        width: 220
+        height: 190
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_assets_v03_01_main_tiers_5
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 634
+        width: 220
+        height: 190
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_assets_v03_01_main_tiers_6
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 634
+        width: 220
+        height: 190
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_assets_v03_01_main_tiers_7
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 634
+        width: 220
+        height: 190
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_assets_v03_01_main_tiers_8
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 444
+        width: 220
+        height: 190
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_assets_v03_01_main_tiers_9
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 444
+        width: 220
+        height: 190
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_assets_v03_01_main_tiers_10
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 444
+        width: 220
+        height: 190
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_assets_v03_01_main_tiers_11
+      rect:
+        serializedVersion: 2
+        x: 665
+        y: 444
+        width: 220
+        height: 190
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_assets_v03_01_main_tiers_12
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 240
+        width: 220
+        height: 190
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_assets_v03_01_main_tiers_13
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 290
+        width: 106
+        height: 98
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,13 @@
+Perforce is the version controller software used at MassDiGI. It’s similar to GitHub but provides more file security. To use Perforce, or P4 as it’s often called, download P4V or Perforce Visual:http://www.perforce.com/product/components/perforce-visual-client.
+
+Full instructions can be found here: http://tinyurl.com/pwu26sm
+(courtesy of Chris Bruno)
+- David Lennon is also an excellent resource of P4 support
+
+The server for Crafting Life is: ssl:Life.dlennon.p4helix.perforce.com:1667
+
+The current Admin/Owner of the project is Isaiah Mann, imann24@gmail.com
+
+You need to be invited to the project before you can access it via P4V. Send the owner an email and they can invite you.
+
+For more detailed instructions on the use of P4, see another excellent doc by Chris Bruno: http://tinyurl.com/oybkd75

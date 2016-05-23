@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 8a29193dd2a4641ceb7a4d01a99beff2
+timeCreated: 1436197270
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - techTreeCSV: {fileID: 4900000, guid: a6143994046444311879093b22371025, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

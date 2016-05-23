@@ -1,0 +1,198 @@
+fileFormatVersion: 2
+guid: 4a266949702cf443488c1dbe59004654
+timeCreated: 1436407077
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: tutorial-assets_0
+    21300002: tutorial-assets_1
+    21300004: tutorial-assets_2
+    21300006: tutorial-assets_3
+    21300008: tutorial-assets_4
+    21300010: tutorial-assets_5
+    21300012: tutorial-assets_6
+    21300014: tutorial-assets_7
+    21300016: tutorial-assets_8
+    21300018: tutorial-assets_9
+    21300020: tutorial-assets_10
+    21300022: tutorial-assets_11
+    21300024: tutorial-assets_12
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 5
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: tutorial-assets_0
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 1808
+        width: 666
+        height: 211
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: tutorial-assets_1
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 1611
+        width: 607
+        height: 168
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: tutorial-assets_2
+      rect:
+        serializedVersion: 2
+        x: 23
+        y: 1428
+        width: 734
+        height: 176
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: tutorial-assets_3
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 532
+        width: 622
+        height: 874
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: tutorial-assets_4
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 274
+        width: 770
+        height: 228
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: tutorial-assets_5
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 25
+        width: 838
+        height: 203
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: tutorial-assets_6
+      rect:
+        serializedVersion: 2
+        x: 785
+        y: 1325
+        width: 724
+        height: 690
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: tutorial-assets_7
+      rect:
+        serializedVersion: 2
+        x: 1545
+        y: 1777
+        width: 447
+        height: 220
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: tutorial-assets_8
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 1108
+        width: 994
+        height: 162
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: tutorial-assets_9
+      rect:
+        serializedVersion: 2
+        x: 726
+        y: 817
+        width: 617
+        height: 239
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: tutorial-assets_10
+      rect:
+        serializedVersion: 2
+        x: 907
+        y: 519
+        width: 960
+        height: 262
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: tutorial-assets_11
+      rect:
+        serializedVersion: 2
+        x: 932
+        y: 177
+        width: 908
+        height: 328
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: tutorial-assets_12
+      rect:
+        serializedVersion: 2
+        x: 877
+        y: 3
+        width: 1161
+        height: 127
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

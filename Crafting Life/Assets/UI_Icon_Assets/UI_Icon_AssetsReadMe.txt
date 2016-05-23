@@ -1,0 +1,1 @@
+This folder holds all the fonts used within the game, some UI assets are shared between multiple scenes, the App Icons (the square one is for iOS, the rounded for Android), and the UI used in the Bluetooth Syncing plugin scene.

@@ -1,0 +1,620 @@
+fileFormatVersion: 2
+guid: 4ae9963811baaa54180700552317772f
+timeCreated: 1436799003
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: antigravity_collectall_invincible_launchanim_0
+    21300002: antigravity_collectall_invincible_launchanim_1
+    21300004: antigravity_collectall_invincible_launchanim_2
+    21300006: antigravity_collectall_invincible_launchanim_3
+    21300008: antigravity_collectall_invincible_launchanim_4
+    21300010: antigravity_collectall_invincible_launchanim_5
+    21300012: antigravity_collectall_invincible_launchanim_6
+    21300014: antigravity_collectall_invincible_launchanim_7
+    21300016: antigravity_collectall_invincible_launchanim_8
+    21300018: antigravity_collectall_invincible_launchanim_9
+    21300020: antigravity_collectall_invincible_launchanim_10
+    21300022: antigravity_collectall_invincible_launchanim_11
+    21300024: antigravity_collectall_invincible_launchanim_12
+    21300026: antigravity_collectall_invincible_launchanim_13
+    21300028: antigravity_collectall_invincible_launchanim_17
+    21300030: antigravity_collectall_invincible_launchanim_18
+    21300032: antigravity_collectall_invincible_launchanim_19
+    21300034: antigravity_collectall_invincible_launchanim_20
+    21300036: antigravity_collectall_invincible_launchanim_21
+    21300038: antigravity_collectall_invincible_launchanim_22
+    21300040: antigravity_collectall_invincible_launchanim_23
+    21300042: antigravity_collectall_invincible_launchanim_24
+    21300044: antigravity_collectall_invincible_launchanim_25
+    21300046: antigravity_collectall_invincible_launchanim_26
+    21300048: antigravity_collectall_invincible_launchanim_27
+    21300050: antigravity_collectall_invincible_launchanim_28
+    21300052: antigravity_collectall_invincible_launchanim_15
+    21300054: antigravity_collectall_invincible_launchanim_16
+    21300056: antigravity_collectall_invincible_launchanim_29
+    21300058: antigravity_collectall_invincible_launchanim_30
+    21300060: antigravity_collectall_invincible_launchanim_31
+    21300062: antigravity_collectall_invincible_launchanim_32
+    21300064: antigravity_collectall_invincible_launchanim_33
+    21300066: antigravity_collectall_invincible_launchanim_34
+    21300068: antigravity_collectall_invincible_launchanim_35
+    21300070: antigravity_collectall_invincible_launchanim_36
+    21300072: antigravity_collectall_invincible_launchanim_37
+    21300074: antigravity_collectall_invincible_launchanim_38
+    21300076: antigravity_collectall_invincible_launchanim_39
+    21300078: antigravity_collectall_invincible_launchanim_40
+    21300080: antigravity_collectall_invincible_launchanim_41
+    21300082: antigravity_collectall_invincible_launchanim_14
+    21300084: antigravity_collectall_invincible_launchanim_42
+    21300086: antigravity_collectall_invincible_launchanim_43
+    21300088: antigravity_collectall_invincible_launchanim_44
+    21300090: antigravity_collectall_invincible_launchanim_45
+    21300092: antigravity_collectall_invincible_launchanim_46
+    21300094: antigravity_collectall_invincible_launchanim_47
+    21300096: antigravity_collectall_invincible_launchanim_48
+    21300098: antigravity_collectall_invincible_launchanim_49
+    21300100: antigravity_collectall_invincible_launchanim_50
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 0
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 5
+  buildTargetSettings:
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: 13
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: antigravity_collectall_invincible_launchanim_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 1919
+        width: 122
+        height: 125
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_1
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 1919
+        width: 122
+        height: 125
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_2
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 1919
+        width: 122
+        height: 125
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_3
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 1919
+        width: 122
+        height: 125
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_4
+      rect:
+        serializedVersion: 2
+        x: 529
+        y: 1919
+        width: 122
+        height: 125
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_5
+      rect:
+        serializedVersion: 2
+        x: 659
+        y: 1919
+        width: 122
+        height: 125
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_6
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 1473
+        width: 384
+        height: 399
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_7
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 1473
+        width: 384
+        height: 405
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_8
+      rect:
+        serializedVersion: 2
+        x: 779
+        y: 1473
+        width: 384
+        height: 405
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_9
+      rect:
+        serializedVersion: 2
+        x: 1163
+        y: 1473
+        width: 384
+        height: 405
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_10
+      rect:
+        serializedVersion: 2
+        x: 1547
+        y: 1473
+        width: 384
+        height: 405
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_11
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 1046
+        width: 384
+        height: 405
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_12
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 1046
+        width: 384
+        height: 405
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_13
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 1046
+        width: 384
+        height: 405
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_17
+      rect:
+        serializedVersion: 2
+        x: 1424
+        y: 307
+        width: 112
+        height: 24
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_18
+      rect:
+        serializedVersion: 2
+        x: 1552
+        y: 307
+        width: 112
+        height: 24
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_19
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 307
+        width: 112
+        height: 24
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_20
+      rect:
+        serializedVersion: 2
+        x: 1808
+        y: 307
+        width: 112
+        height: 24
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_21
+      rect:
+        serializedVersion: 2
+        x: 1424
+        y: 243
+        width: 112
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_22
+      rect:
+        serializedVersion: 2
+        x: 1552
+        y: 243
+        width: 112
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_23
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 243
+        width: 112
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_24
+      rect:
+        serializedVersion: 2
+        x: 1808
+        y: 243
+        width: 112
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_25
+      rect:
+        serializedVersion: 2
+        x: 1424
+        y: 179
+        width: 112
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_26
+      rect:
+        serializedVersion: 2
+        x: 1552
+        y: 179
+        width: 112
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_27
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 179
+        width: 112
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_28
+      rect:
+        serializedVersion: 2
+        x: 1808
+        y: 179
+        width: 112
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_15
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 514
+        width: 128
+        height: 384
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_16
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 514
+        width: 128
+        height: 384
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_29
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 514
+        width: 128
+        height: 384
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_30
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 514
+        width: 128
+        height: 384
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_31
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 514
+        width: 128
+        height: 384
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_32
+      rect:
+        serializedVersion: 2
+        x: 772
+        y: 514
+        width: 128
+        height: 384
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_33
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 514
+        width: 128
+        height: 384
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_34
+      rect:
+        serializedVersion: 2
+        x: 1028
+        y: 514
+        width: 128
+        height: 384
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_35
+      rect:
+        serializedVersion: 2
+        x: 1156
+        y: 514
+        width: 128
+        height: 384
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_36
+      rect:
+        serializedVersion: 2
+        x: 1284
+        y: 514
+        width: 128
+        height: 384
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_37
+      rect:
+        serializedVersion: 2
+        x: 1412
+        y: 514
+        width: 128
+        height: 384
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_38
+      rect:
+        serializedVersion: 2
+        x: 1540
+        y: 514
+        width: 128
+        height: 384
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_39
+      rect:
+        serializedVersion: 2
+        x: 1668
+        y: 514
+        width: 128
+        height: 384
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_40
+      rect:
+        serializedVersion: 2
+        x: 1796
+        y: 514
+        width: 128
+        height: 384
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_41
+      rect:
+        serializedVersion: 2
+        x: 1924
+        y: 514
+        width: 124
+        height: 384
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_14
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 130
+        width: 128
+        height: 384
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_42
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 130
+        width: 128
+        height: 384
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_43
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 130
+        width: 128
+        height: 384
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_44
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 130
+        width: 128
+        height: 384
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_45
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 130
+        width: 128
+        height: 384
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_46
+      rect:
+        serializedVersion: 2
+        x: 641
+        y: 130
+        width: 128
+        height: 384
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_47
+      rect:
+        serializedVersion: 2
+        x: 769
+        y: 130
+        width: 128
+        height: 384
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_48
+      rect:
+        serializedVersion: 2
+        x: 897
+        y: 130
+        width: 128
+        height: 384
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_49
+      rect:
+        serializedVersion: 2
+        x: 1025
+        y: 130
+        width: 128
+        height: 384
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: antigravity_collectall_invincible_launchanim_50
+      rect:
+        serializedVersion: 2
+        x: 1153
+        y: 130
+        width: 128
+        height: 384
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

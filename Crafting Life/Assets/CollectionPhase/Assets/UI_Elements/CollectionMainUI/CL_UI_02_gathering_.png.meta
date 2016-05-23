@@ -1,0 +1,180 @@
+fileFormatVersion: 2
+guid: dd2d33d1ab0b8e440909db37132bdbbb
+timeCreated: 1435694382
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: CL_UI_02_gathering__0
+    21300002: CL_UI_02_gathering__1
+    21300004: CL_UI_02_gathering__2
+    21300006: CL_UI_02_gathering__3
+    21300008: CL_UI_02_gathering__4
+    21300010: CL_UI_02_gathering__5
+    21300012: CL_UI_02_gathering__6
+    21300014: CL_UI_02_gathering__7
+    21300016: CL_UI_02_gathering__8
+    21300018: CL_UI_02_gathering__9
+    21300020: CL_UI_02_gathering__10
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 5
+  buildTargetSettings:
+  - buildTarget: Android
+    maxTextureSize: 2048
+    textureFormat: 13
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: CL_UI_02_gathering__0
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 1694
+        width: 454
+        height: 328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_02_gathering__1
+      rect:
+        serializedVersion: 2
+        x: 845
+        y: 1636
+        width: 357
+        height: 369
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_02_gathering__2
+      rect:
+        serializedVersion: 2
+        x: 1287
+        y: 180
+        width: 302
+        height: 1825
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_02_gathering__3
+      rect:
+        serializedVersion: 2
+        x: 1695
+        y: 129
+        width: 326
+        height: 1911
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_02_gathering__4
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 1337
+        width: 189
+        height: 328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_02_gathering__5
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 1337
+        width: 201
+        height: 328
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_02_gathering__6
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 1338
+        width: 108
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_02_gathering__7
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 265
+        width: 180
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_02_gathering__8
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 265
+        width: 283
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_02_gathering__9
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 116
+        width: 1106
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: CL_UI_02_gathering__10
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 47
+        width: 820
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
