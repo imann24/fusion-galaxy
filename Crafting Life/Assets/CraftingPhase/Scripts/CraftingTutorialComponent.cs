@@ -5,7 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(Canvas))]
-public class CraftingTutorialComponent: MonoBehaviour {
+public class CraftingTutorialComponent: TutorialComponent {
 	public static int topSortLayer = 600;
 	public static Dictionary<MainMenuController.Tutorial, List<CraftingTutorialComponent>> AllTutorialsComponents = new Dictionary<MainMenuController.Tutorial, List<CraftingTutorialComponent>>();
 
@@ -45,7 +45,44 @@ public class CraftingTutorialComponent: MonoBehaviour {
 	void OnDestroy () {
 		Unitialize();
 	}
-	
+
+	// WARNING: Returns null if there is no previous element
+	public override TutorialComponent GetPrevious () {
+		if (IsFirstStepInTutorial()) {
+			return null;
+		} else {
+			return FindTutorialComponentByOffset(-1);
+		}
+	}
+
+	// WARNING: Returns null if there is no next element
+	public override TutorialComponent GetNext () {
+		if (IsLastStepInTutorial()) {
+			return null;
+		} else {
+			return FindTutorialComponentByOffset(1);
+		}
+	}
+
+	// Finds tutorial component based on offset from this component. Returns null if invalid amount
+	TutorialComponent FindTutorialComponentByOffset (int offset) {
+		try {
+			return AllTutorialsComponents[TutorialType].Find((CraftingTutorialComponent component) => component.TutorialStep == TutorialStep + offset);
+		} catch {
+			Debug.LogError(string.Format("Tutorial Component at offset {0} from {1} not found", offset, gameObject.name));
+			return null;
+		}
+	}
+
+	bool IsFirstStepInTutorial () {
+		return TutorialStep <= 0;
+	}
+
+	bool IsLastStepInTutorial () {
+		int zeroIndexOffset = 1;
+		return TutorialStep + zeroIndexOffset >= AllTutorialsComponents[TutorialType].Count;
+	}
+
 	//gets an array of the children that are tutorial images in the gameobject
 	private MaskableGraphic[] GetChildrenTutorialComponents () {
 		List<int> indexes = new List<int>();
