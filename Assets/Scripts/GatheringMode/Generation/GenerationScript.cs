@@ -131,16 +131,6 @@ public class GenerationScript : MonoBehaviour {
 		//sets the global script reference to this script
 		GlobalVars.GATHERING_CONTROLLER = this;
 		GlobalVars.InitializePowerUpSprites();
-
-
-#if DEBUG
-		Utility.SetPlayerPrefIntAsBool(GlobalVars.GATHERING_TUTORIAL_WATCHED_SWIPE, true);
-		Utility.SetPlayerPrefIntAsBool(GlobalVars.GATHERING_TUTORIAL_WATCHED_POWER_UP, true);
-		//ActivatePowerUp.UnlockAllPowerups ();
-
-		TAP_TO_COLLECT = true;
-#endif
-
 	}
 	
 	// Use this for initialization
