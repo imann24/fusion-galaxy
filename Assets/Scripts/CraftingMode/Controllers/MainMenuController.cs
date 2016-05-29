@@ -18,7 +18,7 @@ using System.Collections.Generic;
 	//events
 	public delegate void ButtonPressAction();
 	public delegate void EnterMenuScreenAction();
-	public delegate void CallTutorialEventAction(Tutorial tutorial);
+	public delegate void CallTutorialEventAction(TutorialType tutorial);
 	public delegate void LoadTierAction(int tier);
 	public static event ButtonPressAction OnButtonPress;
 	public static event EnterMenuScreenAction OnEnterMenu;
@@ -54,9 +54,6 @@ using System.Collections.Generic;
 	//tutorial variabes
 	private PurchaseHint tutorialHint;
 
-	//enums to call tutorials
-	public enum Tutorial{Gathering, Crafting, TierSwitch, BuyHint, UpgradePowerup, None};
-
 	void Awake () {
 		//sets the global script reference
 		GlobalVars.CRAFTING_CONTROLLER = this;
@@ -66,13 +63,6 @@ using System.Collections.Generic;
 
 		//increases the play count for crafting
 		GlobalVars.CRAFTING_PLAY_COUNT++;
-
-#if DEBUG
-		Debug.Log("locking the elements to test tier unlocking");
-		Cheats.LockAllElements();
-		PlayerPrefs.SetInt("water", 3);
-		Utility.SetPlayerPrefIntAsBool(GlobalVars.ELEMENTS_DRAGGED_TUTORIAL_KEY, true);
-#endif
 	}
 
 	void Start () {
@@ -257,15 +247,9 @@ using System.Collections.Generic;
 				tierButtonScript[i].makeButtonLocked();
 			} else*/
 			if (i == activeButton + activeOffset) {
-#if DEBUG
-				Debug.Log("This tier is selected " + i);
-#endif
 				tierButtonScript[i].makeButtonSelected(true);
 			} else if (tierButtonScript[i].isUnlocked) { 
 				tierButtonScript[i].makeButtonSelected(false);
-#if DEBUG
-				Debug.Log("This tier is not selected " + i);
-#endif
 			}
 
 			/*else {
@@ -380,6 +364,12 @@ using System.Collections.Generic;
 			Handheld.PlayFullScreenMovie ("outro.mp4", Color.black, FullScreenMovieControlMode.CancelOnInput);
 		#endif
 	}
+
+	
+	public bool ReadyToGather () {
+		return buttonControl.PollGatheringDropZones() == GlobalVars.NUMBER_OF_LANES;
+	}
+	
 #region TUTORIAL
 
 	//calls any applicable tutorial events
@@ -389,7 +379,7 @@ using System.Collections.Generic;
 
 			//the gathering tutorial
 			if (!Utility.PlayerPrefIntToBool(GlobalVars.ELEMENTS_DRAGGED_TUTORIAL_KEY)) {
-				OnCallTutorialEvent(Tutorial.Gathering);
+				OnCallTutorialEvent(TutorialType.Gathering);
 
 			} 
 
@@ -399,7 +389,7 @@ using System.Collections.Generic;
 			                                     new KeyValuePair<string, int>("water", 1), 
 			                                     new KeyValuePair<string, int>("earth", 1), 
 			                                     new KeyValuePair<string, int>("air", 1)))  {
-				OnCallTutorialEvent(Tutorial.Crafting);
+				OnCallTutorialEvent(TutorialType.Crafting);
 
 			} 
 
@@ -412,7 +402,7 @@ using System.Collections.Generic;
 #if DEBUG
 				Debug.Log("Calling the hint tutorial");
 #endif
-				OnCallTutorialEvent(Tutorial.BuyHint);
+				OnCallTutorialEvent(TutorialType.BuyHint);
 			} 
 
 			//the upgrading a powerup tutorial
@@ -427,7 +417,7 @@ using System.Collections.Generic;
 #if DEBUG
 				Debug.Log("Calling the powerup upgrade tutorial");
 #endif
-				OnCallTutorialEvent(Tutorial.UpgradePowerup);
+				OnCallTutorialEvent(TutorialType.UpgradePowerup);
 			} 
 
 			//tier switch
@@ -453,7 +443,7 @@ using System.Collections.Generic;
 	}
 
 	public void CallTierSwitchTutorial () {
-		OnCallTutorialEvent(Tutorial.TierSwitch);
+		OnCallTutorialEvent(TutorialType.TierSwitch);
 	}
 #endregion
 }

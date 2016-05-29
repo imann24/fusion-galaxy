@@ -1,19 +1,29 @@
 //#define DEBUG
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(Canvas))]
 public class CraftingTutorialComponent: TutorialComponent {
+
+	static CraftingTutorialComponent () {
+		CurrentTutorialSteps = new Dictionary<TutorialType, int>();
+
+		for (int i = 0; i < Enum.GetNames(typeof(TutorialType)).Length; i++) {
+			CurrentTutorialSteps.Add((TutorialType) i, 0);
+		}
+	}
+
 	public static int topSortLayer = 600;
-	public static Dictionary<MainMenuController.Tutorial, List<CraftingTutorialComponent>> AllTutorialsComponents = new Dictionary<MainMenuController.Tutorial, List<CraftingTutorialComponent>>();
+	public static Dictionary<TutorialType, List<CraftingTutorialComponent>> AllTutorialsComponents = new Dictionary<TutorialType, List<CraftingTutorialComponent>>();
 
 	//game objects whose sorting layers should not be sorted
 	private static string [] NoSortList = {"PowerUpButton(Clone)"};
-	private static MainMenuController.Tutorial ActiveTutorialType = MainMenuController.Tutorial.None;
+	private static TutorialType ActiveTutorialType = TutorialType.None;
 
-	public MainMenuController.Tutorial TutorialType;
+	public TutorialType TutorialType;
 
 	//checks if the children objects of each component contain this string and if so, turns them on and off
 	private static string TutorialComponentName = "Tutorial";
@@ -36,6 +46,10 @@ public class CraftingTutorialComponent: TutorialComponent {
 
 	//for the buying hints tutorial
 	private const string BuyingHintMessage = "Click a locked element panel to buy its hint";
+
+
+	public static Dictionary<TutorialType, int> CurrentTutorialSteps;
+
 	// Use this for initialization
 	void Awake () {
 		EstablishReferences();
@@ -47,7 +61,7 @@ public class CraftingTutorialComponent: TutorialComponent {
 	}
 
 	// WARNING: Returns null if there is no previous element
-	public override TutorialComponent GetPrevious () {
+	public override TutorialComponent [] GetPrevious () {
 		if (IsFirstStepInTutorial()) {
 			return null;
 		} else {
@@ -56,7 +70,7 @@ public class CraftingTutorialComponent: TutorialComponent {
 	}
 
 	// WARNING: Returns null if there is no next element
-	public override TutorialComponent GetNext () {
+	public override TutorialComponent [] GetNext () {
 		if (IsLastStepInTutorial()) {
 			return null;
 		} else {
@@ -64,10 +78,14 @@ public class CraftingTutorialComponent: TutorialComponent {
 		}
 	}
 
+	public override TutorialComponent[] GetCurrent () {
+		return FindTutorialComponentByOffset(0);
+	}
+
 	// Finds tutorial component based on offset from this component. Returns null if invalid amount
-	TutorialComponent FindTutorialComponentByOffset (int offset) {
+	TutorialComponent [] FindTutorialComponentByOffset (int offset) {
 		try {
-			return AllTutorialsComponents[TutorialType].Find((CraftingTutorialComponent component) => component.TutorialStep == TutorialStep + offset);
+			return AllTutorialsComponents[TutorialType].FindAll((CraftingTutorialComponent component) => component.TutorialStep == TutorialStep + offset).ToArray();
 		} catch {
 			Debug.LogError(string.Format("Tutorial Component at offset {0} from {1} not found", offset, gameObject.name));
 			return null;
@@ -110,9 +128,7 @@ public class CraftingTutorialComponent: TutorialComponent {
 
 	//toggles the children on and off
 	private void ToggleChildrenTutorialComponents (bool active) {
-		Utility.Log("**Children are spawning from " + gameObject.name);
 		foreach (MaskableGraphic image in MyTutorialComponents) {
-			Utility.Log("**Child is spawning: " + image.gameObject.name);
 			image.enabled = active;
 		}
 	}
@@ -172,17 +188,25 @@ public class CraftingTutorialComponent: TutorialComponent {
 
 	//checks whether any further element panels need to be added
 	private bool ElementPanelsAtMax () {
-		Utility.Log((TutorialType == MainMenuController.Tutorial.Crafting && ElementPanelsActive >= CraftingMaxElementPanelsNeeded) + " that i should be exiting");
-		if (TutorialType == MainMenuController.Tutorial.Crafting && ElementPanelsActive >= CraftingMaxElementPanelsNeeded) {
+		if (TutorialType == TutorialType.Crafting && ElementPanelsActive >= CraftingMaxElementPanelsNeeded) {
 			return true;
-		} else if (TutorialType == MainMenuController.Tutorial.BuyHint && ElementPanelsActive >= BuyHintMaxElementPanelsNeeded) {
+		} else if (TutorialType == TutorialType.BuyHint && ElementPanelsActive >= BuyHintMaxElementPanelsNeeded) {
 			return true;
 		} else {
 			return false;
 		}
 	}
 
+	bool IsActiveStep () {
+		return TutorialStep == CurrentTutorialSteps[TutorialType];
+	}
 
+	void CheckActive () {
+		if (!IsActiveStep()) {
+			DeactivateComponent();
+		}
+	}
+	
 	//establishes the reference to the proper tutorial
 	public void Initialize () {
 		//adds its to the dictionary of all the components in each tutorial
@@ -196,7 +220,7 @@ public class CraftingTutorialComponent: TutorialComponent {
 	}
 	
 	//used as a constructor: changes the tutorial this component is associated with
-	public void Reinitialize (MainMenuController.Tutorial TutorialType) {
+	public void Reinitialize (TutorialType TutorialType) {
 		Unitialize();
 
 		//starts up the references again
@@ -225,6 +249,7 @@ public class CraftingTutorialComponent: TutorialComponent {
 		DeactivateComponent();
 		
 	}
+
 	//brings the component to the front of the sort order
 	public void ActivateComponent () {
 		//checks if the tutorial component is an element panel
@@ -232,16 +257,18 @@ public class CraftingTutorialComponent: TutorialComponent {
 
 			//checks if no further panels are needed
 			if (ElementPanelsAtMax() ||
-			   	(ElementIsInsufficent(1)==null?false:(bool)ElementIsInsufficent(1) && TutorialType == MainMenuController.Tutorial.Crafting) ||
-			    (ElementIsUnlocked()==null?false:(bool)ElementIsUnlocked() && TutorialType == MainMenuController.Tutorial.BuyHint) ||
-			    (ElementHintIsUnlocked()==null?false:(bool)ElementHintIsUnlocked() && TutorialType == MainMenuController.Tutorial.BuyHint)) {
+			   	(ElementIsInsufficent(1)==null?false:(bool)ElementIsInsufficent(1) && TutorialType == TutorialType.Crafting) ||
+			    (ElementIsUnlocked()==null?false:(bool)ElementIsUnlocked() && TutorialType == TutorialType.BuyHint) ||
+			    (ElementHintIsUnlocked()==null?false:(bool)ElementHintIsUnlocked() && TutorialType == TutorialType.BuyHint)) {
 					return;
 			}
 
 			ElementPanelsActive++;
 		}
 
-		ToggleChildrenTutorialComponents(true);
+		if (IsActiveStep()) {
+			ToggleChildrenTutorialComponents(true);
+		}
 
 		if (onNoSortList) {
 			return;
@@ -290,7 +317,7 @@ public class CraftingTutorialComponent: TutorialComponent {
 	}
 	
 	//brings all the components of a certain type to the front
-	public static void ActivateTutorialComponents (MainMenuController.Tutorial tutorialType) {
+	public static void ActivateTutorialComponents (TutorialType tutorialType) {
 		ActiveTutorialType = tutorialType;
 		ChangeTextOnElementPanels(tutorialType);
 
@@ -298,17 +325,17 @@ public class CraftingTutorialComponent: TutorialComponent {
 			component.ActivateComponent();
 		}
 
-		if (tutorialType == MainMenuController.Tutorial.BuyHint && ElementPanelsActive == 0) {
-			DisplayTutorialMessage(MainMenuController.Tutorial.BuyHint);
+		if (tutorialType == TutorialType.BuyHint && ElementPanelsActive == 0) {
+			DisplayTutorialMessage(TutorialType.BuyHint);
 		}
 	}
 
 	//changes the count on the elment panels based on the tutorial
-	public static void ChangeTextOnElementPanels (MainMenuController.Tutorial tutorialType) {
+	public static void ChangeTextOnElementPanels (TutorialType tutorialType) {
 		string text;
-		if (tutorialType == MainMenuController.Tutorial.Gathering) {
+		if (tutorialType == TutorialType.Gathering) {
 			text = GatheringTutorialElementPanelText;
-		} else if (tutorialType == MainMenuController.Tutorial.Crafting) {
+		} else if (tutorialType == TutorialType.Crafting) {
 			text = CraftingTutorialElementPanelText;
 		} else {
 			return;
@@ -322,11 +349,11 @@ public class CraftingTutorialComponent: TutorialComponent {
 	}
 
 	//brings all the components in a tutorial back to their natural sort order
-	public static void DeactivateTutorialComponents (MainMenuController.Tutorial tutorialType) {
+	public static void DeactivateTutorialComponents (TutorialType tutorialType) {
 		//sets element panels to zero
 		ElementPanelsActive = 0;
 
-		ActiveTutorialType = MainMenuController.Tutorial.None;
+		ActiveTutorialType = TutorialType.None;
 
 		foreach (CraftingTutorialComponent component in AllTutorialsComponents[tutorialType]) {
 			component.DeactivateComponent();
@@ -336,8 +363,8 @@ public class CraftingTutorialComponent: TutorialComponent {
 	}
 
 	//shows the tutorial message
-	public static void DisplayTutorialMessage (MainMenuController.Tutorial tutorialType) {
-		if (tutorialType == MainMenuController.Tutorial.BuyHint) {
+	public static void DisplayTutorialMessage (TutorialType tutorialType) {
+		if (tutorialType == TutorialType.BuyHint) {
 			CraftingTutorialController.SetTutorialMessageBoard(BuyingHintMessage);
 		}
 	}
@@ -345,5 +372,9 @@ public class CraftingTutorialComponent: TutorialComponent {
 	//hides the tutorial message
 	public static void HideTutorialMessage () {
 		CraftingTutorialController.HideTutorialMessageBoard();
+	}
+
+	public static CraftingTutorialComponent GetStep (TutorialType type, int step) {
+		return AllTutorialsComponents[type].Find((CraftingTutorialComponent component) => component.TutorialStep == step);
 	}
 }

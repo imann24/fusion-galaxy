@@ -160,7 +160,20 @@ public class CraftingButtonController : MonoBehaviour {
 		yield return async;
 		Utility.Log("Loading complete");
 	}
-	
+
+	// How many drop zones have elements
+	public int PollGatheringDropZones () {
+		int dropZonesWithElements = 0;
+
+		for (int i = 0; i < gatheringDropZones.Length; i++) {
+			if (gatheringDropZones[i].isElementCaptured()) {
+				dropZonesWithElements++;
+			}
+		}
+
+		return dropZonesWithElements;
+	}
+
 	//toggles each of the four drop zones occupied and not depending on the boolean received
 	public void toggleZoneReadyGathering (CaptureScript zone) {
 		if (gatheringDropZoneQueue.Contains(zone)) {

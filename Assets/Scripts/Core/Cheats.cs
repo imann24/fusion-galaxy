@@ -45,7 +45,7 @@ public static class Cheats {
 			GlobalVars.TIER_UNLOCKED[i] = false;
 		}
 	}
-
+	
 	public static void IncreaseAllElements (int amount) {
 		foreach (Element element in GlobalVars.ELEMENTS) {
 			Utility.IncreasePlayerPrefValue(element.getName(), amount);

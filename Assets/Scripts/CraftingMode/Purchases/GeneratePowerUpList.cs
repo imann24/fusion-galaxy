@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -211,7 +211,7 @@ public class GeneratePowerUpList : MonoBehaviour {
 
 			//for tutorial
 			if (currentPower.name == "LaneConversion") {
-				newPower.AddComponent<CraftingTutorialComponent>().Reinitialize(MainMenuController.Tutorial.UpgradePowerup);
+				newPower.AddComponent<CraftingTutorialComponent>().Reinitialize(TutorialType.UpgradePowerup);
 			}
 
 			newPower.transform.FindChild ("Name/Description").GetComponent<Text>().text = "To unlock this ability discover all level "+(power+1).ToString() +" elements.";	

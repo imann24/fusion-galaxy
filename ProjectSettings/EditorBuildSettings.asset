@@ -5,15 +5,23 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/StartScreen/Scene/Start.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/CollectionPhase/Scene/Collection.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/CraftingPhase/Scene/Crafting.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Credits/Scene/Credits.unity
   - enabled: 0
     path: Assets/TechTree/Scene/TechTree.unity
   - enabled: 0
     path: Assets/Plugins/AddScene.unity
+  - enabled: 1
+    path: Assets/Scenes/Start.unity
+  - enabled: 1
+    path: Assets/Scenes/Gathering.unity
+  - enabled: 1
+    path: Assets/Scenes/Crafting.unity
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity

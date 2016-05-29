@@ -13,14 +13,7 @@ public class CraftingAnimationOverwatch : MonoBehaviour {
 		//adding all the animations to the list
 		allAnimators.Add(plusOneAnimator);
 		allAnimators.Add (craftedElementAnimator);
-#if DEBUG
-		//for debugging
-		Debug.Log("Plus 200 for base elements debugging");
-		PlayerPrefs.SetInt("fire", 200);
-		PlayerPrefs.SetInt("earth", 200);
-		PlayerPrefs.SetInt("air", 200);
-		PlayerPrefs.SetInt("water", 200);
-#endif
+
 		//intializing the array of Images conencted to the animators in a parallel array
 		allAnimatorSprites = new Image[allAnimators.Count]; 
 		findAllAnimatorSprites();

@@ -86,10 +86,7 @@ public class CaptureScript : MonoBehaviour {
 		for (int i = 0; i < GetComponentsInChildren<Text>().Length; i++) {
 			Text currentText = GetComponentsInChildren<Text>()[i];
 			if (currentText.name == "ZoneReadyText") {
-#if DEBUG
-				Debug.Log("Found the zone ready text");
 				zoneReadyText = currentText;
-#endif
 			}
 		}
 
@@ -125,9 +122,6 @@ public class CaptureScript : MonoBehaviour {
 		if (transform.parent.name.Contains ("Gathering")) {
 			mode = Mode.Gathering;
 			zoneNumber = transform.GetSiblingIndex()+1;
-#if DEBUG
-			Debug.Log("Zone number = " + zoneNumber);
-#endif
 			zoneReadyIndicator.enabled = false;
 
 			//calls the event
@@ -162,11 +156,6 @@ public class CaptureScript : MonoBehaviour {
 			myElement = transform.GetComponent<Image>();
 		}
 
-
-#if DEBUG
-		Debug.Log("My mode is: " + mode + " for Gameobject " + gameObject.name);
-#endif
-
 	}
 
 	void OnDestroy () {
@@ -180,9 +169,6 @@ public class CaptureScript : MonoBehaviour {
 	//forces element to delete even if it doesn't have a captured element
 	public void OnMouseDown () {
 
-#if DEBUG
-		Debug.Log("In this mode: " + ScrollBarDisplay.mode);
-#endif
 		//destroys the element if clicked on
 		if (hasCapturedElement) {
 			//calls the event
@@ -327,9 +313,7 @@ public class CaptureScript : MonoBehaviour {
 
 	//updates the length of the bar to match the number of elements in the inventory (maxes out at 100) 
 	public void updateInventoryBarFill (int elementCount) {
-#if DEBUG
-		Debug.Log("This element is having it's inventory bar set : " +  gameObject + " to " + Mathf.Clamp(((float)elementCount)/100f, 0, 1f));
-#endif
+
 		elementAmountBar.fillAmount = Mathf.Clamp(((float)elementCount)/100f, 0, 1f);
 	}
 	//updates the length of the bar to match the number of combinations an element has (maxes out at 6 (temp))

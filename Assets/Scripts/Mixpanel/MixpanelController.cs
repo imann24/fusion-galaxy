@@ -319,7 +319,7 @@ public class MixpanelController : MonoBehaviour
 		});
 
 		//calls the tutorial event, if the tutorial is currently active
-		if (CraftingTutorialController.CurrentTutorial == MainMenuController.Tutorial.Crafting && 
+		if (CraftingTutorialController.CurrentTutorial == TutorialType.Crafting && 
 		    CraftingTutorialController.TutorialActive) {
 			CraftedFirstElement(newElement);
 		}
@@ -396,7 +396,7 @@ public class MixpanelController : MonoBehaviour
 
 	//when the player drags four elments in and the game is ready to launch
 	public static void DraggedElementsInForLaunchGatheringTutorial () {
-		if (CraftingTutorialController.CurrentTutorial == MainMenuController.Tutorial.Gathering && 
+		if (CraftingTutorialController.CurrentTutorial == TutorialType.Gathering && 
 		    CraftingTutorialController.TutorialActive) {
 			Mixpanel.SendEvent("Dragged Elements in For Launch Gathering Mission Tutorial", new Dictionary<string, object>());
 		}
@@ -411,7 +411,7 @@ public class MixpanelController : MonoBehaviour
 
 	//when the player opens the crafting menu for the tutorial
 	public static void EnteredCraftingMenu () {
-		if (CraftingTutorialController.CurrentTutorial == MainMenuController.Tutorial.Crafting && 
+		if (CraftingTutorialController.CurrentTutorial == TutorialType.Crafting && 
 		    CraftingTutorialController.TutorialActive) {
 			Mixpanel.SendEvent("Opened Crafting Menu For Crafting Tutorial", new Dictionary<string, object>());
 		}
@@ -420,7 +420,7 @@ public class MixpanelController : MonoBehaviour
 	//when the player drags in two elements for the tutorial
 	public static void DraggedInTwoElements (bool ready) {
 		if (ready && 
-		    CraftingTutorialController.CurrentTutorial == MainMenuController.Tutorial.Crafting &&
+		    CraftingTutorialController.CurrentTutorial == TutorialType.Crafting &&
 		    CraftingTutorialController.TutorialActive) {
 			Mixpanel.SendEvent("Dragged Two Elements In For Crafting Tutorial", new Dictionary<string, object>());
 		}
@@ -450,7 +450,7 @@ public class MixpanelController : MonoBehaviour
 
 	//when the player enters the powerup menu for the tutorial 
 	public static void EnteredPowerUpMenu () {
-		if (CraftingTutorialController.CurrentTutorial == MainMenuController.Tutorial.UpgradePowerup && 
+		if (CraftingTutorialController.CurrentTutorial == TutorialType.UpgradePowerup && 
 		    CraftingTutorialController.TutorialActive) {
 			Mixpanel.SendEvent("Opened PowerUp Menu For Buy Power Up Upgrade Tutorial", new Dictionary<string, object>());
 		}

@@ -60,10 +60,6 @@ public class ProgressBarController : MonoBehaviour {
 		for (int i = 0; i < transform.childCount; i++) {
 			if (transform.GetChild(i).name.Contains("Progress")) {
 				progressBars[i] = transform.GetChild(i).gameObject;
-	
-				#if DEBUG
-					Debug.Log(progressBars[i].name);
-				#endif
 			}
 		}
 

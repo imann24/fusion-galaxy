@@ -16,7 +16,5 @@ public class CreditsController : MonoBehaviour {
 		Utility.ShowLoadScreen();
 		Application.LoadLevel((int)GlobalVars.Scenes.Crafting);
 
-		//CHEAT
-		Cheats.IncreaseAllElements();
 	}
 }

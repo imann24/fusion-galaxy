@@ -13,6 +13,7 @@ public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 	private RectTransform m_DraggingPlane;
 	private bool isDropZone;
 	private bool isCompiler;
+	bool isDragging = false;
 	private static Vector3 zoneScale =  new Vector3(0.3f, 0.3f);
 	private CaptureScript zoneController;
 	private string elementName; 
@@ -38,6 +39,8 @@ public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 
 	public void OnBeginDrag(PointerEventData eventData)
 	{
+		isDragging = true;
+
 		var canvas = FindInParents<Canvas>(gameObject);
 		if (canvas == null)
 			return;
@@ -82,6 +85,8 @@ public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 			m_DraggingPlane = canvas.transform as RectTransform;
 		
 		SetDraggedPosition(eventData);
+
+		UpdateTutorials();
 	}
 
 	public void OnDrag(PointerEventData data)
@@ -106,6 +111,8 @@ public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 
 	public void OnEndDrag(PointerEventData eventData)
 	{
+		isDragging = false;
+
 		if (m_DraggingIcon != null) {
 			Destroy(m_DraggingIcon);
 			//clears the element from the zone
@@ -117,6 +124,8 @@ public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 				GlobalVars.CRAFTER.clearDropzZones();
 			}
 		}
+
+		UpdateTutorials();
 	}
 
 	public void OnPointerClick (PointerEventData eventData) {
@@ -152,5 +161,15 @@ public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 			t = t.parent;
 		}
 		return comp;
+	}
+
+	void UpdateTutorials () {
+		if (CraftingTutorialController.GatheringTutorialActive) {
+			if (isDragging || GlobalVars.CRAFTING_CONTROLLER.ReadyToGather()) {
+				CraftingTutorialController.Advance();
+			} else {
+				CraftingTutorialController.StepBack();
+			}
+		}
 	}
 }
