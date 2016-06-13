@@ -358,6 +358,9 @@ public class CraftingButtonController : MonoBehaviour {
 	public void toggleCrafting (bool active) {
 		if (active) {
 			ScrollBarDisplay.mode = ScrollBarDisplay.Mode.Crafting;
+			if (CraftingTutorialController.CraftingTutorialActive) {
+				CraftingTutorialController.Advance();
+			}
 		} else {
 			ScrollBarDisplay.mode = ScrollBarDisplay.Mode.Gathering;
 		}

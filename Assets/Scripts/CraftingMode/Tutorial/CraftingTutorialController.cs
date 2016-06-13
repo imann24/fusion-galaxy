@@ -58,6 +58,12 @@ public class CraftingTutorialController : MonoBehaviour {
 		}
 	}
 
+	public static bool CraftingTutorialActive {
+		get {
+			return TutorialActive && CurrentTutorial == TutorialType.Crafting;
+		}
+	}
+
 	void Awake () {
 		Instance = this;
 
@@ -73,7 +79,7 @@ public class CraftingTutorialController : MonoBehaviour {
 			}
 		}
 	}
-	
+
 	void OnDestroy () {
 		UnsubscribeEvents();
 	}

@@ -59,7 +59,10 @@ public class CraftingControl : MonoBehaviour {
 	public GameObject elementDropZone2;
 	private bool zone1HasElement;
 	private bool zone2HasElement;
-	private bool elementIsReadyToCraft;
+	public bool ElementIsReadyToCraft {
+		get;
+		private set;
+	}
 	private CaptureScript zone1Capturer;
 	private CaptureScript zone2Capturer;
 	//a reference to the compiler zone's capture script
@@ -129,7 +132,7 @@ public class CraftingControl : MonoBehaviour {
 
 		//disables crafting when there are not two elements
 		if (!zone1HasElement || !zone2HasElement) {
-			elementIsReadyToCraft = false;
+			ElementIsReadyToCraft = false;
 		} else {
 			//plays the zone animations if either one has insuficent resources
 			if (PlayerPrefs.GetInt(parentElement1) <= 0) {
@@ -141,7 +144,7 @@ public class CraftingControl : MonoBehaviour {
 			}
 		}
 
-		if (elementIsReadyToCraft) {
+		if (ElementIsReadyToCraft) {
 			//calls the event to create an element
 			if (OnElementCreated != null && validInventoryAmounts()) {
 				Utility.Log("created an element and fired the event");
@@ -150,7 +153,7 @@ public class CraftingControl : MonoBehaviour {
 
 			//lowers the flag to craft if the player has run out of either element
 			if (!validInventoryAmounts()) {
-				elementIsReadyToCraft = false;
+				ElementIsReadyToCraft = false;
 				setInsufficientMessage();
 				if (OnIncorrectCraft != null) {
 					OnIncorrectCraft();
@@ -214,7 +217,7 @@ public class CraftingControl : MonoBehaviour {
 					compiler.elementHasBeenCapured();
 					myElementSprite.sprite = GlobalVars.ELEMENT_SPRITES[resultElement];
 				} else {
-					elementIsReadyToCraft = false;
+					ElementIsReadyToCraft = false;
 					//myElementSprite.enabled = false;
 				}
 				setInsufficientMessage();
@@ -334,12 +337,12 @@ public class CraftingControl : MonoBehaviour {
 			resultElement = myElementGameObject.name;
 			resultTier = result.getTier()-1;
 			setBothElementsInMessage();
-			elementIsReadyToCraft = true;
+			ElementIsReadyToCraft = true;
 			invalidCombination = false;
 		} else { // if the combination is incorrect, plays the rejection sound
 			setIncompatibleMessage();
 			invalidCombination = true;
-			elementIsReadyToCraft = false;
+			ElementIsReadyToCraft = false;
 		} 
 	}
 

@@ -146,7 +146,7 @@ public class CraftingTutorialComponent: TutorialComponent {
 
 	//checks whether the gameobject that has the script attached is an element panel
 	private bool IsElementPanel () {
-		return !(GetComponent<SpawnerControl>()==null);
+		return GetComponent<SpawnerControl>()!=null;
 	}
 
 	//checks whether the associated element in the tutorial is insufficent
@@ -260,14 +260,16 @@ public class CraftingTutorialComponent: TutorialComponent {
 			   	(ElementIsInsufficent(1)==null?false:(bool)ElementIsInsufficent(1) && TutorialType == TutorialType.Crafting) ||
 			    (ElementIsUnlocked()==null?false:(bool)ElementIsUnlocked() && TutorialType == TutorialType.BuyHint) ||
 			    (ElementHintIsUnlocked()==null?false:(bool)ElementHintIsUnlocked() && TutorialType == TutorialType.BuyHint)) {
-					return;
+				return;
 			}
 
-			ElementPanelsActive++;
 		}
 
 		if (IsActiveStep()) {
 			ToggleChildrenTutorialComponents(true);
+			if (IsElementPanel()) {
+				ElementPanelsActive++;
+			}
 		}
 
 		if (onNoSortList) {

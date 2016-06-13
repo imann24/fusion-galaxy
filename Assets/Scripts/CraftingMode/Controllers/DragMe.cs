@@ -164,8 +164,10 @@ public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 	}
 
 	void UpdateTutorials () {
-		if (CraftingTutorialController.GatheringTutorialActive) {
-			if (isDragging || GlobalVars.CRAFTING_CONTROLLER.ReadyToGather()) {
+		if (CraftingTutorialController.GatheringTutorialActive || CraftingTutorialController.CraftingTutorialActive) {
+			if (isDragging || 
+			    (CraftingTutorialController.GatheringTutorialActive && GlobalVars.CRAFTING_CONTROLLER.ReadyToGather()) ||
+			    (CraftingTutorialController.CraftingTutorialActive && GlobalVars.CRAFTER.ElementIsReadyToCraft)) {
 				CraftingTutorialController.Advance();
 			} else {
 				CraftingTutorialController.StepBack();
