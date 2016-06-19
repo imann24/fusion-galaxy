@@ -133,6 +133,7 @@ public class GlobalVars {
 	public static Dictionary<string, Sprite> ELEMENT_SPRITES = new Dictionary<string, Sprite>();
 	// A dictionary that counts the amount of combinations each element has.
 	public static Dictionary<string, int> NUMBER_OF_COMBINATIONS = new Dictionary<string, int> ();
+	public static string [] BASE_ELEMENT_NAMES = new string[]{"fire", "water", "air", "earth"};
 	#endregion
 
 	#region POWERUPS

@@ -168,9 +168,8 @@ public class CaptureScript : MonoBehaviour {
 
 	//forces element to delete even if it doesn't have a captured element
 	public void OnMouseDown () {
-
 		//destroys the element if clicked on
-		if (hasCapturedElement) {
+		if (hasCapturedElement && !CraftingTutorialController.GatheringTutorialActive) {
 			//calls the event
 			if (OnElementCleared != null) {
 				OnElementCleared();

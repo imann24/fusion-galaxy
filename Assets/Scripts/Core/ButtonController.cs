@@ -65,8 +65,21 @@ public class ButtonController : MonoBehaviour {
 
 		Utility.ShowLoadScreen ();
 		Application.LoadLevel ((int)GlobalVars.Scenes.Crafting);
+
+		if (!Utility.PlayerPrefIntToBool(GlobalVars.CRAFTING_TUTORIAL_KEY)) {
+			checkForSufficientBaseElements();
+		}
 		//Utility.ShowLoadScreen();
 		//Application.LoadLevel((int)GlobalVars.Scenes.Crafting);
+	}
+
+	void checkForSufficientBaseElements () {
+		int minOfEachElement = 1;
+		for (int i = 0; i < GlobalVars.BASE_ELEMENT_NAMES.Length; i++) {
+			if (PlayerPrefs.GetInt(GlobalVars.BASE_ELEMENT_NAMES[i]) == 0) {
+				PlayerPrefs.SetInt(GlobalVars.BASE_ELEMENT_NAMES[i], minOfEachElement);
+			}
+		}
 	}
 
 	//loads gathering mode
