@@ -1,7 +1,7 @@
 Header=Team 315,
 Alex "sounds good" Ripple,Berklee College of Music
 Ari "master of all things spreadsheet" Green,Massachusetts Institute of Technology
-Devi "secret weapon  of art"" Acharya,Brandeis University
+Devi "secret weapon of art" Acharya,Brandeis University
 Isaiah "there will always be a build" Mann,Hampshire College
 Joseph "who do I go home with?" Gillen,Letterkenny Institute of Technology
 Matteo "UI prodigy" Lanteri,Becker College
