@@ -1,4 +1,3 @@
-#define DEBUG
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
@@ -7,16 +6,6 @@ using System.Collections;
 public class ShowCredit : MonoBehaviour {
 	public Text myText;
 	public Text [] myChildrenTexts;
-	// Use this for initialization
-	void Start () {
-
-#if DEBUG
-		if (gameObject.name.Contains("Role")) {
-			Debug.Log(transform.GetComponent<Text>() + " | " +  myText);
-		}
-#endif
-
-	}
 
 	/// <summary>
 	/// Sets the text of the credit
@@ -28,11 +17,7 @@ public class ShowCredit : MonoBehaviour {
 		if (myCredit.type == Credit.Type.Header || myCredit.type == Credit.Type.Name || myCredit.type == Credit.Type.Role ) {
 			if (myText != null) {
 				myText.text = myCredit.name;
-			} else {
-				#if DEBUG
-					Debug.Log(myText);
-				#endif
-			}
+			} 
 		} else if (myCredit.type == Credit.Type.NameAndCollege) {
 			myText.text = myCredit.name;
 			myChildrenTexts[1].text = myCredit.college;

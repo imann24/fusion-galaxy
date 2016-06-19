@@ -1,4 +1,3 @@
-//#define DEBUG
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -16,9 +15,6 @@ public class ReadCredits : MonoBehaviour {
 	private Credit[] creditees;
 	// Use this for initialization
 	void Start () {
-#if DEBUG
-		//Debug.Log(This is working: + "Header=Partners at Neuro'motion".Contains("="));
-#endif
 		readCSVFile();
 		createCredits();
 	}
@@ -45,9 +41,6 @@ public class ReadCredits : MonoBehaviour {
 		for (int i = 0; i < creditees.Length; i++) {
 			//exits the loop if we've hit the final credit
 			if (personIndex >= allTextAsArray.Length) {
-#if DEBUG
-				Debug.Log("Breaking out of the loop here: " + i);
-#endif
 				endIndex = i;
 				break;
 			}
@@ -101,9 +94,6 @@ public class ReadCredits : MonoBehaviour {
 			return "";
 		} else if (allTextAsArray[personIndex].Contains("=")) {
 			isGroup = false;
-#if DEBUG
-			Debug.Log("*****"+allTextAsArray[personIndex]+"******");
-#endif
 			return "";
 		} else {
 			return allTextAsArray[personIndex++].Replace(",", "");
@@ -142,9 +132,6 @@ public class ReadCredits : MonoBehaviour {
 			creditText.GetComponent<ShowCredit>().setText(creditees[i]);
 
 			if (i == creditees.Length - 1) { //for the last gameobject, add the scroll stopping script
-#if DEBUG 
-				Debug.Log("Got in here");
-#endif
 				StopScrollBar.lastCredit = creditText;
 			}
 		}
