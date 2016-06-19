@@ -147,12 +147,11 @@ public class CraftingControl : MonoBehaviour {
 		if (ElementIsReadyToCraft) {
 			//calls the event to create an element
 			if (OnElementCreated != null && validInventoryAmounts()) {
-				Utility.Log("created an element and fired the event");
 				OnElementCreated(resultElement, parentElement1, parentElement2, isNew);
 			}
 
 			//lowers the flag to craft if the player has run out of either element
-			if (!validInventoryAmounts()) {
+			else if (!validInventoryAmounts()) {
 				ElementIsReadyToCraft = false;
 				setInsufficientMessage();
 				if (OnIncorrectCraft != null) {
