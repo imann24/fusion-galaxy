@@ -82,19 +82,12 @@ public class CraftingTutorialController : MonoBehaviour {
 				MaskCanvasGroup = image.transform.GetComponent<CanvasGroup>();
 			}
 		}
-		CheatToGetPowerUpUpgrade();
 	}
 
 	void OnDestroy () {
 		UnsubscribeEvents();
 	}
-
-	void CheatToGetPowerUpUpgrade () {
-		Cheats.UnlockTier(0);
-		Cheats.UnlockTier(1);
-		Utility.SetPlayerPrefIntAsBool(GlobalVars.UPGRADE_POWERUP_TUTORIAL_KEY, false);
-	}
-
+	
 	/// <summary>
 	/// Exectes the tutorial. And times how long it takes the user to complete
 	/// </summary>
