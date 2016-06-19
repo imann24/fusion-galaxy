@@ -57,10 +57,14 @@ public class CraftingTutorialController : MonoBehaviour {
 			return TutorialActive && CurrentTutorial == TutorialType.Gathering;
 		}
 	}
-
 	public static bool CraftingTutorialActive {
 		get {
 			return TutorialActive && CurrentTutorial == TutorialType.Crafting;
+		}
+	}
+	public static bool BuyHintTutorialActive {
+		get {
+			return TutorialActive && CurrentTutorial == TutorialType.BuyHint;
 		}
 	}
 

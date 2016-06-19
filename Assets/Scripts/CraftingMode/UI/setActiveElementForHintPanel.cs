@@ -29,7 +29,10 @@ public class setActiveElementForHintPanel : MonoBehaviour {
 		myName = nameObject.GetComponent<Text>().text;
 		mainScript.activeElement = myName;
 		mainScript.activePosition = this.gameObject.transform.position;
-		Debug.Log ("activeElem set to: " + myName);
+		
+		if (CraftingTutorialController.BuyHintTutorialActive) {
+			CraftingTutorialController.Advance();
+		}
 	}
 
 }

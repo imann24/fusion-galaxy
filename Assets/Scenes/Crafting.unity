@@ -4291,7 +4291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3774b733aa5f483f9c4390141ad605a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TutorialStep: 0
+  TutorialStep: 1
   TutorialType: 3
 --- !u!1 &224711147
 GameObject:
@@ -18549,10 +18549,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 138868, guid: 2a5573436477c480d8c83a7d94de02fc, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2a5573436477c480d8c83a7d94de02fc, type: 2}
   m_IsPrefabParent: 0
@@ -25681,21 +25677,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1107291931}
---- !u!1 &1109512022 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 138868, guid: 2a5573436477c480d8c83a7d94de02fc, type: 2}
-  m_PrefabInternal: {fileID: 831546895}
---- !u!114 &1109512023
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1109512022}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4debf5fe3512024d85caac0a69eea4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1113005302
 GameObject:
   m_ObjectHideFlags: 0

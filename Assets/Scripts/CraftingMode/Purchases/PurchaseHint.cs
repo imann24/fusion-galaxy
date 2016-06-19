@@ -1,6 +1,4 @@
-﻿#define DEBUG
-
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -41,14 +39,6 @@ public class PurchaseHint : MonoBehaviour {
 			OnPurchaseHint(elementHint.ToLower());
 		}
 
-#if DEBUG
-		Debug.Log (myElem1 + " : " + PlayerPrefs.GetInt (myElem1));
-		Debug.Log (myElem2 + " : " + PlayerPrefs.GetInt (myElem2));
-		Debug.Log (myElem3 + " : " + PlayerPrefs.GetInt (myElem3));
-		Debug.Log (myElem4 + " : " + PlayerPrefs.GetInt (myElem4));
-		Debug.Log ("hint bought for "+elementHint);
-#endif
-
 		if (PlayerPrefs.GetInt (myElem1) >= myCost1 &&
 		    PlayerPrefs.GetInt (myElem2) >= myCost2 &&
 		    PlayerPrefs.GetInt (myElem3) >= myCost3 &&
@@ -62,7 +52,7 @@ public class PurchaseHint : MonoBehaviour {
 			PlayerPrefs.SetInt(elementHint.ToLower()+GlobalVars.HINT_STRING,1);
 			mainScript.callHintPanel();
 			mainScript.loadTier(GlobalVars.ELEMENTS_BY_NAME[elementHint.ToLower()].getTier()-1,true);
-
+		
 				//do thing
 
 			//refresh panel?

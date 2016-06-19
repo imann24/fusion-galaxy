@@ -396,12 +396,6 @@ using System.Collections.Generic;
 			//the buying a hint tutorial
 			else if (!Utility.PlayerPrefIntToBool(GlobalVars.BUY_HINT_TUTORIAL_KEY) &&
 			           Utility.SufficientElementsToPurchase(tutorialHint.GetCosts())) {
-#if IN_PROGRESS
-				return;
-#endif
-#if DEBUG
-				Debug.Log("Calling the hint tutorial");
-#endif
 				OnCallTutorialEvent(TutorialType.BuyHint);
 			} 
 
@@ -410,13 +404,6 @@ using System.Collections.Generic;
 			         Utility.SufficientElementsToPurchase(BuyUpgrade.GetBaseCosts()) &&
 				       Element.AllTierElementsUnlocked(0) && 
 			           Element.AllTierElementsUnlocked(1)) {
-
-#if IN_PROGRESS
-				return;
-#endif
-#if DEBUG
-				Debug.Log("Calling the powerup upgrade tutorial");
-#endif
 				OnCallTutorialEvent(TutorialType.UpgradePowerup);
 			} 
 
@@ -425,14 +412,10 @@ using System.Collections.Generic;
 			           GlobalVars.TIER_UNLOCKED[2]) {
 
 				CallTierSwitchTutorial();
-
-#if DEBUG
-				Debug.Log("Calling the tier unlocked tutorial");
-#endif
 			}	
 		} else {
 #if DEBUG
-			Debug.Log("Tbe event is null");
+			Debug.LogError("Tbe event is null");
 #endif
 		}
 	}
