@@ -83,7 +83,8 @@ public class CraftingControl : MonoBehaviour {
 	public Text inventoryNumber;
 	public Button craftButton;
 
-	//element info 
+    //element info 
+    Element result;
 	private string resultElement, parentElement1, parentElement2;
 	private int resultTier;
 	private bool isNew;
@@ -148,6 +149,7 @@ public class CraftingControl : MonoBehaviour {
 			//calls the event to create an element
 			if (OnElementCreated != null && validInventoryAmounts()) {
 				OnElementCreated(resultElement, parentElement1, parentElement2, isNew);
+                UnlockElement();
 			}
 
 			//lowers the flag to craft if the player has run out of either element
@@ -292,28 +294,32 @@ public class CraftingControl : MonoBehaviour {
 		subMessage.color = regularColor;
 		elementName.color = regularColor;
 	}
-
-	//sets up the combination for a new element
-	public void combine () {
-		//element gameobject
-
+    //method to be called from capture script to unlock the element ONCE it has been clicked on to be crafted
+    public void UnlockElement()
+    {
+        result = GlobalVars.RECIPES_BY_NAME[parentElement1 + parentElement2];
+        //result.unlock();
+        //calls the event
+        if (OnElementDiscovered != null)
+        {
+            OnElementDiscovered(result.getName());
+        }       
+    }
+    //sets up the combination for a new element
+    public void combine () {
+        //element gameobject
 		if (GlobalVars.RECIPES_BY_NAME.ContainsKey(parentElement1+parentElement2)) {//checks if the elements combine to form a third
 			containsBaseElement = false;
 
 			//gets the new element
-			Element result = GlobalVars.RECIPES_BY_NAME[parentElement1+parentElement2];
+			result = GlobalVars.RECIPES_BY_NAME[parentElement1+parentElement2];
 
 			//updates the record of the elements
 			if (!result.isElementUnlocked()) {
-				result.unlock();
-				GlobalVars.NUMBER_ELEMENTS_UNLOCKED++;
+                result.unlock();
+                GlobalVars.NUMBER_ELEMENTS_UNLOCKED++;
 				panelControl.updatePercentUnlocked();
 				isNew = true;
-
-				//calls the event
-				if (OnElementDiscovered != null) {
-					OnElementDiscovered(result.getName());
-				}
 
 				//checks if the whole tier of elements is unlocked and sends the event
 				if (OnTierCompleted != null) {
@@ -330,7 +336,7 @@ public class CraftingControl : MonoBehaviour {
 				isNew = false;
 			}
 			PlayerPrefs.SetInt(result.getName()+GlobalVars.UNLOCK_STRING, 1); 
-
+            
 			//makes the new element
 			myElementGameObject.name = result.getName();
 			resultElement = myElementGameObject.name;

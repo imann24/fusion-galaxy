@@ -115,7 +115,7 @@ public class GlobalVars {
 	public const string UPGRADE_POWERUP_BUTTON_NAME = "UpgradePowerUp";
 	public const string GATHERING_BUTTON_NAME = "Gathering";
     //Release build boolean - SET TO TRUE FOR RELEASE BUILD
-    public static bool RELEASE_BUILD = true;
+    public static bool RELEASE_BUILD = false;
     #endregion
 
     #region ELEMENTS
