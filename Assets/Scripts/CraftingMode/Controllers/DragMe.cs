@@ -60,8 +60,9 @@ public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 
 		//makes element render in front of everything else
 		Canvas iconCanvas = m_DraggingIcon.AddComponent<Canvas>();
+
+		m_DraggingIcon.GetComponent<Canvas> ().sortingOrder = 500;
 		m_DraggingIcon.GetComponent<Canvas> ().overrideSorting = true;
-		m_DraggingIcon.GetComponent<Canvas> ().sortingOrder = 1000;
 
 		//adds a collider to the elemnt so it can tell when it hits a drop zone
 		m_DraggingIcon.AddComponent<Rigidbody2D>().isKinematic = true;;
