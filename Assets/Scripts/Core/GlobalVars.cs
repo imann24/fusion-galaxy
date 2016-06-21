@@ -114,11 +114,13 @@ public class GlobalVars {
 	public const string CRAFTING_BUTTON_NAME = "Crafting";
 	public const string UPGRADE_POWERUP_BUTTON_NAME = "UpgradePowerUp";
 	public const string GATHERING_BUTTON_NAME = "Gathering";
-	#endregion
+    //Release build boolean - SET TO TRUE FOR RELEASE BUILD
+    public static bool RELEASE_BUILD = true;
+    #endregion
 
-	#region ELEMENTS
-	//list of all the elements
-	public static List<Element> ELEMENTS =  new List<Element>();
+    #region ELEMENTS
+    //list of all the elements
+    public static List<Element> ELEMENTS =  new List<Element>();
 	//list of all the combinations
 	public static List<Combination> RECIPES = new List<Combination>();
 	//look up an element by name
