@@ -85,6 +85,13 @@ public static class Cheats {
 		ActivatePowerUp.UnlockAllPowerups();
 	}
 
+	public static void ResetPowerUpUpgradePurchases () {
+		PowerUp.CheckIndexDictionary();
+		foreach (string powerupName in GlobalVars.POWERUP_INDEXES.Keys) {
+			PowerUp.ResetPowerUpLevel(powerupName);
+		}
+	}
+
 	//resets whether player has watched the tutorials
 	public static void ResetTutorialsWatched () {
 		//bools for crafting
