@@ -72,7 +72,7 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleIdentifier: com.massdigi.craftinglife
-  bundleVersion: 0.62
+  bundleVersion: 0.63
   preloadedAssets:
   - {fileID: 21300000, guid: 7bf9349dc88f1b948b6d306a7e18934c, type: 3}
   - {fileID: 21300000, guid: 2b0263ba56a9348b4b951c754a25ffa0, type: 3}
