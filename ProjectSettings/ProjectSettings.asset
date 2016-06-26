@@ -147,39 +147,39 @@ PlayerSettings:
   - m_BuildTarget: 
     m_Icons:
     - m_Icon: {fileID: 2800000, guid: 372f1c76a610144b584efd6f010c3a5d, type: 3}
-      m_Size: 128
+      m_Size: 0
   - m_BuildTarget: iPhone
     m_Icons:
     - m_Icon: {fileID: 2800000, guid: 450c0826de8c14d82a231c47c48729f9, type: 3}
-      m_Size: 180
+      m_Size: 0
     - m_Icon: {fileID: 0}
-      m_Size: 152
+      m_Size: 0
     - m_Icon: {fileID: 0}
-      m_Size: 144
+      m_Size: 0
     - m_Icon: {fileID: 0}
-      m_Size: 120
+      m_Size: 0
     - m_Icon: {fileID: 0}
-      m_Size: 114
+      m_Size: 0
     - m_Icon: {fileID: 0}
-      m_Size: 76
+      m_Size: 0
     - m_Icon: {fileID: 0}
-      m_Size: 72
+      m_Size: 0
     - m_Icon: {fileID: 0}
-      m_Size: 57
+      m_Size: 0
   - m_BuildTarget: Android
     m_Icons:
     - m_Icon: {fileID: 2800000, guid: 372f1c76a610144b584efd6f010c3a5d, type: 3}
-      m_Size: 192
+      m_Size: 0
     - m_Icon: {fileID: 0}
-      m_Size: 144
+      m_Size: 0
     - m_Icon: {fileID: 0}
-      m_Size: 96
+      m_Size: 0
     - m_Icon: {fileID: 0}
-      m_Size: 72
+      m_Size: 0
     - m_Icon: {fileID: 0}
-      m_Size: 48
+      m_Size: 0
     - m_Icon: {fileID: 0}
-      m_Size: 36
+      m_Size: 0
   m_BuildTargetBatching:
   - m_BuildTarget: Android
     m_StaticBatching: 1
@@ -274,7 +274,7 @@ PlayerSettings:
   psp2LiveAreaTrialPath: 
   psp2PatchChangeInfoPath: 
   psp2PatchOriginalPackage: 
-  psp2PackagePassword: 
+  psp2PackagePassword: PN2qmWqBlQ9wQj99nsQzldVI5ZuGXbEW
   psp2KeystoneFile: 
   psp2MemoryExpansionMode: 0
   psp2DRMType: 0
@@ -424,6 +424,7 @@ PlayerSettings:
   XboxOneAllowedProductIds: []
   XboxOnePersistentLocalStorageSize: 0
   intPropertyNames:
+  - Android::ScriptingBackend
   - Metro::ScriptingBackend
   - Standalone::ScriptingBackend
   - WP8::ScriptingBackend
@@ -432,7 +433,9 @@ PlayerSettings:
   - WebGL::exceptionSupport
   - WebGL::memorySize
   - iOS::Architecture
+  - iOS::EnableIncrementalBuildSupportForIl2cpp
   - iOS::ScriptingBackend
+  Android::ScriptingBackend: 0
   Metro::ScriptingBackend: 2
   Standalone::ScriptingBackend: 0
   WP8::ScriptingBackend: 2
@@ -441,6 +444,7 @@ PlayerSettings:
   WebGL::exceptionSupport: 0
   WebGL::memorySize: 256
   iOS::Architecture: 2
+  iOS::EnableIncrementalBuildSupportForIl2cpp: 1
   iOS::ScriptingBackend: 1
   boolPropertyNames:
   - WebGL::analyzeBuildSize

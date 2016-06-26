@@ -13,6 +13,7 @@ public class PurchaseHint : MonoBehaviour {
 	public int myCost1,myCost2,myCost3,myCost4=99;
 	private const int numberOfCosts = 4;
 	public MainMenuController mainScript;
+
 	// Use this for initialization
 	void Start () {
 		myElem1 = "fire";
@@ -25,11 +26,6 @@ public class PurchaseHint : MonoBehaviour {
 		mainScript = GlobalVars.CRAFTING_CONTROLLER;
 		mainScript.SetTutorialPurchaseHint(this);
 		gameObject.SetActive(false);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
 	}
 
 	public void purchaseHint(){
