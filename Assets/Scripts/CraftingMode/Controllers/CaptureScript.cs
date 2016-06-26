@@ -171,7 +171,7 @@ public class CaptureScript : MonoBehaviour {
 		//destroys the element if clicked on
 		if (hasCapturedElement && !CraftingTutorialController.GatheringTutorialActive) {
 			//calls the event
-			if (OnElementCleared != null) {
+			if (OnElementCleared != null && mode != Mode.Compiler) {
 				OnElementCleared();
 			}
 
