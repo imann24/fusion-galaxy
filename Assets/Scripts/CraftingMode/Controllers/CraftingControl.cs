@@ -122,6 +122,10 @@ public class CraftingControl : MonoBehaviour {
 		OnElementCreated -= createElement;
 	}
 
+	void updateInventoryElementResultText () {
+		inventoryNumber.text = PlayerPrefs.GetInt(resultElement).ToString();
+	}
+
 	public void OnMouseDown () {
 		//clears the zone if it contains a base element 
 		if (containsBaseElement) {
@@ -253,7 +257,7 @@ public class CraftingControl : MonoBehaviour {
 		mainMessage.text = "";
 		subMessage.text = bothElementsInSub;
 		elementName.text = Utility.UppercaseWords(resultElement) + bothElementsInMain;
-		inventoryNumber.text = PlayerPrefs.GetInt(resultElement).ToString();
+		updateInventoryElementResultText();
 		setTextToRegularColor();
 	}
 
@@ -279,7 +283,7 @@ public class CraftingControl : MonoBehaviour {
 		mainMessage.text = "";
 		subMessage.text = "";
 		elementName.text = "Base Element: Cannot be Deconstructed";
-		inventoryNumber.text = PlayerPrefs.GetInt(element).ToString();
+		updateInventoryElementResultText();
 		setTextToErrorMessageColor();
 	}
 
@@ -438,6 +442,7 @@ public class CraftingControl : MonoBehaviour {
 			Utility.IncreasePlayerPrefValue (parent1, -1);
 			Utility.IncreasePlayerPrefValue (parent2, -1);
 			Utility.IncreasePlayerPrefValue (newElement, 1);
+			updateInventoryElementResultText();
 		}
 		//updates the text in the scene
 		zone1Capturer.setElementCountText();
