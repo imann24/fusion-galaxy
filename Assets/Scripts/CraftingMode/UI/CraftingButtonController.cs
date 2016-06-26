@@ -196,6 +196,13 @@ public class CraftingButtonController : MonoBehaviour {
 				}
 			}
 
+			if (CraftingTutorialController.GatheringTutorialActive) {
+				UIImageAnimation animation;
+				if (UIImageAnimation.TryGetByAnimation(GlobalVars.ZONE_DRAG_ANIMATION_KEY + index, out animation)) {
+					animation.Hide();
+				}
+			}
+
 		} else {
 			elementsInDropZones[index] = noElementString;
 		}

@@ -114,6 +114,7 @@ public class GlobalVars {
 	public const string CRAFTING_BUTTON_NAME = "Crafting";
 	public const string UPGRADE_POWERUP_BUTTON_NAME = "UpgradePowerUp";
 	public const string GATHERING_BUTTON_NAME = "Gathering";
+	public const string ZONE_DRAG_ANIMATION_KEY = "ZoneDrag";
     //Release build boolean - SET TO TRUE FOR RELEASE BUILD
     public static bool RELEASE_BUILD = false;
     #endregion
