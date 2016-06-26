@@ -127,9 +127,34 @@ public class CraftingTutorialComponent: TutorialComponent {
 	}
 
 	//toggles the children on and off
-	private void ToggleChildrenTutorialComponents (bool active) {
+	private void ToggleChildrenTutorialComponents (bool isActive) {
 		foreach (MaskableGraphic image in MyTutorialComponents) {
-			image.enabled = active;
+			image.enabled = isActive;
+			TryToggleAnimation(image, isActive);
+		}
+	}
+
+	// Returns true if object contains an animation script
+	bool TryToggleAnimation (MaskableGraphic image, bool isActive) {
+		UIImageAnimation [] animations;
+		if ((animations = image.GetComponents<UIImageAnimation>()) != null) {
+			foreach (UIImageAnimation animation in animations) {
+				if (!animation.Hidden) {
+					switch (isActive) {
+					case true:
+						animation.Play();
+						break;
+					case false:
+						animation.Stop();
+						break;
+					}
+				} else {
+					image.enabled = false;
+				}
+			}
+			return true;
+		} else {
+			return false;
 		}
 	}
 
