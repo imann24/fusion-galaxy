@@ -21921,8 +21921,8 @@ MonoBehaviour:
   Events:
   - Type: 0
     Alpha: 1
-    IsInteractable: 0
-    BlocksRaycasts: 0
+    IsInteractable: 1
+    BlocksRaycasts: 1
     IngnoreParentGroups: 0
 --- !u!1 &998214775
 GameObject:
