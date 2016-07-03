@@ -28,6 +28,7 @@ public static class Cheats {
 	public static void LockAllElements () {
 		//makes it so that the tutorials play again on launch
 		ResetTutorialsWatched();
+		ResetHintsUnlocked();
 		GlobalVars.NUMBER_ELEMENTS_UNLOCKED = GlobalVars.NUMBER_OF_LANES;
 		GlobalVars.CRAFTING_CONTROLLER.updatePercentUnlocked();
 		foreach (Element element in GlobalVars.ELEMENTS) {
@@ -122,6 +123,19 @@ public static class Cheats {
 		ResetTutorialsWatched();
 		SetTutorialWatched(GlobalVars.ENTER_GATHERING_TUTORIAL_KEY);
 		IncreaseBaseElements(1);
+	}
+
+	public static void ResetHintsUnlocked () {
+		foreach (Element element in GlobalVars.ELEMENTS) {
+			Utility.SetPlayerPrefIntAsBool(element.getName() + GlobalVars.HINT_STRING, false);
+		}
+	}
+
+	public static void ResetToBuyHintTutorial () {
+		LockAllElements();
+		SetTutorialWatched(GlobalVars.ENTER_GATHERING_TUTORIAL_KEY);
+		SetTutorialWatched(GlobalVars.CRAFTING_TUTORIAL_KEY);
+		IncreaseBaseElements(50);
 	}
 
 }

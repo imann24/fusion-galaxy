@@ -2900,8 +2900,9 @@ GameObject:
   - 224: {fileID: 127585261}
   - 222: {fileID: 127585263}
   - 114: {fileID: 127585262}
+  - 114: {fileID: 127585264}
   m_Layer: 0
-  m_Name: TutorialHand
+  m_Name: TutorialHandBuyHint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2951,6 +2952,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 127585260}
+--- !u!114 &127585264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 127585260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e06a1937ed04620ba9dbe68ea0f539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 6
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: 
+  MaxScale: 1
+  MinScale: 1.5
+  Repeating: 1
+  Loop: 1
 --- !u!1 &134346093
 GameObject:
   m_ObjectHideFlags: 0
@@ -4029,8 +4050,9 @@ GameObject:
   - 224: {fileID: 221657830}
   - 222: {fileID: 221657832}
   - 114: {fileID: 221657831}
+  - 114: {fileID: 221657833}
   m_Layer: 0
-  m_Name: TutorialHand
+  m_Name: TutorialHandBuyHint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4080,6 +4102,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 221657829}
+--- !u!114 &221657833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 221657829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e06a1937ed04620ba9dbe68ea0f539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 6
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: 
+  MaxScale: 1
+  MinScale: 1.5
+  Repeating: 1
+  Loop: 1
 --- !u!1 &222592709
 GameObject:
   m_ObjectHideFlags: 0
@@ -4212,10 +4254,10 @@ MonoBehaviour:
   myElem2: 
   myElem3: 
   myElem4: 
-  myCost1: 0
-  myCost2: 0
-  myCost3: 0
-  myCost4: 99
+  myCost1: 20
+  myCost2: 20
+  myCost3: 20
+  myCost4: 20
   mainScript: {fileID: 0}
 --- !u!114 &224268423
 MonoBehaviour:
@@ -9988,8 +10030,9 @@ GameObject:
   - 224: {fileID: 438092703}
   - 222: {fileID: 438092705}
   - 114: {fileID: 438092704}
+  - 114: {fileID: 438092706}
   m_Layer: 0
-  m_Name: TutorialHand
+  m_Name: TutorialHandBuyHint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10039,6 +10082,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 438092702}
+--- !u!114 &438092706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 438092702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e06a1937ed04620ba9dbe68ea0f539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 6
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: 
+  MaxScale: 1
+  MinScale: 1.5
+  Repeating: 1
+  Loop: 1
 --- !u!1 &440556454
 GameObject:
   m_ObjectHideFlags: 0
@@ -15370,6 +15433,7 @@ GameObject:
   - 224: {fileID: 642139047}
   - 222: {fileID: 642139049}
   - 114: {fileID: 642139048}
+  - 114: {fileID: 642139050}
   m_Layer: 5
   m_Name: TutorialHand
   m_TagString: Untagged
@@ -15421,6 +15485,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 642139046}
+--- !u!114 &642139050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 642139046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e06a1937ed04620ba9dbe68ea0f539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 6
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: 
+  MaxScale: 1
+  MinScale: 1.5
+  Repeating: 1
+  Loop: 1
 --- !u!1 &642690057
 GameObject:
   m_ObjectHideFlags: 0
@@ -15560,8 +15644,9 @@ GameObject:
   - 224: {fileID: 653566858}
   - 222: {fileID: 653566860}
   - 114: {fileID: 653566859}
+  - 114: {fileID: 653566861}
   m_Layer: 0
-  m_Name: TutorialHand
+  m_Name: TutorialHandBuyHint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15611,6 +15696,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 653566857}
+--- !u!114 &653566861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 653566857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e06a1937ed04620ba9dbe68ea0f539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 6
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: 
+  MaxScale: 1
+  MinScale: 1.5
+  Repeating: 1
+  Loop: 1
 --- !u!1 &654966089
 GameObject:
   m_ObjectHideFlags: 0
@@ -31777,8 +31882,9 @@ GameObject:
   - 224: {fileID: 1363284124}
   - 222: {fileID: 1363284126}
   - 114: {fileID: 1363284125}
+  - 114: {fileID: 1363284127}
   m_Layer: 0
-  m_Name: TutorialHand
+  m_Name: TutorialHandBuyHint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31828,6 +31934,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1363284123}
+--- !u!114 &1363284127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1363284123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e06a1937ed04620ba9dbe68ea0f539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 6
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: 
+  MaxScale: 1
+  MinScale: 1.5
+  Repeating: 1
+  Loop: 1
 --- !u!1 &1363333251
 GameObject:
   m_ObjectHideFlags: 0
@@ -35437,8 +35563,9 @@ GameObject:
   - 224: {fileID: 1499436346}
   - 222: {fileID: 1499436348}
   - 114: {fileID: 1499436347}
+  - 114: {fileID: 1499436349}
   m_Layer: 0
-  m_Name: TutorialHand
+  m_Name: TutorialHandBuyHint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35488,6 +35615,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1499436345}
+--- !u!114 &1499436349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1499436345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e06a1937ed04620ba9dbe68ea0f539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 6
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: 
+  MaxScale: 1
+  MinScale: 1.5
+  Repeating: 1
+  Loop: 1
 --- !u!1 &1502490071
 GameObject:
   m_ObjectHideFlags: 0
@@ -37313,8 +37460,9 @@ GameObject:
   - 224: {fileID: 1591260781}
   - 222: {fileID: 1591260783}
   - 114: {fileID: 1591260782}
+  - 114: {fileID: 1591260784}
   m_Layer: 0
-  m_Name: TutorialHand
+  m_Name: TutorialHandBuyHint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37364,6 +37512,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1591260780}
+--- !u!114 &1591260784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1591260780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e06a1937ed04620ba9dbe68ea0f539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 6
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: 
+  MaxScale: 1
+  MinScale: 1.5
+  Repeating: 1
+  Loop: 1
 --- !u!1 &1594902517
 GameObject:
   m_ObjectHideFlags: 0
@@ -41197,8 +41365,9 @@ GameObject:
   - 224: {fileID: 1775412343}
   - 222: {fileID: 1775412345}
   - 114: {fileID: 1775412344}
+  - 114: {fileID: 1775412346}
   m_Layer: 0
-  m_Name: TutorialHand
+  m_Name: TutorialHandBuyHint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41248,6 +41417,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1775412342}
+--- !u!114 &1775412346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1775412342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e06a1937ed04620ba9dbe68ea0f539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 6
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: 
+  MaxScale: 1
+  MinScale: 1.5
+  Repeating: 1
+  Loop: 1
 --- !u!1 &1786498883
 GameObject:
   m_ObjectHideFlags: 0
@@ -44085,8 +44274,9 @@ GameObject:
   - 224: {fileID: 1918986420}
   - 222: {fileID: 1918986422}
   - 114: {fileID: 1918986421}
+  - 114: {fileID: 1918986423}
   m_Layer: 0
-  m_Name: TutorialHand
+  m_Name: TutorialHandBuyHint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44136,6 +44326,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1918986419}
+--- !u!114 &1918986423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1918986419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e06a1937ed04620ba9dbe68ea0f539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 6
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: 
+  MaxScale: 1
+  MinScale: 1.5
+  Repeating: 1
+  Loop: 1
 --- !u!1 &1922777988
 GameObject:
   m_ObjectHideFlags: 0
@@ -44539,8 +44749,9 @@ GameObject:
   - 224: {fileID: 1938551635}
   - 222: {fileID: 1938551637}
   - 114: {fileID: 1938551636}
+  - 114: {fileID: 1938551638}
   m_Layer: 0
-  m_Name: TutorialHand
+  m_Name: TutorialHandBuyHint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44590,6 +44801,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1938551634}
+--- !u!114 &1938551638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1938551634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e06a1937ed04620ba9dbe68ea0f539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 6
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: 
+  MaxScale: 1
+  MinScale: 1.5
+  Repeating: 1
+  Loop: 1
 --- !u!1 &1939239580
 GameObject:
   m_ObjectHideFlags: 0
@@ -47009,8 +47240,9 @@ GameObject:
   - 224: {fileID: 2073326581}
   - 222: {fileID: 2073326583}
   - 114: {fileID: 2073326582}
+  - 114: {fileID: 2073326584}
   m_Layer: 0
-  m_Name: TutorialHand
+  m_Name: TutorialHandBuyHint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47060,6 +47292,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2073326580}
+--- !u!114 &2073326584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2073326580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e06a1937ed04620ba9dbe68ea0f539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 6
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: 
+  MaxScale: 1
+  MinScale: 1.5
+  Repeating: 1
+  Loop: 1
 --- !u!1 &2075641328
 GameObject:
   m_ObjectHideFlags: 0

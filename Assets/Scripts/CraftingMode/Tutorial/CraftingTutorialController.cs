@@ -83,7 +83,7 @@ public class CraftingTutorialController : MonoBehaviour {
 			}
 		}
 
-		Cheats.ResetToCraftingTutorialController();
+		Cheats.ResetToBuyHintTutorial();
 	}
 	
 	void OnDestroy () {
