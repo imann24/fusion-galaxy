@@ -9,11 +9,10 @@
 //#define IN_PROGRESS
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 using System.Collections.Generic;
 
 //Script to create the element spawners and set up the crafting scene
-//also used to control and update the elemnt and tier panels
+//also used to control and update the element and tier panels
  public class MainMenuController : MonoBehaviour {
 	//events
 	public delegate void ButtonPressAction();
@@ -33,7 +32,6 @@ using System.Collections.Generic;
 	//public reference to the current element and panel
 	public string activeElement;
 	public Vector3 activePosition;
-	private Vector3 activePositionOffset = new Vector3 (-29, 73, 0);//offset due to art asset positioning for hint panel
 
 	//the overall percent unlocked 
 	public Text numberUnlocked;
@@ -355,7 +353,6 @@ using System.Collections.Generic;
 			hintPanel.transform.FindChild("NotYetPurchased/PurchaseCost/myAmount"+i.ToString()).GetComponent<Text>().text = PlayerPrefs.GetInt (hintPanel.GetComponent<PurchaseHint> ().getCostElemType(i)).ToString();
 		}
 		hintPanel.transform.FindChild ("AlreadyPurchased/Name").GetComponent<Text> ().text = activeElement;
-		hintPanel.transform.position = activePosition+activePositionOffset;
 	}
 
 

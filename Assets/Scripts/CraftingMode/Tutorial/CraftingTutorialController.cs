@@ -9,7 +9,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using System.Collections.Generic;
 
 //Script to run the tutorial in crafting
 public class CraftingTutorialController : MonoBehaviour {
@@ -34,11 +33,6 @@ public class CraftingTutorialController : MonoBehaviour {
 	public static event TutorialCompleted OnBuyPowerUpUpgradeTutorialComplete;
 	public static event TutorialCompleted OnTierSwitchingTutorialComplete;
 	
-	public int ChildrenBeforeSlides = 1;
-	public int SlideIndex;
-	public int firstGatheringSlide;
-	public int launchMissionSlide;
-
 	private bool tutorialHasEnded;
 
 	private static Image Mask;
