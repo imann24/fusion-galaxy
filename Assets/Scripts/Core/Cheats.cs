@@ -105,8 +105,8 @@ public static class Cheats {
 		Utility.SetPlayerPrefIntAsBool(GlobalVars.GATHERING_TUTORIAL_WATCHED_POWER_UP, false);
 	}
 
-	public static void SetTutorialWatched (string tutorialName) {
-		Utility.SetPlayerPrefIntAsBool(tutorialName, true);
+	public static void SetTutorialWatched (string tutorialName, bool hasBeenWatched = true) {
+		Utility.SetPlayerPrefIntAsBool(tutorialName, hasBeenWatched);
 	}
 
 	public static void IncreaseElement (string elementName, int amount) {
@@ -138,4 +138,13 @@ public static class Cheats {
 		IncreaseBaseElements(50);
 	}
 
+	public static void ResetToPurchaseUpgradeTutorial () {
+		SetTutorialWatched(GlobalVars.ENTER_GATHERING_TUTORIAL_KEY);
+		SetTutorialWatched(GlobalVars.CRAFTING_TUTORIAL_KEY);
+		SetTutorialWatched(GlobalVars.BUY_HINT_TUTORIAL_KEY);
+		SetTutorialWatched(GlobalVars.UPGRADE_POWERUP_TUTORIAL_KEY, false);
+		UnlockTier(0);
+		UnlockTier(1);
+		IncreaseAllElements(50);
+	}
 }
