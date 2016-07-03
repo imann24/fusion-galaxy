@@ -95,14 +95,22 @@ public static class Cheats {
 
 	//resets whether player has watched the tutorials
 	public static void ResetTutorialsWatched () {
+		ToggleAllTutorialsWatched(false);
+	}
+
+	public static void SetAllTutorialsAsWatched () {
+		ToggleAllTutorialsWatched(true);
+	}
+
+	public static void ToggleAllTutorialsWatched (bool tutorialWatched) {
 		//bools for crafting
 		foreach (string tutorialKey in GlobalVars.AllCraftingModeTutorials) {
-			Utility.SetPlayerPrefIntAsBool(tutorialKey, false);
+			Utility.SetPlayerPrefIntAsBool(tutorialKey, tutorialWatched);
 		}
-
+		
 		//bools for gathering
-		Utility.SetPlayerPrefIntAsBool(GlobalVars.GATHERING_TUTORIAL_WATCHED_SWIPE, false);
-		Utility.SetPlayerPrefIntAsBool(GlobalVars.GATHERING_TUTORIAL_WATCHED_POWER_UP, false);
+		Utility.SetPlayerPrefIntAsBool(GlobalVars.GATHERING_TUTORIAL_WATCHED_SWIPE, tutorialWatched);
+		Utility.SetPlayerPrefIntAsBool(GlobalVars.GATHERING_TUTORIAL_WATCHED_POWER_UP, tutorialWatched);
 	}
 
 	public static void SetTutorialWatched (string tutorialName, bool hasBeenWatched = true) {
@@ -119,7 +127,7 @@ public static class Cheats {
 		}
 	}
 
-	public static void ResetToCraftingTutorialController () {
+	public static void ResetToCraftingTutorial () {
 		ResetTutorialsWatched();
 		SetTutorialWatched(GlobalVars.ENTER_GATHERING_TUTORIAL_KEY);
 		IncreaseBaseElements(1);
@@ -139,12 +147,18 @@ public static class Cheats {
 	}
 
 	public static void ResetToPurchaseUpgradeTutorial () {
-		SetTutorialWatched(GlobalVars.ENTER_GATHERING_TUTORIAL_KEY);
-		SetTutorialWatched(GlobalVars.CRAFTING_TUTORIAL_KEY);
-		SetTutorialWatched(GlobalVars.BUY_HINT_TUTORIAL_KEY);
+		ResetPowerUpUpgradePurchases();
+		SetAllTutorialsAsWatched();
 		SetTutorialWatched(GlobalVars.UPGRADE_POWERUP_TUTORIAL_KEY, false);
 		UnlockTier(0);
 		UnlockTier(1);
 		IncreaseAllElements(50);
+	}
+
+	public static void ResetToUnlockTierTutorial () {
+		LockAllElements();
+		SetAllTutorialsAsWatched();
+		SetTutorialWatched(GlobalVars.TIER_SWITCH_TUTORIAL_KEY, false);
+		UnlockTier(2);
 	}
 }

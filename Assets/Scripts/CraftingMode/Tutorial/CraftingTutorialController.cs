@@ -82,8 +82,6 @@ public class CraftingTutorialController : MonoBehaviour {
 				MaskCanvasGroup = image.transform.GetComponent<CanvasGroup>();
 			}
 		}
-
-		Cheats.ResetToPurchaseUpgradeTutorial();
 	}
 	
 	void OnDestroy () {

@@ -378,4 +378,24 @@ public class CraftingButtonController : MonoBehaviour {
 			OnEnterScreen(screenName);
 		}
 	}
+
+	public void ResetToCraftingTutorial () {
+		Cheats.ResetToCraftingTutorial();
+		Application.LoadLevel((int)GlobalVars.Scenes.Crafting);
+	}
+
+	public void ResetToBuyHintTutorial () {
+		Cheats.ResetToBuyHintTutorial();
+		Application.LoadLevel((int)GlobalVars.Scenes.Crafting);
+	}
+
+	public void ResetToPurchaseUpgradeTutorial () {
+		Cheats.ResetToPurchaseUpgradeTutorial();
+		Application.LoadLevel((int)GlobalVars.Scenes.Crafting);
+	}
+
+	public void ResetToUnlockTierTutorial () {
+		Cheats.ResetToUnlockTierTutorial();
+		Application.LoadLevel((int)GlobalVars.Scenes.Crafting);
+	}
 }
