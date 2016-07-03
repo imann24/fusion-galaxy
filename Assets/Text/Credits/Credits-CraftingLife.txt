@@ -1,4 +1,4 @@
-Header=Team 315,
+﻿Header=Team 315,
 Alex "sounds good" Ripple,Berklee College of Music
 Ari "master of all things spreadsheet" Green,Massachusetts Institute of Technology
 Devi "secret weapon of art" Acharya,Brandeis University
@@ -7,13 +7,12 @@ Joseph "who do I go home with?" Gillen,Letterkenny Institute of Technology
 Matteo "UI prodigy" Lanteri,Becker College
 SHANNON "I will own the game industry in 5 years" MITCHELL,Champlain College
 Header=Credits,
-Role=Producer,
+Role=Producers,
 Isaiah Mann,
-Role=Assistant Producer,
 Shannon Mitchell,
 Role=Lead Game Designer,
 Ari Green,
-Role=Assistant Game Designers,
+Role=Game Designers,
 Devi Acharya,
 Matteo Lanteri,
 Shannon Mitchell,
@@ -29,11 +28,12 @@ Joseph Gillen,
 Role=Programmers,
 Ari Green,
 Isaiah Mann,
+Tim Ng,
 Role=Lead SDK Programmer,
 Monica Valcourt,
 Role=Lead UI/UX Designer,
 Matteo Lanteri,
-Role=Assistant UI/UX Designers,
+Role=UI/UX Designers,
 Devi Acharya,
 Shannon Mitchell,
 Role=Business Development Manager,
