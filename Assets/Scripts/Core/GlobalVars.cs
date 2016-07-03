@@ -114,7 +114,8 @@ public class GlobalVars {
 	public const string CRAFTING_BUTTON_NAME = "Crafting";
 	public const string UPGRADE_POWERUP_BUTTON_NAME = "UpgradePowerUp";
 	public const string GATHERING_BUTTON_NAME = "Gathering";
-	public const string ZONE_DRAG_ANIMATION_KEY = "ZoneDrag";
+	public const string GATHERING_ZONE_DRAG_ANIMATION_KEY = "GatheringZoneDrag";
+	public const string CRAFTING_ZONE_DRAG_ANIMATION_KEY = "CraftingZoneDrag";
     //Release build boolean - SET TO TRUE FOR RELEASE BUILD
     public static bool RELEASE_BUILD = false;
     #endregion
@@ -193,14 +194,14 @@ public class GlobalVars {
 
 	#region MAIN_MENU_TUTORIALS
 	// Keys used with player pref ints (treated as booleans) to tell whether each tutorial has been watched
-	public const string ELEMENTS_DRAGGED_TUTORIAL_KEY = "ElementsDraggedIntoGatheringTutorial";
+	public const string ENTER_GATHERING_TUTORIAL_KEY = "ElementsDraggedIntoGatheringTutorial";
 	public const string CRAFTING_TUTORIAL_KEY = "CraftingTutorial";
 	public const string BUY_HINT_TUTORIAL_KEY = "BuyHintTutorial";
 	public const string UPGRADE_POWERUP_TUTORIAL_KEY = "UpgradePowerupTutorial";
 	public const string TIER_SWITCH_TUTORIAL_KEY = "TierSwitchTutorial";
 
 	// An Array of all the keys for crafting tutorials
-	public static string [] AllCraftingModeTutorials = {ELEMENTS_DRAGGED_TUTORIAL_KEY, CRAFTING_TUTORIAL_KEY, BUY_HINT_TUTORIAL_KEY, UPGRADE_POWERUP_TUTORIAL_KEY, TIER_SWITCH_TUTORIAL_KEY};
+	public static string [] AllCraftingModeTutorials = {ENTER_GATHERING_TUTORIAL_KEY, CRAFTING_TUTORIAL_KEY, BUY_HINT_TUTORIAL_KEY, UPGRADE_POWERUP_TUTORIAL_KEY, TIER_SWITCH_TUTORIAL_KEY};
 	#endregion
 
 	#region INITIALIZATION_METHODS

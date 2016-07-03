@@ -103,4 +103,25 @@ public static class Cheats {
 		Utility.SetPlayerPrefIntAsBool(GlobalVars.GATHERING_TUTORIAL_WATCHED_SWIPE, false);
 		Utility.SetPlayerPrefIntAsBool(GlobalVars.GATHERING_TUTORIAL_WATCHED_POWER_UP, false);
 	}
+
+	public static void SetTutorialWatched (string tutorialName) {
+		Utility.SetPlayerPrefIntAsBool(tutorialName, true);
+	}
+
+	public static void IncreaseElement (string elementName, int amount) {
+		Utility.IncreasePlayerPrefValue(elementName, amount);
+	}
+
+	public static void IncreaseBaseElements (int amount) {
+		foreach (string elementName in GlobalVars.BASE_ELEMENT_NAMES) {
+			IncreaseElement(elementName, amount);
+		}
+	}
+
+	public static void ResetToCraftingTutorialController () {
+		ResetTutorialsWatched();
+		SetTutorialWatched(GlobalVars.ENTER_GATHERING_TUTORIAL_KEY);
+		IncreaseBaseElements(1);
+	}
+
 }

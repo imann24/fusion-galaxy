@@ -5421,6 +5421,7 @@ GameObject:
   - 222: {fileID: 285295608}
   - 114: {fileID: 285295607}
   - 114: {fileID: 285295609}
+  - 114: {fileID: 285295610}
   m_Layer: 0
   m_Name: TutorialHandElementZone
   m_TagString: Untagged
@@ -5483,10 +5484,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9718c70b8b15d4c599d296381d309273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayOnAwake: 1
+  PlayOnTutorial: 0
+  PlayOnAwake: 0
   PlayOnStart: 0
   AnimationTime: 2.5
-  AnimationID: ZoneDrag2
+  AnimationID: GatheringZoneDrag2
   Vertical: 1
   VertUp: 1
   Horizontal: 0
@@ -5494,6 +5496,30 @@ MonoBehaviour:
   Repeating: 1
   Height: 6
   Width: 1
+  DelayTime: 1
+--- !u!114 &285295610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 285295605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9718c70b8b15d4c599d296381d309273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 1
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: CraftingZoneDrag2
+  Vertical: 1
+  VertUp: 1
+  Horizontal: 1
+  HorRight: 0
+  Repeating: 1
+  Height: 12
+  Width: 12
   DelayTime: 1
 --- !u!1 &289190724
 GameObject:
@@ -16906,6 +16932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e06a1937ed04620ba9dbe68ea0f539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayOnTutorial: 6
   PlayOnAwake: 1
   PlayOnStart: 0
   AnimationTime: 2.5
@@ -29694,6 +29721,7 @@ GameObject:
   - 222: {fileID: 1289719032}
   - 114: {fileID: 1289719031}
   - 114: {fileID: 1289719033}
+  - 114: {fileID: 1289719034}
   m_Layer: 0
   m_Name: TutorialHandElementZone
   m_TagString: Untagged
@@ -29756,10 +29784,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9718c70b8b15d4c599d296381d309273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayOnAwake: 1
+  PlayOnTutorial: 0
+  PlayOnAwake: 0
   PlayOnStart: 0
   AnimationTime: 2.5
-  AnimationID: ZoneDrag0
+  AnimationID: GatheringZoneDrag0
   Vertical: 1
   VertUp: 1
   Horizontal: 0
@@ -29767,6 +29796,30 @@ MonoBehaviour:
   Repeating: 1
   Height: 6
   Width: 1
+  DelayTime: 1
+--- !u!114 &1289719034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1289719029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9718c70b8b15d4c599d296381d309273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 1
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: CraftingZoneDrag0
+  Vertical: 1
+  VertUp: 1
+  Horizontal: 1
+  HorRight: 0
+  Repeating: 1
+  Height: 8
+  Width: 8
   DelayTime: 1
 --- !u!1 &1290081373
 GameObject:
@@ -30707,8 +30760,9 @@ GameObject:
   - 224: {fileID: 1325331155}
   - 222: {fileID: 1325331157}
   - 114: {fileID: 1325331156}
+  - 114: {fileID: 1325331158}
   m_Layer: 5
-  m_Name: TutorialHand
+  m_Name: TutorialHandCrafting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30758,6 +30812,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1325331154}
+--- !u!114 &1325331158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1325331154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e06a1937ed04620ba9dbe68ea0f539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 6
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: 
+  MaxScale: 1
+  MinScale: 1.5
+  Repeating: 1
+  Loop: 1
 --- !u!1 &1326364530
 GameObject:
   m_ObjectHideFlags: 0
@@ -34368,6 +34442,7 @@ GameObject:
   - 222: {fileID: 1458578803}
   - 114: {fileID: 1458578802}
   - 114: {fileID: 1458578804}
+  - 114: {fileID: 1458578805}
   m_Layer: 0
   m_Name: TutorialHandElementZone
   m_TagString: Untagged
@@ -34430,10 +34505,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9718c70b8b15d4c599d296381d309273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayOnAwake: 1
+  PlayOnTutorial: 0
+  PlayOnAwake: 0
   PlayOnStart: 0
   AnimationTime: 2.5
-  AnimationID: ZoneDrag3
+  AnimationID: GatheringZoneDrag3
   Vertical: 1
   VertUp: 1
   Horizontal: 0
@@ -34441,6 +34517,30 @@ MonoBehaviour:
   Repeating: 1
   Height: 6
   Width: 1
+  DelayTime: 1
+--- !u!114 &1458578805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1458578800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9718c70b8b15d4c599d296381d309273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 1
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: CraftingZoneDrag3
+  Vertical: 1
+  VertUp: 1
+  Horizontal: 1
+  HorRight: 0
+  Repeating: 1
+  Height: 14
+  Width: 14
   DelayTime: 1
 --- !u!1 &1458880696
 GameObject:
@@ -37103,6 +37203,7 @@ GameObject:
   - 222: {fileID: 1589372190}
   - 114: {fileID: 1589372189}
   - 114: {fileID: 1589372191}
+  - 114: {fileID: 1589372192}
   m_Layer: 0
   m_Name: TutorialHandElementZone
   m_TagString: Untagged
@@ -37165,10 +37266,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9718c70b8b15d4c599d296381d309273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayOnAwake: 1
+  PlayOnTutorial: 0
+  PlayOnAwake: 0
   PlayOnStart: 0
   AnimationTime: 2.5
-  AnimationID: ZoneDrag1
+  AnimationID: GatheringZoneDragUp1
   Vertical: 1
   VertUp: 1
   Horizontal: 0
@@ -37176,6 +37278,30 @@ MonoBehaviour:
   Repeating: 1
   Height: 6
   Width: 1
+  DelayTime: 1
+--- !u!114 &1589372192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1589372187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9718c70b8b15d4c599d296381d309273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 1
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: CraftingZoneDrag1
+  Vertical: 1
+  VertUp: 1
+  Horizontal: 1
+  HorRight: 0
+  Repeating: 1
+  Height: 10
+  Width: 10
   DelayTime: 1
 --- !u!1 &1591260780
 GameObject:
@@ -47376,8 +47502,9 @@ GameObject:
   - 224: {fileID: 2091444522}
   - 222: {fileID: 2091444524}
   - 114: {fileID: 2091444523}
+  - 114: {fileID: 2091444525}
   m_Layer: 5
-  m_Name: TutorialHand
+  m_Name: TutorialHandResultZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47427,6 +47554,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2091444521}
+--- !u!114 &2091444525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2091444521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e06a1937ed04620ba9dbe68ea0f539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 1
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 1.75
+  AnimationID: 
+  MaxScale: 1
+  MinScale: 1.25
+  Repeating: 1
+  Loop: 1
 --- !u!1 &2096134169
 GameObject:
   m_ObjectHideFlags: 0
