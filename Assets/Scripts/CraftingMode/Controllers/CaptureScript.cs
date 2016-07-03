@@ -230,9 +230,12 @@ public class CaptureScript : MonoBehaviour {
 		//print(collided.tag);
 		if (collided.tag == GlobalVars.ELEMENT_TAG && collided.name != "ElementPrefab" && !hasCapturedElement && mode != Mode.Compiler) {
 			//captures the element and destroys the dragged in object
-
-			captureElement(collided.gameObject.transform.GetComponent<Image>().sprite);
-			Destroy(collided.gameObject);
+			try {
+				captureElement(collided.gameObject.transform.GetComponent<Image>().sprite);
+				Destroy(collided.gameObject);
+			} catch {
+				// Element was already destroyed
+			}
 		} else if (collided.tag == GlobalVars.ELEMENT_TAG) {
 			collided.GetComponent<CaptureMe>().setCapturer(this);
 		}
