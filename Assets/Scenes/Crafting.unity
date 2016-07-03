@@ -2900,8 +2900,9 @@ GameObject:
   - 224: {fileID: 127585261}
   - 222: {fileID: 127585263}
   - 114: {fileID: 127585262}
+  - 114: {fileID: 127585264}
   m_Layer: 0
-  m_Name: TutorialHand
+  m_Name: TutorialHandBuyHint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2951,6 +2952,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 127585260}
+--- !u!114 &127585264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 127585260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e06a1937ed04620ba9dbe68ea0f539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 6
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: 
+  MaxScale: 1
+  MinScale: 1.5
+  Repeating: 1
+  Loop: 1
 --- !u!1 &134346093
 GameObject:
   m_ObjectHideFlags: 0
@@ -3614,6 +3635,7 @@ GameObject:
   - 224: {fileID: 177906094}
   - 222: {fileID: 177906096}
   - 114: {fileID: 177906095}
+  - 114: {fileID: 177906097}
   m_Layer: 5
   m_Name: TutorialHand
   m_TagString: Untagged
@@ -3665,6 +3687,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 177906093}
+--- !u!114 &177906097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 177906093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e06a1937ed04620ba9dbe68ea0f539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 6
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: 
+  MaxScale: 1
+  MinScale: 1.5
+  Repeating: 1
+  Loop: 1
 --- !u!1 &178901787
 GameObject:
   m_ObjectHideFlags: 0
@@ -4029,8 +4071,9 @@ GameObject:
   - 224: {fileID: 221657830}
   - 222: {fileID: 221657832}
   - 114: {fileID: 221657831}
+  - 114: {fileID: 221657833}
   m_Layer: 0
-  m_Name: TutorialHand
+  m_Name: TutorialHandBuyHint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4080,6 +4123,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 221657829}
+--- !u!114 &221657833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 221657829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e06a1937ed04620ba9dbe68ea0f539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 6
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: 
+  MaxScale: 1
+  MinScale: 1.5
+  Repeating: 1
+  Loop: 1
 --- !u!1 &222592709
 GameObject:
   m_ObjectHideFlags: 0
@@ -4212,10 +4275,10 @@ MonoBehaviour:
   myElem2: 
   myElem3: 
   myElem4: 
-  myCost1: 0
-  myCost2: 0
-  myCost3: 0
-  myCost4: 99
+  myCost1: 20
+  myCost2: 20
+  myCost3: 20
+  myCost4: 20
   mainScript: {fileID: 0}
 --- !u!114 &224268423
 MonoBehaviour:
@@ -5421,6 +5484,7 @@ GameObject:
   - 222: {fileID: 285295608}
   - 114: {fileID: 285295607}
   - 114: {fileID: 285295609}
+  - 114: {fileID: 285295610}
   m_Layer: 0
   m_Name: TutorialHandElementZone
   m_TagString: Untagged
@@ -5483,10 +5547,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9718c70b8b15d4c599d296381d309273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayOnAwake: 1
+  PlayOnTutorial: 0
+  PlayOnAwake: 0
   PlayOnStart: 0
   AnimationTime: 2.5
-  AnimationID: ZoneDrag2
+  AnimationID: GatheringZoneDrag2
   Vertical: 1
   VertUp: 1
   Horizontal: 0
@@ -5494,6 +5559,30 @@ MonoBehaviour:
   Repeating: 1
   Height: 6
   Width: 1
+  DelayTime: 1
+--- !u!114 &285295610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 285295605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9718c70b8b15d4c599d296381d309273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 1
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: CraftingZoneDrag2
+  Vertical: 1
+  VertUp: 1
+  Horizontal: 1
+  HorRight: 0
+  Repeating: 1
+  Height: 12
+  Width: 12
   DelayTime: 1
 --- !u!1 &289190724
 GameObject:
@@ -9962,8 +10051,9 @@ GameObject:
   - 224: {fileID: 438092703}
   - 222: {fileID: 438092705}
   - 114: {fileID: 438092704}
+  - 114: {fileID: 438092706}
   m_Layer: 0
-  m_Name: TutorialHand
+  m_Name: TutorialHandBuyHint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10013,6 +10103,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 438092702}
+--- !u!114 &438092706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 438092702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e06a1937ed04620ba9dbe68ea0f539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 6
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: 
+  MaxScale: 1
+  MinScale: 1.5
+  Repeating: 1
+  Loop: 1
 --- !u!1 &440556454
 GameObject:
   m_ObjectHideFlags: 0
@@ -15344,6 +15454,7 @@ GameObject:
   - 224: {fileID: 642139047}
   - 222: {fileID: 642139049}
   - 114: {fileID: 642139048}
+  - 114: {fileID: 642139050}
   m_Layer: 5
   m_Name: TutorialHand
   m_TagString: Untagged
@@ -15395,6 +15506,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 642139046}
+--- !u!114 &642139050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 642139046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e06a1937ed04620ba9dbe68ea0f539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 6
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: 
+  MaxScale: 1
+  MinScale: 1.5
+  Repeating: 1
+  Loop: 1
 --- !u!1 &642690057
 GameObject:
   m_ObjectHideFlags: 0
@@ -15534,8 +15665,9 @@ GameObject:
   - 224: {fileID: 653566858}
   - 222: {fileID: 653566860}
   - 114: {fileID: 653566859}
+  - 114: {fileID: 653566861}
   m_Layer: 0
-  m_Name: TutorialHand
+  m_Name: TutorialHandBuyHint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15585,6 +15717,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 653566857}
+--- !u!114 &653566861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 653566857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e06a1937ed04620ba9dbe68ea0f539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 6
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: 
+  MaxScale: 1
+  MinScale: 1.5
+  Repeating: 1
+  Loop: 1
 --- !u!1 &654966089
 GameObject:
   m_ObjectHideFlags: 0
@@ -16906,6 +17058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e06a1937ed04620ba9dbe68ea0f539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayOnTutorial: 6
   PlayOnAwake: 1
   PlayOnStart: 0
   AnimationTime: 2.5
@@ -29694,6 +29847,7 @@ GameObject:
   - 222: {fileID: 1289719032}
   - 114: {fileID: 1289719031}
   - 114: {fileID: 1289719033}
+  - 114: {fileID: 1289719034}
   m_Layer: 0
   m_Name: TutorialHandElementZone
   m_TagString: Untagged
@@ -29756,10 +29910,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9718c70b8b15d4c599d296381d309273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayOnAwake: 1
+  PlayOnTutorial: 0
+  PlayOnAwake: 0
   PlayOnStart: 0
   AnimationTime: 2.5
-  AnimationID: ZoneDrag0
+  AnimationID: GatheringZoneDrag0
   Vertical: 1
   VertUp: 1
   Horizontal: 0
@@ -29767,6 +29922,30 @@ MonoBehaviour:
   Repeating: 1
   Height: 6
   Width: 1
+  DelayTime: 1
+--- !u!114 &1289719034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1289719029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9718c70b8b15d4c599d296381d309273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 1
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: CraftingZoneDrag0
+  Vertical: 1
+  VertUp: 1
+  Horizontal: 1
+  HorRight: 0
+  Repeating: 1
+  Height: 8
+  Width: 8
   DelayTime: 1
 --- !u!1 &1290081373
 GameObject:
@@ -30707,8 +30886,9 @@ GameObject:
   - 224: {fileID: 1325331155}
   - 222: {fileID: 1325331157}
   - 114: {fileID: 1325331156}
+  - 114: {fileID: 1325331158}
   m_Layer: 5
-  m_Name: TutorialHand
+  m_Name: TutorialHandCrafting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30758,6 +30938,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1325331154}
+--- !u!114 &1325331158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1325331154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e06a1937ed04620ba9dbe68ea0f539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 6
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: 
+  MaxScale: 1
+  MinScale: 1.5
+  Repeating: 1
+  Loop: 1
 --- !u!1 &1326364530
 GameObject:
   m_ObjectHideFlags: 0
@@ -31703,8 +31903,9 @@ GameObject:
   - 224: {fileID: 1363284124}
   - 222: {fileID: 1363284126}
   - 114: {fileID: 1363284125}
+  - 114: {fileID: 1363284127}
   m_Layer: 0
-  m_Name: TutorialHand
+  m_Name: TutorialHandBuyHint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31754,6 +31955,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1363284123}
+--- !u!114 &1363284127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1363284123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e06a1937ed04620ba9dbe68ea0f539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 6
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: 
+  MaxScale: 1
+  MinScale: 1.5
+  Repeating: 1
+  Loop: 1
 --- !u!1 &1363333251
 GameObject:
   m_ObjectHideFlags: 0
@@ -34368,6 +34589,7 @@ GameObject:
   - 222: {fileID: 1458578803}
   - 114: {fileID: 1458578802}
   - 114: {fileID: 1458578804}
+  - 114: {fileID: 1458578805}
   m_Layer: 0
   m_Name: TutorialHandElementZone
   m_TagString: Untagged
@@ -34430,10 +34652,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9718c70b8b15d4c599d296381d309273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayOnAwake: 1
+  PlayOnTutorial: 0
+  PlayOnAwake: 0
   PlayOnStart: 0
   AnimationTime: 2.5
-  AnimationID: ZoneDrag3
+  AnimationID: GatheringZoneDrag3
   Vertical: 1
   VertUp: 1
   Horizontal: 0
@@ -34441,6 +34664,30 @@ MonoBehaviour:
   Repeating: 1
   Height: 6
   Width: 1
+  DelayTime: 1
+--- !u!114 &1458578805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1458578800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9718c70b8b15d4c599d296381d309273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 1
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: CraftingZoneDrag3
+  Vertical: 1
+  VertUp: 1
+  Horizontal: 1
+  HorRight: 0
+  Repeating: 1
+  Height: 14
+  Width: 14
   DelayTime: 1
 --- !u!1 &1458880696
 GameObject:
@@ -35337,8 +35584,9 @@ GameObject:
   - 224: {fileID: 1499436346}
   - 222: {fileID: 1499436348}
   - 114: {fileID: 1499436347}
+  - 114: {fileID: 1499436349}
   m_Layer: 0
-  m_Name: TutorialHand
+  m_Name: TutorialHandBuyHint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35388,6 +35636,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1499436345}
+--- !u!114 &1499436349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1499436345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e06a1937ed04620ba9dbe68ea0f539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 6
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: 
+  MaxScale: 1
+  MinScale: 1.5
+  Repeating: 1
+  Loop: 1
 --- !u!1 &1502490071
 GameObject:
   m_ObjectHideFlags: 0
@@ -36387,10 +36655,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: .5
       objectReference: {fileID: 0}
-    - target: {fileID: 181278, guid: 6e2b30fa0390b2e46a251c2092a5383f, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6e2b30fa0390b2e46a251c2092a5383f, type: 2}
   m_IsPrefabParent: 0
@@ -37103,6 +37367,7 @@ GameObject:
   - 222: {fileID: 1589372190}
   - 114: {fileID: 1589372189}
   - 114: {fileID: 1589372191}
+  - 114: {fileID: 1589372192}
   m_Layer: 0
   m_Name: TutorialHandElementZone
   m_TagString: Untagged
@@ -37165,10 +37430,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9718c70b8b15d4c599d296381d309273, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayOnAwake: 1
+  PlayOnTutorial: 0
+  PlayOnAwake: 0
   PlayOnStart: 0
   AnimationTime: 2.5
-  AnimationID: ZoneDrag1
+  AnimationID: GatheringZoneDragUp1
   Vertical: 1
   VertUp: 1
   Horizontal: 0
@@ -37176,6 +37442,30 @@ MonoBehaviour:
   Repeating: 1
   Height: 6
   Width: 1
+  DelayTime: 1
+--- !u!114 &1589372192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1589372187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9718c70b8b15d4c599d296381d309273, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 1
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: CraftingZoneDrag1
+  Vertical: 1
+  VertUp: 1
+  Horizontal: 1
+  HorRight: 0
+  Repeating: 1
+  Height: 10
+  Width: 10
   DelayTime: 1
 --- !u!1 &1591260780
 GameObject:
@@ -37187,8 +37477,9 @@ GameObject:
   - 224: {fileID: 1591260781}
   - 222: {fileID: 1591260783}
   - 114: {fileID: 1591260782}
+  - 114: {fileID: 1591260784}
   m_Layer: 0
-  m_Name: TutorialHand
+  m_Name: TutorialHandBuyHint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37238,6 +37529,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1591260780}
+--- !u!114 &1591260784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1591260780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e06a1937ed04620ba9dbe68ea0f539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 6
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: 
+  MaxScale: 1
+  MinScale: 1.5
+  Repeating: 1
+  Loop: 1
 --- !u!1 &1594902517
 GameObject:
   m_ObjectHideFlags: 0
@@ -41071,8 +41382,9 @@ GameObject:
   - 224: {fileID: 1775412343}
   - 222: {fileID: 1775412345}
   - 114: {fileID: 1775412344}
+  - 114: {fileID: 1775412346}
   m_Layer: 0
-  m_Name: TutorialHand
+  m_Name: TutorialHandBuyHint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41122,6 +41434,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1775412342}
+--- !u!114 &1775412346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1775412342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e06a1937ed04620ba9dbe68ea0f539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 6
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: 
+  MaxScale: 1
+  MinScale: 1.5
+  Repeating: 1
+  Loop: 1
 --- !u!1 &1786498883
 GameObject:
   m_ObjectHideFlags: 0
@@ -43959,8 +44291,9 @@ GameObject:
   - 224: {fileID: 1918986420}
   - 222: {fileID: 1918986422}
   - 114: {fileID: 1918986421}
+  - 114: {fileID: 1918986423}
   m_Layer: 0
-  m_Name: TutorialHand
+  m_Name: TutorialHandBuyHint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44010,6 +44343,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1918986419}
+--- !u!114 &1918986423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1918986419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e06a1937ed04620ba9dbe68ea0f539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 6
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: 
+  MaxScale: 1
+  MinScale: 1.5
+  Repeating: 1
+  Loop: 1
 --- !u!1 &1922777988
 GameObject:
   m_ObjectHideFlags: 0
@@ -44413,8 +44766,9 @@ GameObject:
   - 224: {fileID: 1938551635}
   - 222: {fileID: 1938551637}
   - 114: {fileID: 1938551636}
+  - 114: {fileID: 1938551638}
   m_Layer: 0
-  m_Name: TutorialHand
+  m_Name: TutorialHandBuyHint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44464,6 +44818,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1938551634}
+--- !u!114 &1938551638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1938551634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e06a1937ed04620ba9dbe68ea0f539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 6
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: 
+  MaxScale: 1
+  MinScale: 1.5
+  Repeating: 1
+  Loop: 1
 --- !u!1 &1939239580
 GameObject:
   m_ObjectHideFlags: 0
@@ -46883,8 +47257,9 @@ GameObject:
   - 224: {fileID: 2073326581}
   - 222: {fileID: 2073326583}
   - 114: {fileID: 2073326582}
+  - 114: {fileID: 2073326584}
   m_Layer: 0
-  m_Name: TutorialHand
+  m_Name: TutorialHandBuyHint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46934,6 +47309,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2073326580}
+--- !u!114 &2073326584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2073326580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e06a1937ed04620ba9dbe68ea0f539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 6
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: 
+  MaxScale: 1
+  MinScale: 1.5
+  Repeating: 1
+  Loop: 1
 --- !u!1 &2075641328
 GameObject:
   m_ObjectHideFlags: 0
@@ -47376,8 +47771,9 @@ GameObject:
   - 224: {fileID: 2091444522}
   - 222: {fileID: 2091444524}
   - 114: {fileID: 2091444523}
+  - 114: {fileID: 2091444525}
   m_Layer: 5
-  m_Name: TutorialHand
+  m_Name: TutorialHandResultZone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47427,6 +47823,26 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2091444521}
+--- !u!114 &2091444525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2091444521}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e06a1937ed04620ba9dbe68ea0f539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 1
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 1.75
+  AnimationID: 
+  MaxScale: 1
+  MinScale: 1.25
+  Repeating: 1
+  Loop: 1
 --- !u!1 &2096134169
 GameObject:
   m_ObjectHideFlags: 0

@@ -169,7 +169,7 @@ public class CaptureScript : MonoBehaviour {
 	//forces element to delete even if it doesn't have a captured element
 	public void OnMouseDown () {
 		//destroys the element if clicked on
-		if (hasCapturedElement && !CraftingTutorialController.GatheringTutorialActive) {
+		if (hasCapturedElement && !CraftingTutorialController.GatheringTutorialActive && !CraftingTutorialController.CraftingTutorialActive) {
 			//calls the event
 			if (OnElementCleared != null && mode != Mode.Compiler) {
 				OnElementCleared();
@@ -291,6 +291,8 @@ public class CaptureScript : MonoBehaviour {
 					updateClassBar(GlobalVars.ELEMENTS_BY_NAME[myElement.gameObject.name].getTier());
 				}
 
+				checkForCraftingTutorialAnimation();
+
 			} else if (mode == Mode.Gathering) {
 				zoneReadyIndicator.enabled = true;
 
@@ -309,6 +311,18 @@ public class CaptureScript : MonoBehaviour {
 		}
 	}
 
+	void checkForCraftingTutorialAnimation () {
+ 		if (CraftingTutorialController.CraftingTutorialActive) {
+			SpawnerControl elementController;
+			if (GlobalVars.CRAFTING_CONTROLLER.TryGetElementController(myElement.gameObject.name, out elementController)) {
+				UIImageAnimation animation;
+				if (UIImageAnimation.TryGetByAnimation(GlobalVars.CRAFTING_ZONE_DRAG_ANIMATION_KEY + elementController.PanelIndex, out animation)) {
+					animation.Hide();
+				}
+				
+			}
+		}
+	}
 
 	//updates the length of the bar to match the number of elements in the inventory (maxes out at 100) 
 	public void updateInventoryBarFill (int elementCount) {

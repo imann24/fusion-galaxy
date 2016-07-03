@@ -32,6 +32,12 @@ public class SpawnerControl : MonoBehaviour {
 	AudioSource buttonClick;
 	Renderer myRenderer;
 
+	public int PanelIndex {
+		get {
+			return transform.GetSiblingIndex ();
+		}
+	}
+
 	void Start () {
 	}
 

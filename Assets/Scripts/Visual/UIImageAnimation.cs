@@ -12,6 +12,8 @@ public class UIImageAnimation : MonoBehaviour {
 
 	static Dictionary<string, UIImageAnimation> animationsByID = new Dictionary<string, UIImageAnimation>();
 
+	public TutorialType PlayOnTutorial = TutorialType.Any;
+
 	public bool PlayOnAwake;
 	public bool PlayOnStart;
 	public float AnimationTime = 1f;

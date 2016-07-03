@@ -44,7 +44,7 @@ using System.Collections.Generic;
 	//references to the tier and element panel scripts
 	private TierButtonDisplay [] tierButtonScript;
 	private SpawnerControl [] elementPanelControllers;
-
+	Dictionary<string, SpawnerControl> elementNameToController = new Dictionary<string, SpawnerControl>();
 	//tier info 
 	private int currentlySelectedTierNumber = -1;
 
@@ -143,6 +143,10 @@ using System.Collections.Generic;
 		TierButtonDisplay.OnLoadTier -= loadTier;
 	}
 
+	public bool TryGetElementController (string elementName, out SpawnerControl controller) {
+		return (elementNameToController.TryGetValue(elementName, out controller));
+	}
+
 	//sets the UI for the currently loaded tier	
 	public void loadTier (int tier, bool forceLoad, int startingElement) {
 		if (!firstCall && OnButtonPress != null) { //so the button click doesn't play on load
@@ -154,6 +158,7 @@ using System.Collections.Generic;
 
 		//loads the tier if it's unlocked and not the current one
 		if ((tier != currentlySelectedTierNumber || forceLoad) && GlobalVars.TIER_UNLOCKED[tier]) {
+			elementNameToController.Clear();
 
 			//calls the on load tier event
 			if (OnLoadTier != null) {
@@ -201,6 +206,7 @@ using System.Collections.Generic;
 				if (count < elementPanels.Length + elementStartIndex && count >= elementStartIndex) {
 					elementPanels[count - elementStartIndex].SetActive(true);
 					elementPanelControllers[count - elementStartIndex].setElement(e);
+					elementNameToController.Add(e.getName(), elementPanelControllers[count - elementStartIndex]);
 				} 
 				count++;
 			}
@@ -378,7 +384,7 @@ using System.Collections.Generic;
 		if (OnCallTutorialEvent != null) {
 
 			//the gathering tutorial
-			if (!Utility.PlayerPrefIntToBool(GlobalVars.ELEMENTS_DRAGGED_TUTORIAL_KEY)) {
+			if (!Utility.PlayerPrefIntToBool(GlobalVars.ENTER_GATHERING_TUTORIAL_KEY)) {
 				OnCallTutorialEvent(TutorialType.Gathering);
 
 			} 

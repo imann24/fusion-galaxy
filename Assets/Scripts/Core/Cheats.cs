@@ -28,6 +28,7 @@ public static class Cheats {
 	public static void LockAllElements () {
 		//makes it so that the tutorials play again on launch
 		ResetTutorialsWatched();
+		ResetHintsUnlocked();
 		GlobalVars.NUMBER_ELEMENTS_UNLOCKED = GlobalVars.NUMBER_OF_LANES;
 		GlobalVars.CRAFTING_CONTROLLER.updatePercentUnlocked();
 		foreach (Element element in GlobalVars.ELEMENTS) {
@@ -102,5 +103,48 @@ public static class Cheats {
 		//bools for gathering
 		Utility.SetPlayerPrefIntAsBool(GlobalVars.GATHERING_TUTORIAL_WATCHED_SWIPE, false);
 		Utility.SetPlayerPrefIntAsBool(GlobalVars.GATHERING_TUTORIAL_WATCHED_POWER_UP, false);
+	}
+
+	public static void SetTutorialWatched (string tutorialName, bool hasBeenWatched = true) {
+		Utility.SetPlayerPrefIntAsBool(tutorialName, hasBeenWatched);
+	}
+
+	public static void IncreaseElement (string elementName, int amount) {
+		Utility.IncreasePlayerPrefValue(elementName, amount);
+	}
+
+	public static void IncreaseBaseElements (int amount) {
+		foreach (string elementName in GlobalVars.BASE_ELEMENT_NAMES) {
+			IncreaseElement(elementName, amount);
+		}
+	}
+
+	public static void ResetToCraftingTutorialController () {
+		ResetTutorialsWatched();
+		SetTutorialWatched(GlobalVars.ENTER_GATHERING_TUTORIAL_KEY);
+		IncreaseBaseElements(1);
+	}
+
+	public static void ResetHintsUnlocked () {
+		foreach (Element element in GlobalVars.ELEMENTS) {
+			Utility.SetPlayerPrefIntAsBool(element.getName() + GlobalVars.HINT_STRING, false);
+		}
+	}
+
+	public static void ResetToBuyHintTutorial () {
+		LockAllElements();
+		SetTutorialWatched(GlobalVars.ENTER_GATHERING_TUTORIAL_KEY);
+		SetTutorialWatched(GlobalVars.CRAFTING_TUTORIAL_KEY);
+		IncreaseBaseElements(50);
+	}
+
+	public static void ResetToPurchaseUpgradeTutorial () {
+		SetTutorialWatched(GlobalVars.ENTER_GATHERING_TUTORIAL_KEY);
+		SetTutorialWatched(GlobalVars.CRAFTING_TUTORIAL_KEY);
+		SetTutorialWatched(GlobalVars.BUY_HINT_TUTORIAL_KEY);
+		SetTutorialWatched(GlobalVars.UPGRADE_POWERUP_TUTORIAL_KEY, false);
+		UnlockTier(0);
+		UnlockTier(1);
+		IncreaseAllElements(50);
 	}
 }

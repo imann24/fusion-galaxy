@@ -82,8 +82,10 @@ public class CraftingTutorialController : MonoBehaviour {
 				MaskCanvasGroup = image.transform.GetComponent<CanvasGroup>();
 			}
 		}
-	}
 
+		Cheats.ResetToPurchaseUpgradeTutorial();
+	}
+	
 	void OnDestroy () {
 		UnsubscribeEvents();
 	}
@@ -270,7 +272,7 @@ public class CraftingTutorialController : MonoBehaviour {
 	private void SetTutorialComplete (TutorialType tutorial) {
 
 		if (tutorial == TutorialType.Gathering) {
-			Utility.SetPlayerPrefIntAsBool(GlobalVars.ELEMENTS_DRAGGED_TUTORIAL_KEY, true);
+			Utility.SetPlayerPrefIntAsBool(GlobalVars.ENTER_GATHERING_TUTORIAL_KEY, true);
 		} else if (tutorial == TutorialType.Crafting) {
 			Utility.SetPlayerPrefIntAsBool(GlobalVars.CRAFTING_TUTORIAL_KEY, true);
 		} else if (tutorial == TutorialType.TierSwitch) {
