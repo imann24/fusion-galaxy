@@ -196,12 +196,7 @@ public class CraftingButtonController : MonoBehaviour {
 				}
 			}
 
-			if (CraftingTutorialController.GatheringTutorialActive) {
-				UIImageAnimation animation;
-				if (UIImageAnimation.TryGetByAnimation(GlobalVars.GATHERING_ZONE_DRAG_ANIMATION_KEY + index, out animation)) {
-					animation.Hide();
-				}
-			}
+			checkForGatheringTutorialAnimation(zone.myElementGameObject.name);
 
 		} else {
 			elementsInDropZones[index] = noElementString;
@@ -209,6 +204,21 @@ public class CraftingButtonController : MonoBehaviour {
 		//toggles the play button on and off
 		toggleGatheringPlayButton(readyToEnterGathering);
 		setGatheringPlanet(readyToEnterGathering);
+	}
+
+
+	void checkForGatheringTutorialAnimation (string elementName) {
+		if (CraftingTutorialController.GatheringTutorialActive) {
+			SpawnerControl elementController;
+			if (GlobalVars.CRAFTING_CONTROLLER.TryGetElementController(elementName, out elementController)) {
+				UIImageAnimation animation;
+				if (UIImageAnimation.TryGetByAnimation(GlobalVars.CRAFTING_ZONE_DRAG_ANIMATION_KEY + elementController.PanelIndex, out animation)) {
+					animation.Hide();
+					animation.GetComponentInParent<CraftingTutorialComponent>().HideComponent();
+				}
+				
+			}
+		}
 	}
 
 	public void enqueueElement (string element) {
