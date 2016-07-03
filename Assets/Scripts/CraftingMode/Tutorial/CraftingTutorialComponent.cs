@@ -40,6 +40,7 @@ public class CraftingTutorialComponent: TutorialComponent {
 	private bool onNoSortList;
 	private int mySortLayer;
 	private Canvas myCanvas;
+	bool hidden;
 
 	//for children
 	private MaskableGraphic[] MyTutorialComponents;
@@ -277,6 +278,10 @@ public class CraftingTutorialComponent: TutorialComponent {
 
 	//brings the component to the front of the sort order
 	public void ActivateComponent () {
+		if (hidden) {
+			return;
+		}
+
 		//checks if the tutorial component is an element panel
 		if (IsElementPanel()) {
 
@@ -320,6 +325,16 @@ public class CraftingTutorialComponent: TutorialComponent {
 		if (myCanvas != null) {
 			myCanvas.sortingOrder = mySortLayer;
 		}
+	}
+
+	public void HideComponent () {
+		DeactivateComponent();
+		hidden = true;
+	}
+
+	public void ShowComponent () {
+		ActivateComponent();
+		hidden = false;
 	}
 
 	public void SetText (string text) {

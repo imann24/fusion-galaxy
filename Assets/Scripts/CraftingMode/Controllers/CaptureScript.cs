@@ -219,6 +219,10 @@ public class CaptureScript : MonoBehaviour {
 
 	//locks the element into the drop zone
 	void OnTriggerEnter2D (Collider2D collided) {
+		if (hasCapturedElement && CraftingTutorialController.ElementDraggingTutorialActive) {
+			return;
+		}
+
 		//print ("Trigger");
 		if (mode == Mode.Deleting) {
 			if (GlobalVars.CRAFTING_ACTIVE) {
@@ -321,6 +325,10 @@ public class CaptureScript : MonoBehaviour {
 				UIImageAnimation animation;
 				if (UIImageAnimation.TryGetByAnimation(GlobalVars.CRAFTING_ZONE_DRAG_ANIMATION_KEY + elementController.PanelIndex, out animation)) {
 					animation.Hide();
+
+					List<CraftingTutorialComponent> components = new List<CraftingTutorialComponent>();
+					components.AddRange(animation.GetComponentsInParent<CraftingTutorialComponent>());
+					components.Find(x => x.TutorialType == TutorialType.Crafting).HideComponent();
 				}
 				
 			}

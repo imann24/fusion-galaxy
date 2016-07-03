@@ -68,6 +68,13 @@ public class CraftingTutorialController : MonoBehaviour {
 		}
 	}
 
+	public static bool ElementDraggingTutorialActive {
+		get {
+			return CraftingTutorialActive || GatheringTutorialActive;
+		}
+	}
+
+
 	void Awake () {
 		Instance = this;
 
