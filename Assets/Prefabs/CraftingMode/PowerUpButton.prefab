@@ -754,8 +754,8 @@ MonoBehaviour:
     m_MaxSize: 40
     m_Alignment: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: --
 --- !u!114 &11406672
@@ -895,8 +895,8 @@ MonoBehaviour:
     m_MaxSize: 40
     m_Alignment: 2
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: '---'
 --- !u!114 &11418930
@@ -1094,8 +1094,8 @@ MonoBehaviour:
     m_MaxSize: 40
     m_Alignment: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: --
 --- !u!114 &11441820
@@ -1146,8 +1146,8 @@ MonoBehaviour:
     m_MaxSize: 40
     m_Alignment: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: --
 --- !u!114 &11443482
@@ -1252,8 +1252,8 @@ MonoBehaviour:
     m_MaxSize: 40
     m_Alignment: 2
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: '---'
 --- !u!114 &11450876
@@ -1343,8 +1343,8 @@ MonoBehaviour:
     m_MaxSize: 40
     m_Alignment: 2
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: '---'
 --- !u!114 &11456126
@@ -1489,8 +1489,8 @@ MonoBehaviour:
     m_MaxSize: 40
     m_Alignment: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: --
 --- !u!114 &11467138
@@ -1604,8 +1604,8 @@ MonoBehaviour:
     m_MaxSize: 40
     m_Alignment: 2
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: '---'
 --- !u!114 &11477778
@@ -2335,8 +2335,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 400, y: -878.502319}
-  m_SizeDelta: {x: 800, y: 1757.00464}
+  m_AnchoredPosition: {x: 400, y: -1129.27539}
+  m_SizeDelta: {x: 800, y: 2258.55078}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22444804
 RectTransform:

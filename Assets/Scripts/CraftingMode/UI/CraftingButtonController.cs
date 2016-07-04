@@ -408,4 +408,8 @@ public class CraftingButtonController : MonoBehaviour {
 		Cheats.ResetToUnlockTierTutorial();
 		Application.LoadLevel((int)GlobalVars.Scenes.Crafting);
 	}
+
+	public void IncreaseAllElements (int i) {
+		Cheats.IncreaseAllElements(i);
+	}
 }
