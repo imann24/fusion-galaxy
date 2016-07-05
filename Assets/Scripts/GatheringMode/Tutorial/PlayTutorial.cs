@@ -58,19 +58,10 @@ public class PlayTutorial : MonoBehaviour {
 	//whether a tutorial is running during the gathering mode
 	public static bool TutorialActive;
 
-	void Awake () {
-
-	}
 	// Use this for initialization
 	void Start () {
 		hasPowerUpTutorialStarted = false;
 		hasPowerUpTutorialTapStarted = false;
-		// Allows us to test the tutorial as if we were new players.
-		//PlayerPrefs.SetInt (GlobalVars.GATHERING_TUTORIAL_WATCHED_SWIPE, 0);
-
-#if DEBUG
-		PlayerPrefs.SetInt (GlobalVars.GATHERING_TUTORIAL_WATCHED_POWER_UP, 0);
-#endif
 
 		//subscribes to the tutorialelementevent
 		SwipingMovement.OnTutorialElementMouseAction += TutorialElementEventHandler;

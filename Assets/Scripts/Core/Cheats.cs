@@ -94,23 +94,25 @@ public static class Cheats {
 	}
 
 	//resets whether player has watched the tutorials
-	public static void ResetTutorialsWatched () {
-		ToggleAllTutorialsWatched(false);
+	public static void ResetTutorialsWatched (bool ignoreGatheringTutorials = false) {
+		ToggleAllTutorialsWatched(false, ignoreGatheringTutorials);
 	}
 
-	public static void SetAllTutorialsAsWatched () {
-		ToggleAllTutorialsWatched(true);
+	public static void SetAllTutorialsAsWatched (bool ignoreGatheringTutorials = false) {
+		ToggleAllTutorialsWatched(true, ignoreGatheringTutorials);
 	}
 
-	public static void ToggleAllTutorialsWatched (bool tutorialWatched) {
+	public static void ToggleAllTutorialsWatched (bool tutorialWatched, bool ignoreGatheringTutorials = false) {
 		//bools for crafting
 		foreach (string tutorialKey in GlobalVars.AllCraftingModeTutorials) {
 			Utility.SetPlayerPrefIntAsBool(tutorialKey, tutorialWatched);
 		}
-		
-		//bools for gathering
-		Utility.SetPlayerPrefIntAsBool(GlobalVars.GATHERING_TUTORIAL_WATCHED_SWIPE, tutorialWatched);
-		Utility.SetPlayerPrefIntAsBool(GlobalVars.GATHERING_TUTORIAL_WATCHED_POWER_UP, tutorialWatched);
+
+		if (!ignoreGatheringTutorials) {
+			//bools for gathering
+			Utility.SetPlayerPrefIntAsBool(GlobalVars.GATHERING_TUTORIAL_WATCHED_SWIPE, tutorialWatched);
+			Utility.SetPlayerPrefIntAsBool(GlobalVars.GATHERING_TUTORIAL_WATCHED_POWER_UP, tutorialWatched);
+		}
 	}
 
 	public static void SetTutorialWatched (string tutorialName, bool hasBeenWatched = true) {
@@ -148,7 +150,8 @@ public static class Cheats {
 
 	public static void ResetToPurchaseUpgradeTutorial () {
 		ResetPowerUpUpgradePurchases();
-		SetAllTutorialsAsWatched();
+		bool ignoreGatheringTutorials = true;
+		SetAllTutorialsAsWatched(ignoreGatheringTutorials);
 		SetTutorialWatched(GlobalVars.UPGRADE_POWERUP_TUTORIAL_KEY, false);
 		UnlockTier(0);
 		UnlockTier(1);
