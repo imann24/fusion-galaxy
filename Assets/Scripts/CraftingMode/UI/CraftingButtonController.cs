@@ -328,12 +328,13 @@ public class CraftingButtonController : MonoBehaviour {
 	//cancels the cheat to be executed
 	public void cancelCheat () {
 		activeCheat = Cheat.None;
+		GlobalVars.CRAFTING_CONTROLLER.loadTier(0, true);
 	}
 
 	//deletes all the player's progress: reset button
 	public void deleteAllProgress () {
 		Cheats.LockAllElements();
-		GlobalVars.CRAFTING_CONTROLLER.loadTier(0, true);
+
 	}
 
 	public void unlockAllElements () {

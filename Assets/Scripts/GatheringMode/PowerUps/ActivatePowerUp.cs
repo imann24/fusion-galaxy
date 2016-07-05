@@ -1,5 +1,4 @@
-﻿#define DEBUG
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -286,14 +285,10 @@ public class ActivatePowerUp : MonoBehaviour {
 
 	// Calculates which powerups are unlocked and adds their indexes to a dictionary to determine the index 
 	public static void GenerateUnlockedPowerups () {
-		Debug.Log("trying to unlock powerups");
 		for (int i = 0; i < PowerUps.Length; i++) {
 			if (PowerUp.PowerUpUnlocked(PowerUps[i]) && !UnlockedPowerUps.Contains(PowerUps[i])) {
 				UnlockedPowerUps.Add(PowerUps[i]);
 				UnlockedPowerupIndex.Add(UnlockedPowerUps.Count-1, i);
-#if DEBUG
-				Debug.Log(PowerUps[i].name + " is unlocked");
-#endif
 			}
 		}
 	}
