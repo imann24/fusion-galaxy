@@ -701,9 +701,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_IgnoreLayout: 0
   m_MinWidth: -1
-  m_MinHeight: 200
+  m_MinHeight: 550
   m_PreferredWidth: 100
-  m_PreferredHeight: 200
+  m_PreferredHeight: 550
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
 --- !u!114 &11400918
@@ -793,16 +793,16 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 16
+    m_Font: {fileID: 12800000, guid: 43ab22496733047c78419b6906f7b863, type: 3}
+    m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 3
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: --
 --- !u!114 &11410736
@@ -1033,7 +1033,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: 43ab22496733047c78419b6906f7b863, type: 3}
-    m_FontSize: 14
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -1041,7 +1041,7 @@ MonoBehaviour:
     m_Alignment: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: To unlock this ability discover all level X elements.
 --- !u!114 &11441586
@@ -2207,7 +2207,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -157, y: -65}
+  m_AnchoredPosition: {x: 129.999985, y: -138}
   m_SizeDelta: {x: 160, y: 38}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22418084
@@ -2699,7 +2699,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 95.5999985, y: .249993205}
+  m_AnchoredPosition: {x: 88.8499756, y: .25}
   m_SizeDelta: {x: 177.699997, y: 37.5}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22478732
