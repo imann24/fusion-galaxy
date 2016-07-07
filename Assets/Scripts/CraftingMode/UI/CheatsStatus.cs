@@ -4,8 +4,11 @@ using System.Collections;
 public class CheatsStatus : MonoBehaviour {
     // Cheats title object
     public GameObject cheatsTitle;
-
-	public void Start()
+    void Start()
+    {
+        CheatCheck();
+    }
+	public void CheatCheck()
     {
         if (!GlobalVars.RELEASE_BUILD)
         {
