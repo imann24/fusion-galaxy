@@ -136,8 +136,25 @@ public class ZoneCollisionDetection : MonoBehaviour {
 			// Updates the displayed and stored score
 			generationScript.updateScore (collectionElement, pointsForElement);
 
-			// Destroys the element
-			Destroy(elementCollider.gameObject);
+            // Destroys the element
+            elementCollider.gameObject.SetActive(false);
+            if (this.gameObject.tag == "Zone1Collector")
+            {
+                generationScript.spawnPool1.Enqueue(elementCollider.gameObject);
+            }
+            else if (this.gameObject.tag == "Zone2Collector")
+            {
+                generationScript.spawnPool2.Enqueue(elementCollider.gameObject);
+            }
+            else if (this.gameObject.tag == "Zone3Collector")
+            {
+                generationScript.spawnPool3.Enqueue(elementCollider.gameObject);
+            }
+            else if (this.gameObject.tag == "Zone4Collector")
+            {
+                generationScript.spawnPool4.Enqueue(elementCollider.gameObject);
+            }
+            //Destroy(elementCollider.gameObject);
 
 			//calls event to play the sound and trigger any other actions that should happen on element collection
 			if (OnRightElement != null) {
@@ -161,11 +178,29 @@ public class ZoneCollisionDetection : MonoBehaviour {
 
 			// Start a coroutine ChangeMiddleLane.
 			StartCoroutine(ChangeMiddleLane());
-			// Destroy the elementCollider.gameObject.
-			Destroy(elementCollider.gameObject);
+            // Destroy the elementCollider.gameObject.
 
-			//returns if it's invincible
-			if (invunerable) {
+            elementCollider.gameObject.SetActive(false);
+            if (this.gameObject.tag == "Zone1Collector")
+            {
+                generationScript.spawnPool1.Enqueue(elementCollider.gameObject);
+            }
+            else if (this.gameObject.tag == "Zone2Collector")
+            {
+                generationScript.spawnPool2.Enqueue(elementCollider.gameObject);
+            }
+            else if (this.gameObject.tag == "Zone3Collector")
+            {
+                generationScript.spawnPool3.Enqueue(elementCollider.gameObject);
+            }
+            else if (this.gameObject.tag == "Zone4Collector")
+            {
+                generationScript.spawnPool4.Enqueue(elementCollider.gameObject);
+            }
+            //Destroy(elementCollider.gameObject);
+
+            //returns if it's invincible
+            if (invunerable) {
 				return;
 			}
 
@@ -198,8 +233,25 @@ public class ZoneCollisionDetection : MonoBehaviour {
 	// Gets the ON_SCREEN_ELEMENTS.
 	void destroyOnscreenUnits () {
 		foreach (GameObject go in ON_SCREEN_ELEMENTS) {
-			Destroy(go);
-		}
+            go.SetActive(false);
+            if (this.gameObject.tag == "Zone1Collector")
+            {
+                generationScript.spawnPool1.Enqueue(go);
+            }
+            else if (this.gameObject.tag == "Zone2Collector")
+            {
+                generationScript.spawnPool2.Enqueue(go);
+            }
+            else if (this.gameObject.tag == "Zone3Collector")
+            {
+                generationScript.spawnPool3.Enqueue(go);
+            }
+            else if (this.gameObject.tag == "Zone4Collector")
+            {
+                generationScript.spawnPool4.Enqueue(go);
+            }
+            //Destroy(go);
+        }
 		// Clear the array.
 		ON_SCREEN_ELEMENTS.Clear();
 	}

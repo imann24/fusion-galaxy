@@ -17,13 +17,13 @@ public class LanePositions : MonoBehaviour {
 
 		float quadrantWidth = (float)Screen.width/(float) GlobalVars.NUMBER_OF_LANES;
 			#if DEBUG
-		Debug.Log("The quadrant width is " + quadrantWidth);
+		//Debug.Log("The quadrant width is " + quadrantWidth);
 			#endif
 		float currentPosition = quadrantWidth/2f;
 		for (int i = 0; i < GlobalVars.NUMBER_OF_LANES; i++) {
 			screenQuadrants[i] = currentPosition;
 			#if DEBUG
-			Debug.Log("Current position is " + currentPosition);
+			//Debug.Log("Current position is " + currentPosition);
 			#endif
 			currentPosition += quadrantWidth;
 		}
@@ -32,7 +32,7 @@ public class LanePositions : MonoBehaviour {
 			screenPositions[i] = Camera.main.ScreenToWorldPoint(new Vector3(screenQuadrants[i], Screen.height, 0));
 			screenPositions[i] = new Vector3(screenPositions[i].x, yPosition, zPosition);
 			#if DEBUG
-				Debug.Log("Current vector 3 is " + screenPositions[i]);
+				//Debug.Log("Current vector 3 is " + screenPositions[i]);
 			#endif
 		}
 

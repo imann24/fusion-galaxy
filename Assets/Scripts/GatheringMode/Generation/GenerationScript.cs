@@ -59,10 +59,6 @@ public class GenerationScript : MonoBehaviour {
 	public GameObject collectionPot1, collectionPot2, collectionPot3, collectionPot4;
 	public GameObject[] elements = new GameObject[GlobalVars.NUMBER_OF_LANES+1];
 	// Has to change for randomized bucket positions
-	public Vector3 lane1Spawn;
-	public Vector3 lane2Spawn;
-	public Vector3 lane3Spawn;
-	public Vector3 lane4Spawn;
 	public Vector3[] lanes = new Vector3[GlobalVars.NUMBER_OF_LANES];
 	public GameObject elementText1;
 	public GameObject elementText2;
@@ -109,7 +105,13 @@ public class GenerationScript : MonoBehaviour {
 	Vector3[] powerUpTutorialPosition;
 	int [] elementNumbers;
 
-	void Awake () {
+    //SpawnPool for each of the elements
+    public Queue<GameObject> spawnPool1 = new Queue<GameObject>();
+    public Queue<GameObject> spawnPool2 = new Queue<GameObject>();
+    public Queue<GameObject> spawnPool3 = new Queue<GameObject>();
+    public Queue<GameObject> spawnPool4 = new Queue<GameObject>();
+
+    void Awake () {
 		#if UNITY_STANDALONE
 			//sets the camera aspect for standalone builds
 			Camera.main.aspect = 3.0f/4.0f;
@@ -133,6 +135,7 @@ public class GenerationScript : MonoBehaviour {
 		GlobalVars.InitializePowerUpSprites();
 	}
 	
+
 	// Use this for initialization
 	void Start () {
 		// ----- CHEATS ----- \\
@@ -341,11 +344,10 @@ public class GenerationScript : MonoBehaviour {
 			}
 			//lanesUsed.Clear();
 		}
-		if(randomSpawnedElement == randomSpawnedLane){
-			while(randomSpawnedElement == randomSpawnedLane){
-				randomSpawnedLane = Random.Range(0,GlobalVars.NUMBER_OF_LANES);
-			}
+		while(randomSpawnedElement == randomSpawnedLane){
+			randomSpawnedLane = Random.Range(0,GlobalVars.NUMBER_OF_LANES);
 		}
+
 		spawnedElements.Enqueue (randomSpawnedElement);
 		lanesUsed.Enqueue (randomSpawnedLane);
 
@@ -359,6 +361,63 @@ public class GenerationScript : MonoBehaviour {
 		}
 
 	}
+
+    private GameObject getNewElementFromSpawnPool(int randomElement)
+    {
+        GameObject newElement = null;
+
+        switch (randomElement)
+        {
+            case 0:
+                if(spawnPool1.Count == 0)
+                {
+                    newElement = (GameObject)Instantiate(elements[randomElement], lanes[randomSpawnedLane], Quaternion.identity);
+                }
+                else
+                {
+                    newElement = spawnPool1.Dequeue();
+                }
+                break;
+            case 1:
+                if (spawnPool2.Count == 0)
+                {
+                    newElement = (GameObject)Instantiate(elements[randomElement], lanes[randomSpawnedLane], Quaternion.identity);
+                }
+                else
+                {
+                    newElement = spawnPool2.Dequeue();
+                }
+                break;
+            case 2:
+                if (spawnPool3.Count == 0)
+                {
+                    newElement = (GameObject)Instantiate(elements[randomElement], lanes[randomSpawnedLane], Quaternion.identity);
+                }
+                else
+                {
+                    newElement = spawnPool3.Dequeue();
+                }
+                break;
+            case 3:
+                if (spawnPool4.Count == 0)
+                {
+                    newElement = (GameObject)Instantiate(elements[randomElement], lanes[randomSpawnedLane], Quaternion.identity);
+                }
+                else
+                {
+                    newElement = spawnPool4.Dequeue();
+                }
+                break;
+            default:
+                break;
+
+        }
+
+        newElement.SetActive(true);
+        newElement.transform.position = lanes[randomSpawnedLane];
+        return newElement;
+    }
+
 	// 2 random numbers have been generated to decide which element spawns and what lane it is spawned into.
 	
 	// Given the random element and location this method will Instantiate a prefab or that element into that lane.
@@ -386,10 +445,11 @@ public class GenerationScript : MonoBehaviour {
 			GlobalVars.SWIPE_TUTORIAL_FIRST_SPAWNED = true;
 		} else {
 #if DEBUG
-//		randomSpawnedElement = GlobalVars.NUMBER_OF_LANES;
-//		Debug.Log("setting the game to only spawn powerups");
+            //		randomSpawnedElement = GlobalVars.NUMBER_OF_LANES;
+            //		Debug.Log("setting the game to only spawn powerups");
 #endif
-			spawnedElement = (GameObject)Instantiate (elements [randomSpawnedElement], lanes [randomSpawnedLane], Quaternion.identity);
+            spawnedElement = getNewElementFromSpawnPool(randomSpawnedElement);
+			//spawnedElement = (GameObject)Instantiate (elements [randomSpawnedElement], lanes [randomSpawnedLane], Quaternion.identity);
 		}
 		// Catching the first element to spawn and stops spawning so we can show a tutorial.
 		if(!hasTutorialElementSpawned && PlayerPrefs.GetInt(GlobalVars.GATHERING_TUTORIAL_WATCHED_SWIPE) == 0){
@@ -629,7 +689,25 @@ public class GenerationScript : MonoBehaviour {
 				powerups.Add (element);
 				continue;
 			}
-			Destroy(element);
+            element.SetActive(false);
+            if (element.tag == "Zone1Collector")
+            {
+                spawnPool1.Enqueue(element);
+            }
+            else if (element.tag == "Zone2Collector")
+            {
+                spawnPool2.Enqueue(element);
+            }
+            else if (element.tag == "Zone3Collector")
+            {
+                spawnPool3.Enqueue(element);
+            }
+            else if (element.tag == "Zone4Collector")
+            {
+                spawnPool4.Enqueue(element);
+            }
+
+            //Destroy(element);
 		}
 
 		//updates the scores
@@ -662,8 +740,25 @@ public class GenerationScript : MonoBehaviour {
 			//removes from list of elements on screen
 			ZoneCollisionDetection.ON_SCREEN_ELEMENTS.Remove(element);
 
-			//destroys gameobject
-			Destroy(element);
+            //destroys gameobject
+            element.SetActive(false);
+            if (element.tag == "Zone1Collector")
+            {
+                spawnPool1.Enqueue(element);
+            }
+            else if (element.tag == "Zone2Collector")
+            {
+                spawnPool2.Enqueue(element);
+            }
+            else if (element.tag == "Zone3Collector")
+            {
+                spawnPool3.Enqueue(element);
+            }
+            else if (element.tag == "Zone4Collector")
+            {
+                spawnPool4.Enqueue(element);
+            }
+            //Destroy(element);
 		}
 
 		//updates the scores
