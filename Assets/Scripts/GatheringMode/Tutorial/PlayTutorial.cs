@@ -58,13 +58,18 @@ public class PlayTutorial : MonoBehaviour {
 	//whether a tutorial is running during the gathering mode
 	public static bool TutorialActive;
 
-	// Use this for initialization
-	void Start () {
+    // tutorial element - bluehand 
+    public GameObject blueHand;
+    private Vector3 blueHandStartPosition;
+    IEnumerator BlueHandMovementCo;
+    // Use this for initialization
+    void Start () {
 		hasPowerUpTutorialStarted = false;
 		hasPowerUpTutorialTapStarted = false;
 
-		//subscribes to the tutorialelementevent
-		SwipingMovement.OnTutorialElementMouseAction += TutorialElementEventHandler;
+        blueHandStartPosition = blueHand.transform.position;
+        //subscribes to the tutorialelementevent
+        SwipingMovement.OnTutorialElementMouseAction += TutorialElementEventHandler;
 	}
 
 	void OnDestroy () {
@@ -148,10 +153,12 @@ public class PlayTutorial : MonoBehaviour {
 	public void StartTutorial(GameObject element){
 		// Start counting - for mixpanel so we know how long people spend on our tutorials
 		StartTimer ();
-		// Begin making the arrows scale up and down.
-		StartFlashingCoroutine ();
-		// Setting the correct location of the ringAndArrow and blue hand.
-		SettingTutorialArrowsPositionAndScale (ringAndArrowForSwipeTutorial, element);
+        // Begin making the arrows scale up and down.
+        //StartFlashingCoroutine ();
+        // Start the dynamic animation
+        BlueHandAnimation(0);
+        // Setting the correct location of the ringAndArrow and blue hand.
+        SettingTutorialArrowsPositionAndScale (ringAndArrowForSwipeTutorial, element);
 	}
 	// It gives the tutorial element a name and sets the location of the ringAndArrow GameObject. It also stops the timer and spawning.
 
@@ -159,11 +166,57 @@ public class PlayTutorial : MonoBehaviour {
 	public void SpawnSecondElementSwipeTutorial(GameObject element){
 		// Move the flashing arrows to the new bucket destination.
 		this.gameObject.GetComponent<ChangeArrowScale> ().MoveSwipeTutorialArrows ();
-		// Begin making the arrows scale up and down.
-		StartFlashingCoroutine ();
-		// Setting the correct location of the ringAndArrow and blue hand.
-		SettingTutorialArrowsPositionAndScale (ringAndArrowForSwipeTutorial, element);
+        // Begin making the arrows scale up and down.
+        //StartFlashingCoroutine ();
+        // Start the dynamic animation
+        BlueHandAnimation(1);
+        // Setting the correct location of the ringAndArrow and blue hand.
+        SettingTutorialArrowsPositionAndScale (ringAndArrowForSwipeTutorial, element);
 	}
+    // A function to play the animation of the blue hand showing the player where to move the tutorial element.
+    public void BlueHandAnimation(float tutorialNum)
+    {
+        blueHand.SetActive(true);
+        if (tutorialNum == 0)
+        {
+            BlueHandMovementCo = BlueHandMovement(blueHand, blueHand.transform.position, new Vector3(blueHand.transform.position.x + LanePositions.GetDistanceBetweenLanes(0), 0, blueHand.transform.position.z));
+            StartCoroutine(BlueHandMovementCo);
+        }
+        else if (tutorialNum == 1)
+        {
+            BlueHandMovementCo = BlueHandMovement(blueHand, blueHand.transform.position, new Vector3(blueHand.transform.position.x + (LanePositions.GetDistanceBetweenLanes(0) * 2.5f), 0, blueHand.transform.position.z));
+            StartCoroutine(BlueHandMovementCo);
+        }
+    }
+    private IEnumerator BlueHandMovement(GameObject blueHand, Vector3 startLocation, Vector3 endLocation)
+    {
+        float smoothSpeed = 0.6f;
+        while (true)
+        {
+            if (blueHand.transform.position.x >= endLocation.x - 0.15f)
+            {
+                blueHand.transform.position = new Vector2(blueHandStartPosition.x, blueHand.transform.position.y);
+            }
+            blueHand.transform.position = Vector3.Lerp(blueHand.transform.position, new Vector2(endLocation.x, blueHand.transform.position.y), smoothSpeed * Time.fixedDeltaTime);
+            yield return null;
+        }
+    }
+    // A function that stops the blue hand tutorial animation playing.
+    public void StopBlueHandAnimation()
+    {
+        StopCoroutine(BlueHandMovementCo);
+    }
+    // A function to disable or enable the blue hand game object.
+    public void EnableDisableBlueHand()
+    {
+        if (blueHand.gameObject.activeSelf)
+        {
+            blueHand.gameObject.SetActive(false);
+        }else
+        {
+            blueHand.gameObject.SetActive(true);
+        }
+    }
 	// A function that takes in the tutorialArrow and a game object.
 	private void SettingTutorialArrowsPositionAndScale(GameObject tutorialArrowElement, GameObject element){
 		// Making the tutorial a child so we can set it's position
@@ -190,8 +243,9 @@ public class PlayTutorial : MonoBehaviour {
 
 	// A function to reset tutorial items to be used again.
 	public void MovedFirstElementOver(){
-		// Turn off the tutorial mask.
-		tutorialPanel.SetActive(false);
+        StopBlueHandAnimation();
+        // Turn off the tutorial mask.
+        tutorialPanel.SetActive(false);
 		ringAndArrowForSwipeTutorial.SetActive(false);
 		// Allow the tutorial element to start falling
 		tutorialElement.GetComponent<MoveElementDown> ().isAllowedToMove = true;
@@ -306,7 +360,7 @@ public class PlayTutorial : MonoBehaviour {
 		if (mouseIsDown) {
 			StopFlashingCoroutine();
 		} else {
-			StartFlashingCoroutine ();
+			//StartFlashingCoroutine ();
 		}
 	}
 
