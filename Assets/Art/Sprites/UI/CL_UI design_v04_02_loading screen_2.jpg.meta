@@ -49,11 +49,11 @@ TextureImporter:
   buildTargetSettings:
   - buildTarget: Android
     maxTextureSize: 2048
-    textureFormat: 13
-    compressionQuality: 0
+    textureFormat: 34
+    compressionQuality: 50
   spriteSheet:
     sprites: []
-  spritePackingTag: 
+  spritePackingTag: start_ui
   userData: 
   assetBundleName: 
   assetBundleVariant: 
