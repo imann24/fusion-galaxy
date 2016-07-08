@@ -109,7 +109,9 @@ public class SwipingMovement : MonoBehaviour {
 
 	//selects the element on user tap.
 	void OnMouseDown(){
-		if(this.gameObject.name == GlobalVars.SWIPE_TUTORIAL_SECOND_ELEMENT_NAME && secondSwipeTutorialElementMoved){
+        controller.GetComponent<PlayTutorial>().EnableDisableBlueHand();
+
+        if (this.gameObject.name == GlobalVars.SWIPE_TUTORIAL_SECOND_ELEMENT_NAME && secondSwipeTutorialElementMoved){
 #if DEBUG
 			Debug.Log("Exiting the function here because this is the second tutorial element");
 #endif
@@ -202,8 +204,8 @@ public class SwipingMovement : MonoBehaviour {
 			// Set the position of the element back to the location from which it was dragged.
 			transform.position = new Vector3(-5.2f, 6.5f, 0);
 			isCorrectMove = false;
-
-			if (OnTutorialElementMouseAction != null) {
+            controller.GetComponent<PlayTutorial>().EnableDisableBlueHand();
+            if (OnTutorialElementMouseAction != null) {
 				OnTutorialElementMouseAction(false);
 			}
 			return;
