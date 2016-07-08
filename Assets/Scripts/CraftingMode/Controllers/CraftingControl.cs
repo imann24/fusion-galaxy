@@ -154,6 +154,12 @@ public class CraftingControl : MonoBehaviour {
 			if (OnElementCreated != null && validInventoryAmounts()) {
 				OnElementCreated(resultElement, parentElement1, parentElement2, isNew);
                 UnlockElement();
+				SpawnerControl elementController;
+				if (GlobalVars.CRAFTING_CONTROLLER.TryGetElementController(
+					resultElement, out elementController)) {
+					EventController.Event(EventController.ParticleSparklesFallEvent,
+					                      elementController.transform.position);
+				}
 			}
 
 			//lowers the flag to craft if the player has run out of either element

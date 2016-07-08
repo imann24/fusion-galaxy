@@ -168,17 +168,16 @@ public class CaptureScript : MonoBehaviour {
 
 	//forces element to delete even if it doesn't have a captured element
 	public void OnMouseDown () {
-		//destroys the element if clicked on
-		if (hasCapturedElement && !CraftingTutorialController.GatheringTutorialActive && !CraftingTutorialController.CraftingTutorialActive) {
-			//calls the event
-			if (OnElementCleared != null && mode != Mode.Compiler) {
-				OnElementCleared();
-			}
-
-			//hides the element
-			myElement.sprite = defaultIcon;
-			myElement.enabled = false;
-			if (mode != Mode.Compiler) {
+		if (mode == Mode.Compiler) {
+			GlobalVars.CRAFTER.OnMouseDown();
+		} else {
+			//destroys the element if clicked on
+			if (hasCapturedElement && !CraftingTutorialController.GatheringTutorialActive && !CraftingTutorialController.CraftingTutorialActive) {
+				//calls the event
+				if (OnElementCleared != null) {
+					OnElementCleared();
+				}
+		
 				myImage.sprite = emptyIconSprite;
 
 				//gets the name for player prefs
@@ -186,34 +185,39 @@ public class CaptureScript : MonoBehaviour {
 			
 				//resets the name
 				myElementGameObject.name = "NoElement";
-			} 
 
-			hasCapturedElement = false;
+				hasCapturedElement = false;
+				
+				//hides the element
+				myElement.sprite = defaultIcon;
+				myElement.enabled = false;
 
-			if (mode == Mode.Crafting) {
-				crafter.setZoneAsEmpty (zoneNumber);
 
-				//resets the fill bar for the element
-				elementAmountBar.fillAmount = 0;
-				bioCombatBar.fillAmount = 0;
-				elementClassBar.fillAmount = 0;
-				resetText();
-			} else if (mode == Mode.Gathering) {
-				gatheringControl.toggleZoneReadyGathering(this);
-				zoneReadyIndicator.enabled = false;
+				if (mode == Mode.Crafting) {
+					crafter.setZoneAsEmpty (zoneNumber);
 
-				//calls the event
-				callGatheringZoneToggledEvent(false);
+					//resets the fill bar for the element
+					elementAmountBar.fillAmount = 0;
+					bioCombatBar.fillAmount = 0;
+					elementClassBar.fillAmount = 0;
+					resetText();
+				} else if (mode == Mode.Gathering) {
+					gatheringControl.toggleZoneReadyGathering(this);
+					zoneReadyIndicator.enabled = false;
 
-				//disables the element name and element combo text
-				SetElementTextAndStatus(elementName, elementName.text, false);
+					//calls the event
+					callGatheringZoneToggledEvent(false);
 
-				//clears the zone
-				SetElementTextAndStatus(zoneReadyText, "", true);
+					//disables the element name and element combo text
+					SetElementTextAndStatus(elementName, elementName.text, false);
 
-				//sets the bool to determine whether there are elements in all four zones
-				allElementsInZones = false;
-			} 
+					//clears the zone
+					SetElementTextAndStatus(zoneReadyText, "", true);
+
+					//sets the bool to determine whether there are elements in all four zones
+					allElementsInZones = false;
+				} 
+			}
 		}
 	}
 
