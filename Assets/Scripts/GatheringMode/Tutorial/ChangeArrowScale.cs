@@ -36,8 +36,10 @@ public class ChangeArrowScale : MonoBehaviour {
 	}
 	// A function to stop the flashingCoroutine coroutine.
 	public void StopArrowFlashing(){
-		isArrowFlashing = false;
-		StopCoroutine (flashingCoroutine);
+		if (flashingCoroutine != null) {
+			isArrowFlashing = false;
+			StopCoroutine (flashingCoroutine);
+		}
 	}
 	// Enabling the arrows.
 	public void EnableFlashingArrows(){
