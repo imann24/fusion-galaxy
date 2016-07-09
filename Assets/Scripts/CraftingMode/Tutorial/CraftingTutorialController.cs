@@ -33,11 +33,6 @@ public class CraftingTutorialController : MonoBehaviour {
 	public static event TutorialCompleted OnBuyHintTutorialComplete;
 	public static event TutorialCompleted OnBuyPowerUpUpgradeTutorialComplete;
 	public static event TutorialCompleted OnTierSwitchingTutorialComplete;
-	
-	public int ChildrenBeforeSlides = 1;
-	public int SlideIndex;
-	public int firstGatheringSlide;
-	public int launchMissionSlide;
 
 	private bool tutorialHasEnded;
 

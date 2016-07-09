@@ -420,9 +420,7 @@ using System.Collections.Generic;
 				CallTierSwitchTutorial();
 			}	
 		} else {
-#if DEBUG
 			Debug.LogError("Tbe event is null");
-#endif
 		}
 	}
 
