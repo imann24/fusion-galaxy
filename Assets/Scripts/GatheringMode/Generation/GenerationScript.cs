@@ -418,6 +418,33 @@ public class GenerationScript : MonoBehaviour {
         return newElement;
     }
 
+    public void destroyElement(GameObject element)
+    {
+        element.SetActive(false);
+        if (this.gameObject.tag == "Zone1Collector")
+        {
+            spawnPool1.Enqueue(element);
+        }
+        else if (this.gameObject.tag == "Zone2Collector")
+        {
+            spawnPool2.Enqueue(element);
+        }
+        else if (this.gameObject.tag == "Zone3Collector")
+        {
+            spawnPool3.Enqueue(element);
+        }
+        else if (this.gameObject.tag == "Zone4Collector")
+        {
+            spawnPool4.Enqueue(element);
+        }
+
+        EndGatheringOnDestroy enddestroy = element.GetComponent<EndGatheringOnDestroy>();
+        if (enddestroy != null)
+        {
+            enddestroy.OnDestroy();
+        }
+    }
+
 	// 2 random numbers have been generated to decide which element spawns and what lane it is spawned into.
 	
 	// Given the random element and location this method will Instantiate a prefab or that element into that lane.
@@ -689,23 +716,7 @@ public class GenerationScript : MonoBehaviour {
 				powerups.Add (element);
 				continue;
 			}
-            element.SetActive(false);
-            if (element.tag == "Zone1Collector")
-            {
-                spawnPool1.Enqueue(element);
-            }
-            else if (element.tag == "Zone2Collector")
-            {
-                spawnPool2.Enqueue(element);
-            }
-            else if (element.tag == "Zone3Collector")
-            {
-                spawnPool3.Enqueue(element);
-            }
-            else if (element.tag == "Zone4Collector")
-            {
-                spawnPool4.Enqueue(element);
-            }
+            destroyElement(element);
 
             //Destroy(element);
 		}
@@ -741,25 +752,9 @@ public class GenerationScript : MonoBehaviour {
 			ZoneCollisionDetection.ON_SCREEN_ELEMENTS.Remove(element);
 
             //destroys gameobject
-            element.SetActive(false);
-            if (element.tag == "Zone1Collector")
-            {
-                spawnPool1.Enqueue(element);
-            }
-            else if (element.tag == "Zone2Collector")
-            {
-                spawnPool2.Enqueue(element);
-            }
-            else if (element.tag == "Zone3Collector")
-            {
-                spawnPool3.Enqueue(element);
-            }
-            else if (element.tag == "Zone4Collector")
-            {
-                spawnPool4.Enqueue(element);
-            }
+            destroyElement(element);
             //Destroy(element);
-		}
+        }
 
 		//updates the scores
 		for (int i = 0; i < GlobalVars.SCORES.Length; i++) {
