@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: ff7d107fa32164b73842f5f003c33144
-timeCreated: 1467954743
+guid: 0de9e183e51794bde82e0443af6c8be6
+timeCreated: 1468049303
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName: {}
@@ -49,7 +49,7 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites: []
-  spritePackingTag: powerups
+  spritePackingTag: 
   userData: 
   assetBundleName: 
   assetBundleVariant: 

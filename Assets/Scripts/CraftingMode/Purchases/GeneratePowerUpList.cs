@@ -225,7 +225,9 @@ public class GeneratePowerUpList : MonoBehaviour {
 
 				newPower.transform.FindChild ("UpgradeBars").GetComponent<Image>().sprite = upgradeBarImages[myPowerLevel];
 				newPower.transform.FindChild ("PowerUpIcon").GetComponent<Image>().sprite = upgradeCardImages[myPowerLevel];
-				newPower.transform.FindChild ("PowerUpIcon/SpecificIcon").GetComponent<Image>().sprite = GlobalVars.POWERUP_SPRITES[power];
+
+				newPower.transform.FindChild ("PowerUpIcon/SpecificIcon").GetComponent<Image>().sprite = currentPower.GetSprite();
+				// newPower.transform.FindChild ("PowerUpIcon/SpecificIcon").GetComponent<Image>().sprite = GlobalVars.POWERUP_SPRITES[power];
 
 				if (myPowerLevel==PowerUp.MAX_LEVEL){
 					newPower.transform.FindChild ("UpgradeBars/Upgrade/Text").GetComponent<Text>().text = "MAX";

@@ -9,6 +9,11 @@ using System;
 using UnityEngine;
 public class GlobalVars {
 
+	// Static constructor
+	static GlobalVars () {
+		InitPowerUpSprites();
+	}
+
 	#region NEURO*MOTION
 	/// <summary>
 	/// IMPORTANT: should be set true if making a build for Neuro*motion. 
@@ -157,16 +162,25 @@ public class GlobalVars {
 
 	// The names of the powerup sprites to load them in
 	public static string [] POWERUP_SPRITE_FILENAMES = {"laneconversion", "time slow", "add time", "multiplier2", "bucket shield", "tap to collect", "invincible",  "totalconversion", "collectall"};   
-
+	
 	// Stores the powerup sprites
 	public static Sprite [] POWERUP_SPRITES = new Sprite[POWERUP_SPRITE_FILENAMES.Length];
 
 	// A dictionary to determine which powerup is at which index
 	public static Dictionary<string, int> POWERUP_INDEXES;
-
+	
 	// Used to count the number of powerups during a single 
 	public static void INCREASE_POWER_UP_USE_COUNT (string powerUpName, int powerUpLevel) {
 		POWERUP_USE_COUNT++;
+	}
+
+	public static Dictionary<string, Sprite> POWERUP_SPRITES_BY_NAME;
+	public static void InitPowerUpSprites () {
+		POWERUP_SPRITES_BY_NAME = new Dictionary<string, Sprite>();
+		Sprite[] sprites = Resources.LoadAll<Sprite>(POWERUP_FILE_PATH);
+		foreach (Sprite powerup in sprites) {
+			POWERUP_SPRITES_BY_NAME.Add(powerup.name, powerup);
+		}
 	}
 
 	#endregion
