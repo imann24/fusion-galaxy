@@ -82,6 +82,8 @@ public class CaptureScript : MonoBehaviour {
 	
 	// Use this for initialization
 	void Start () {
+		subscribe();
+
 		// Establishes the references to the components that are children
 		for (int i = 0; i < GetComponentsInChildren<Text>().Length; i++) {
 			Text currentText = GetComponentsInChildren<Text>()[i];
@@ -159,16 +161,12 @@ public class CaptureScript : MonoBehaviour {
 	}
 
 	void OnDestroy () {
-		CraftingControl.OnElementCreated -= updateInventoryBarFill;
-
-		//unsubscribes from event to set the zone ready text
-		CraftingButtonController.OnReadyToEnterGathering -= setReadyToEnterText;
-		CraftingButtonController.OnNotReadyToEnterGathering -= setNotReadyToEnterText;
+		unsubscribe();
 	}
 
 	//forces element to delete even if it doesn't have a captured element
 	public void OnMouseDown () {
-		if (mode == Mode.Compiler) {
+		if (mode == Mode.Compiler && hasCapturedElement) {
 			GlobalVars.CRAFTER.OnMouseDown();
 		} else {
 			//destroys the element if clicked on
@@ -223,8 +221,12 @@ public class CaptureScript : MonoBehaviour {
 
 	//locks the element into the drop zone
 	void OnTriggerEnter2D (Collider2D collided) {
-		if (hasCapturedElement && CraftingTutorialController.ElementDraggingTutorialActive) {
-			return;
+		if (CraftingTutorialController.ElementDraggingTutorialActive) {
+			if (hasCapturedElement) {
+				return;
+			} else {
+				GetComponentInChildren<DragMe>().enabled = false;
+			}
 		}
 
 		//print ("Trigger");
@@ -451,6 +453,28 @@ public class CaptureScript : MonoBehaviour {
 		//sends the event to toggle off an ready indicator
 		if (OnToggleGatheringZone != null) {
 			OnToggleGatheringZone(transform.GetSiblingIndex(), active);
+		}
+	}
+
+	void subscribe () {
+		CraftingTutorialController.OnCraftingModeTutorialComplete += handleDragElementsTutorialEnded;
+		CraftingTutorialController.OnElementsDraggedIntoGatheringTutorialComplete += handleDragElementsTutorialEnded;
+	}
+
+	void unsubscribe () {
+		CraftingTutorialController.OnCraftingModeTutorialComplete -= handleDragElementsTutorialEnded;
+		CraftingTutorialController.OnElementsDraggedIntoGatheringTutorialComplete -= handleDragElementsTutorialEnded;
+		CraftingControl.OnElementCreated -= updateInventoryBarFill;
+		
+		//unsubscribes from event to set the zone ready text
+		CraftingButtonController.OnReadyToEnterGathering -= setReadyToEnterText;
+		CraftingButtonController.OnNotReadyToEnterGathering -= setNotReadyToEnterText;
+	}
+
+	void handleDragElementsTutorialEnded (float tutorialTime) {
+		DragMe draggableChild = GetComponentInChildren<DragMe>();
+		if (draggableChild != null) {
+			draggableChild.enabled = true;
 		}
 	}
 

@@ -115,16 +115,20 @@ public class CraftingTutorialController : MonoBehaviour {
 
 	public void AdvanceTutorial () {
 		CraftingTutorialComponent pointerToCurrent = GetCurrentComponent();
-		ToggleComponents(pointerToCurrent.GetCurrent(), false);
-		ModifyCurrentTutorialStep(1);
-		ToggleComponents(pointerToCurrent.GetNext(), true);
+		if (pointerToCurrent != null) {
+			ToggleComponents(pointerToCurrent.GetCurrent(), false);
+			ModifyCurrentTutorialStep(1);
+			ToggleComponents(pointerToCurrent.GetNext(), true);
+		}
 	}
 
 	public void StepTutorialBackward () {
 		CraftingTutorialComponent pointerToCurrent = GetCurrentComponent();
-		ToggleComponents(pointerToCurrent.GetCurrent(), false);
-		ModifyCurrentTutorialStep(-1);
-		ToggleComponents(pointerToCurrent.GetPrevious(), true);
+		if (pointerToCurrent != null) {
+			ToggleComponents(pointerToCurrent.GetCurrent(), false);
+			ModifyCurrentTutorialStep(-1);
+			ToggleComponents(pointerToCurrent.GetPrevious(), true);
+		}
 	}
 
 	int GetCurrentTutorialStep () {
@@ -390,6 +394,7 @@ public class CraftingTutorialController : MonoBehaviour {
 
 	private static void ToggleMask (bool active) {
 		Mask.enabled = active;
+		MaskCanvasGroup.alpha = active ? 1.0f : 0.0f;
 	}
 
 	private static void ToggleEndTutorialOnTap (bool active) {

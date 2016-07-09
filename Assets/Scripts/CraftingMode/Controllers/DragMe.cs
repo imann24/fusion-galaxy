@@ -136,10 +136,7 @@ public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 		if (isDropZone) {
 			//clears the element
 			zoneController.OnMouseDown();
-		} else if (isCompiler) {
-			//crafts the element
-			GlobalVars.CRAFTER.OnMouseDown();
-		} 
+		}
 	}
 
 	//empty method, if this interface is not present then clicks are not recognized at all
