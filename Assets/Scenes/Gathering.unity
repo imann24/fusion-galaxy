@@ -11594,35 +11594,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 406470, guid: 925e6f909f006c1418277a9bf1ca5037, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
-    - target: {fileID: 11489268, guid: 925e6f909f006c1418277a9bf1ca5037, type: 2}
-      propertyPath: powerUpTextAnimator
-      value: 
-      objectReference: {fileID: 1491637830}
-    - target: {fileID: 11489268, guid: 925e6f909f006c1418277a9bf1ca5037, type: 2}
-      propertyPath: laneAnimators.Array.data[0]
-      value: 
-      objectReference: {fileID: 1370619397}
-    - target: {fileID: 11489268, guid: 925e6f909f006c1418277a9bf1ca5037, type: 2}
-      propertyPath: laneAnimators.Array.data[1]
-      value: 
-      objectReference: {fileID: 140615389}
-    - target: {fileID: 11489268, guid: 925e6f909f006c1418277a9bf1ca5037, type: 2}
-      propertyPath: laneAnimators.Array.data[2]
-      value: 
-      objectReference: {fileID: 1289526081}
-    - target: {fileID: 11489268, guid: 925e6f909f006c1418277a9bf1ca5037, type: 2}
-      propertyPath: laneAnimators.Array.data[3]
-      value: 
-      objectReference: {fileID: 911545961}
-    - target: {fileID: 11489268, guid: 925e6f909f006c1418277a9bf1ca5037, type: 2}
-      propertyPath: collectionAnimator
-      value: 
-      objectReference: {fileID: 1155093962}
-    - target: {fileID: 193736, guid: 925e6f909f006c1418277a9bf1ca5037, type: 2}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 462362, guid: 925e6f909f006c1418277a9bf1ca5037, type: 2}
+      propertyPath: m_LocalScale.x
+      value: .25
+      objectReference: {fileID: 0}
+    - target: {fileID: 462362, guid: 925e6f909f006c1418277a9bf1ca5037, type: 2}
+      propertyPath: m_LocalScale.y
+      value: .25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 925e6f909f006c1418277a9bf1ca5037, type: 2}

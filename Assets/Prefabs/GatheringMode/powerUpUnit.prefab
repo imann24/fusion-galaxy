@@ -26,7 +26,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 462362}
   - 212: {fileID: 21283590}
-  - 95: {fileID: 9517856}
   - 96: {fileID: 9690882}
   m_Layer: 0
   m_Name: power-pic
@@ -252,23 +251,6 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
---- !u!95 &9517856
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 145392}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 07e1f1751fe98477e9ce29b45c733dee, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
 --- !u!95 &9581100
 Animator:
   serializedVersion: 3
@@ -377,17 +359,6 @@ MonoBehaviour:
   powerupLifeTime: 10
   powerupTappedTime: .400000006
   mySprite: {fileID: 21283590}
-  addTimeColor: {r: 0, g: 0, b: 0, a: 0}
-  invincibleColor: {r: 0, g: 0, b: 0, a: 0}
-  elementMultiplyColor: {r: 0, g: 0, b: 0, a: 0}
-  slowFallColor: {r: 0, g: 0, b: 0, a: 0}
-  totalMultiplierColor: {r: 0, g: 0, b: 0, a: 0}
-  invincibleConversionColor: {r: 0, g: 0, b: 0, a: 0}
-  laneConversionColor: {r: 0, g: 0, b: 0, a: 0}
-  totalConversionColor: {r: 0, g: 0, b: 0, a: 0}
-  totalLaneConversionColor: {r: 0, g: 0, b: 0, a: 0}
-  collectAllColor: {r: 0, g: 0, b: 0, a: 0}
-  bucketShieldColor: {r: .282352954, g: .721568644, b: .788235307, a: 1}
   powerUpTextAnimator: {fileID: 0}
   laneAnimators:
   - {fileID: 0}
