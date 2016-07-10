@@ -204,6 +204,7 @@ public class GeneratePowerUpList : MonoBehaviour {
 			GameObject newPower = Instantiate(powerUpButton)as GameObject;
 			newPower.transform.SetParent(contentList.transform);
 			newPower.transform.localScale = buttonScale;
+			newPower.transform.position += Vector3.forward * 100;
 			currentPower = PowerUps[power];
 			Debug.Log(currentPower.name);
 

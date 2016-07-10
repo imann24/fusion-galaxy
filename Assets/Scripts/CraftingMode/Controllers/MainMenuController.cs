@@ -33,7 +33,6 @@ using System.Collections.Generic;
 	//public reference to the current element and panel
 	public string activeElement;
 	public Vector3 activePosition;
-	private Vector3 activePositionOffset = new Vector3 (-29, 73, 0);//offset due to art asset positioning for hint panel
 
 	//the overall percent unlocked 
 	public Text numberUnlocked;
@@ -123,14 +122,7 @@ using System.Collections.Generic;
 		//flag so the sprites are not read again while the game is open
 		GlobalVars.SPRITES_LOADED = true;
 
-		//adds the discovery event to the unlock new elment function
-		CraftingControl.OnElementDiscovered += unlockNewElement;
-
-		//event reference for the outro sequence for unlocking life
-		Element.OnLifeUnlocked += playUnlockLifeVideo;
-
-		//subscribes to the event to switch tiers
-		TierButtonDisplay.OnLoadTier += loadTier;
+		Subscribe();
 
 		//runs any tutorials that are callable
 		CheckForTutorialEvents();
@@ -138,9 +130,27 @@ using System.Collections.Generic;
 
 	//unsubscribes the events when the object is destroyed
 	void OnDestroy () {
+		Unsubscribe();
+	}
+
+	void Subscribe () {
+		//adds the discovery event to the unlock new elment function
+		CraftingControl.OnElementDiscovered += unlockNewElement;
+		//event reference for the outro sequence for unlocking life
+		Element.OnLifeUnlocked += playUnlockLifeVideo;
+		//subscribes to the event to switch tiers
+		TierButtonDisplay.OnLoadTier += loadTier;
+		// Disables element raycasters on tutorial start
+		CraftingTutorialController.OnCraftingModeTutorialComplete += HandleElementDraggingTutorialComplete;
+		CraftingTutorialController.OnElementsDraggedIntoGatheringTutorialComplete += HandleElementDraggingTutorialComplete;
+	}
+
+	void Unsubscribe () {
 		CraftingControl.OnElementDiscovered -= unlockNewElement;
 		Element.OnLifeUnlocked -= playUnlockLifeVideo;
 		TierButtonDisplay.OnLoadTier -= loadTier;
+		CraftingTutorialController.OnCraftingModeTutorialComplete -= HandleElementDraggingTutorialComplete;
+		CraftingTutorialController.OnElementsDraggedIntoGatheringTutorialComplete -= HandleElementDraggingTutorialComplete;
 	}
 
 	public bool TryGetElementController (string elementName, out SpawnerControl controller) {
@@ -361,7 +371,7 @@ using System.Collections.Generic;
 			hintPanel.transform.FindChild("NotYetPurchased/PurchaseCost/myAmount"+i.ToString()).GetComponent<Text>().text = PlayerPrefs.GetInt (hintPanel.GetComponent<PurchaseHint> ().getCostElemType(i)).ToString();
 		}
 		hintPanel.transform.FindChild ("AlreadyPurchased/Name").GetComponent<Text> ().text = activeElement;
-		hintPanel.transform.position = activePosition+activePositionOffset;
+		hintPanel.transform.position = activePosition;
 	}
 
 
@@ -374,6 +384,20 @@ using System.Collections.Generic;
 	
 	public bool ReadyToGather () {
 		return buttonControl.PollGatheringDropZones() == GlobalVars.NUMBER_OF_LANES;
+	}
+
+	void HandleElementDraggingTutorialBegan () {
+		ToggleRaycastingOnElementSpawners(false);
+	}
+
+	void HandleElementDraggingTutorialComplete (float time) {
+		ToggleRaycastingOnElementSpawners(true);
+	}
+
+	public void ToggleRaycastingOnElementSpawners (bool isActive) {
+		foreach (SpawnerControl spawner in elementPanelControllers) {
+			spawner.ToggleRaycaster(isActive);
+		}
 	}
 	
 #region TUTORIAL
@@ -420,9 +444,7 @@ using System.Collections.Generic;
 				CallTierSwitchTutorial();
 			}	
 		} else {
-#if DEBUG
 			Debug.LogError("Tbe event is null");
-#endif
 		}
 	}
 
