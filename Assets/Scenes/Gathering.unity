@@ -4794,6 +4794,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 737484940}
+--- !u!95 &740678584 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 9598264, guid: a2d5f82c3a496e04d8250b17dcd55988,
+    type: 2}
+  m_PrefabInternal: {fileID: 1374470701}
 --- !u!1 &742373980
 GameObject:
   m_ObjectHideFlags: 0
@@ -5653,6 +5658,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 911767546}
+--- !u!95 &941107473 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 9576882, guid: f289c1b698f7b40408ae6a693e0e9885,
+    type: 2}
+  m_PrefabInternal: {fileID: 496105777}
 --- !u!1 &950691043
 GameObject:
   m_ObjectHideFlags: 0
@@ -6266,6 +6276,11 @@ SpriteRenderer:
 GameObject:
   m_PrefabParentObject: {fileID: 161918, guid: 552fd7aafdf05e14bbab41ea4e994ff4, type: 2}
   m_PrefabInternal: {fileID: 1493487431}
+--- !u!95 &1019386195 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 9570694, guid: 552fd7aafdf05e14bbab41ea4e994ff4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1493487431}
 --- !u!1 &1039178142
 GameObject:
   m_ObjectHideFlags: 0
@@ -6345,6 +6360,11 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1039178142}
+--- !u!95 &1039620782 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 9504392, guid: e6ba072282fcf764da6709873ad2ab70,
+    type: 2}
+  m_PrefabInternal: {fileID: 2125623280}
 --- !u!1 &1043926397
 GameObject:
   m_ObjectHideFlags: 0
@@ -11594,7 +11614,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 406470, guid: 925e6f909f006c1418277a9bf1ca5037, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 11489268, guid: 925e6f909f006c1418277a9bf1ca5037, type: 2}
       propertyPath: powerUpTextAnimator
@@ -11603,27 +11623,23 @@ Prefab:
     - target: {fileID: 11489268, guid: 925e6f909f006c1418277a9bf1ca5037, type: 2}
       propertyPath: laneAnimators.Array.data[0]
       value: 
-      objectReference: {fileID: 1370619397}
+      objectReference: {fileID: 740678584}
     - target: {fileID: 11489268, guid: 925e6f909f006c1418277a9bf1ca5037, type: 2}
       propertyPath: laneAnimators.Array.data[1]
       value: 
-      objectReference: {fileID: 140615389}
+      objectReference: {fileID: 941107473}
     - target: {fileID: 11489268, guid: 925e6f909f006c1418277a9bf1ca5037, type: 2}
       propertyPath: laneAnimators.Array.data[2]
       value: 
-      objectReference: {fileID: 1289526081}
+      objectReference: {fileID: 1019386195}
     - target: {fileID: 11489268, guid: 925e6f909f006c1418277a9bf1ca5037, type: 2}
       propertyPath: laneAnimators.Array.data[3]
       value: 
-      objectReference: {fileID: 911545961}
+      objectReference: {fileID: 1039620782}
     - target: {fileID: 11489268, guid: 925e6f909f006c1418277a9bf1ca5037, type: 2}
       propertyPath: collectionAnimator
       value: 
       objectReference: {fileID: 1155093962}
-    - target: {fileID: 193736, guid: 925e6f909f006c1418277a9bf1ca5037, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 925e6f909f006c1418277a9bf1ca5037, type: 2}
   m_IsPrefabParent: 0
