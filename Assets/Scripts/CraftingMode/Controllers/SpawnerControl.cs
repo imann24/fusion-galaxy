@@ -27,6 +27,7 @@ public class SpawnerControl : MonoBehaviour {
 	private bool panelIsLocked = false;
 	//button info
 	private bool shouldSpawnAnElement = false;
+	GraphicRaycaster raycaster;
 
 	//component references
 	AudioSource buttonClick;
@@ -38,35 +39,16 @@ public class SpawnerControl : MonoBehaviour {
 		}
 	}
 
-	void Start () {
+	void Awake () {
+		Init();
 	}
 
-	//changes button color based on whether element is spawnable and plays sound
-	void OnMouseDown () {
-//		print("Should spawn");
-//		GameObject draggeableElement = Instantiate(gameObject) as GameObject;
-//		draggeableElement.GetComponent<Image>().color = new Color (1f, 1f, 1f, 0.5f);
-//		draggeableElement.transform.parent = mainCanvas.transform;
-//		print (draggeableElement.transform.parent.name );
-//		draggeableElement.transform.localScale = new Vector2(0.1f, 0.1f);
-//		string name;
-//		int elemCount = PlayerPrefs.GetInt((name = currentElement.getName ()));
-//		if (!GlobalVars.CRAFTING_ACTIVE) {
-//			spawn();		
-//		} else if (elemCount > 0) { //if there is enough elements to spawn
-//			spawn();
-//			PlayerPrefs.SetInt(name, --elemCount);
-//		} else if (elemCount < 0) { //if the element count is too low
-//			PlayerPrefs.SetInt(name, 0);
-//		}
-//
-//		buttonClick.Play();
-//		shouldSpawnAnElement = true;
-//		if (ableToSpawn()) {
-//			myRenderer.material.color = Color.gray;
-//		} else {
-//			myRenderer.material.color = Color.red;
-//		}
+	void Init () {
+		raycaster = GetComponent<GraphicRaycaster>();
+	}
+	
+	public void ToggleRaycaster (bool isActive) {
+		raycaster.enabled = isActive;
 	}
 
 	//sets the spawn to undo it
@@ -74,19 +56,6 @@ public class SpawnerControl : MonoBehaviour {
 		shouldSpawnAnElement = false;
 		myRenderer.material.color = Color.white;
 		//scrollBar.enabled = true;
-	}
-
-	//spawns an element if it's allowed to
-	void OnMouseUp () {
-//		if (shouldSpawnAnElement) {
-//			if (ableToSpawn()) {
-//				//spwans an element
-//				spawn();
-//				inventoryElementCount.spawn();
-//			}
-//			myRenderer.material.color = Color.white;
-//			shouldSpawnAnElement = false;
-//		}
 	}
 
 	//creates a new draggeable element box

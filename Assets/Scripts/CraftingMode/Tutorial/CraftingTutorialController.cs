@@ -98,6 +98,10 @@ public class CraftingTutorialController : MonoBehaviour {
 		if (tutorial == null) {
 			return;
 		} else {
+			if (tutorialEnum == TutorialType.Crafting || tutorialEnum == TutorialType.Gathering) {
+				GlobalVars.CRAFTING_CONTROLLER.ToggleRaycastingOnElementSpawners(false);
+			}
+
 			tutorial();
 		}
 

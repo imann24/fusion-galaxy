@@ -135,6 +135,13 @@ public class CraftingTutorialComponent: TutorialComponent {
 		}
 	}
 
+	void ToggleRaycaster (bool isActive) {
+		GraphicRaycaster raycaster = GetComponent<GraphicRaycaster>();
+		if (raycaster != null) {
+			raycaster.enabled = isActive;
+		}
+	}
+
 	// Returns true if object contains an animation script
 	bool TryToggleAnimation (MaskableGraphic image, bool isActive) {
 		UIImageAnimation [] animations;
@@ -284,6 +291,7 @@ public class CraftingTutorialComponent: TutorialComponent {
 
 		//checks if the tutorial component is an element panel
 		if (IsElementPanel()) {
+			ToggleRaycaster(true);
 
 			//checks if no further panels are needed
 			if (!IsActiveStep() || ElementPanelsAtMax() ||
@@ -316,6 +324,10 @@ public class CraftingTutorialComponent: TutorialComponent {
 		}
 
 		ToggleChildrenTutorialComponents(false);
+
+		if (IsElementPanel()) {
+			ToggleRaycaster(false);
+		}
 
 		//does not change sorting if it is on the no sorting list
 		if (onNoSortList) {
