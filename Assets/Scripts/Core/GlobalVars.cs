@@ -160,12 +160,6 @@ public class GlobalVars {
 	// The filepath within the resources folder where the powerup sprites are located
 	public const string POWERUP_FILE_PATH = "powerups/";
 
-	// The names of the powerup sprites to load them in
-	public static string [] POWERUP_SPRITE_FILENAMES = {"laneconversion", "time slow", "add time", "multiplier2", "bucket shield", "tap to collect", "invincible",  "totalconversion", "collectall"};   
-	
-	// Stores the powerup sprites
-	public static Sprite [] POWERUP_SPRITES = new Sprite[POWERUP_SPRITE_FILENAMES.Length];
-
 	// A dictionary to determine which powerup is at which index
 	public static Dictionary<string, int> POWERUP_INDEXES;
 	
@@ -215,7 +209,12 @@ public class GlobalVars {
 	public const string TIER_SWITCH_TUTORIAL_KEY = "TierSwitchTutorial";
 
 	// An Array of all the keys for crafting tutorials
-	public static string [] AllCraftingModeTutorials = {ENTER_GATHERING_TUTORIAL_KEY, CRAFTING_TUTORIAL_KEY, BUY_HINT_TUTORIAL_KEY, UPGRADE_POWERUP_TUTORIAL_KEY, TIER_SWITCH_TUTORIAL_KEY};
+	public static string [] AllCraftingModeTutorials = {
+		ENTER_GATHERING_TUTORIAL_KEY, 
+		CRAFTING_TUTORIAL_KEY, 
+		BUY_HINT_TUTORIAL_KEY, 
+		UPGRADE_POWERUP_TUTORIAL_KEY, 
+		TIER_SWITCH_TUTORIAL_KEY};
 	#endregion
 
 	#region INITIALIZATION_METHODS
@@ -236,17 +235,6 @@ public class GlobalVars {
 		POWERUP_INDEXES.Add("TotalConversion", 7);
 		POWERUP_INDEXES.Add("CollectAll", 8);
 	}
-
-
-	// Loads in the powerup sprites array
-	// Should be called before the powerups are used in gathering
-	public static void InitializePowerUpSprites () {
-		if (!POWERUP_SPRITES_LOADED) {
-			for (int i = 0; i < POWERUP_SPRITE_FILENAMES.Length; i++) {
-				POWERUP_SPRITES[i] = Resources.Load<Sprite>(POWERUP_FILE_PATH + POWERUP_SPRITE_FILENAMES[i]);
-			}
-			POWERUP_SPRITES_LOADED = true;
-		}
-	}
+	
 	#endregion
 }

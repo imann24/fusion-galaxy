@@ -161,7 +161,7 @@ public class ActivatePowerUp : MonoBehaviour {
 		whichPower = index;
 		myPowerUp = PowerUps[whichPower];
 		//spawn the power-up and add a life timer
-		mySprite.sprite = GlobalVars.POWERUP_SPRITES[whichPower];
+		mySprite.sprite = myPowerUp.GetSprite();
 	}
 
 	#region POWERUP_USED

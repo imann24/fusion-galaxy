@@ -123,7 +123,6 @@ public class GenerationScript : MonoBehaviour {
 
 		//sets the global script reference to this script
 		GlobalVars.GATHERING_CONTROLLER = this;
-		GlobalVars.InitializePowerUpSprites();
 		//generates the powerups
 		ActivatePowerUp.GenerateAllPowerups ();
 
