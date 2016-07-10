@@ -1,6 +1,10 @@
 using UnityEngine;
 
 public abstract class PowerUp {
+	const char bronze = 'b';
+	const char silver = 's';
+	const char gold = 'g';
+
 	//event call
 	public delegate void PowerUpPromotionAction();
 	public static event PowerUpPromotionAction OnPowerUpPromotion;
@@ -19,6 +23,33 @@ public abstract class PowerUp {
 	protected ZoneCollisionDetection [] allZones {get; set;}
 	protected GenerationScript controller {get; set;}
 	protected CollectionTimer timer {get; set;}
+
+	public Sprite GetSprite () {
+		Sprite mySprite;
+		if (GlobalVars.POWERUP_SPRITES_BY_NAME.TryGetValue(GetSpriteKey(), out mySprite)) {
+			return mySprite;
+		} else {
+			Debug.LogFormat("Does not contain sprite key {0}", GetSpriteKey());
+			return null;
+		}
+	}
+
+	string GetSpriteKey () {
+		return string.Format("{0}-{1}", name.ToLower().Replace(" ", string.Empty), RankSuffix());
+	}
+
+	char RankSuffix () {
+		switch (level) {
+		case 1:
+			return bronze;
+		case 2:
+			return silver;
+		case 3:
+			return gold;
+		default:
+			return bronze;
+		}
+	}
 
 	//super class constructor for powerups, should be called by all subclass constructors
 	public PowerUp (string name, float? duration) {

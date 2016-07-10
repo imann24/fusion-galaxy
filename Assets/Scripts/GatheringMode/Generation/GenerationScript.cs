@@ -123,11 +123,14 @@ public class GenerationScript : MonoBehaviour {
 
 		//sets the global script reference to this script
 		GlobalVars.GATHERING_CONTROLLER = this;
-		GlobalVars.InitializePowerUpSprites();
+		//generates the powerups
+		ActivatePowerUp.GenerateAllPowerups ();
+
 	}
 	
 	// Use this for initialization
 	void Start () {
+		ActivatePowerUp.GenerateUnlockedPowerups ();
 		// ----- CHEATS ----- \\
 		//ActivatePowerUp.UnlockAllPowerups ();
 		//Cheats.UnlockAllElements();
@@ -216,10 +219,6 @@ public class GenerationScript : MonoBehaviour {
 		hasTutorialElementSpawned = false;
 		timeToPowerUp = false;
 		GlobalVars.SWIPE_TUTORIAL_FIRST_SPAWNED = false;
-
-		//generates the powerups
-		ActivatePowerUp.GenerateAllPowerups ();
-		ActivatePowerUp.GenerateUnlockedPowerups ();
 
 		// Instantiating the arrays for the power up tutorial
 		tutorialElements = new GameObject[6];

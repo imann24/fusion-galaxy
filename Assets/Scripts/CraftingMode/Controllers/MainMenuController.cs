@@ -57,9 +57,6 @@ using System.Collections.Generic;
 		//sets the global script reference
 		GlobalVars.CRAFTING_CONTROLLER = this;
 
-		//initializes the powerup sprites
-		GlobalVars.InitializePowerUpSprites();
-
 		//increases the play count for crafting
 		GlobalVars.CRAFTING_PLAY_COUNT++;
 	}
