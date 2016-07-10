@@ -13,6 +13,8 @@ public class LaunchGatheringIndicators : MonoBehaviour {
 	private Image[] indicatorShips;
 	private Image[] indicatorCircles;
 	private Text[] indicatorNumbers;
+
+    private int totalActive = 0;
 	
 	// Use this for initialization
 	void Start () {
@@ -24,18 +26,21 @@ public class LaunchGatheringIndicators : MonoBehaviour {
 		CaptureScript.OnToggleGatheringZone -= UpdateButtons;
 	}
 
+    
 	void UpdateButtons (int i, bool active) {
 		if (active) {
-			indicatorShips[i].color = ShipActiveColor;
-			indicatorCircles[i].color = Color.white;
-			indicatorNumbers[i].color = ShipInactiveColor;
+			indicatorShips[totalActive].color = ShipActiveColor;
+			indicatorCircles[totalActive].color = Color.white;
+			indicatorNumbers[totalActive].color = ShipInactiveColor;
+            totalActive++;
 		} else {
-			indicatorShips[i].color = ShipInactiveColor;
-			indicatorCircles[i].color = ShipInactiveColor;
-			indicatorNumbers[i].color = Color.white;
+            totalActive--;
+            indicatorShips[totalActive].color = ShipInactiveColor;
+			indicatorCircles[totalActive].color = ShipInactiveColor;
+			indicatorNumbers[totalActive].color = Color.white;
 		}
 	}
-
+    
 	void InitializeReferences () {
 		//intializes the indicator array
 		indicatorGameObjects = new GameObject[transform.childCount];
@@ -53,7 +58,9 @@ public class LaunchGatheringIndicators : MonoBehaviour {
 			indicatorShips[i] = indicatorGameObjects[i].transform.GetChild(0).GetComponent<Image>();
 			indicatorCircles[i] = indicatorGameObjects[i].GetComponent<Image>();
 			indicatorNumbers[i] = indicatorGameObjects[i].transform.GetChild(1).GetComponent<Text>();
-			UpdateButtons(i, false);
-		}
+            indicatorShips[i].color = ShipInactiveColor;
+            indicatorCircles[i].color = ShipInactiveColor;
+            indicatorNumbers[i].color = Color.white;
+        }
 	}
 }
