@@ -9,6 +9,7 @@ using System.Collections.Generic;
 /// affects the lane its dragged into if it is lane specifc
 /// </summary>
 public class ActivatePowerUp : MonoBehaviour {
+	public const string TAG = "PowerUp";
 	const string spriteObjectName = "power-pic"; 
 	const float collectedScaleFactor =	0.50f;
 	static Vector3 collectedScale = new Vector3(collectedScaleFactor, collectedScaleFactor);
@@ -103,7 +104,7 @@ public class ActivatePowerUp : MonoBehaviour {
 	private GameObject controller;
 	// Powerup has been manually set.
 	private bool powerUpSet = false;
-	
+	bool initComplete = false;
 	// Use this for initialization
 	void Start () {
 		Init();
@@ -123,11 +124,19 @@ public class ActivatePowerUp : MonoBehaviour {
 		InitializeColors ();
 		SetPowerUp ();
 		myTrail = GetComponentInChildren<TrailRenderer>();
+		initComplete = true;
 	}
 
 	// destroys the powerup if it goes off the screen
 	void OnBecameInvisible(){
-		Destroy (gameObject);
+		GlobalVars.GATHERING_CONTROLLER.destroyElement(gameObject);
+	}
+
+	void OnEnable () {
+		if (initComplete) {
+			myTrail.enabled = true;
+			GetComponent<BoxCollider2D>().enabled = true;
+		}
 	}
 
 	// sets the type of the powerup based off random selection from the unlocked powerups
@@ -195,7 +204,7 @@ public class ActivatePowerUp : MonoBehaviour {
 				background.BroadcastMessage("beginVisualCoroutine",(float)myPowerUp.duration-beginPowerTaperOff);
 			}
 			//destroys the collider so the object can no longer receieve clicks
-			Destroy(transform.GetComponent<BoxCollider>());
+			transform.GetComponent<BoxCollider>().enabled = true;
 
 			if(PlayerPrefs.GetInt(GlobalVars.GATHERING_TUTORIAL_WATCHED_POWER_UP) == 0 && this.gameObject.name == "PowerUpSwipe"){
 				myPowerUp.usePowerUp(1);
@@ -245,7 +254,7 @@ public class ActivatePowerUp : MonoBehaviour {
 	//destroys the powerup after a set number of seconds
 	IEnumerator destroyPowerUpOnTimer (float seconds) {
 		yield return new WaitForSeconds(seconds);
-		Destroy (this.gameObject);
+		GlobalVars.GATHERING_CONTROLLER.destroyElement(gameObject);
 	}
 
 	//function to check whether there are any unlocked powerups
@@ -306,7 +315,7 @@ public class ActivatePowerUp : MonoBehaviour {
 		float timer = 0;
 		Vector3 startScale = mySprite.transform.localScale;
 		Color startOpacity = mySprite.color;
-		Destroy(myTrail);
+		myTrail.enabled = false;
 		while (timer <= powerUpCollectedAnimationTime) {
 			float percent = timer/powerUpCollectedAnimationTime;
 			mySprite.transform.localScale = Vector3.Lerp (
@@ -324,7 +333,7 @@ public class ActivatePowerUp : MonoBehaviour {
 		}
 
 		if (destroyOnComplete) {
-			Destroy(gameObject);
+			GlobalVars.GATHERING_CONTROLLER.destroyElement(gameObject);
 		}
 	}
 

@@ -4,7 +4,7 @@ using System.Collections;
 public class EndGatheringOnDestroy : MonoBehaviour {
 	CollectionTimer timerInstance;
 	// Use this for initialization
-	void OnDestroy () {
+	public void OnDestroy () {
 		GameObject highestElement;
 
 		//ends the game if this is the highest element

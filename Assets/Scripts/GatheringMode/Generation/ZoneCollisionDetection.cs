@@ -136,8 +136,10 @@ public class ZoneCollisionDetection : MonoBehaviour {
 			// Updates the displayed and stored score
 			generationScript.updateScore (collectionElement, pointsForElement);
 
-			// Destroys the element
-			Destroy(elementCollider.gameObject);
+            // Destroys the element
+            generationScript.destroyElement(elementCollider.gameObject);
+
+            //Destroy(elementCollider.gameObject);
 
 			//calls event to play the sound and trigger any other actions that should happen on element collection
 			if (OnRightElement != null) {
@@ -161,11 +163,13 @@ public class ZoneCollisionDetection : MonoBehaviour {
 
 			// Start a coroutine ChangeMiddleLane.
 			StartCoroutine(ChangeMiddleLane());
-			// Destroy the elementCollider.gameObject.
-			Destroy(elementCollider.gameObject);
+            // Destroy the elementCollider.gameObject.
 
-			//returns if it's invincible
-			if (invunerable) {
+            generationScript.destroyElement(elementCollider.gameObject);
+            //Destroy(elementCollider.gameObject);
+
+            //returns if it's invincible
+            if (invunerable) {
 				return;
 			}
 
@@ -198,8 +202,9 @@ public class ZoneCollisionDetection : MonoBehaviour {
 	// Gets the ON_SCREEN_ELEMENTS.
 	void destroyOnscreenUnits () {
 		foreach (GameObject go in ON_SCREEN_ELEMENTS) {
-			Destroy(go);
-		}
+            generationScript.destroyElement(go);
+            //Destroy(go);
+        }
 		// Clear the array.
 		ON_SCREEN_ELEMENTS.Clear();
 	}

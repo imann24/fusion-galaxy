@@ -31,8 +31,8 @@ public class MoveElementDown : MonoBehaviour {
 	void Update () {
 		//moves the element down at arate sat by the modifiers and sped from the controller
 		if(!GlobalVars.PAUSED && isAllowedToMove) {
-			transform.position +=  Vector3.down * Time.deltaTime * generationScript.elementMovementSpeed * generationScript.fallSpeedModifiers[lane];
-		}
+            transform.position +=  Vector3.down * Time.deltaTime * generationScript.elementMovementSpeed * generationScript.fallSpeedModifiers[lane];
+        }
 	}
 
 	//updates the lane tat the element is in: only called on MouseUp after a drag

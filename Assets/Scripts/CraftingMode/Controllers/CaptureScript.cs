@@ -125,9 +125,7 @@ public class CaptureScript : MonoBehaviour {
 			mode = Mode.Gathering;
 			zoneNumber = transform.GetSiblingIndex()+1;
 			zoneReadyIndicator.enabled = false;
-
-			//calls the event
-			callGatheringZoneToggledEvent(false);
+            
 
 			// Disabling the text if the mode is switched to gathering.
 			SetElementTextAndStatus(elementName, elementName.text, false);
@@ -452,7 +450,7 @@ public class CaptureScript : MonoBehaviour {
 
 		//sends the event to toggle off an ready indicator
 		if (OnToggleGatheringZone != null) {
-			OnToggleGatheringZone(transform.GetSiblingIndex(), active);
+            OnToggleGatheringZone(transform.GetSiblingIndex(), active);
 		}
 	}
 

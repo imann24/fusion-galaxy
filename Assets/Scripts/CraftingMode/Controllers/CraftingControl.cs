@@ -77,7 +77,6 @@ public class CraftingControl : MonoBehaviour {
 	public Image myElementConatinerEmpty;
 
 	//feedback messages to player/button 
-	public Text mainMessage;
 	public Text subMessage;
 	public Text elementName;
 	public Text inventoryNumber;
@@ -242,7 +241,6 @@ public class CraftingControl : MonoBehaviour {
 	}
 
 	public void setEmptyMessage () {
-		mainMessage.text = defaultMain;
 		subMessage.text = defaultSub;
 		elementName.text = "";
 		inventoryNumber.text = "";
@@ -251,7 +249,6 @@ public class CraftingControl : MonoBehaviour {
 
 	public void setOneElementInMessage () {
 		//feedback to player
-		mainMessage.text = oneElementInMain;
 		subMessage.text = oneElementInSub;	
 		elementName.text = "";
 		inventoryNumber.text = "";
@@ -260,7 +257,6 @@ public class CraftingControl : MonoBehaviour {
 
 	public void setBothElementsInMessage () {
 		//feedback to player
-		mainMessage.text = "";
 		subMessage.text = bothElementsInSub;
 		elementName.text = Utility.UppercaseWords(resultElement) + bothElementsInMain;
 		updateInventoryElementResultText();
@@ -269,7 +265,6 @@ public class CraftingControl : MonoBehaviour {
 
 	public void setInsufficientMessage () {
 		//feedback to player
-		mainMessage.text = insufficientAmountsMain;
 		subMessage.text = insufficientAmountsSub;
 		elementName.text = "";
 		inventoryNumber.text = "";
@@ -278,7 +273,6 @@ public class CraftingControl : MonoBehaviour {
 
 	public void setIncompatibleMessage () {
 		//feedback to player
-		mainMessage.text = wrongCombinationMain;
 		subMessage.text = wrongCombinationSub;
 		elementName.text = "";
 		inventoryNumber.text = "";
@@ -286,7 +280,6 @@ public class CraftingControl : MonoBehaviour {
 	}
 
 	public void setBaseElementMessage (string element) {
-		mainMessage.text = "";
 		subMessage.text = "";
 		elementName.text = "Base Element: Cannot be Deconstructed";
 		updateInventoryElementResultText();
@@ -294,13 +287,11 @@ public class CraftingControl : MonoBehaviour {
 	}
 
 	public void setTextToErrorMessageColor () {
-		mainMessage.color = errorColor;
 		subMessage.color = errorColor;
 		elementName.color = errorColor;
 	}
 
 	public void setTextToRegularColor () {
-		mainMessage.color = regularColor;
 		subMessage.color = regularColor;
 		elementName.color = regularColor;
 	}
@@ -327,6 +318,7 @@ public class CraftingControl : MonoBehaviour {
 			//updates the record of the elements
 			if (!result.isElementUnlocked()) {
                 result.unlock();
+                Handheld.Vibrate();
                 GlobalVars.NUMBER_ELEMENTS_UNLOCKED++;
 				panelControl.updatePercentUnlocked();
 				isNew = true;

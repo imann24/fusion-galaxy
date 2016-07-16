@@ -22,7 +22,7 @@ public class MoveElementUp : MonoBehaviour {
 	void Update () {
 		//moves the element upward at the instructed speed
 		if(!GlobalVars.PAUSED) {
-			transform.position += Vector3.up * Time.deltaTime * generationScript.elementMovementSpeed/1.5f * generationScript.defaultFallSpeedModifier;
-		}
+            transform.position += Vector3.up * Time.deltaTime * generationScript.elementMovementSpeed/1.5f * generationScript.defaultFallSpeedModifier;
+        }
 	}
 }

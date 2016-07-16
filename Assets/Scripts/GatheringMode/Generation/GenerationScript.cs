@@ -52,10 +52,6 @@ public class GenerationScript : MonoBehaviour {
 	public GameObject collectionPot1, collectionPot2, collectionPot3, collectionPot4;
 	public GameObject[] elements = new GameObject[GlobalVars.NUMBER_OF_LANES+1];
 	// Has to change for randomized bucket positions
-	public Vector3 lane1Spawn;
-	public Vector3 lane2Spawn;
-	public Vector3 lane3Spawn;
-	public Vector3 lane4Spawn;
 	public Vector3[] lanes = new Vector3[GlobalVars.NUMBER_OF_LANES];
 	public GameObject elementText1;
 	public GameObject elementText2;
@@ -68,7 +64,7 @@ public class GenerationScript : MonoBehaviour {
 	//stores the sprites of the current elements
 	public Sprite [] elementSprites = new Sprite[GlobalVars.NUMBER_OF_LANES];
 	
-	private int randomSpawnedElement;
+	private int randomSpawnedElementIndex;
 	private int randomSpawnedLane;
 	private int duplicationRandomSpawnedElement;
 	private int duplicationRandomSpawnedLane;
@@ -102,7 +98,14 @@ public class GenerationScript : MonoBehaviour {
 	Vector3[] powerUpTutorialPosition;
 	int [] elementNumbers;
 
-	void Awake () {
+    //SpawnPool for each of the elements
+    public Queue<GameObject> spawnPool1 = new Queue<GameObject>();
+    public Queue<GameObject> spawnPool2 = new Queue<GameObject>();
+    public Queue<GameObject> spawnPool3 = new Queue<GameObject>();
+    public Queue<GameObject> spawnPool4 = new Queue<GameObject>();
+	Queue<GameObject> powerUpSpawnPool = new Queue<GameObject>();
+
+    void Awake () {
 		#if UNITY_STANDALONE
 			//sets the camera aspect for standalone builds
 			Camera.main.aspect = 3.0f/4.0f;
@@ -128,6 +131,7 @@ public class GenerationScript : MonoBehaviour {
 
 	}
 	
+
 	// Use this for initialization
 	void Start () {
 		ActivatePowerUp.GenerateUnlockedPowerups ();
@@ -256,10 +260,10 @@ public class GenerationScript : MonoBehaviour {
 		randomSpawnedLane = Random.Range(0,4);
 		if (spawnOneTypeOnly) { //disables random generation if the generation is set to one element only (from powerup)
 			if (Random.Range(0, GlobalVars.NUMBER_OF_LANES+1) == GlobalVars.NUMBER_OF_LANES) { //retains the one in five chance that the element is a powerup
-				randomSpawnedElement = GlobalVars.NUMBER_OF_LANES;
+				randomSpawnedElementIndex = GlobalVars.NUMBER_OF_LANES;
 
 			} else { //otherwise, that element spawns as the set element
-				randomSpawnedElement = oneTypeSpawnIndex;
+				randomSpawnedElementIndex = oneTypeSpawnIndex;
 			} 
 			return;
 		} else { //continues through the script to generate elements pseudorandomely otherwise
@@ -271,7 +275,7 @@ public class GenerationScript : MonoBehaviour {
 				ActivatePowerUp.PowerUpsUnlocked() ? GlobalVars.NUMBER_OF_LANES+1 : GlobalVars.NUMBER_OF_LANES;
 
 			//determines the randomely spawned element
-			randomSpawnedElement = Random.Range(0,spawnMaxIndex);
+			randomSpawnedElementIndex = Random.Range(0,spawnMaxIndex);
 		}
 
 		if(spawnedElements != null && spawnedElements.Count >= 5){
@@ -280,20 +284,20 @@ public class GenerationScript : MonoBehaviour {
 		if(lanesUsed != null && lanesUsed.Count >= 5){
 			lanesUsed.Dequeue();
 		}
-		if(spawnedElements != null && spawnedElements.Contains(randomSpawnedElement)){
+		if(spawnedElements != null && spawnedElements.Contains(randomSpawnedElementIndex)){
 			foreach(int i in spawnedElements){
-				if(i == randomSpawnedElement){
+				if(i == randomSpawnedElementIndex){
 					duplicateElementCounter++;
 					if(duplicateElementCounter >= 2){
-						duplicationRandomSpawnedElement = randomSpawnedElement;
+						duplicationRandomSpawnedElement = randomSpawnedElementIndex;
 						duplicateElementCounter = 0;
 						break;
 					}
 				}
 			}
-			if(randomSpawnedElement == duplicationRandomSpawnedElement){
-				while(randomSpawnedElement == duplicationRandomSpawnedElement){
-					randomSpawnedElement = Random.Range(0,GlobalVars.NUMBER_OF_LANES);				
+			if(randomSpawnedElementIndex == duplicationRandomSpawnedElement){
+				while(randomSpawnedElementIndex == duplicationRandomSpawnedElement){
+					randomSpawnedElementIndex = Random.Range(0,GlobalVars.NUMBER_OF_LANES);				
 				}
 			}
 		}
@@ -314,24 +318,116 @@ public class GenerationScript : MonoBehaviour {
 				}
 			}
 		}
-		if(randomSpawnedElement == randomSpawnedLane){
-			while(randomSpawnedElement == randomSpawnedLane){
-				randomSpawnedLane = Random.Range(0,GlobalVars.NUMBER_OF_LANES);
-			}
+		while(randomSpawnedElementIndex == randomSpawnedLane){
+			randomSpawnedLane = Random.Range(0,GlobalVars.NUMBER_OF_LANES);
 		}
-		spawnedElements.Enqueue (randomSpawnedElement);
+
+		spawnedElements.Enqueue (randomSpawnedElementIndex);
 		lanesUsed.Enqueue (randomSpawnedLane);
 
 		//if a powerUp was spawned, increment the counter
-		if (randomSpawnedElement == GlobalVars.NUMBER_OF_LANES) {
+		if (randomSpawnedElementIndex == GlobalVars.NUMBER_OF_LANES) {
 			if (powerUpCounter < powerUpsPerRound) {
 				powerUpCounter++;
 			} else {//spawn something that isn't a powerUp
-				randomSpawnedElement = Random.Range (0, GlobalVars.NUMBER_OF_LANES);
+				randomSpawnedElementIndex = Random.Range (0, GlobalVars.NUMBER_OF_LANES);
 			}
 		}
 
 	}
+
+    private GameObject getNewElementFromSpawnPool(int elementSpawnIndex)
+    {
+        GameObject newElement = null;
+
+        switch (elementSpawnIndex)
+        {
+            case 0:
+                if(spawnPool1.Count == 0)
+                {
+                    newElement = (GameObject)Instantiate(elements[elementSpawnIndex], lanes[randomSpawnedLane], Quaternion.identity);
+                }
+                else
+                {
+                    newElement = spawnPool1.Dequeue();
+                }
+                break;
+            case 1:
+                if (spawnPool2.Count == 0)
+                {
+                    newElement = (GameObject)Instantiate(elements[elementSpawnIndex], lanes[randomSpawnedLane], Quaternion.identity);
+                }
+                else
+                {
+                    newElement = spawnPool2.Dequeue();
+                }
+                break;
+            case 2:
+                if (spawnPool3.Count == 0)
+                {
+                    newElement = (GameObject)Instantiate(elements[elementSpawnIndex], lanes[randomSpawnedLane], Quaternion.identity);
+                }
+                else
+                {
+                    newElement = spawnPool3.Dequeue();
+                }
+                break;
+            case 3:
+                if (spawnPool4.Count == 0)
+                {
+                    newElement = (GameObject)Instantiate(elements[elementSpawnIndex], lanes[randomSpawnedLane], Quaternion.identity);
+                }
+                else
+                {
+                    newElement = spawnPool4.Dequeue();
+                }
+                break;
+			case 4:
+				if (powerUpSpawnPool.Count == 0) {
+					newElement = (GameObject) Instantiate(powerUp);
+				} else {
+					newElement = powerUpSpawnPool.Dequeue();
+				}
+				break;
+            default:
+                break;
+
+        }
+        newElement.SetActive(true);
+		newElement.transform.position = lanes[randomSpawnedLane];
+        return newElement;
+    }
+
+    public void destroyElement(GameObject element)
+    {
+        element.SetActive(false);
+        if (this.gameObject.tag == "Zone1Collector")
+        {
+            spawnPool1.Enqueue(element);
+        }
+        else if (this.gameObject.tag == "Zone2Collector")
+        {
+            spawnPool2.Enqueue(element);
+        }
+        else if (this.gameObject.tag == "Zone3Collector")
+        {
+            spawnPool3.Enqueue(element);
+        }
+        else if (this.gameObject.tag == "Zone4Collector")
+        {
+            spawnPool4.Enqueue(element);
+        }
+		else if (this.gameObject.tag == ActivatePowerUp.TAG) {
+			powerUpSpawnPool.Enqueue(element);
+		}
+
+        EndGatheringOnDestroy enddestroy = element.GetComponent<EndGatheringOnDestroy>();
+        if (enddestroy != null)
+        {
+            enddestroy.OnDestroy();
+        }
+    }
+
 	// 2 random numbers have been generated to decide which element spawns and what lane it is spawned into.
 	
 	// Given the random element and location this method will Instantiate a prefab or that element into that lane.
@@ -339,12 +435,12 @@ public class GenerationScript : MonoBehaviour {
 		generateLaneAndElem ();
 		animators [randomSpawnedLane].SetTrigger ("spawning");
 		//checks whether its going to be another element and not a powerup
-		if (forceCorrectSpawnInLane[randomSpawnedLane] && randomSpawnedElement != GlobalVars.NUMBER_OF_LANES) {
+		if (forceCorrectSpawnInLane[randomSpawnedLane] && randomSpawnedElementIndex != GlobalVars.NUMBER_OF_LANES) {
 			//sets the element to be of the correct type (if it's not a powerup)
-			randomSpawnedElement = randomSpawnedLane;
+			randomSpawnedElementIndex = randomSpawnedLane;
 		}
 		//if we're spawning a powerup
-		if (randomSpawnedElement == GlobalVars.NUMBER_OF_LANES) {
+		if (randomSpawnedElementIndex == GlobalVars.NUMBER_OF_LANES) {
 			//calls the event
 			if (OnSpawnPowerUp != null) {
 				OnSpawnPowerUp();
@@ -358,7 +454,7 @@ public class GenerationScript : MonoBehaviour {
 			spawnedElement.name = GlobalVars.SWIPE_TUTORIAL_ELEMENT_NAME;
 			GlobalVars.SWIPE_TUTORIAL_FIRST_SPAWNED = true;
 		} else {
-			spawnedElement = (GameObject)Instantiate (elements [randomSpawnedElement], lanes [randomSpawnedLane], Quaternion.identity);
+            spawnedElement = getNewElementFromSpawnPool(randomSpawnedElementIndex);
 		}
 		// Catching the first element to spawn and stops spawning so we can show a tutorial.
 		if(!hasTutorialElementSpawned && PlayerPrefs.GetInt(GlobalVars.GATHERING_TUTORIAL_WATCHED_SWIPE) == 0){
@@ -372,7 +468,7 @@ public class GenerationScript : MonoBehaviour {
 			spawning = false;
 			tutorialElement = spawnedElement;
 		}
-		if(randomSpawnedElement == GlobalVars.NUMBER_OF_LANES){
+		if(randomSpawnedElementIndex == GlobalVars.NUMBER_OF_LANES){
 			spawnedElement.SetActive(true);
 		}
 		spawnedElement.AddComponent<MoveElementDown>();
@@ -598,7 +694,9 @@ public class GenerationScript : MonoBehaviour {
 				powerups.Add (element);
 				continue;
 			}
-			Destroy(element);
+            destroyElement(element);
+
+            //Destroy(element);
 		}
 
 		//updates the scores
@@ -631,9 +729,10 @@ public class GenerationScript : MonoBehaviour {
 			//removes from list of elements on screen
 			ZoneCollisionDetection.ON_SCREEN_ELEMENTS.Remove(element);
 
-			//destroys gameobject
-			Destroy(element);
-		}
+            //destroys gameobject
+            destroyElement(element);
+            //Destroy(element);
+        }
 
 		//updates the scores
 		for (int i = 0; i < GlobalVars.SCORES.Length; i++) {

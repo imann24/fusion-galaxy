@@ -15,6 +15,7 @@ public class LanePositions : MonoBehaviour {
 		Vector3 [] screenPositions = new Vector3[GlobalVars.NUMBER_OF_LANES];
 
 		float quadrantWidth = (float)Screen.width/(float) GlobalVars.NUMBER_OF_LANES;
+
 		float currentPosition = quadrantWidth/2f;
 		for (int i = 0; i < GlobalVars.NUMBER_OF_LANES; i++) {
 			screenQuadrants[i] = currentPosition;

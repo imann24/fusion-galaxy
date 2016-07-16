@@ -9,11 +9,10 @@
 //#define IN_PROGRESS
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 using System.Collections.Generic;
 
 //Script to create the element spawners and set up the crafting scene
-//also used to control and update the elemnt and tier panels
+//also used to control and update the element and tier panels
  public class MainMenuController : MonoBehaviour {
 	//events
 	public delegate void ButtonPressAction();
