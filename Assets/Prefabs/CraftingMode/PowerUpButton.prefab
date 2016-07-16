@@ -43,6 +43,7 @@ GameObject:
   - 224: {fileID: 22466402}
   - 222: {fileID: 22283616}
   - 114: {fileID: 11462298}
+  - 114: {fileID: 11495138}
   m_Layer: 5
   m_Name: Tutorialhand
   m_TagString: Untagged
@@ -576,8 +577,6 @@ GameObject:
   - 114: {fileID: 11469074}
   - 114: {fileID: 11432828}
   - 114: {fileID: 11400064}
-  - 223: {fileID: 22327602}
-  - 114: {fileID: 11461620}
   m_Layer: 5
   m_Name: PowerUpButton
   m_TagString: Untagged
@@ -700,9 +699,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_IgnoreLayout: 0
   m_MinWidth: -1
-  m_MinHeight: 200
+  m_MinHeight: 550
   m_PreferredWidth: 100
-  m_PreferredHeight: 200
+  m_PreferredHeight: 550
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
 --- !u!114 &11400918
@@ -753,8 +752,8 @@ MonoBehaviour:
     m_MaxSize: 40
     m_Alignment: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: --
 --- !u!114 &11406672
@@ -792,16 +791,16 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 16
+    m_Font: {fileID: 12800000, guid: 43ab22496733047c78419b6906f7b863, type: 3}
+    m_FontSize: 24
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 40
     m_Alignment: 3
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: --
 --- !u!114 &11410736
@@ -894,8 +893,8 @@ MonoBehaviour:
     m_MaxSize: 40
     m_Alignment: 2
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: '---'
 --- !u!114 &11418930
@@ -1032,7 +1031,7 @@ MonoBehaviour:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FontData:
     m_Font: {fileID: 12800000, guid: 43ab22496733047c78419b6906f7b863, type: 3}
-    m_FontSize: 14
+    m_FontSize: 30
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -1040,7 +1039,7 @@ MonoBehaviour:
     m_Alignment: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: To unlock this ability discover all level X elements.
 --- !u!114 &11441586
@@ -1093,8 +1092,8 @@ MonoBehaviour:
     m_MaxSize: 40
     m_Alignment: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: --
 --- !u!114 &11441820
@@ -1145,8 +1144,8 @@ MonoBehaviour:
     m_MaxSize: 40
     m_Alignment: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: --
 --- !u!114 &11443482
@@ -1251,8 +1250,8 @@ MonoBehaviour:
     m_MaxSize: 40
     m_Alignment: 2
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: '---'
 --- !u!114 &11450876
@@ -1342,8 +1341,8 @@ MonoBehaviour:
     m_MaxSize: 40
     m_Alignment: 2
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: '---'
 --- !u!114 &11456126
@@ -1367,22 +1366,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &11461620
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 181278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1301386320, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!114 &11462298
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1488,8 +1471,8 @@ MonoBehaviour:
     m_MaxSize: 40
     m_Alignment: 0
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: --
 --- !u!114 &11467138
@@ -1603,8 +1586,8 @@ MonoBehaviour:
     m_MaxSize: 40
     m_Alignment: 2
     m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_HorizontalOverflow: 1
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: '---'
 --- !u!114 &11477778
@@ -1747,6 +1730,26 @@ MonoBehaviour:
   m_Text: 'Bonus:
 
 '
+--- !u!114 &11495138
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 103174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e06a1937ed04620ba9dbe68ea0f539, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayOnTutorial: 6
+  PlayOnAwake: 0
+  PlayOnStart: 0
+  AnimationTime: 2.5
+  AnimationID: 
+  MaxScale: 1
+  MinScale: 1.5
+  Repeating: 1
+  Loop: 1
 --- !u!114 &11497160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2051,23 +2054,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 179984}
---- !u!223 &22327602
-Canvas:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 181278}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_RenderMode: 2
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
 --- !u!223 &22391868
 Canvas:
   m_ObjectHideFlags: 1
@@ -2186,7 +2172,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: -157, y: -65}
+  m_AnchoredPosition: {x: 129.999985, y: -138}
   m_SizeDelta: {x: 160, y: 38}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22418084
@@ -2314,8 +2300,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -232.207031, y: 793.608276}
-  m_SizeDelta: {x: 800, y: 2013.10193}
+  m_AnchoredPosition: {x: 400, y: -1129.27539}
+  m_SizeDelta: {x: 800, y: 2258.55078}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22444804
 RectTransform:
@@ -2678,7 +2664,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: .5, y: .5}
   m_AnchorMax: {x: .5, y: .5}
-  m_AnchoredPosition: {x: 95.5999985, y: .249993205}
+  m_AnchoredPosition: {x: 88.8499756, y: .25}
   m_SizeDelta: {x: 177.699997, y: 37.5}
   m_Pivot: {x: .5, y: .5}
 --- !u!224 &22478732

@@ -96,15 +96,9 @@ public class switchBucketScript : MonoBehaviour {
 			endColor = new Color(1.0f, 110f/255f, 38f/255f, 0.5f);
 
 			SDKEventManager.Instance.ChangeIndicator();
-#if DEBUG
-			Debug.Log("The time is currently set to: " +  GlobalVars.COLLECT_TIME);
-#endif
 			//if already over threshold, starting switching
 			if (SDKEventManager.MyEmotionZone == EmotionZone.OVER_EMOTION_ZONE) {
 				StartOverThresholdSwitching();
-#if DEBUG
-				Debug.Log("*********I'm going to start switching now**********");
-#endif
 			}
 		}
 	}
@@ -342,15 +336,9 @@ public class switchBucketScript : MonoBehaviour {
 			while (!(Vector3.Distance(bucketChoice1,bucketPositions[lane2].transform.position) == 0.001f)) {
 				bucketPositions [lane1].transform.position = Vector3.MoveTowards (bucketPositions [lane1].transform.position, bucketChoice2, Time.deltaTime * moveTowardsSpeed);
 				bucketPositions [lane2].transform.position = Vector3.MoveTowards (bucketPositions [lane2].transform.position, bucketChoice1, Time.deltaTime * moveTowardsSpeed);
-				#if DEBUG
-					Debug.Log("We're also stuck in this loop");
-				#endif
 				yield return new WaitForEndOfFrame ();
 			}
 		}
-#if DEBUG
-		Debug.Log("We've reached the end of the loop");
-#endif
 		isSwappingCurrently = false;
 	}
 	// The buckets positions are switched with each other as they moveTowards their respective starting positions.
@@ -406,9 +394,6 @@ public class switchBucketScript : MonoBehaviour {
 	IEnumerator StopBucketSwap(float seconds, IEnumerator swapBuckets){
 		yield return new WaitForSeconds (seconds);
 		StopCoroutine (swapBuckets);
-#if DEBUG
-		Debug.Log("I should no longer be swapping");
-#endif
 		isSwappingCurrently = false;
 	}
 	// The SwapBucket coroutine doesn't stop because it never gets close enough to 0 distance to exit.
@@ -509,24 +494,14 @@ public class switchBucketScript : MonoBehaviour {
 
 	//swaps the buckets repeatedly while the ply
 	IEnumerator OverThresholdSwitching () {
-#if DEBUG
-		Debug.Log("should be swapping now");
-#endif
-
 		while (GlobalVars.PAUSED) {
 			yield return new WaitForFixedUpdate();
 		}
 		while (isOverThresholdSwapping) {
 			isSwappingCurrently = true;
-#if DEBUG
-			Debug.Log("Choosing two buckets to swap");
-#endif
 			ChooseSwappingBuckets();
 			bucketLocationChoice1 = bucketPositions [laneChoice1].transform.position;
 			bucketLocationChoice2 = bucketPositions [laneChoice2].transform.position;
-#if DEBUG 
-			Debug.Log("Swapping the two buckets: numbers " + laneChoice1 + " and " + laneChoice2);
-#endif
 			swapBucketsReference = SwapBuckets (laneChoice1, laneChoice2, bucketLocationChoice1, bucketLocationChoice2);
 			StartCoroutine (swapBucketsReference);
 
@@ -535,9 +510,6 @@ public class switchBucketScript : MonoBehaviour {
 			StartCoroutine (stopSwapBucketsReference);
 			//waits until the current swap is done to swap again 
 			while (isSwappingCurrently) {
-				#if DEBUG 
-				Debug.Log("Still stuck in this stupid loop");
-				#endif
 				yield return new WaitForEndOfFrame();
 
 			}
@@ -549,9 +521,6 @@ public class switchBucketScript : MonoBehaviour {
 		if (GlobalVars.MEDICAL_USE) { 
 			if (SDKEventManager.MyEmotionZone == EmotionZone.OVER_EMOTION_ZONE) {
 				StartOverThresholdSwitching();
-				#if DEBUG
-				Debug.Log("*********I'm going to start switching now**********");
-				#endif
 			}
 		}
 	}

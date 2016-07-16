@@ -9,6 +9,11 @@ using System;
 using UnityEngine;
 public class GlobalVars {
 
+	// Static constructor
+	static GlobalVars () {
+		InitPowerUpSprites();
+	}
+
 	#region NEURO*MOTION
 	/// <summary>
 	/// IMPORTANT: should be set true if making a build for Neuro*motion. 
@@ -114,6 +119,8 @@ public class GlobalVars {
 	public const string CRAFTING_BUTTON_NAME = "Crafting";
 	public const string UPGRADE_POWERUP_BUTTON_NAME = "UpgradePowerUp";
 	public const string GATHERING_BUTTON_NAME = "Gathering";
+	public const string GATHERING_ZONE_DRAG_ANIMATION_KEY = "GatheringZoneDrag";
+	public const string CRAFTING_ZONE_DRAG_ANIMATION_KEY = "CraftingZoneDrag";
     //Release build boolean - SET TO TRUE FOR RELEASE BUILD
     public static bool RELEASE_BUILD = false;
     #endregion
@@ -153,18 +160,21 @@ public class GlobalVars {
 	// The filepath within the resources folder where the powerup sprites are located
 	public const string POWERUP_FILE_PATH = "powerups/";
 
-	// The names of the powerup sprites to load them in
-	public static string [] POWERUP_SPRITE_FILENAMES = {"laneconversion", "time slow", "add time", "multiplier2", "bucket shield", "tap to collect", "invincible",  "totalconversion", "collectall"};   
-
-	// Stores the powerup sprites
-	public static Sprite [] POWERUP_SPRITES = new Sprite[POWERUP_SPRITE_FILENAMES.Length];
-
 	// A dictionary to determine which powerup is at which index
 	public static Dictionary<string, int> POWERUP_INDEXES;
-
+	
 	// Used to count the number of powerups during a single 
 	public static void INCREASE_POWER_UP_USE_COUNT (string powerUpName, int powerUpLevel) {
 		POWERUP_USE_COUNT++;
+	}
+
+	public static Dictionary<string, Sprite> POWERUP_SPRITES_BY_NAME;
+	public static void InitPowerUpSprites () {
+		POWERUP_SPRITES_BY_NAME = new Dictionary<string, Sprite>();
+		Sprite[] sprites = Resources.LoadAll<Sprite>(POWERUP_FILE_PATH);
+		foreach (Sprite powerup in sprites) {
+			POWERUP_SPRITES_BY_NAME.Add(powerup.name, powerup);
+		}
 	}
 
 	#endregion
@@ -192,14 +202,19 @@ public class GlobalVars {
 
 	#region MAIN_MENU_TUTORIALS
 	// Keys used with player pref ints (treated as booleans) to tell whether each tutorial has been watched
-	public const string ELEMENTS_DRAGGED_TUTORIAL_KEY = "ElementsDraggedIntoGatheringTutorial";
+	public const string ENTER_GATHERING_TUTORIAL_KEY = "ElementsDraggedIntoGatheringTutorial";
 	public const string CRAFTING_TUTORIAL_KEY = "CraftingTutorial";
 	public const string BUY_HINT_TUTORIAL_KEY = "BuyHintTutorial";
 	public const string UPGRADE_POWERUP_TUTORIAL_KEY = "UpgradePowerupTutorial";
 	public const string TIER_SWITCH_TUTORIAL_KEY = "TierSwitchTutorial";
 
 	// An Array of all the keys for crafting tutorials
-	public static string [] AllCraftingModeTutorials = {ELEMENTS_DRAGGED_TUTORIAL_KEY, CRAFTING_TUTORIAL_KEY, BUY_HINT_TUTORIAL_KEY, UPGRADE_POWERUP_TUTORIAL_KEY, TIER_SWITCH_TUTORIAL_KEY};
+	public static string [] AllCraftingModeTutorials = {
+		ENTER_GATHERING_TUTORIAL_KEY, 
+		CRAFTING_TUTORIAL_KEY, 
+		BUY_HINT_TUTORIAL_KEY, 
+		UPGRADE_POWERUP_TUTORIAL_KEY, 
+		TIER_SWITCH_TUTORIAL_KEY};
 	#endregion
 
 	#region INITIALIZATION_METHODS
@@ -220,17 +235,6 @@ public class GlobalVars {
 		POWERUP_INDEXES.Add("TotalConversion", 7);
 		POWERUP_INDEXES.Add("CollectAll", 8);
 	}
-
-
-	// Loads in the powerup sprites array
-	// Should be called before the powerups are used in gathering
-	public static void InitializePowerUpSprites () {
-		if (!POWERUP_SPRITES_LOADED) {
-			for (int i = 0; i < POWERUP_SPRITE_FILENAMES.Length; i++) {
-				POWERUP_SPRITES[i] = Resources.Load<Sprite>(POWERUP_FILE_PATH + POWERUP_SPRITE_FILENAMES[i]);
-			}
-			POWERUP_SPRITES_LOADED = true;
-		}
-	}
+	
 	#endregion
 }

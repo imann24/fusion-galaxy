@@ -196,12 +196,29 @@ public class CraftingButtonController : MonoBehaviour {
 				}
 			}
 
+			checkForGatheringTutorialAnimation(zone.myElementGameObject.name);
+
 		} else {
 			elementsInDropZones[index] = noElementString;
 		}
 		//toggles the play button on and off
 		toggleGatheringPlayButton(readyToEnterGathering);
 		setGatheringPlanet(readyToEnterGathering);
+	}
+
+
+	void checkForGatheringTutorialAnimation (string elementName) {
+		if (CraftingTutorialController.GatheringTutorialActive) {
+			SpawnerControl elementController;
+			if (GlobalVars.CRAFTING_CONTROLLER.TryGetElementController(elementName, out elementController)) {
+				UIImageAnimation animation;
+				if (UIImageAnimation.TryGetByAnimation(GlobalVars.CRAFTING_ZONE_DRAG_ANIMATION_KEY + elementController.PanelIndex, out animation)) {
+					animation.Hide();
+					animation.GetComponentInParent<CraftingTutorialComponent>().HideComponent();
+				}
+				
+			}
+		}
 	}
 
 	public void enqueueElement (string element) {
@@ -311,12 +328,13 @@ public class CraftingButtonController : MonoBehaviour {
 	//cancels the cheat to be executed
 	public void cancelCheat () {
 		activeCheat = Cheat.None;
+		GlobalVars.CRAFTING_CONTROLLER.loadTier(0, true);
 	}
 
 	//deletes all the player's progress: reset button
 	public void deleteAllProgress () {
 		Cheats.LockAllElements();
-		GlobalVars.CRAFTING_CONTROLLER.loadTier(0, true);
+
 	}
 
 	public void unlockAllElements () {
@@ -370,5 +388,29 @@ public class CraftingButtonController : MonoBehaviour {
 		if (OnEnterScreen != null) {
 			OnEnterScreen(screenName);
 		}
+	}
+
+	public void ResetToCraftingTutorial () {
+		Cheats.ResetToCraftingTutorial();
+		Application.LoadLevel((int)GlobalVars.Scenes.Crafting);
+	}
+
+	public void ResetToBuyHintTutorial () {
+		Cheats.ResetToBuyHintTutorial();
+		Application.LoadLevel((int)GlobalVars.Scenes.Crafting);
+	}
+
+	public void ResetToPurchaseUpgradeTutorial () {
+		Cheats.ResetToPurchaseUpgradeTutorial();
+		Application.LoadLevel((int)GlobalVars.Scenes.Crafting);
+	}
+
+	public void ResetToUnlockTierTutorial () {
+		Cheats.ResetToUnlockTierTutorial();
+		Application.LoadLevel((int)GlobalVars.Scenes.Crafting);
+	}
+
+	public void IncreaseAllElements (int i) {
+		Cheats.IncreaseAllElements(i);
 	}
 }

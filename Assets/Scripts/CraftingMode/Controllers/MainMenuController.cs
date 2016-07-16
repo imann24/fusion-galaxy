@@ -42,7 +42,7 @@ using System.Collections.Generic;
 	//references to the tier and element panel scripts
 	private TierButtonDisplay [] tierButtonScript;
 	private SpawnerControl [] elementPanelControllers;
-
+	Dictionary<string, SpawnerControl> elementNameToController = new Dictionary<string, SpawnerControl>();
 	//tier info 
 	private int currentlySelectedTierNumber = -1;
 
@@ -55,9 +55,6 @@ using System.Collections.Generic;
 	void Awake () {
 		//sets the global script reference
 		GlobalVars.CRAFTING_CONTROLLER = this;
-
-		//initializes the powerup sprites
-		GlobalVars.InitializePowerUpSprites();
 
 		//increases the play count for crafting
 		GlobalVars.CRAFTING_PLAY_COUNT++;
@@ -121,14 +118,7 @@ using System.Collections.Generic;
 		//flag so the sprites are not read again while the game is open
 		GlobalVars.SPRITES_LOADED = true;
 
-		//adds the discovery event to the unlock new elment function
-		CraftingControl.OnElementDiscovered += unlockNewElement;
-
-		//event reference for the outro sequence for unlocking life
-		Element.OnLifeUnlocked += playUnlockLifeVideo;
-
-		//subscribes to the event to switch tiers
-		TierButtonDisplay.OnLoadTier += loadTier;
+		Subscribe();
 
 		//runs any tutorials that are callable
 		CheckForTutorialEvents();
@@ -136,9 +126,31 @@ using System.Collections.Generic;
 
 	//unsubscribes the events when the object is destroyed
 	void OnDestroy () {
+		Unsubscribe();
+	}
+
+	void Subscribe () {
+		//adds the discovery event to the unlock new elment function
+		CraftingControl.OnElementDiscovered += unlockNewElement;
+		//event reference for the outro sequence for unlocking life
+		Element.OnLifeUnlocked += playUnlockLifeVideo;
+		//subscribes to the event to switch tiers
+		TierButtonDisplay.OnLoadTier += loadTier;
+		// Disables element raycasters on tutorial start
+		CraftingTutorialController.OnCraftingModeTutorialComplete += HandleElementDraggingTutorialComplete;
+		CraftingTutorialController.OnElementsDraggedIntoGatheringTutorialComplete += HandleElementDraggingTutorialComplete;
+	}
+
+	void Unsubscribe () {
 		CraftingControl.OnElementDiscovered -= unlockNewElement;
 		Element.OnLifeUnlocked -= playUnlockLifeVideo;
 		TierButtonDisplay.OnLoadTier -= loadTier;
+		CraftingTutorialController.OnCraftingModeTutorialComplete -= HandleElementDraggingTutorialComplete;
+		CraftingTutorialController.OnElementsDraggedIntoGatheringTutorialComplete -= HandleElementDraggingTutorialComplete;
+	}
+
+	public bool TryGetElementController (string elementName, out SpawnerControl controller) {
+		return (elementNameToController.TryGetValue(elementName, out controller));
 	}
 
 	//sets the UI for the currently loaded tier	
@@ -152,6 +164,7 @@ using System.Collections.Generic;
 
 		//loads the tier if it's unlocked and not the current one
 		if ((tier != currentlySelectedTierNumber || forceLoad) && GlobalVars.TIER_UNLOCKED[tier]) {
+			elementNameToController.Clear();
 
 			//calls the on load tier event
 			if (OnLoadTier != null) {
@@ -199,6 +212,7 @@ using System.Collections.Generic;
 				if (count < elementPanels.Length + elementStartIndex && count >= elementStartIndex) {
 					elementPanels[count - elementStartIndex].SetActive(true);
 					elementPanelControllers[count - elementStartIndex].setElement(e);
+					elementNameToController.Add(e.getName(), elementPanelControllers[count - elementStartIndex]);
 				} 
 				count++;
 			}
@@ -353,6 +367,7 @@ using System.Collections.Generic;
 			hintPanel.transform.FindChild("NotYetPurchased/PurchaseCost/myAmount"+i.ToString()).GetComponent<Text>().text = PlayerPrefs.GetInt (hintPanel.GetComponent<PurchaseHint> ().getCostElemType(i)).ToString();
 		}
 		hintPanel.transform.FindChild ("AlreadyPurchased/Name").GetComponent<Text> ().text = activeElement;
+		hintPanel.transform.position = activePosition;
 	}
 
 
@@ -366,6 +381,20 @@ using System.Collections.Generic;
 	public bool ReadyToGather () {
 		return buttonControl.PollGatheringDropZones() == GlobalVars.NUMBER_OF_LANES;
 	}
+
+	void HandleElementDraggingTutorialBegan () {
+		ToggleRaycastingOnElementSpawners(false);
+	}
+
+	void HandleElementDraggingTutorialComplete (float time) {
+		ToggleRaycastingOnElementSpawners(true);
+	}
+
+	public void ToggleRaycastingOnElementSpawners (bool isActive) {
+		foreach (SpawnerControl spawner in elementPanelControllers) {
+			spawner.ToggleRaycaster(isActive);
+		}
+	}
 	
 #region TUTORIAL
 
@@ -375,7 +404,7 @@ using System.Collections.Generic;
 		if (OnCallTutorialEvent != null) {
 
 			//the gathering tutorial
-			if (!Utility.PlayerPrefIntToBool(GlobalVars.ELEMENTS_DRAGGED_TUTORIAL_KEY)) {
+			if (!Utility.PlayerPrefIntToBool(GlobalVars.ENTER_GATHERING_TUTORIAL_KEY)) {
 				OnCallTutorialEvent(TutorialType.Gathering);
 
 			} 
@@ -411,9 +440,7 @@ using System.Collections.Generic;
 				CallTierSwitchTutorial();
 			}	
 		} else {
-#if DEBUG
 			Debug.LogError("Tbe event is null");
-#endif
 		}
 	}
 

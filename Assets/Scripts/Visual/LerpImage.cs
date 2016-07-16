@@ -1,47 +1,77 @@
-﻿using UnityEngine;
+﻿/*
+ * Author: Isaiah Mann
+ * Description: Lerps image in specified directions (back and forth)
+ */
+
+using UnityEngine;
 using System.Collections;
 
-public class LerpImage : MonoBehaviour {
-	public bool UpAndDown;
-	public bool Repeating;
-	public float Height;
-	// Use this for initialization
-	void Start () {
-		if (UpAndDown) {
-			StartCoroutine(
+public class LerpImage : UIImageAnimation {
+	public bool Vertical;
+	public bool VertUp;
+	public bool Horizontal;
+	public bool HorRight;
 
-				lerpImage(
-					transform.position + Vector3.up * Height,
-					Repeating));
+	public bool Repeating;
+	public float Height = 1f;
+	public float Width = 1f;
+	public float DelayTime = 1f;
+
+	IEnumerator verticalCoroutine = null;
+	IEnumerator horizontalCoroutine = null;
+
+	protected override void Awake () {
+		base.Awake();
+	}
+
+	public override void Play () {
+		base.Play ();
+		if (Vertical) {
+			lerpInDirection(VertUp ? Vector3.up : Vector3.down, Height, verticalCoroutine, AnimationTime);
+		}
+		if (Horizontal) {
+			lerpInDirection(HorRight ? Vector3.right : Vector3.left, Width, horizontalCoroutine, AnimationTime);
 		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+
+	public override void Stop () {
+		base.Stop ();
+		StopAllCoroutines();
+		resetPosition();
 	}
 
-	IEnumerator lerpImage (Vector3 targetPosition, bool repeating, float speed = 1.0f) {
+	void lerpInDirection (Vector3 direction, float modifier, IEnumerator coroutine, float time = 1.0f) {
+		if (coroutine != null) {
+			StopCoroutine(coroutine);
+		}
+		coroutine = lerpImage(direction, Repeating, modifier, coroutine, time);
+		StartCoroutine(coroutine);
+	}
+
+	IEnumerator lerpImage (Vector3 direction, bool repeating, float modifier, IEnumerator coroutine, float time = 1.0f) {
 		float timer = 0.0f;
 
-		Vector3 startPosition = transform.position;
+		Vector3 startPosition = transform.localPosition;
 
-		while (timer <= 1) {
+		float step = modifier/time;
 
-			transform.position = Vector3.Lerp(
-				startPosition,
-				targetPosition,
-				timer);
+		while (timer <= time) {
 
-			timer += Time.deltaTime * speed;
+			transform.localPosition += direction * step;
+
+			timer += Time.deltaTime;
 
 			yield return new WaitForEndOfFrame();
 		}
 
+		transform.localPosition = startPosition;
+
 		if (repeating) {
-			StartCoroutine(lerpImage(
-				startPosition,
-				repeating));
+			image.enabled = false;
+			yield return new WaitForSeconds(DelayTime);
+			image.enabled = true;
+			lerpInDirection(direction, modifier, coroutine, time);
 		}
 	}
+
 }

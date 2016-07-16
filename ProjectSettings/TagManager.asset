@@ -19,6 +19,7 @@ TagManager:
   - EarthCollector
   - AirCollector
   - PowerUp
+  - GatherPlanet
   layers:
   - Default
   - TransparentFX
@@ -53,6 +54,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Overlay
+    uniqueID: 299707029
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

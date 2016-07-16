@@ -32,7 +32,7 @@ public class CraftingTutorialController : MonoBehaviour {
 	public static event TutorialCompleted OnBuyHintTutorialComplete;
 	public static event TutorialCompleted OnBuyPowerUpUpgradeTutorialComplete;
 	public static event TutorialCompleted OnTierSwitchingTutorialComplete;
-	
+
 	private bool tutorialHasEnded;
 
 	private static Image Mask;
@@ -62,6 +62,13 @@ public class CraftingTutorialController : MonoBehaviour {
 		}
 	}
 
+	public static bool ElementDraggingTutorialActive {
+		get {
+			return CraftingTutorialActive || GatheringTutorialActive;
+		}
+	}
+
+
 	void Awake () {
 		Instance = this;
 
@@ -77,7 +84,7 @@ public class CraftingTutorialController : MonoBehaviour {
 			}
 		}
 	}
-
+	
 	void OnDestroy () {
 		UnsubscribeEvents();
 	}
@@ -90,6 +97,10 @@ public class CraftingTutorialController : MonoBehaviour {
 		if (tutorial == null) {
 			return;
 		} else {
+			if (tutorialEnum == TutorialType.Crafting || tutorialEnum == TutorialType.Gathering) {
+				GlobalVars.CRAFTING_CONTROLLER.ToggleRaycastingOnElementSpawners(false);
+			}
+
 			tutorial();
 		}
 
@@ -107,16 +118,20 @@ public class CraftingTutorialController : MonoBehaviour {
 
 	public void AdvanceTutorial () {
 		CraftingTutorialComponent pointerToCurrent = GetCurrentComponent();
-		ToggleComponents(pointerToCurrent.GetCurrent(), false);
-		ModifyCurrentTutorialStep(1);
-		ToggleComponents(pointerToCurrent.GetNext(), true);
+		if (pointerToCurrent != null) {
+			ToggleComponents(pointerToCurrent.GetCurrent(), false);
+			ModifyCurrentTutorialStep(1);
+			ToggleComponents(pointerToCurrent.GetNext(), true);
+		}
 	}
 
 	public void StepTutorialBackward () {
 		CraftingTutorialComponent pointerToCurrent = GetCurrentComponent();
-		ToggleComponents(pointerToCurrent.GetCurrent(), false);
-		ModifyCurrentTutorialStep(-1);
-		ToggleComponents(pointerToCurrent.GetPrevious(), true);
+		if (pointerToCurrent != null) {
+			ToggleComponents(pointerToCurrent.GetCurrent(), false);
+			ModifyCurrentTutorialStep(-1);
+			ToggleComponents(pointerToCurrent.GetPrevious(), true);
+		}
 	}
 
 	int GetCurrentTutorialStep () {
@@ -264,7 +279,7 @@ public class CraftingTutorialController : MonoBehaviour {
 	private void SetTutorialComplete (TutorialType tutorial) {
 
 		if (tutorial == TutorialType.Gathering) {
-			Utility.SetPlayerPrefIntAsBool(GlobalVars.ELEMENTS_DRAGGED_TUTORIAL_KEY, true);
+			Utility.SetPlayerPrefIntAsBool(GlobalVars.ENTER_GATHERING_TUTORIAL_KEY, true);
 		} else if (tutorial == TutorialType.Crafting) {
 			Utility.SetPlayerPrefIntAsBool(GlobalVars.CRAFTING_TUTORIAL_KEY, true);
 		} else if (tutorial == TutorialType.TierSwitch) {
@@ -382,6 +397,7 @@ public class CraftingTutorialController : MonoBehaviour {
 
 	private static void ToggleMask (bool active) {
 		Mask.enabled = active;
+		MaskCanvasGroup.alpha = active ? 1.0f : 0.0f;
 	}
 
 	private static void ToggleEndTutorialOnTap (bool active) {

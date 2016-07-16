@@ -40,6 +40,7 @@ public class CraftingTutorialComponent: TutorialComponent {
 	private bool onNoSortList;
 	private int mySortLayer;
 	private Canvas myCanvas;
+	bool hidden;
 
 	//for children
 	private MaskableGraphic[] MyTutorialComponents;
@@ -127,9 +128,41 @@ public class CraftingTutorialComponent: TutorialComponent {
 	}
 
 	//toggles the children on and off
-	private void ToggleChildrenTutorialComponents (bool active) {
+	private void ToggleChildrenTutorialComponents (bool isActive) {
 		foreach (MaskableGraphic image in MyTutorialComponents) {
-			image.enabled = active;
+			image.enabled = isActive;
+			TryToggleAnimation(image, isActive);
+		}
+	}
+
+	void ToggleRaycaster (bool isActive) {
+		GraphicRaycaster raycaster = GetComponent<GraphicRaycaster>();
+		if (raycaster != null) {
+			raycaster.enabled = isActive;
+		}
+	}
+
+	// Returns true if object contains an animation script
+	bool TryToggleAnimation (MaskableGraphic image, bool isActive) {
+		UIImageAnimation [] animations;
+		if ((animations = image.GetComponents<UIImageAnimation>()) != null) {
+			foreach (UIImageAnimation animation in animations) {
+				if (!animation.Hidden && (animation.PlayOnTutorial == TutorialType.Any || animation.PlayOnTutorial == ActiveTutorialType)) {
+					switch (isActive) {
+					case true:
+						animation.Play();
+						break;
+					case false:
+						animation.Stop();
+						break;
+					}
+				} else {
+					image.enabled = false;
+				}
+			}
+			return true;
+		} else {
+			return false;
 		}
 	}
 
@@ -212,7 +245,7 @@ public class CraftingTutorialComponent: TutorialComponent {
 		//adds its to the dictionary of all the components in each tutorial
 		if (!AllTutorialsComponents.ContainsKey(TutorialType)) {
 			AllTutorialsComponents.Add(TutorialType, new List<CraftingTutorialComponent>());
-		} else if (TutorialType == ActiveTutorialType) {
+		} else if (TutorialType == ActiveTutorialType && TutorialStep == 0) {
 			ActivateComponent();
 		}
 		
@@ -252,32 +285,35 @@ public class CraftingTutorialComponent: TutorialComponent {
 
 	//brings the component to the front of the sort order
 	public void ActivateComponent () {
+		if (hidden) {
+			return;
+		}
+
 		//checks if the tutorial component is an element panel
 		if (IsElementPanel()) {
+			ToggleRaycaster(true);
 
 			//checks if no further panels are needed
-			if (ElementPanelsAtMax() ||
+			if (!IsActiveStep() || ElementPanelsAtMax() ||
 			   	(ElementIsInsufficent(1)==null?false:(bool)ElementIsInsufficent(1) && TutorialType == TutorialType.Crafting) ||
 			    (ElementIsUnlocked()==null?false:(bool)ElementIsUnlocked() && TutorialType == TutorialType.BuyHint) ||
 			    (ElementHintIsUnlocked()==null?false:(bool)ElementHintIsUnlocked() && TutorialType == TutorialType.BuyHint)) {
 				return;
-			}
-
-		}
-
-		if (IsActiveStep()) {
-			ToggleChildrenTutorialComponents(true);
-			if (IsElementPanel()) {
+			} else {
 				ElementPanelsActive++;
+				ToggleChildrenTutorialComponents(true);
 			}
+
+		} else if (IsActiveStep()) {
+			ToggleChildrenTutorialComponents(true);
 		}
 
 		if (onNoSortList) {
 			return;
+		} else {
+			myCanvas.sortingOrder = topSortLayer;
+			myCanvas.overrideSorting = true;
 		}
-
-		myCanvas.sortingOrder = topSortLayer;
-		myCanvas.overrideSorting = true;
 	}
 
 	//sends the component back to its original sorting layer
@@ -289,6 +325,10 @@ public class CraftingTutorialComponent: TutorialComponent {
 
 		ToggleChildrenTutorialComponents(false);
 
+		if (IsElementPanel()) {
+			ToggleRaycaster(false);
+		}
+
 		//does not change sorting if it is on the no sorting list
 		if (onNoSortList) {
 			return;
@@ -297,6 +337,16 @@ public class CraftingTutorialComponent: TutorialComponent {
 		if (myCanvas != null) {
 			myCanvas.sortingOrder = mySortLayer;
 		}
+	}
+
+	public void HideComponent () {
+		DeactivateComponent();
+		hidden = true;
+	}
+
+	public void ShowComponent () {
+		ActivateComponent();
+		hidden = false;
 	}
 
 	public void SetText (string text) {

@@ -204,6 +204,7 @@ public class GeneratePowerUpList : MonoBehaviour {
 			GameObject newPower = Instantiate(powerUpButton)as GameObject;
 			newPower.transform.SetParent(contentList.transform);
 			newPower.transform.localScale = buttonScale;
+			newPower.transform.position += Vector3.forward * 100;
 			currentPower = PowerUps[power];
 			Debug.Log(currentPower.name);
 
@@ -221,11 +222,13 @@ public class GeneratePowerUpList : MonoBehaviour {
 				newPower.transform.FindChild ("Name").GetComponent<Text>().text = powerNames[power];
 				newPower.transform.FindChild ("Name/Description").GetComponent<Text>().text = powerDescriptions[(power*UPGRADE_LEVELS)+(myPowerLevel-1)];
 				newPower.transform.FindChild ("Bonus/BonusText").GetComponent<Text>().text = bonusTexts[(power*UPGRADE_LEVELS)+(myPowerLevel-1)];
-				Debug.Log("___"+bonusTexts[(power*UPGRADE_LEVELS)+myPowerLevel]);
+				Debug.Log("___"+bonusTexts[(power*UPGRADE_LEVELS)+(myPowerLevel-1)]);
 
 				newPower.transform.FindChild ("UpgradeBars").GetComponent<Image>().sprite = upgradeBarImages[myPowerLevel];
 				newPower.transform.FindChild ("PowerUpIcon").GetComponent<Image>().sprite = upgradeCardImages[myPowerLevel];
-				newPower.transform.FindChild ("PowerUpIcon/SpecificIcon").GetComponent<Image>().sprite = GlobalVars.POWERUP_SPRITES[power];
+
+				newPower.transform.FindChild ("PowerUpIcon/SpecificIcon").GetComponent<Image>().sprite = currentPower.GetSprite();
+				// newPower.transform.FindChild ("PowerUpIcon/SpecificIcon").GetComponent<Image>().sprite = GlobalVars.POWERUP_SPRITES[power];
 
 				if (myPowerLevel==PowerUp.MAX_LEVEL){
 					newPower.transform.FindChild ("UpgradeBars/Upgrade/Text").GetComponent<Text>().text = "MAX";

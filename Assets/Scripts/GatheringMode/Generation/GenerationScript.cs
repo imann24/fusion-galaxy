@@ -11,13 +11,6 @@
 /// </summary>
 //#define MAC_BOOK_PRO_2011
 
-/// <summary>
-/// DEBUG is a preprocessor directive used in many scripts to print debugging statements and perform other debugging actions
-/// Commenting it out will also comment out all the code wrapped in #if DEBUG statements
-/// It can then be uncommented again when debugging is needed again
-/// </summary>
-//#define DEBUG
-
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -132,12 +125,15 @@ public class GenerationScript : MonoBehaviour {
 
 		//sets the global script reference to this script
 		GlobalVars.GATHERING_CONTROLLER = this;
-		GlobalVars.InitializePowerUpSprites();
+		//generates the powerups
+		ActivatePowerUp.GenerateAllPowerups ();
+
 	}
 	
 
 	// Use this for initialization
 	void Start () {
+		ActivatePowerUp.GenerateUnlockedPowerups ();
 		// ----- CHEATS ----- \\
 		//ActivatePowerUp.UnlockAllPowerups ();
 		//Cheats.UnlockAllElements();
@@ -219,10 +215,6 @@ public class GenerationScript : MonoBehaviour {
 		//saves the starting values of fall speed and spawn rate
 		initialCreationFrequency = creationFrequency;
 		initialElementMovementSpeed = elementMovementSpeed;
-		#if DEBUG
-			powerUp1 = new BucketShield(2);
-			PowerUp.ResetPowerUpLevel(powerUp1);
-		#endif
 
 		// Bools for tutorial checks
 		isElementGiven = false;
@@ -230,10 +222,6 @@ public class GenerationScript : MonoBehaviour {
 		hasTutorialElementSpawned = false;
 		timeToPowerUp = false;
 		GlobalVars.SWIPE_TUTORIAL_FIRST_SPAWNED = false;
-
-		//generates the powerups
-		ActivatePowerUp.GenerateAllPowerups ();
-		ActivatePowerUp.GenerateUnlockedPowerups ();
 
 		// Instantiating the arrays for the power up tutorial
 		tutorialElements = new GameObject[6];
@@ -243,20 +231,8 @@ public class GenerationScript : MonoBehaviour {
 		CheckForPowerUpTutorial ();
 	}
 
-	#if DEBUG
-		private PowerUp powerUp1;
-	#endif
-
 	// Update is called once per frame
 	void Update () {
-
-		#if DEBUG
-			if (Input.GetKeyDown(KeyCode.Space)) {
-				powerUp1.usePowerUp(0);
-				PowerUp.PromotePowerUp(powerUp1);
-				//allOnScreenElementsToOneType(0);
-			}
-		#endif
 
 		if (!GlobalVars.PAUSED){
 			timer += Time.deltaTime;
@@ -268,7 +244,6 @@ public class GenerationScript : MonoBehaviour {
 
 		// Check if the first element spawned (tutorial element) has fallen below the required height.
 		if(tutorialElement != null && tutorialElement.transform.position.y <= 6.5f && !isElementGiven && PlayerPrefs.GetInt(GlobalVars.GATHERING_TUTORIAL_WATCHED_SWIPE) == 0){
-			Debug.Log("Spawn in tutorial element");
 			isElementGiven = true;
 			tutorialElement.GetComponent<Collider>().enabled = true;
 			this.GetComponent<PlayTutorial>().StartTutorial(tutorialElement);
@@ -324,7 +299,6 @@ public class GenerationScript : MonoBehaviour {
 					randomSpawnedElement = Random.Range(0,GlobalVars.NUMBER_OF_LANES);				
 				}
 			}
-			//spawnedElements.Clear();
 		}
 		if(lanesUsed != null && lanesUsed.Contains(randomSpawnedLane)){
 			foreach(int i in lanesUsed){
@@ -342,7 +316,6 @@ public class GenerationScript : MonoBehaviour {
 					randomSpawnedLane = Random.Range(0,GlobalVars.NUMBER_OF_LANES);
 				}
 			}
-			//lanesUsed.Clear();
 		}
 		while(randomSpawnedElement == randomSpawnedLane){
 			randomSpawnedLane = Random.Range(0,GlobalVars.NUMBER_OF_LANES);
@@ -471,12 +444,7 @@ public class GenerationScript : MonoBehaviour {
 			spawnedElement.name = GlobalVars.SWIPE_TUTORIAL_ELEMENT_NAME;
 			GlobalVars.SWIPE_TUTORIAL_FIRST_SPAWNED = true;
 		} else {
-#if DEBUG
-            //		randomSpawnedElement = GlobalVars.NUMBER_OF_LANES;
-            //		Debug.Log("setting the game to only spawn powerups");
-#endif
             spawnedElement = getNewElementFromSpawnPool(randomSpawnedElement);
-			//spawnedElement = (GameObject)Instantiate (elements [randomSpawnedElement], lanes [randomSpawnedLane], Quaternion.identity);
 		}
 		// Catching the first element to spawn and stops spawning so we can show a tutorial.
 		if(!hasTutorialElementSpawned && PlayerPrefs.GetInt(GlobalVars.GATHERING_TUTORIAL_WATCHED_SWIPE) == 0){
@@ -892,7 +860,8 @@ public class GenerationScript : MonoBehaviour {
 
 	//checks if the user has gone through the tutorial for how to use powerUps
 	public void CheckForPowerUpTutorial(){
-		if (ActivatePowerUp.PowerUpsUnlocked() && PlayerPrefs.GetInt(GlobalVars.GATHERING_TUTORIAL_WATCHED_POWER_UP) == 0 && PlayerPrefs.GetInt(GlobalVars.GATHERING_TUTORIAL_WATCHED_SWIPE) == 1 && !GlobalVars.PAUSED) {
+		if (ActivatePowerUp.PowerUpsUnlocked() && PlayerPrefs.GetInt(GlobalVars.GATHERING_TUTORIAL_WATCHED_POWER_UP) == 0 &&
+		    PlayerPrefs.GetInt(GlobalVars.GATHERING_TUTORIAL_WATCHED_SWIPE) == 1) {
 			// Stops the game from starting normally.
 			spawning = false;
 			this.GetComponent<CollectionTimer>().SetIsCountingDown(false);

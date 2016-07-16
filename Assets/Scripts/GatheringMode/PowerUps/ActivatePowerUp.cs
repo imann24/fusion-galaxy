@@ -1,5 +1,4 @@
-﻿#define DEBUG
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -10,6 +9,11 @@ using System.Collections.Generic;
 /// affects the lane its dragged into if it is lane specifc
 /// </summary>
 public class ActivatePowerUp : MonoBehaviour {
+	const string spriteObjectName = "power-pic"; 
+	const float collectedScaleFactor =	0.50f;
+	static Vector3 collectedScale = new Vector3(collectedScaleFactor, collectedScaleFactor);
+	const float powerUpCollectedAnimationTime = 0.25f; // in seconds
+
 	//event call when the powerup is used
 	public delegate void PowerUpAction(string powerUpName, int powerUpLevel);
 	public static event PowerUpAction OnPowerUpUsed;
@@ -20,6 +24,7 @@ public class ActivatePowerUp : MonoBehaviour {
 
 	//visual stuff
 	public SpriteRenderer mySprite;
+	TrailRenderer myTrail;
 	GameObject background;
 	BackgroundVisuals backgroundScript;
 
@@ -35,11 +40,7 @@ public class ActivatePowerUp : MonoBehaviour {
 	private Color totalLaneConversionColor;
 	private Color collectAllColor;
 	private Color bucketShieldColor = new Color (72f/255f, 184f/255f, 201f/255f);
-
-
-	//the animator that play the dissolve animation when the powerup is pressed
-	Animator powerUpTappedAnim;
-
+	
 	//array of PowerUp instances
 	private static PowerUp[] PowerUps;
 	private static List<PowerUp> UnlockedPowerUps = new List<PowerUp>();
@@ -102,27 +103,27 @@ public class ActivatePowerUp : MonoBehaviour {
 	private GameObject controller;
 	// Powerup has been manually set.
 	private bool powerUpSet = false;
-
+	
 	// Use this for initialization
 	void Start () {
-		// Find the Controller in the scene
-		controller = GameObject.Find ("Controller");
-		//sets the reference to play the background animation
-		backgroundFlash = GatheringPowerUpAnimationController.instance.animator;
-
-		background = GameObject.Find("SceneComponents/background/backgroundImage");
-		backgroundScript = background.GetComponent<BackgroundVisuals> ();
-
-		//initializes the colos for the poweups, if they're currently none
-		InitializeColors ();
-		Debug.Log("Colour 1 should be: " + powerColor[0]);
-		SetPowerUp ();
-
-		powerUpTappedAnim = this.transform.GetChild(0).GetComponent<Animator> ();
-
-
+		Init();
 	}
 
+
+	void Init () {
+		// Find the Controller in the scene
+		controller = GlobalVars.GATHERING_CONTROLLER.gameObject;
+		//sets the reference to play the background animation
+		backgroundFlash = GatheringPowerUpAnimationController.instance.animator;
+		
+		background = GameObject.Find("SceneComponents/background/backgroundImage");
+		backgroundScript = background.GetComponent<BackgroundVisuals> ();
+		
+		//initializes the colos for the poweups, if they're currently none
+		InitializeColors ();
+		SetPowerUp ();
+		myTrail = GetComponentInChildren<TrailRenderer>();
+	}
 
 	// destroys the powerup if it goes off the screen
 	void OnBecameInvisible(){
@@ -150,7 +151,7 @@ public class ActivatePowerUp : MonoBehaviour {
 		myPowerUp = UnlockedPowerUps[whichPower];
 
 		//spawn the power-up and add a life timer
-		mySprite.sprite = GlobalVars.POWERUP_SPRITES[UnlockedPowerupIndex[whichPower]];
+		mySprite.sprite = myPowerUp.GetSprite();
 	}
 
 	// Sets the powerup to a specified type (regardless of which are unlocked)
@@ -160,7 +161,7 @@ public class ActivatePowerUp : MonoBehaviour {
 		whichPower = index;
 		myPowerUp = PowerUps[whichPower];
 		//spawn the power-up and add a life timer
-		mySprite.sprite = GlobalVars.POWERUP_SPRITES[whichPower];
+		mySprite.sprite = myPowerUp.GetSprite();
 	}
 
 	#region POWERUP_USED
@@ -180,8 +181,6 @@ public class ActivatePowerUp : MonoBehaviour {
 			else if(myPowerUp.name == "CollectAll"){
 				collectionAnimator.SetTrigger("collectAll");
 			}
-			//turn on animator which had been turned off due to render order issues
-			powerUpTappedAnim.enabled = true;
 			// Play the animation
 			backgroundFlash.SetTrigger("powerUpFlash");
 			//this power-up is now considered used
@@ -193,7 +192,6 @@ public class ActivatePowerUp : MonoBehaviour {
 			float beginPowerTaperOff = 0.2f; 
 			//conversion from nullable float
 			if (myPowerUp.duration != null){
-				Debug.Log("Duration: " + ((float)myPowerUp.duration - beginPowerTaperOff));
 				background.BroadcastMessage("beginVisualCoroutine",(float)myPowerUp.duration-beginPowerTaperOff);
 			}
 			//destroys the collider so the object can no longer receieve clicks
@@ -206,13 +204,12 @@ public class ActivatePowerUp : MonoBehaviour {
 			}else{
 				myPowerUp.usePowerUp (GlobalVars.GATHERING_CONTROLLER.whichLane(transform.position.x)); 
 			}
-			//scale adjustment for spritesheet
-			this.transform.localScale = new Vector3(2,2,1);
+
 			//begin its tapped animation
-			powerUpTappedAnim.SetInteger ("whichPower", UnlockedPowerupIndex[whichPower]);
 			if (OnPowerUpUsed != null) {
 				OnPowerUpUsed(myPowerUp.name, myPowerUp.level);
 			}
+			StartCoroutine(PowerUpActivatedAnimation());
 		}
 	}
 
@@ -286,14 +283,10 @@ public class ActivatePowerUp : MonoBehaviour {
 
 	// Calculates which powerups are unlocked and adds their indexes to a dictionary to determine the index 
 	public static void GenerateUnlockedPowerups () {
-		Debug.Log("trying to unlock powerups");
 		for (int i = 0; i < PowerUps.Length; i++) {
 			if (PowerUp.PowerUpUnlocked(PowerUps[i]) && !UnlockedPowerUps.Contains(PowerUps[i])) {
 				UnlockedPowerUps.Add(PowerUps[i]);
 				UnlockedPowerupIndex.Add(UnlockedPowerUps.Count-1, i);
-#if DEBUG
-				Debug.Log(PowerUps[i].name + " is unlocked");
-#endif
 			}
 		}
 	}
@@ -308,5 +301,32 @@ public class ActivatePowerUp : MonoBehaviour {
 		UnlockedPowerUps.Clear();
 		UnlockedPowerUps.InsertRange(0, PowerUps);
 	}
+
+	IEnumerator PowerUpActivatedAnimation (bool destroyOnComplete = true) {
+		float timer = 0;
+		Vector3 startScale = mySprite.transform.localScale;
+		Color startOpacity = mySprite.color;
+		Destroy(myTrail);
+		while (timer <= powerUpCollectedAnimationTime) {
+			float percent = timer/powerUpCollectedAnimationTime;
+			mySprite.transform.localScale = Vector3.Lerp (
+				startScale,
+				collectedScale,
+				percent
+			);
+			mySprite.color = Color.Lerp (
+				startOpacity,
+				Color.clear,
+				percent
+			);
+			timer += Time.deltaTime;
+			yield return new WaitForEndOfFrame();
+		}
+
+		if (destroyOnComplete) {
+			Destroy(gameObject);
+		}
+	}
+
 
 }
