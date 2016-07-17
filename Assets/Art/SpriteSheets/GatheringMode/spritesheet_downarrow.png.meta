@@ -1,0 +1,264 @@
+fileFormatVersion: 2
+guid: ea9fbabaf907f44c79f5c2cc6675d078
+timeCreated: 1468184622
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: spritesheet_downarrow_0
+    21300002: spritesheet_downarrow_1
+    21300004: spritesheet_downarrow_2
+    21300006: spritesheet_downarrow_3
+    21300008: spritesheet_downarrow_4
+    21300010: spritesheet_downarrow_5
+    21300012: spritesheet_downarrow_6
+    21300014: spritesheet_downarrow_7
+    21300016: spritesheet_downarrow_8
+    21300018: spritesheet_downarrow_9
+    21300020: spritesheet_downarrow_10
+    21300022: spritesheet_downarrow_11
+    21300024: spritesheet_downarrow_12
+    21300026: spritesheet_downarrow_13
+    21300028: spritesheet_downarrow_14
+    21300030: spritesheet_downarrow_15
+    21300032: spritesheet_downarrow_16
+    21300034: spritesheet_downarrow_17
+    21300036: spritesheet_downarrow_18
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: -1
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 5
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: spritesheet_downarrow_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 766
+        width: 128
+        height: 258
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_downarrow_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 766
+        width: 128
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_downarrow_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 766
+        width: 128
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_downarrow_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 766
+        width: 128
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_downarrow_4
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 766
+        width: 128
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_downarrow_5
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 766
+        width: 128
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_downarrow_6
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 766
+        width: 128
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_downarrow_7
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 766
+        width: 128
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_downarrow_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 508
+        width: 128
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_downarrow_9
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 508
+        width: 128
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_downarrow_10
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 508
+        width: 128
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_downarrow_11
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 508
+        width: 128
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_downarrow_12
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 508
+        width: 128
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_downarrow_13
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 508
+        width: 128
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_downarrow_14
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 508
+        width: 128
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_downarrow_15
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 508
+        width: 128
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_downarrow_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 250
+        width: 128
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_downarrow_17
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 250
+        width: 128
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: spritesheet_downarrow_18
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 250
+        width: 128
+        height: 258
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: gathering_ui
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
