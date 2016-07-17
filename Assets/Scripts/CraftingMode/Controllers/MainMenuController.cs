@@ -373,8 +373,12 @@ using System.Collections.Generic;
 			hintPanel.GetComponent<PurchaseHint> ().myCost4 = theCost;
 
 		for (int i = 1; i<=4; i++) {
-			hintPanel.transform.FindChild("NotYetPurchased/PurchaseCost/cost"+i.ToString()).GetComponent<Text>().text = theCost.ToString();
-			hintPanel.transform.FindChild("NotYetPurchased/PurchaseCost/myAmount"+i.ToString()).GetComponent<Text>().text = PlayerPrefs.GetInt (hintPanel.GetComponent<PurchaseHint> ().getCostElemType(i)).ToString();
+			int inventory = PlayerPrefs.GetInt (hintPanel.GetComponent<PurchaseHint> ().getCostElemType(i));
+			hintPanel.transform.FindChild("NotYetPurchased/PurchaseCost/PurchaseRect/CostsRect/Costs/cost"+i.ToString()).GetComponent<Text>().text = theCost.ToString();
+			Text inventoryText = hintPanel.transform.FindChild("NotYetPurchased/PurchaseCost/PurchaseRect/CostsRect/Inventories/myAmount"+i.ToString()).GetComponent<Text>();
+			inventoryText.text = inventory.ToString();
+			Color lightRed = new Color32(255, 135, 126, 255);
+			inventoryText.color = inventory >= theCost ? Color.white : lightRed;
 		}
 		hintPanel.transform.FindChild ("AlreadyPurchased/Name").GetComponent<Text> ().text = activeElement;
 		hintPanel.transform.position = activePosition;
