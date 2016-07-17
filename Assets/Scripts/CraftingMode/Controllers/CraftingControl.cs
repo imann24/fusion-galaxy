@@ -315,6 +315,7 @@ public class CraftingControl : MonoBehaviour {
 				DataController.ResetElementsSinceRewardCount();
 			}
 			result.unlock();
+			PowerUp.CheckForUnlocks();
 		}
 	}
 

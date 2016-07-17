@@ -88,7 +88,6 @@ public static class Cheats {
 	}
 
 	public static void ResetPowerUpUpgradePurchases () {
-		PowerUp.CheckIndexDictionary();
 		foreach (string powerupName in GlobalVars.POWERUP_INDEXES.Keys) {
 			PowerUp.ResetPowerUpLevel(powerupName);
 		}

@@ -161,7 +161,17 @@ public class GlobalVars {
 	public const string POWERUP_FILE_PATH = "powerups/";
 
 	// A dictionary to determine which powerup is at which index
-	public static Dictionary<string, int> POWERUP_INDEXES;
+	public static Dictionary<string, int> POWERUP_INDEXES = new Dictionary<string, int>() {
+		{LaneConversion.NAME, 0},
+		{SlowFall.NAME, 1},
+		{Fuel.NAME, 2},
+		{Multiply.NAME, 3},
+		{BucketShield.NAME, 4},
+		{TapToCollect.NAME, 5},
+		{Invincible.NAME, 6},
+		{TotalConversion.NAME, 7},
+		{CollectAll.NAME, 8},
+	};
 	
 	// Used to count the number of powerups during a single 
 	public static void INCREASE_POWER_UP_USE_COUNT (string powerUpName, int powerUpLevel) {
@@ -215,26 +225,5 @@ public class GlobalVars {
 		BUY_HINT_TUTORIAL_KEY, 
 		UPGRADE_POWERUP_TUTORIAL_KEY, 
 		TIER_SWITCH_TUTORIAL_KEY};
-	#endregion
-
-	#region INITIALIZATION_METHODS
-
-	/// <summary>
-	/// Initializes the powerup indexes. 
-	/// Used by the ActivatePowerUp script to associate powerups with tiers
-	/// </summary>
-	public static void InitializePowerupIndexes () {
-		POWERUP_INDEXES = new Dictionary<string, int>();
-		POWERUP_INDEXES.Add("LaneConversion", 0);
-		POWERUP_INDEXES.Add("SlowFall", 1);
-		POWERUP_INDEXES.Add("Fuel", 2);
-		POWERUP_INDEXES.Add("Multiply", 3);
-		POWERUP_INDEXES.Add("BucketShield", 4);
-		POWERUP_INDEXES.Add("TapToCollect", 5);
-		POWERUP_INDEXES.Add("Invincible", 6);
-		POWERUP_INDEXES.Add("TotalConversion", 7);
-		POWERUP_INDEXES.Add("CollectAll", 8);
-	}
-	
 	#endregion
 }

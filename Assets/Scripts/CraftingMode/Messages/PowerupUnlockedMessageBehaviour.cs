@@ -15,6 +15,7 @@ public class PowerupUnlockedMessageBehaviour : MessageBehaviour {
 	public void Init (PowerUp powerUp) {
 		SetTitle();
 		SetIcon(powerUp);
+		SetPowerupText(powerUp);
 	}
 
 	void SetTitle () {

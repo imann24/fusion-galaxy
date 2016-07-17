@@ -13,9 +13,19 @@ public class MessageController : MonoBehaviour {
 	public GameObject ElementRewardMessagePrefab;
 	public GameObject PowerupUnlockedMessagePrefab;
 	GameObject currentMessage;
+	bool initializedAsSingleton;
 
 	void Awake () {
-		SingletonUtil.TryInit(ref Instance, this, gameObject);
+		if (SingletonUtil.TryInit(ref Instance, this, gameObject)) {
+			Subscribe();
+			initializedAsSingleton = true;
+		}
+	}
+
+	void OnDestroy () {
+		if (initializedAsSingleton) {
+			Unsubscribe();
+		}
 	}
 
 	GameObject CreateMessage (MessageType messageType) {
@@ -59,5 +69,13 @@ public class MessageController : MonoBehaviour {
 		if (currentMessage != null) {
 			Destroy(currentMessage);
 		}
+	}
+
+	void Subscribe () {
+		PowerUp.OnUnlockPowerUp += ShowPowerupsUnlockedMessage;
+	}
+
+	void Unsubscribe () {
+		PowerUp.OnUnlockPowerUp -= ShowPowerupsUnlockedMessage;
 	}
 }

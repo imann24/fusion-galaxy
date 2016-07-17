@@ -62,6 +62,8 @@ using System.Collections.Generic;
 	}
 
 	void Start () {
+		PowerUp.CheckForUnlocks();
+
 		//calls the event
 		if (OnEnterMenu != null) {
 			OnEnterMenu();

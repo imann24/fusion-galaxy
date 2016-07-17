@@ -65,6 +65,7 @@ public static class DataController {
 			FileStream file;
 			file = File.Open(GetPath(), FileMode.Open);
 			_data = (GameData) binaryFormatter.Deserialize(file);
+			_data.CheckForNullValues();
 			file.Close();
 		} catch {
 			InitDataAsNew();
@@ -90,21 +91,35 @@ public static class DataController {
 		Save();
 	}
 
+	public static bool GetPowerUpUnlocked (string powerUpName) {
+		return _data.GetPowerUpUnlocked(powerUpName);
+	}
+	
+	public static void SetPowerUpUnlock (string powerUpName, bool isUnlocked) {
+		_data.SetPowerUpUnlock(powerUpName, isUnlocked);
+	}
+
 	[System.Serializable]
 	internal class GameData {
-		Queue<string> mostRecentElementsDiscovered;
+		Queue<string> mostRecentElementsDiscovered = new Queue<string>();
 		int elementsDicoveredSinceLastReward;
+		Dictionary<string, bool> powerUpUnlocks = new Dictionary<string, bool>();
 
 		internal GameData () {
 			mostRecentElementsDiscovered = new Queue<string>();
 			ResetElementsSinceRewardCount();
+			powerUpUnlocks = new Dictionary<string, bool>();
+			foreach (string powerupName in GlobalVars.POWERUP_INDEXES.Keys) {
+				powerUpUnlocks.Add(powerupName, false);
+			}
 		}
 
 		internal GameData (Queue<string> mostRecentElementsDiscovered, 
 		                   int elementsDicoveredSinceLastReward) {
 			this.mostRecentElementsDiscovered = mostRecentElementsDiscovered;
 			this.elementsDicoveredSinceLastReward = elementsDicoveredSinceLastReward;
-		}
+		} 
+
 		internal void AddDiscoveredElement (string elementName) {
 			if (mostRecentElementsDiscovered.Contains(elementName)) {
 				return;
@@ -127,6 +142,32 @@ public static class DataController {
 
 		internal void ResetElementsSinceRewardCount () {
 			elementsDicoveredSinceLastReward = 0;
+		}
+
+		internal bool GetPowerUpUnlocked (string powerUpName) {
+			bool isUnlocked;
+			if (powerUpUnlocks.TryGetValue(powerUpName, out isUnlocked)) {
+				return isUnlocked;
+			} else {
+				return false;
+			}
+		}
+
+		internal void SetPowerUpUnlock (string powerUpName, bool isUnlocked) {
+			if (powerUpUnlocks.ContainsKey(powerUpName)) {
+				powerUpUnlocks[powerUpName] = isUnlocked;
+			} else {
+				powerUpUnlocks.Add(powerUpName, isUnlocked);
+			}
+		}
+
+		internal void CheckForNullValues () {
+			if (mostRecentElementsDiscovered == null) {
+				mostRecentElementsDiscovered = new Queue<string>();
+			}
+			if (powerUpUnlocks == null) {
+				powerUpUnlocks = new Dictionary<string, bool>();
+			}
 		}
 	}
 
