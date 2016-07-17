@@ -12,6 +12,9 @@ public abstract class PowerUp {
 	//name is accessible but not changeable outside the subclass
 	public string name {get; protected set;}
 
+	//description is accessible but not changeable outside the subclass
+	public string[] descriptions {get; protected set;}
+
 	//duration is accessible but not changeable outside the subclass
 	public float? duration {get; protected set;}
 
@@ -34,6 +37,15 @@ public abstract class PowerUp {
 		}
 	}
 
+	public string GetDescription () {
+		if (IntUtil.InRange(level, descriptions.Length)) {
+			int zeroIndexed = 1;
+			return descriptions[level];
+    	} else {
+			return null;
+		}
+	}
+
 	string GetSpriteKey () {
 		return string.Format("{0}-{1}", name.ToLower().Replace(" ", string.Empty), RankSuffix());
 	}
@@ -52,8 +64,9 @@ public abstract class PowerUp {
 	}
 
 	//super class constructor for powerups, should be called by all subclass constructors
-	public PowerUp (string name, float? duration) {
+	public PowerUp (string name, string[] descriptions, float? duration) {
 		this.name = name;
+		this.descriptions = descriptions;
 		this.duration = duration;
 		allZones = GlobalVars.GATHERING_ZONES;
 		controller = GlobalVars.GATHERING_CONTROLLER;

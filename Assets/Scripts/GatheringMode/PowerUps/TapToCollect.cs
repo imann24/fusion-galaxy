@@ -1,4 +1,11 @@
 public class TapToCollect : PowerUp {
+	public const string NAME = "TapToCollect";
+	public static readonly string [] DESCRIPTIONS = new string[]{
+		"Simply tap elements to automatically collect them.",//power 6, level 1
+		"Simply tap elements to automatically collect them.",//power 6, level 2
+		"Simply tap elements to automatically collect them.",//power 6, level 3
+	};
+
 	//event call
 	public delegate void TapToCollectActivatedAction();
 	public static event TapToCollectActivatedAction OnTapToCollectActivated;
@@ -7,7 +14,7 @@ public class TapToCollect : PowerUp {
 	private float level3Multiplier = 2.0f;
 
 	//creates the powerup
-	public TapToCollect (float duration):base ("TapToCollect", duration){}
+	public TapToCollect (float duration):base (NAME, DESCRIPTIONS, duration){}
 
 	#region implemented abstract members of PowerUp
 

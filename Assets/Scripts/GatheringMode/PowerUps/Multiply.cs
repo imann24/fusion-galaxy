@@ -9,6 +9,13 @@ using UnityEngine;
 using System.Collections;
 
 public class Multiply: PowerUp {
+	public const string NAME = "Multiply";
+	public static readonly string [] DESCRIPTIONS = new string[]{
+		"Tap or drag this ability into a specific lane to receive a score multiplier for the elements collected of that lane’s elemental type.",//power 4, level 1
+		"Tap or drag this ability into a specific lane to receive a score multiplier for the elements collected of that lane’s elemental type, and an adjacent lane’s elemental type.",//power 4, level 2
+		"Tap or drag this ability to receive a score multiplier for elements collected of all elemental types.",//power 4, level 3
+	};
+
 	//event
 	public delegate void ElementMultipyActivatedAction();
 	public static event ElementMultipyActivatedAction OnElementMultiplyActived;
@@ -17,15 +24,15 @@ public class Multiply: PowerUp {
 	private int multiplier = 2;
 
 	//uses the default multiplier
-	public Multiply (float duration):base ("Multiply", duration) {}
+	public Multiply (float duration):base (NAME, DESCRIPTIONS, duration) {}
 
 	//assigns the multiplier and a version that has no expiration
-	public Multiply (int mutiplier):base("Multiply", null) {
+	public Multiply (int mutiplier):base(NAME, DESCRIPTIONS, null) {
 		this.multiplier = multiplier;
 	}
 
 	//assigns the target zone and the score modifier
-	public Multiply (int multiplier, float duration):base("Multiply", duration) {
+	public Multiply (int multiplier, float duration):base(NAME, DESCRIPTIONS, duration) {
 		this.multiplier = multiplier;
 	}
 

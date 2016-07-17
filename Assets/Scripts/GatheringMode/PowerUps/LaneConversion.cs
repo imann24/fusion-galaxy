@@ -6,6 +6,13 @@
 
 using UnityEngine;
 public class LaneConversion : PowerUp {
+	public const string NAME = "LaneConversion";
+	public static readonly string [] DESCRIPTIONS = new string[]{
+		"Tap or drag this ability into a specific lane to convert the elements contained to the lane’s elemental type.",//power 1, level 1
+		"Tap or drag this ability into a specific lane to convert the elements contained, and an adjacent lane, to each lane’s elemental type.",//power 1, level 2
+		"Tap or drag this ability to convert the elements contained within each lane to the lane’s elemental type.",//power 1, level 3
+	};
+
 	//event call
 	public delegate void LaneConversionActivatedAction();
 	public static event LaneConversionActivatedAction OnLaneConversionActivated;
@@ -13,7 +20,7 @@ public class LaneConversion : PowerUp {
 	public new float duration{ get; private set; } //overriding float to make sure it's not nullable
 
 	//constructor for the powerup
-	public LaneConversion (float duration): base ("LaneConversion", duration) {
+	public LaneConversion (float duration): base (NAME, DESCRIPTIONS, duration) {
 		this.duration = duration;
 	}
 	

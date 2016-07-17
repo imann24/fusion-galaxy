@@ -5,6 +5,7 @@
 
 using UnityEngine;
 using System;
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -166,5 +167,13 @@ public static class ArrayUtil {
 		for (int i = 0; i < source.Length; i++) {
 			source[i] = value;
 		}
+	}
+
+	public static T[] Concat<T> (params T[][] arrays) {
+		T[] result = arrays[0];
+		for (int i = 0; i < arrays.Length; i++) {
+			result = result.Concat(arrays[i]).ToArray();
+		}
+		return result;
 	}
 }

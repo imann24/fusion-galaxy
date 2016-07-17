@@ -7,7 +7,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ElementRewardMessageBehaviour : MonoBehaviour {
+public class ElementRewardMessageBehaviour : MessageBehaviour {
 	[Header("References")]
 	public Text RewardAmount;
 	public Text RewardTitle;
@@ -25,10 +25,6 @@ public class ElementRewardMessageBehaviour : MonoBehaviour {
 		SetRewardAmount(rewardAmount);
 		ToggleBaseElements(includeBaseElements);
 		SetTitle(DisplayTitleText);
-	}
-
-	public void Close () {
-		MessageController.Instance.CloseCurrentMessage();
 	}
 
 	void SetDiscoveredElements (string[] elementNames) {

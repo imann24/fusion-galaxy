@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Linq;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
@@ -47,7 +48,6 @@ public class GeneratePowerUpList : MonoBehaviour {
 	public Sprite upgradeBar0,upgradeBar1,upgradeBar2,upgradeBar3;
 	Sprite[] upgradeCardImages;
 	public Sprite upgradeCard0,upgradeCard1,upgradeCard2,upgradeCard3;
-
 	//powerUp Upgrade Specific arrays
 	string[] powerDescriptions;
 	string[] bonusTexts;
@@ -86,34 +86,46 @@ public class GeneratePowerUpList : MonoBehaviour {
 		PowerUps[7] = new TotalConversion(DEFAULT_NUMBER);
 		PowerUps[8] = new CollectAll();
 
-		powerDescriptions = new string[TOTAL_BASE_POWERUPS*UPGRADE_LEVELS]{
-			"Tap or drag this ability into a specific lane to convert the elements contained to the lane’s elemental type.",//power 1, level 1
-			"Tap or drag this ability into a specific lane to convert the elements contained, and an adjacent lane, to each lane’s elemental type.",//power 1, level 2
-			"Tap or drag this ability to convert the elements contained within each lane to the lane’s elemental type.",//power 1, level 3
-			"Tap or drag this ability into a specific lane to slow down the fall of elements contained.",//power 2, level 1
-			"Tap or drag this ability into a specific lane to significantly slow down the fall of elements contained.",//power 2, level 2
-			"Tap or drag this ability to significantly slow down the fall all elements.",//power 2, level 3
-			"Your fuel does not deplete for a certain duration.",//power 3, level 1
-			"You gain additional fuel and it does not deplete for a certain duration.",//power 3, level 2
-			"You gain a significant amount of additional fuel and it does not deplete for a certain duration.",//power 3, level 3
-			"Tap or drag this ability into a specific lane to receive a score multiplier for the elements collected of that lane’s elemental type.",//power 4, level 1
-			"Tap or drag this ability into a specific lane to receive a score multiplier for the elements collected of that lane’s elemental type, and an adjacent lane’s elemental type.",//power 4, level 2
-			"Tap or drag this ability to receive a score multiplier for elements collected of all elemental types.",//power 4, level 3
-			"Tap or drag this ability into a specific lane to give that lane no miss penalty for the next 2 incorrect elements that fall into it.",//power 5, level 1
-			"Tap or drag this ability into a specific lane to give that lane no miss penalty for the next 4 incorrect elements that fall into it.",//power 5, level 2
-			"Tap or drag this ability to give all lanes no miss penalty for the next 4 incorrect elements that fall into them, for each lane.",//power 5, level 3
-			"Simply tap elements to automatically collect them.",//power 6, level 1
-			"Simply tap elements to automatically collect them.",//power 6, level 2
-			"Simply tap elements to automatically collect them.",//power 6, level 3
-			"Tap or drag this ability into a specific lane to give that lane no miss penalty for a small amount of time.",//power 7, level 1
-			"Tap or drag this ability into a specific lane to give that lane no miss penalty for a decent amount of time.",//power 7, level 2
-			"Tap or drag this ability to give all lanes no miss penalty for a decent amount of time.",//power 7, level 3
-			"Tap or drag this ability into a specific lane to convert all spawned elements to the lane’s elemental type for a small amount of time.",//power 8, level 1
-			"Tap or drag this ability into a specific lane to convert all spawned elements to the lane’s elemental type for a decent amount of time.",//power 8, level 2
-			"Tap or drag this ability into a specific lane to convert all spawned elements to the lane’s elemental type and gain invincibility for a decent amount of time.",//power 8, level 3
-			"Tap or drag this ability into a specific lane to automatically collect all elements in that lane.",//power 9, level 1
-			"Tap or drag this ability into a specific lane to automatically collect all elements in that lane and an adjacent lane.",//power 9, level 2
-			"Tap or drag this ability to automatically collect all elements in all lanes."};//power 9, level 3
+		powerDescriptions = ArrayUtil.Concat (
+			LaneConversion.DESCRIPTIONS,
+			SlowFall.DESCRIPTIONS,
+			Fuel.DESCRIPTIONS,
+			Multiply.DESCRIPTIONS,
+			BucketShield.DESCRIPTIONS,
+			TapToCollect.DESCRIPTIONS,
+			Invincible.DESCRIPTIONS,
+			TotalConversion.DESCRIPTIONS,
+			CollectAll.DESCRIPTIONS
+		);
+//
+//		powerDescriptions = new string[TOTAL_BASE_POWERUPS*UPGRADE_LEVELS]{
+//			"Tap or drag this ability into a specific lane to convert the elements contained to the lane’s elemental type.",//power 1, level 1
+//			"Tap or drag this ability into a specific lane to convert the elements contained, and an adjacent lane, to each lane’s elemental type.",//power 1, level 2
+//			"Tap or drag this ability to convert the elements contained within each lane to the lane’s elemental type.",//power 1, level 3
+//			"Tap or drag this ability into a specific lane to slow down the fall of elements contained.",//power 2, level 1
+//			"Tap or drag this ability into a specific lane to significantly slow down the fall of elements contained.",//power 2, level 2
+//			"Tap or drag this ability to significantly slow down the fall all elements.",//power 2, level 3
+//			"Your fuel does not deplete for a certain duration.",//power 3, level 1
+//			"You gain additional fuel and it does not deplete for a certain duration.",//power 3, level 2
+//			"You gain a significant amount of additional fuel and it does not deplete for a certain duration.",//power 3, level 3
+//			"Tap or drag this ability into a specific lane to receive a score multiplier for the elements collected of that lane’s elemental type.",//power 4, level 1
+//			"Tap or drag this ability into a specific lane to receive a score multiplier for the elements collected of that lane’s elemental type, and an adjacent lane’s elemental type.",//power 4, level 2
+//			"Tap or drag this ability to receive a score multiplier for elements collected of all elemental types.",//power 4, level 3
+//			"Tap or drag this ability into a specific lane to give that lane no miss penalty for the next 2 incorrect elements that fall into it.",//power 5, level 1
+//			"Tap or drag this ability into a specific lane to give that lane no miss penalty for the next 4 incorrect elements that fall into it.",//power 5, level 2
+//			"Tap or drag this ability to give all lanes no miss penalty for the next 4 incorrect elements that fall into them, for each lane.",//power 5, level 3
+//			"Simply tap elements to automatically collect them.",//power 6, level 1
+//			"Simply tap elements to automatically collect them.",//power 6, level 2
+//			"Simply tap elements to automatically collect them.",//power 6, level 3
+//			"Tap or drag this ability into a specific lane to give that lane no miss penalty for a small amount of time.",//power 7, level 1
+//			"Tap or drag this ability into a specific lane to give that lane no miss penalty for a decent amount of time.",//power 7, level 2
+//			"Tap or drag this ability to give all lanes no miss penalty for a decent amount of time.",//power 7, level 3
+//			"Tap or drag this ability into a specific lane to convert all spawned elements to the lane’s elemental type for a small amount of time.",//power 8, level 1
+//			"Tap or drag this ability into a specific lane to convert all spawned elements to the lane’s elemental type for a decent amount of time.",//power 8, level 2
+//			"Tap or drag this ability into a specific lane to convert all spawned elements to the lane’s elemental type and gain invincibility for a decent amount of time.",//power 8, level 3
+//			"Tap or drag this ability into a specific lane to automatically collect all elements in that lane.",//power 9, level 1
+//			"Tap or drag this ability into a specific lane to automatically collect all elements in that lane and an adjacent lane.",//power 9, level 2
+//			"Tap or drag this ability to automatically collect all elements in all lanes."};//power 9, level 3
 			
 		bonusTexts = new string[TOTAL_BASE_POWERUPS*UPGRADE_LEVELS]{
 			"1 Lane",//power 1, level 1
