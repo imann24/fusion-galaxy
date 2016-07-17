@@ -6,6 +6,8 @@ using System.Collections;
 public class SpawnerControl : MonoBehaviour {
 	//the slider pages
 	//public ScrollRect scrollBar;
+	const string unlockedBackground = "Unlocked/BackgroundUnlocked";
+
 	public CraftingButtonController controller;
 	public Text myName;
 	public Text myNameShadow;
@@ -51,6 +53,20 @@ public class SpawnerControl : MonoBehaviour {
 		raycaster.enabled = isActive;
 	}
 
+	public void SetBackground (Sprite image) {
+		if (elementName == null) {
+			return;
+		}
+
+		if (GlobalVars.ELEMENTS_BY_NAME[elementName].isElementUnlocked()) {
+			Transform background = transform.FindChild(unlockedBackground);
+			Image backgroundImage = background.GetComponent<Image>();
+			if (backgroundImage != null) {
+				backgroundImage.sprite = image;
+			}
+		}
+	}
+
 	//sets the spawn to undo it
 	void OnMouseExit () {
 		shouldSpawnAnElement = false;
@@ -85,12 +101,6 @@ public class SpawnerControl : MonoBehaviour {
 		PlayerPrefs.SetInt(elementName+GlobalVars.UNLOCK_STRING, 1);
 		//changes the sprite from the lock incon
 		gameObject.GetComponent<SpriteRenderer>().sprite = GlobalVars.ELEMENT_SPRITES[elementName];
-//		myName.unlock();
-	}
-
-	//used to add one element to inventory
-	public void addToInventory () {
-//		inventoryElementCount.add();
 	}
 
 	//spawns a new element when the spawner is clicked
