@@ -153,6 +153,7 @@ public class CraftingControl : MonoBehaviour {
 
 		if (ElementIsReadyToCraft) {
 			//calls the event to create an element
+			Element element;
 			if (OnElementCreated != null && validInventoryAmounts()) {
 				OnElementCreated(resultElement, parentElement1, parentElement2, isNew);
 				UnlockElement();
@@ -161,6 +162,14 @@ public class CraftingControl : MonoBehaviour {
 					resultElement, out elementController)) {
 					EventController.Event(EventController.ParticleSparklesFallEvent,
 					                      elementController.transform.position);
+				} else if (GlobalVars.ELEMENTS_BY_NAME.TryGetValue(resultElement, out element)) {
+					int elementTier = element.getPanelIndex();
+					if (IntUtil.InRange(elementTier, TierButtonDisplay.AllTierButtons.Count)) {
+						Vector3 position = TierButtonDisplay.AllTierButtons[elementTier].transform.position;
+						EventController.Event(
+							EventController.ParticleSparklesFallEvent,
+							position);
+					}
 				}
 			}
 
