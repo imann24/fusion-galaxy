@@ -38769,6 +38769,16 @@ Prefab:
       propertyPath: hintPanel
       value: 
       objectReference: {fileID: 224268420}
+    - target: {fileID: 11439552, guid: a365c7cb7ee1a486ba793b0b45dbcba7, type: 2}
+      propertyPath: DefaultTierBackground
+      value: 
+      objectReference: {fileID: 21300026, guid: 1eb9b4805b6f8f34cbf54253f73e98f7,
+        type: 3}
+    - target: {fileID: 11439552, guid: a365c7cb7ee1a486ba793b0b45dbcba7, type: 2}
+      propertyPath: FinalTierBackground
+      value: 
+      objectReference: {fileID: 21300000, guid: 63d6cd062f5ea49bfb296676055e5af3,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a365c7cb7ee1a486ba793b0b45dbcba7, type: 2}
   m_IsPrefabParent: 0

@@ -25,6 +25,9 @@ using System.Collections.Generic;
 	public static event CallTutorialEventAction OnCallTutorialEvent;
 	public static event LoadTierAction OnLoadTier;
 
+	public Sprite DefaultTierBackground;
+	public Sprite FinalTierBackground;
+
 	//GameObject references to create the element spawners
 	public CraftingButtonController buttonControl;
 	public GameObject [] elementPanels;
@@ -125,6 +128,15 @@ using System.Collections.Generic;
 
 		//runs any tutorials that are callable
 		CheckForTutorialEvents();
+	}
+
+	void SetBackgroundSprites (bool isFinalTier) {
+		foreach (SpawnerControl elementPanel in elementPanelControllers) {
+			elementPanel.SetBackground(
+				isFinalTier ? 
+				FinalTierBackground : 
+				DefaultTierBackground);
+		}
 	}
 
 	//unsubscribes the events when the object is destroyed
@@ -236,7 +248,7 @@ using System.Collections.Generic;
 
 			//updates the tier number for the script's reference
 			currentlySelectedTierNumber = tier;
-
+			SetBackgroundSprites(tier == GlobalVars.TIER_COUNT-1);
 		}
 
 	}
