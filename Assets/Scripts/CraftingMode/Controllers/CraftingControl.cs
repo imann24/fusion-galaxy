@@ -346,7 +346,9 @@ public class CraftingControl : MonoBehaviour {
 			//updates the record of the elements
 			if (!result.isElementUnlocked()) {
                 result.unlock();
-                Handheld.Vibrate();
+				if (SettingsUtil.VibrateEnabled()) {
+                	Handheld.Vibrate();
+				}
                 GlobalVars.NUMBER_ELEMENTS_UNLOCKED++;
 				panelControl.updatePercentUnlocked();
 				isNew = true;

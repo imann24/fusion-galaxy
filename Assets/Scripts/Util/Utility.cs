@@ -177,13 +177,13 @@ public class Utility {
 	}
 
 	//converts player pref int value to bool
-	public static bool PlayerPrefIntToBool (string key) {
+	public static bool PlayerPrefIntToBool (string key, bool defaultReturnValue = false) {
 		if (PlayerPrefs.GetInt(key) == 1) {
 			return true;
 		} else if (PlayerPrefs.GetInt(key) == 0) {
 			return false;
 		} else {
-			return false;
+			return defaultReturnValue;
 		}
 	}
 

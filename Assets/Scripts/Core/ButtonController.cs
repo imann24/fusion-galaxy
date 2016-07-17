@@ -111,4 +111,8 @@ public class ButtonController : MonoBehaviour {
 
 		SDKEventManager.LoadSDKScene();
 	}
+
+	public void toggleVibrateEnabled (bool isEnabled) {
+		SettingsUtil.ToggleVibrate(isEnabled);
+	}
 }

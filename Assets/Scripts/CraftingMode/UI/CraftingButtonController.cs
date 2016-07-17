@@ -60,6 +60,8 @@ public class CraftingButtonController : MonoBehaviour {
 	public GameObject musicOffActive;
 	public GameObject SFXOnActive;
 	public GameObject SFXOffActive;
+	public GameObject VibrateOnActive;
+	public GameObject VibrateOffActive;
 
 	//the Gathering Planet script
 	private RandomGatherPlanet planetScript;
@@ -96,6 +98,10 @@ public class CraftingButtonController : MonoBehaviour {
 		bool sfx;
 		SFXOnActive.SetActive(sfx = (PlayerPrefs.GetInt("SFX", 1) == 1));
 		SFXOffActive.SetActive(!sfx);
+
+		bool vibrate;
+		VibrateOnActive.SetActive(vibrate = (SettingsUtil.VibrateEnabled()));
+		VibrateOffActive.SetActive(!vibrate);
 
 	}
 	
@@ -306,6 +312,9 @@ public class CraftingButtonController : MonoBehaviour {
 		AudioManager.instance.toggleMuteSFX(muted);
 	}
 
+	public void toggleVibrateEnabled (bool isEnabled) {
+		SettingsUtil.ToggleVibrate(isEnabled);
+	}
 
 	//sets the cheat to be executed on click
 	public void setCheat (string cheat) {
