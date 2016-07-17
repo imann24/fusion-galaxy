@@ -97,6 +97,7 @@ public static class DataController {
 	
 	public static void SetPowerUpUnlock (string powerUpName, bool isUnlocked) {
 		_data.SetPowerUpUnlock(powerUpName, isUnlocked);
+		Save ();
 	}
 
 	[System.Serializable]
