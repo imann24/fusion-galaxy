@@ -204,10 +204,12 @@ public class SpawnerControl : MonoBehaviour {
 	}
 
 	public void updatePanel () {
-		setName();
-		//setID();
-		setInventoryCount();
-		setIcon ();
+		if (currentElement != null) {
+			setName();
+			//setID();
+			setInventoryCount();
+			setIcon ();
+		}
 	}
 
 	public Element getCurrentElement () {

@@ -14,6 +14,7 @@ using System.Collections.Generic;
 //Script to create the element spawners and set up the crafting scene
 //also used to control and update the element and tier panels
  public class MainMenuController : MonoBehaviour {
+	const int hintPanelZOffset = 100;
 	//events
 	public delegate void ButtonPressAction();
 	public delegate void EnterMenuScreenAction();
@@ -139,6 +140,8 @@ using System.Collections.Generic;
 		// Disables element raycasters on tutorial start
 		CraftingTutorialController.OnCraftingModeTutorialComplete += HandleElementDraggingTutorialComplete;
 		CraftingTutorialController.OnElementsDraggedIntoGatheringTutorialComplete += HandleElementDraggingTutorialComplete;
+		CraftingTutorialController.OnBuyHintTutorialComplete += HandleElementDraggingTutorialComplete;
+
 	}
 
 	void Unsubscribe () {
@@ -147,10 +150,17 @@ using System.Collections.Generic;
 		TierButtonDisplay.OnLoadTier -= loadTier;
 		CraftingTutorialController.OnCraftingModeTutorialComplete -= HandleElementDraggingTutorialComplete;
 		CraftingTutorialController.OnElementsDraggedIntoGatheringTutorialComplete -= HandleElementDraggingTutorialComplete;
+		CraftingTutorialController.OnBuyHintTutorialComplete -= HandleElementDraggingTutorialComplete;
 	}
 
 	public bool TryGetElementController (string elementName, out SpawnerControl controller) {
 		return (elementNameToController.TryGetValue(elementName, out controller));
+	}
+
+	public void UpdatePanels () {
+		foreach (SpawnerControl elementPanel in elementPanelControllers) {
+			elementPanel.updatePanel();
+		}
 	}
 
 	//sets the UI for the currently loaded tier	
@@ -368,6 +378,7 @@ using System.Collections.Generic;
 		}
 		hintPanel.transform.FindChild ("AlreadyPurchased/Name").GetComponent<Text> ().text = activeElement;
 		hintPanel.transform.position = activePosition;
+		hintPanel.transform.localPosition += Vector3.forward * hintPanelZOffset;
 	}
 
 
