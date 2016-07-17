@@ -27,7 +27,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63156b402198740b896c8ea126325e60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ParticleSparklesFall: {fileID: 181584, guid: 7d616ec179f634d118514bdede845753, type: 2}
+  ZOffset: 500
+  ParticleSparklesFallPrefab: {fileID: 181584, guid: 7d616ec179f634d118514bdede845753,
+    type: 2}
+  ParticleGLowBurstPrefab: {fileID: 154888, guid: f8f853871fea94e75a7d5f70b373d04f,
+    type: 2}
 --- !u!224 &22453472
 RectTransform:
   m_ObjectHideFlags: 1
