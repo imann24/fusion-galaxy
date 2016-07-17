@@ -39,6 +39,16 @@ public class Element {
 		}
 	}
 
+	public int getPanelIndex () {
+		int tier = getTier();
+		int offset = 2;
+		if (tier < offset) {
+			return 0;
+		} else {
+			return tier - offset;
+		}
+	}
+
 	//adds a recipe
 	public void addCombination (Combination r) {
 		GlobalVars.RECIPES.Add(r);
