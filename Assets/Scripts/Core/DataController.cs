@@ -27,6 +27,11 @@ public static class DataController {
 		}
 	}
 
+	public static void ResetSave () {
+		InitDataAsNew();
+		Save();
+	}
+
 	static string GetPath () {
 		return Path.Combine(Application.persistentDataPath, filePath);
 	}
