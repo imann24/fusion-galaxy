@@ -5329,7 +5329,7 @@ Animator:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1880535874}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: f24fd2ec2fe794875b28289ecea193cd, type: 2}
   m_CullingMode: 0
@@ -44247,7 +44247,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Sprite: {fileID: 21300022, guid: 5e9eb727be3694da4b14ee61bddf5bdd, type: 3}
+  m_Sprite: {fileID: 21300008, guid: 5e9eb727be3694da4b14ee61bddf5bdd, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -47856,7 +47856,6 @@ MonoBehaviour:
   myElementGameObject: {fileID: 1053679488}
   myElementContainer: {fileID: 1192576083}
   myElementConatinerEmpty: {fileID: 1038285107}
-  mainMessage: {fileID: 1586160006}
   subMessage: {fileID: 2058298057}
   elementName: {fileID: 1171694230}
   inventoryNumber: {fileID: 1399167997}
