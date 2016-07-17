@@ -4,21 +4,32 @@ using UnityEngine.UI;
 
 public class ButtonChange : MonoBehaviour {
 	// Music buttons.
-	public GameObject musicOnButton, musicOffButton, soundOnButton, soundOffButton;
+	public GameObject musicOnButton, musicOffButton, soundOnButton, soundOffButton, vibrateOnButton, vibrateOffButton;
 	// Sprites of on and off buttons.
 	public Sprite onSpriteOn, onSpriteOff, offSpriteOn, offSpriteOff; 
 
 	//toggles the buttons to off if the music is currently set to off on load
 	void Awake () {
-		if (PlayerPrefs.GetInt("Music", 1) == 0) {
-			TurnMusicOff();
-		}
-
-		if (PlayerPrefs.GetInt("SFX", 1) == 0) {
-			TurnSoundOff();
-		}
+		UpdateButtons();
 	}
 
+	public void UpdateButtons () {
+		if (PlayerPrefs.GetInt("Music", 1) == 0) {
+			TurnMusicOff();
+		} else {	
+			TurnMusicOn();
+		}
+		if (PlayerPrefs.GetInt("SFX", 1) == 0) {
+			TurnSoundOff();
+		} else {
+			TurnSoundOn();
+		}
+		if (SettingsUtil.VibrateEnabled()) {
+			TurnVibrateOn();
+		} else {
+			TurnVibrateOff();
+		}
+	}
 	// Method to turn the music On button on.
 	public void TurnMusicOn(){
 		if (musicOnButton.GetComponent<Image> ().sprite != onSpriteOn) {
@@ -45,6 +56,20 @@ public class ButtonChange : MonoBehaviour {
 		if (soundOnButton.GetComponent<Image> ().sprite != onSpriteOff) {
 			soundOnButton.GetComponent<Image> ().sprite = onSpriteOff;
 			soundOffButton.GetComponent<Image> ().sprite = offSpriteOn;
+		}
+	}
+
+	public void TurnVibrateOff () {
+		if (vibrateOnButton.GetComponent<Image> ().sprite != onSpriteOff) {
+			vibrateOnButton.GetComponent<Image> ().sprite = onSpriteOff;
+			vibrateOffButton.GetComponent<Image> ().sprite = offSpriteOn;
+		}
+	}
+
+	public void TurnVibrateOn () {
+		if (vibrateOnButton.GetComponent<Image> ().sprite != onSpriteOn) {
+			vibrateOnButton.GetComponent<Image> ().sprite = onSpriteOn;
+			vibrateOffButton.GetComponent<Image> ().sprite = offSpriteOff;
 		}
 	}
 }

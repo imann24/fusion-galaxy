@@ -80,10 +80,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  lane1Spawn: {x: -5.13000011, y: 8.5, z: -1}
-  lane2Spawn: {x: -2.6099999, y: 8.5, z: -1}
-  lane3Spawn: {x: -.0500000007, y: 8.5, z: -1}
-  lane4Spawn: {x: 2.58999991, y: 8.5, z: -1}
   lanes:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}
@@ -122,6 +118,7 @@ MonoBehaviour:
   ringAndArrow2: {fileID: 0}
   ringAndArrowForSwipeTutorial: {fileID: 0}
   ringAndArrowRestingPosition: {fileID: 0}
+  blueHand: {fileID: 0}
 --- !u!114 &11429092
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -133,6 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 317952dfcaa06984e8fc6e322f8f5fc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSwappingCurrently: 0
   antiGravAnimators:
   - {fileID: 0}
   - {fileID: 0}
@@ -159,6 +157,8 @@ MonoBehaviour:
   musicOffButton: {fileID: 0}
   soundOnButton: {fileID: 0}
   soundOffButton: {fileID: 0}
+  vibrateOnButton: {fileID: 0}
+  vibrateOffButton: {fileID: 0}
   onSpriteOn: {fileID: 21300026, guid: 240fb8b0efea89a4aa0e505ac29619e6, type: 3}
   onSpriteOff: {fileID: 21300030, guid: 240fb8b0efea89a4aa0e505ac29619e6, type: 3}
   offSpriteOn: {fileID: 21300032, guid: 240fb8b0efea89a4aa0e505ac29619e6, type: 3}
