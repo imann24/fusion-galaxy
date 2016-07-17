@@ -14,6 +14,9 @@ using System.Collections;
 //controls the combination of elements via a stack of the elements that collide w/ eachother
 public class CraftingControl : MonoBehaviour {
 
+	static int bonusAmountForElementsDiscovered = 5;
+	static bool shouldAlsoGiveBaseElementsReward = true;
+
 	//crafting events
 	public delegate void CraftAction(string newElement, string parent1, string parent2, bool isNew);
 	public delegate void DiscoverAction (string newElement);
@@ -77,7 +80,6 @@ public class CraftingControl : MonoBehaviour {
 	public Image myElementConatinerEmpty;
 
 	//feedback messages to player/button 
-	public Text mainMessage;
 	public Text subMessage;
 	public Text elementName;
 	public Text inventoryNumber;
@@ -153,7 +155,7 @@ public class CraftingControl : MonoBehaviour {
 			//calls the event to create an element
 			if (OnElementCreated != null && validInventoryAmounts()) {
 				OnElementCreated(resultElement, parentElement1, parentElement2, isNew);
-                UnlockElement();
+				UnlockElement();
 				SpawnerControl elementController;
 				if (GlobalVars.CRAFTING_CONTROLLER.TryGetElementController(
 					resultElement, out elementController)) {
@@ -242,7 +244,6 @@ public class CraftingControl : MonoBehaviour {
 	}
 
 	public void setEmptyMessage () {
-		mainMessage.text = defaultMain;
 		subMessage.text = defaultSub;
 		elementName.text = "";
 		inventoryNumber.text = "";
@@ -251,7 +252,6 @@ public class CraftingControl : MonoBehaviour {
 
 	public void setOneElementInMessage () {
 		//feedback to player
-		mainMessage.text = oneElementInMain;
 		subMessage.text = oneElementInSub;	
 		elementName.text = "";
 		inventoryNumber.text = "";
@@ -260,7 +260,6 @@ public class CraftingControl : MonoBehaviour {
 
 	public void setBothElementsInMessage () {
 		//feedback to player
-		mainMessage.text = "";
 		subMessage.text = bothElementsInSub;
 		elementName.text = Utility.UppercaseWords(resultElement) + bothElementsInMain;
 		updateInventoryElementResultText();
@@ -269,7 +268,6 @@ public class CraftingControl : MonoBehaviour {
 
 	public void setInsufficientMessage () {
 		//feedback to player
-		mainMessage.text = insufficientAmountsMain;
 		subMessage.text = insufficientAmountsSub;
 		elementName.text = "";
 		inventoryNumber.text = "";
@@ -278,7 +276,6 @@ public class CraftingControl : MonoBehaviour {
 
 	public void setIncompatibleMessage () {
 		//feedback to player
-		mainMessage.text = wrongCombinationMain;
 		subMessage.text = wrongCombinationSub;
 		elementName.text = "";
 		inventoryNumber.text = "";
@@ -286,7 +283,6 @@ public class CraftingControl : MonoBehaviour {
 	}
 
 	public void setBaseElementMessage (string element) {
-		mainMessage.text = "";
 		subMessage.text = "";
 		elementName.text = "Base Element: Cannot be Deconstructed";
 		updateInventoryElementResultText();
@@ -294,13 +290,11 @@ public class CraftingControl : MonoBehaviour {
 	}
 
 	public void setTextToErrorMessageColor () {
-		mainMessage.color = errorColor;
 		subMessage.color = errorColor;
 		elementName.color = errorColor;
 	}
 
 	public void setTextToRegularColor () {
-		mainMessage.color = regularColor;
 		subMessage.color = regularColor;
 		elementName.color = regularColor;
 	}
@@ -308,13 +302,38 @@ public class CraftingControl : MonoBehaviour {
     public void UnlockElement()
     {
         result = GlobalVars.RECIPES_BY_NAME[parentElement1 + parentElement2];
-        //result.unlock();
-        //calls the event
-        if (OnElementDiscovered != null)
-        {
-            OnElementDiscovered(result.getName());
-        }       
-    }
+		if (result.isElementUnlocked()) {
+	        //result.unlock();
+	        //calls the event
+	        if (OnElementDiscovered != null)
+	        {
+	            OnElementDiscovered(result.getName());
+	        }       
+			DataController.AddDiscoveredElementToLog(result.getName());
+			if (DataController.ShouldGiveElementDiscoveryReward()) {
+				GiveElementReward();
+				DataController.ResetElementsSinceRewardCount();
+			}
+			result.unlock();
+			PowerUp.CheckForUnlocks();
+		}
+	}
+
+	void GiveElementReward () {
+		string[] elementsDiscovered = DataController.GetMostRecentElementsDiscovered();
+		ElementDiscoveryReward reward = new ElementDiscoveryReward(
+			elementsDiscovered,
+			bonusAmountForElementsDiscovered,
+			shouldAlsoGiveBaseElementsReward
+		);
+		reward.Give();
+		MessageController.Instance.ShowElementRewardMessage(
+			elementsDiscovered,
+			bonusAmountForElementsDiscovered,
+			shouldAlsoGiveBaseElementsReward
+		);
+	}
+
     //sets up the combination for a new element
     public void combine () {
         //element gameobject
@@ -327,6 +346,7 @@ public class CraftingControl : MonoBehaviour {
 			//updates the record of the elements
 			if (!result.isElementUnlocked()) {
                 result.unlock();
+                Handheld.Vibrate();
                 GlobalVars.NUMBER_ELEMENTS_UNLOCKED++;
 				panelControl.updatePercentUnlocked();
 				isNew = true;
@@ -381,8 +401,6 @@ public class CraftingControl : MonoBehaviour {
 			myElementSprite.enabled = active;
 			if (active) {
 				compiler.elementHasBeenCapured();
-			} else {
-				compiler.OnMouseDown();
 			}
 		}
 

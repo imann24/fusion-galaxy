@@ -4,13 +4,18 @@ public abstract class PowerUp {
 	const char bronze = 'b';
 	const char silver = 's';
 	const char gold = 'g';
-
+	
 	//event call
 	public delegate void PowerUpPromotionAction();
 	public static event PowerUpPromotionAction OnPowerUpPromotion;
+	public delegate void UnlockPowerUpAction(PowerUp powerUp);
+	public static event UnlockPowerUpAction OnUnlockPowerUp;
 
 	//name is accessible but not changeable outside the subclass
 	public string name {get; protected set;}
+
+	//description is accessible but not changeable outside the subclass
+	public string[] descriptions {get; protected set;}
 
 	//duration is accessible but not changeable outside the subclass
 	public float? duration {get; protected set;}
@@ -34,6 +39,15 @@ public abstract class PowerUp {
 		}
 	}
 
+	public string GetDescription () {
+		int zeroIndexed = 1;
+		if (IntUtil.InRange(level-zeroIndexed, descriptions.Length)) {
+			return descriptions[level-zeroIndexed];
+    	} else {
+			return null;
+		}
+	}
+
 	string GetSpriteKey () {
 		return string.Format("{0}-{1}", name.ToLower().Replace(" ", string.Empty), RankSuffix());
 	}
@@ -52,8 +66,9 @@ public abstract class PowerUp {
 	}
 
 	//super class constructor for powerups, should be called by all subclass constructors
-	public PowerUp (string name, float? duration) {
+	public PowerUp (string name, string[] descriptions, float? duration) {
 		this.name = name;
+		this.descriptions = descriptions;
 		this.duration = duration;
 		allZones = GlobalVars.GATHERING_ZONES;
 		controller = GlobalVars.GATHERING_CONTROLLER;
@@ -127,21 +142,13 @@ public abstract class PowerUp {
 
 	//gets the index of a powerup in the progression system
 	public static int PowerUpIndex (PowerUp powerUp) {
-		CheckIndexDictionary();
 		return GlobalVars.POWERUP_INDEXES[powerUp.name];
 	}
 
 	public static int PowerUpIndex (string powerUpName) {
-		CheckIndexDictionary();
 		return GlobalVars.POWERUP_INDEXES[powerUpName];
 	}
 
-	public static void CheckIndexDictionary () {
-		if (GlobalVars.POWERUP_INDEXES == null) {
-			GlobalVars.InitializePowerupIndexes();
-		}
-	}
-	
 	//changes the stored level in the individual instance of the powerup
 	public void overrideLevel (int level) {
 		this.level = level;
@@ -166,5 +173,50 @@ public abstract class PowerUp {
 			default:  break;
 		}
 		return secondLane;
+	}
+
+	static void CallPowerUpUnlockedEvent (PowerUp powerUp) {
+		if (OnUnlockPowerUp != null) {
+			OnUnlockPowerUp(powerUp);
+		}
+	}
+
+	public static void CheckForUnlocks () {
+		foreach (string powerUpName in GlobalVars.POWERUP_INDEXES.Keys) {
+			if (!DataController.GetPowerUpUnlocked(powerUpName) && 
+			    PowerUpUnlocked(powerUpName)) {
+				DataController.SetPowerUpUnlock(powerUpName, true);
+				CallPowerUpUnlockedEvent(GetPowerUp(powerUpName));
+			}
+		}
+	}
+
+	public static PowerUp[] GetAll () {
+		int DEFAULT_NUMBER = default(int);
+		PowerUp[] powerUps = new PowerUp[GlobalVars.POWERUP_COUNT];
+		
+		//the array of all possible PowerUps the spawned PowerUp could be
+		powerUps[0] = new LaneConversion(DEFAULT_NUMBER);
+		powerUps[1] = new SlowFall(DEFAULT_NUMBER,DEFAULT_NUMBER,DEFAULT_NUMBER);
+		powerUps[2] = new Fuel(DEFAULT_NUMBER) ;
+		powerUps[3] = new Multiply(DEFAULT_NUMBER,DEFAULT_NUMBER);
+		powerUps[4] = new BucketShield(DEFAULT_NUMBER);
+		powerUps[5] = new TapToCollect(DEFAULT_NUMBER);
+		powerUps[6] = new Invincible(DEFAULT_NUMBER, DEFAULT_NUMBER);
+		powerUps[7] = new TotalConversion(DEFAULT_NUMBER);
+		powerUps[8] = new CollectAll();
+
+		return powerUps;
+
+	}
+
+	public static PowerUp GetPowerUp (string name) {
+		PowerUp[] powerUps = GetAll ();
+		for (int i = 0; i < powerUps.Length; i++) {
+			if (powerUps[i].name == name) {
+				return powerUps[i];
+			}
+		}
+		return null;
 	}
 }

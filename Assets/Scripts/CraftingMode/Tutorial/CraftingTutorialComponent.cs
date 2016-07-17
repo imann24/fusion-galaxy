@@ -216,7 +216,11 @@ public class CraftingTutorialComponent: TutorialComponent {
 			return null;
 		}
 
-		return Utility.PlayerPrefIntToBool(spawnerControl.getCurrentElement().getName()+GlobalVars.HINT_STRING);
+		if (spawnerControl.getCurrentElement() != null) {
+			return Utility.PlayerPrefIntToBool(spawnerControl.getCurrentElement().getName()+GlobalVars.HINT_STRING);
+		} else {
+			return null;
+		}
 	}
 
 	//checks whether any further element panels need to be added

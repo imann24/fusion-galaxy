@@ -45,6 +45,7 @@ public static class Cheats {
 		for (int i = 2; i < GlobalVars.TIER_COUNT; i++) {
 			GlobalVars.TIER_UNLOCKED[i] = false;
 		}
+		DataController.ResetSave();
 	}
 	
 	public static void IncreaseAllElements (int amount) {
@@ -87,7 +88,6 @@ public static class Cheats {
 	}
 
 	public static void ResetPowerUpUpgradePurchases () {
-		PowerUp.CheckIndexDictionary();
 		foreach (string powerupName in GlobalVars.POWERUP_INDEXES.Keys) {
 			PowerUp.ResetPowerUpLevel(powerupName);
 		}

@@ -1,4 +1,11 @@
 public class Fuel : PowerUp {
+	public const string NAME = "Fuel";
+	public static readonly string [] DESCRIPTIONS = new string[]{
+		"Your fuel does not deplete for a certain duration.",//power 3, level 1
+		"You gain additional fuel and it does not deplete for a certain duration.",//power 3, level 2
+		"You gain a significant amount of additional fuel and it does not deplete for a certain duration.",//power 3, level 3
+	};
+
 	//event call
 	public delegate void FuelAddedAction();
 	public static event FuelAddedAction OnFuelAdded;
@@ -9,11 +16,11 @@ public class Fuel : PowerUp {
 	private float levelThreeTimeMultiplier = 1.5f;
 
 	//constructor to make a new bonus time powerup
-	public Fuel (int timeBonus) : base ("Fuel", null) {
+	public Fuel (int timeBonus) : base (NAME, DESCRIPTIONS, null) {
 		this.timeBonus = timeBonus;
 	}
 
-	public Fuel (float duration, int timeBonus) : base ("Fuel", duration) {
+	public Fuel (float duration, int timeBonus) : base (NAME, DESCRIPTIONS, duration) {
 		this.timeBonus = timeBonus;
 		this.duration = duration;
 	}

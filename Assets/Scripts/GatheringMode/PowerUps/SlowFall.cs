@@ -1,6 +1,13 @@
 // slow down fall for elements
 // NOTE: the fallSpeedModifier is multipled by the level2 and level3 modifers based on the level of the powerup
 public class SlowFall : PowerUp {
+	public const string NAME = "SlowFall";
+	public static readonly string [] DESCRIPTIONS = new string[]{
+		"Tap or drag this ability into a specific lane to slow down the fall of elements contained.",//power 2, level 1
+		"Tap or drag this ability into a specific lane to significantly slow down the fall of elements contained.",//power 2, level 2
+		"Tap or drag this ability to significantly slow down the fall all elements.",//power 2, level 3
+	};
+
 	//event call
 	public delegate void SlowFallActivatedAction();
 	public static event SlowFallActivatedAction OnSlowFallActivated;
@@ -15,7 +22,7 @@ public class SlowFall : PowerUp {
 
 	//creates the powerup
 	// NOTE: baseFallSpeedModifier is twice as slow for level 2 and 3 of the power up (see multipliers above)
-	public SlowFall (float baseFallSpeedModifier, int timeBonus, float duration): base ("SlowFall", duration) {
+	public SlowFall (float baseFallSpeedModifier, int timeBonus, float duration): base (NAME, DESCRIPTIONS, duration) {
 
 		this.duration = duration;
 		this.baseFallSpeedModifier = baseFallSpeedModifier;

@@ -2,16 +2,23 @@ using UnityEngine;
 using System.Collections;
 //
 public class Invincible : PowerUp {
+	public const string NAME = "Invincible";
+	public static readonly string [] DESCRIPTIONS = new string[]{
+		"Tap or drag this ability into a specific lane to give that lane no miss penalty for a small amount of time.",//power 7, level 1
+		"Tap or drag this ability into a specific lane to give that lane no miss penalty for a decent amount of time.",//power 7, level 2
+		"Tap or drag this ability to give all lanes no miss penalty for a decent amount of time.",//power 7, level 3
+	};
+
 	private float spawnRateModifier = 1f;
 	private float upgradeTimeMultiplier = 1.5f; //increased duration when the powerup is upgraded
 	private float levelThreeIncreasedSpawnRate;
 	//defines the increased spawn rate and the duration
-	public Invincible (float duration, float spawnRateModifier) :base("Invincible", duration) {
+	public Invincible (float duration, float spawnRateModifier) :base(NAME, DESCRIPTIONS, duration) {
 		this.spawnRateModifier = spawnRateModifier;
 	}
 
 	//defines the duration and leaves spawn rate unaffected
-	public Invincible (float duration) :base("Invincible", duration){}
+	public Invincible (float duration) :base(NAME, DESCRIPTIONS, duration){}
 
 	//makes invincible and changes spawn rate if set
 	#region implemented abstract members of PowerUp

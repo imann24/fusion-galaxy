@@ -9,12 +9,12 @@
 //#define IN_PROGRESS
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections;
 using System.Collections.Generic;
 
 //Script to create the element spawners and set up the crafting scene
-//also used to control and update the elemnt and tier panels
+//also used to control and update the element and tier panels
  public class MainMenuController : MonoBehaviour {
+	const int hintPanelZOffset = 100;
 	//events
 	public delegate void ButtonPressAction();
 	public delegate void EnterMenuScreenAction();
@@ -62,6 +62,8 @@ using System.Collections.Generic;
 	}
 
 	void Start () {
+		PowerUp.CheckForUnlocks();
+
 		//calls the event
 		if (OnEnterMenu != null) {
 			OnEnterMenu();
@@ -140,6 +142,8 @@ using System.Collections.Generic;
 		// Disables element raycasters on tutorial start
 		CraftingTutorialController.OnCraftingModeTutorialComplete += HandleElementDraggingTutorialComplete;
 		CraftingTutorialController.OnElementsDraggedIntoGatheringTutorialComplete += HandleElementDraggingTutorialComplete;
+		CraftingTutorialController.OnBuyHintTutorialComplete += HandleElementDraggingTutorialComplete;
+
 	}
 
 	void Unsubscribe () {
@@ -148,10 +152,17 @@ using System.Collections.Generic;
 		TierButtonDisplay.OnLoadTier -= loadTier;
 		CraftingTutorialController.OnCraftingModeTutorialComplete -= HandleElementDraggingTutorialComplete;
 		CraftingTutorialController.OnElementsDraggedIntoGatheringTutorialComplete -= HandleElementDraggingTutorialComplete;
+		CraftingTutorialController.OnBuyHintTutorialComplete -= HandleElementDraggingTutorialComplete;
 	}
 
 	public bool TryGetElementController (string elementName, out SpawnerControl controller) {
 		return (elementNameToController.TryGetValue(elementName, out controller));
+	}
+
+	public void UpdatePanels () {
+		foreach (SpawnerControl elementPanel in elementPanelControllers) {
+			elementPanel.updatePanel();
+		}
 	}
 
 	//sets the UI for the currently loaded tier	
@@ -364,11 +375,16 @@ using System.Collections.Generic;
 			hintPanel.GetComponent<PurchaseHint> ().myCost4 = theCost;
 
 		for (int i = 1; i<=4; i++) {
-			hintPanel.transform.FindChild("NotYetPurchased/PurchaseCost/cost"+i.ToString()).GetComponent<Text>().text = theCost.ToString();
-			hintPanel.transform.FindChild("NotYetPurchased/PurchaseCost/myAmount"+i.ToString()).GetComponent<Text>().text = PlayerPrefs.GetInt (hintPanel.GetComponent<PurchaseHint> ().getCostElemType(i)).ToString();
+			int inventory = PlayerPrefs.GetInt (hintPanel.GetComponent<PurchaseHint> ().getCostElemType(i));
+			hintPanel.transform.FindChild("NotYetPurchased/PurchaseCost/PurchaseRect/CostsRect/Costs/cost"+i.ToString()).GetComponent<Text>().text = theCost.ToString();
+			Text inventoryText = hintPanel.transform.FindChild("NotYetPurchased/PurchaseCost/PurchaseRect/CostsRect/Inventories/myAmount"+i.ToString()).GetComponent<Text>();
+			inventoryText.text = inventory.ToString();
+			Color lightRed = new Color32(255, 135, 126, 255);
+			inventoryText.color = inventory >= theCost ? Color.white : lightRed;
 		}
 		hintPanel.transform.FindChild ("AlreadyPurchased/Name").GetComponent<Text> ().text = activeElement;
 		hintPanel.transform.position = activePosition;
+		hintPanel.transform.localPosition += Vector3.forward * hintPanelZOffset;
 	}
 
 

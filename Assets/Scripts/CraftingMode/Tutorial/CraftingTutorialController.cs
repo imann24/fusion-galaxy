@@ -9,7 +9,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using System.Collections.Generic;
 
 //Script to run the tutorial in crafting
 public class CraftingTutorialController : MonoBehaviour {
