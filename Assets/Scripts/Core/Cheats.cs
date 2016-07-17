@@ -29,6 +29,7 @@ public static class Cheats {
 		//makes it so that the tutorials play again on launch
 		ResetTutorialsWatched();
 		ResetHintsUnlocked();
+		ResetPowerUpUpgradePurchases();
 		GlobalVars.NUMBER_ELEMENTS_UNLOCKED = GlobalVars.NUMBER_OF_LANES;
 		GlobalVars.CRAFTING_CONTROLLER.updatePercentUnlocked();
 		foreach (Element element in GlobalVars.ELEMENTS) {

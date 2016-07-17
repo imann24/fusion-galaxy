@@ -18,6 +18,10 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class BuyUpgrade : MonoBehaviour {
+	// Names of child objects on the hiearchy
+	public const string UpgradeBars = "UpgradeBars";
+	public const string UpgradeButtonText = "UpgradeButton/UpgradeButtonText";
+
 	// An event call for when the player upgrades the powerups
 	// Used for analytics and SFX at current
 	public delegate void PowerUpUpgradeAction (string powerupName, int powerUpLevel);
@@ -38,15 +42,6 @@ public class BuyUpgrade : MonoBehaviour {
 	//when the upgrade option is hit for a powerUp
 	public void purchaseUpgrade(){
 		powerListScript = GameObject.Find ("EventSystem").GetComponent<GeneratePowerUpList> ();
-#if DEBUG
-		Debug.Log (GameObject.Find ("EventSystem"));
-		Debug.Log (powerListScript);
-		Debug.Log ("clicked");
-		Debug.Log (myElem1 + " : " + PlayerPrefs.GetInt (myElem1));
-		Debug.Log (myElem2 + " : " + PlayerPrefs.GetInt (myElem2));
-		Debug.Log (myElem3 + " : " + PlayerPrefs.GetInt (myElem3));
-		Debug.Log (myElem4 + " : " + PlayerPrefs.GetInt (myElem4));
-#endif
 		//runs the powerup upgrade if there's enough
 		if (PlayerPrefs.GetInt (myElem1) >= myCost1 &&
 			PlayerPrefs.GetInt (myElem2) >= myCost2 &&
@@ -58,18 +53,22 @@ public class BuyUpgrade : MonoBehaviour {
 			PlayerPrefs.SetInt(myElem3,PlayerPrefs.GetInt (myElem3)-myCost3);
 			PlayerPrefs.SetInt(myElem4,PlayerPrefs.GetInt (myElem4)-myCost4);
 			PowerUp.PromotePowerUp(myPower);
-			Debug.Log ("bought");
 			powerListScript.refreshList();
 
 			//calls the event
 			if (OnPowerUpUpgrade != null) {
 				OnPowerUpUpgrade(myPower.name, myPower.level);
 			}
-
-
+			EventController.Event(
+				EventController.ParitcleGlowBurstEvent,
+				GetUpgradeBarsPosition());
 		}
 
 
+	}
+
+	Vector3 GetUpgradeBarsPosition () {
+		return transform.parent.FindChild(UpgradeBars).position;
 	}
 
 	// Sets the powerup associated with this upgrader

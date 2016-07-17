@@ -170,6 +170,7 @@ public class GeneratePowerUpList : MonoBehaviour {
 			OnTogglePowerUpUpgradeScreen(true);
 		}
 
+		string upgradeButtonText = BuyUpgrade.UpgradeButtonText;
 		for (int power = 0; power < TOTAL_BASE_POWERUPS; power++) {
 
 			GameObject newPower = Instantiate(powerUpButton)as GameObject;
@@ -177,8 +178,6 @@ public class GeneratePowerUpList : MonoBehaviour {
 			newPower.transform.localScale = buttonScale;
 			newPower.transform.position += Vector3.forward * 100;
 			currentPower = PowerUps[power];
-			Debug.Log(currentPower.name);
-
 			newPower.SetActive(true);
 
 			//for tutorial
@@ -191,22 +190,19 @@ public class GeneratePowerUpList : MonoBehaviour {
 			if (PowerUp.PowerUpUnlocked(currentPower)){
 				myPowerLevel = PowerUp.GetPowerUpLevel(currentPower);
 				newPower.transform.FindChild ("Name").GetComponent<Text>().text = powerNames[power];
-				newPower.transform.FindChild ("Name/Description").GetComponent<Text>().text = powerDescriptions[(power*UPGRADE_LEVELS)+(myPowerLevel-1)];
+				newPower.transform.FindChild ("Name/Description").GetComponent<Text>().text = powerDescriptions[(power*UPGRADE_LEVELS)+(myPowerLevel)];
 				newPower.transform.FindChild ("Bonus/BonusText").GetComponent<Text>().text = bonusTexts[(power*UPGRADE_LEVELS)+(myPowerLevel-1)];
-				Debug.Log("___"+bonusTexts[(power*UPGRADE_LEVELS)+(myPowerLevel-1)]);
-
-				newPower.transform.FindChild ("UpgradeBars").GetComponent<Image>().sprite = upgradeBarImages[myPowerLevel];
+				newPower.transform.FindChild (BuyUpgrade.UpgradeBars).GetComponent<Image>().sprite = upgradeBarImages[myPowerLevel];
 				newPower.transform.FindChild ("PowerUpIcon").GetComponent<Image>().sprite = upgradeCardImages[myPowerLevel];
-
 				newPower.transform.FindChild ("PowerUpIcon/SpecificIcon").GetComponent<Image>().sprite = currentPower.GetSprite();
 				// newPower.transform.FindChild ("PowerUpIcon/SpecificIcon").GetComponent<Image>().sprite = GlobalVars.POWERUP_SPRITES[power];
 
 				if (myPowerLevel==PowerUp.MAX_LEVEL){
-					newPower.transform.FindChild ("UpgradeBars/Upgrade/Text").GetComponent<Text>().text = "MAX";
+					newPower.transform.FindChild (upgradeButtonText).GetComponent<Text>().text = "MAX";
 				}else{
 					int indexOffset = myPowerLevel==2?1:0; 
 					int index = power*TIMES_UPGRADED+indexOffset;
-					newPower.transform.FindChild ("UpgradeBars/Upgrade/Text").GetComponent<Text>().text = "UPGRADE";
+					newPower.transform.FindChild (upgradeButtonText).GetComponent<Text>().text = "UPGRADE";
 
 					elem1 = elem[index,0];
 					elem2 = elem[index,1];
@@ -224,7 +220,6 @@ public class GeneratePowerUpList : MonoBehaviour {
 					if (PlayerPrefs.GetInt(elem1) < cost1){
 						newPower.transform.FindChild ("UpgradeCost/myAmount1").GetComponent<Text>().color = notEnoughColor;
 					}
-					Debug.Log("hih"+notEnoughColor);
 
 					newPower.transform.FindChild ("UpgradeCost/cost2").GetComponent<Text>().text = cost2.ToString();
 					newPower.transform.FindChild ("UpgradeCost/elem2").GetComponent<Image>().sprite = GlobalVars.ELEMENT_SPRITES[elem2];
@@ -250,7 +245,7 @@ public class GeneratePowerUpList : MonoBehaviour {
 						newPower.transform.FindChild ("UpgradeCost/myAmount4").GetComponent<Text>().color = notEnoughColor;
 					}
 
-					upgrader = newPower.transform.FindChild ("UpgradeBars/Upgrade").gameObject;
+					upgrader = newPower.transform.FindChild ("UpgradeButton").gameObject;
 					upgrader.AddComponent<BuyUpgrade>();
 					upgradeScript = upgrader.GetComponent<BuyUpgrade>();
 					upgradeScript.setPower(currentPower);

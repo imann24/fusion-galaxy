@@ -1,11 +1,15 @@
-//#define DEBUG
+/*
+ * Author: Isaiah Mann
+ * Description: Controls behaviour of objects in tutorials
+ * Note: Most objects should have a Canvas component attached to them for this script to work correctly (unless they are on the NoSortList)
+ */
+
 using UnityEngine;
 using UnityEngine.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 
-[RequireComponent(typeof(Canvas))]
 public class CraftingTutorialComponent: TutorialComponent {
 
 	static CraftingTutorialComponent () {
@@ -171,9 +175,13 @@ public class CraftingTutorialComponent: TutorialComponent {
 	private void EstablishReferences () {
 		//checks whether its on the no sort list
 		onNoSortList = OnNoSortList(gameObject);
-
-		myCanvas = GetComponent<Canvas>();
-		mySortLayer = myCanvas.sortingOrder;
+		if (!onNoSortList) {
+			myCanvas = GetComponent<Canvas>();
+			if (myCanvas == null) {
+				myCanvas = gameObject.AddComponent<Canvas>();
+			}
+			mySortLayer = myCanvas.sortingOrder;
+		}
 		MyTutorialComponents = GetChildrenTutorialComponents();
 	}
 
