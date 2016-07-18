@@ -64,7 +64,8 @@ public class PlayTutorial : MonoBehaviour {
     IEnumerator BlueHandMovementCo;
     // Use this for initialization
     void Start () {
-		hasPowerUpTutorialStarted = false;
+
+        hasPowerUpTutorialStarted = false;
 		hasPowerUpTutorialTapStarted = false;
 
         blueHandStartPosition = blueHand.transform.position;
@@ -116,7 +117,7 @@ public class PlayTutorial : MonoBehaviour {
 			// Cycle through each on screen element and make it so they can move again.
 			for(int i = 0; i < tutorialElements.Length; i++){
 				//QWOP RENDERING
-				if(tutorialElements[i] != null){
+				if(tutorialElements[i] != null && tutorialElements[i].GetComponent<BoxCollider>()){
 					this.tutorialElements[i].GetComponent<Collider>().enabled = true;
 					this.tutorialElements[i].GetComponent<MoveElementDown>().enabled = true;
 					this.tutorialElements[i].GetComponent<MoveElementDown>().isAllowedToMove = true;
