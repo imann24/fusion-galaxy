@@ -56,6 +56,13 @@ AnimationClip:
     path: 
     classID: 212
     script: {fileID: 0}
+  - curve:
+    - time: 0
+      value: {fileID: 21300000, guid: adce17933d58648f780addfbc55365d1, type: 3}
+    attribute: m_Sprite
+    path: GameObject
+    classID: 212
+    script: {fileID: 0}
   m_SampleRate: 10
   m_WrapMode: 0
   m_Bounds:
@@ -64,6 +71,12 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - path: 0
+      attribute: 0
+      script: {fileID: 0}
+      classID: 212
+      customType: 23
+      isPPtrCurve: 1
+    - path: 1482111001
       attribute: 0
       script: {fileID: 0}
       classID: 212
@@ -88,6 +101,7 @@ AnimationClip:
     - {fileID: 21300018, guid: 4c370b85222c59d4aa273463c1f0a6b1, type: 3}
     - {fileID: 21300020, guid: 4c370b85222c59d4aa273463c1f0a6b1, type: 3}
     - {fileID: 21300024, guid: 4c370b85222c59d4aa273463c1f0a6b1, type: 3}
+    - {fileID: 21300000, guid: adce17933d58648f780addfbc55365d1, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
