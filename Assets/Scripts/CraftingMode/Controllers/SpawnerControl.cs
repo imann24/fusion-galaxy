@@ -15,24 +15,15 @@ public class SpawnerControl : MonoBehaviour {
 	public Text myID;
 	public Text myInventoryCount;
 	public Image myIcon;
-	public GameObject myGlow;
 	public GameObject newPanel;
-	public GameObject mainCanvas;
 	private Element currentElement;
 	//element info
-	private bool nameIsKnown = false;
 	private string elementName;
 	private int elementTier;
-	private int inventoryElementCount;
-	private static GameObject newElem;
-	private static bool elementCreated;
-	private bool panelIsLocked = false;
 	//button info
-	private bool shouldSpawnAnElement = false;
 	GraphicRaycaster raycaster;
 
 	//component references
-	AudioSource buttonClick;
 	Renderer myRenderer;
 
 	public int PanelIndex {
@@ -69,7 +60,6 @@ public class SpawnerControl : MonoBehaviour {
 
 	//sets the spawn to undo it
 	void OnMouseExit () {
-		shouldSpawnAnElement = false;
 		myRenderer.material.color = Color.white;
 		//scrollBar.enabled = true;
 	}
@@ -80,18 +70,6 @@ public class SpawnerControl : MonoBehaviour {
 		controller.drag(newPanel);
 		newPanel.transform.GetChild (0).GetComponent<Image>().sprite = myIcon.sprite;
 		newPanel.transform.GetChild (1).GetComponent<Text>().text = myInventoryCount.text;
-		//print("Should spawn");
-//		draggeableElement.transform.parent = mainCanvas.transform;
-		//draggeableElement.GetComponent<SpawnerControl>().setElement(currentElement);
-		//draggeableElement.AddComponent<Drag>();
-		//draggeableElement.transform.position = transform.position;
-		//draggeableElement.transform.localScale = new Vector2 (1f, 1f);
-		//draggeableElement.transform.parent = transform.parent;
-		//Destroy (draggeableElement.GetComponent<Button>());
-//		for (int i = 0; i < draggeableElement.GetComponentsInChildren<Image>().Length; i++) {
-//			draggeableElement.GetComponentsInChildren<Image>()[i].color = new Color (1f, 1f, 1f, 0.5f);
-//
-//		}
 	}
 	//unlocks the element
 	public void unlock () {
@@ -102,19 +80,6 @@ public class SpawnerControl : MonoBehaviour {
 		//changes the sprite from the lock incon
 		gameObject.GetComponent<SpriteRenderer>().sprite = GlobalVars.ELEMENT_SPRITES[elementName];
 	}
-
-	//spawns a new element when the spawner is clicked
-//	private void spawn () {
-//		//creates and positions
-//		GameObject e = Instantiate (newElem, new Vector2 (this.transform.position.x, this.transform.position.y), Quaternion.identity)as GameObject;
-//		e.transform.position += Vector3.forward *10;
-//		
-//		//loads the sprite
-//		Sprite s = GlobalVars.ELEMENT_SPRITES[elementName];
-//		e.GetComponent<SpriteRenderer>().sprite = s;
-//		e.name = elementName;
-//		e.transform.parent = transform;
-//	}	
 
 	//determines whether the spawner is able to create another element
 	private bool ableToSpawn () {
@@ -205,7 +170,6 @@ public class SpawnerControl : MonoBehaviour {
 				transform.GetChild (i).gameObject.SetActive(!locked);
 				}}
 		}
-		panelIsLocked = locked;
 	}
 
 	//overloaded method to lock the panel

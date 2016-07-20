@@ -23,7 +23,6 @@ public class RandomGatherPlanet : MonoBehaviour {
 
 	private Color lightBlue = new Color (81.0f / 255.0f, 233.0f / 255.0f, 220.0f / 255.0f);
 
-	int whichPlanet;
 	Image planetImage;
 
 	private enum Randomness{byTier,byComposition,byDominance,reallyRandom};
@@ -70,7 +69,7 @@ public class RandomGatherPlanet : MonoBehaviour {
 		switch (Randomness.byTier) {
 
 		case Randomness.byTier:
-			whichPlanet = 1;
+			int whichPlanet = 1;
 			foreach (string element in selectedElements) {
 				whichPlanet = Mathf.Max (whichPlanet, GlobalVars.ELEMENTS_BY_NAME [element].getTier ());
 			}
