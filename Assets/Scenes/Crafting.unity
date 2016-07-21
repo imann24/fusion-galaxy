@@ -1060,9 +1060,7 @@ MonoBehaviour:
   myID: {fileID: 0}
   myInventoryCount: {fileID: 1086696566}
   myIcon: {fileID: 629792563}
-  myGlow: {fileID: 596108215}
   newPanel: {fileID: 0}
-  mainCanvas: {fileID: 356311114}
 --- !u!222 &31189597
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2928,9 +2926,7 @@ MonoBehaviour:
   myID: {fileID: 0}
   myInventoryCount: {fileID: 437301556}
   myIcon: {fileID: 7128845}
-  myGlow: {fileID: 271087824}
   newPanel: {fileID: 0}
-  mainCanvas: {fileID: 356311114}
 --- !u!222 &114556392
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3322,7 +3318,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 951d8fb01c6964a7582e0af880b271b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainImage: {fileID: 0}
   childImages:
   - {fileID: 21780481}
   transitionTime: 1
@@ -8897,9 +8892,7 @@ MonoBehaviour:
   myID: {fileID: 0}
   myInventoryCount: {fileID: 1540692033}
   myIcon: {fileID: 1288906983}
-  myGlow: {fileID: 1911873741}
   newPanel: {fileID: 0}
-  mainCanvas: {fileID: 356311114}
 --- !u!222 &402926374
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12261,9 +12254,7 @@ MonoBehaviour:
   myID: {fileID: 0}
   myInventoryCount: {fileID: 518455103}
   myIcon: {fileID: 1804335045}
-  myGlow: {fileID: 1495901870}
   newPanel: {fileID: 0}
-  mainCanvas: {fileID: 356311114}
 --- !u!222 &500200875
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13062,9 +13053,7 @@ MonoBehaviour:
   myID: {fileID: 0}
   myInventoryCount: {fileID: 503204069}
   myIcon: {fileID: 430501221}
-  myGlow: {fileID: 1043089204}
   newPanel: {fileID: 0}
-  mainCanvas: {fileID: 356311114}
 --- !u!222 &519498094
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -19285,9 +19274,7 @@ MonoBehaviour:
   myID: {fileID: 0}
   myInventoryCount: {fileID: 1873387418}
   myIcon: {fileID: 1045534366}
-  myGlow: {fileID: 166153590}
   newPanel: {fileID: 0}
-  mainCanvas: {fileID: 356311114}
 --- !u!222 &811786148
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -21650,9 +21637,7 @@ MonoBehaviour:
   myID: {fileID: 0}
   myInventoryCount: {fileID: 410167672}
   myIcon: {fileID: 2040533494}
-  myGlow: {fileID: 937099613}
   newPanel: {fileID: 0}
-  mainCanvas: {fileID: 356311114}
 --- !u!222 &903031130
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -22234,9 +22219,7 @@ MonoBehaviour:
   myID: {fileID: 0}
   myInventoryCount: {fileID: 1941238424}
   myIcon: {fileID: 1821730949}
-  myGlow: {fileID: 1769428655}
   newPanel: {fileID: 0}
-  mainCanvas: {fileID: 356311114}
 --- !u!222 &940474156
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -26287,9 +26270,7 @@ MonoBehaviour:
   myID: {fileID: 0}
   myInventoryCount: {fileID: 2025865834}
   myIcon: {fileID: 56283779}
-  myGlow: {fileID: 1393982719}
   newPanel: {fileID: 0}
-  mainCanvas: {fileID: 356311114}
 --- !u!222 &1073380047
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -27868,9 +27849,7 @@ MonoBehaviour:
   myID: {fileID: 0}
   myInventoryCount: {fileID: 1470593703}
   myIcon: {fileID: 846672879}
-  myGlow: {fileID: 1693865172}
   newPanel: {fileID: 0}
-  mainCanvas: {fileID: 356311114}
 --- !u!222 &1124580640
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -36632,9 +36611,7 @@ MonoBehaviour:
   myID: {fileID: 0}
   myInventoryCount: {fileID: 233971916}
   myIcon: {fileID: 1134047078}
-  myGlow: {fileID: 336717383}
   newPanel: {fileID: 0}
-  mainCanvas: {fileID: 356311114}
 --- !u!222 &1485438747
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -36789,9 +36766,7 @@ MonoBehaviour:
   myID: {fileID: 0}
   myInventoryCount: {fileID: 1856315566}
   myIcon: {fileID: 2042139340}
-  myGlow: {fileID: 1391034521}
   newPanel: {fileID: 0}
-  mainCanvas: {fileID: 356311114}
 --- !u!222 &1485893213
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -41112,9 +41087,7 @@ MonoBehaviour:
   myID: {fileID: 0}
   myInventoryCount: {fileID: 1291529445}
   myIcon: {fileID: 1896056096}
-  myGlow: {fileID: 787457314}
   newPanel: {fileID: 0}
-  mainCanvas: {fileID: 356311114}
 --- !u!222 &1680722030
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -43848,9 +43821,7 @@ MonoBehaviour:
   myID: {fileID: 0}
   myInventoryCount: {fileID: 2089812917}
   myIcon: {fileID: 1261461757}
-  myGlow: {fileID: 577775540}
   newPanel: {fileID: 0}
-  mainCanvas: {fileID: 356311114}
 --- !u!222 &1817358110
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -48830,6 +48801,8 @@ MonoBehaviour:
   myElementGameObject: {fileID: 1053679488}
   myElementContainer: {fileID: 1192576083}
   myElementConatinerEmpty: {fileID: 1038285107}
+  elementNotUnlockedImage: {fileID: 21300000, guid: 34695b4d2f3ec2e40b202bcf6a73850e,
+    type: 3}
   subMessage: {fileID: 2058298057}
   elementName: {fileID: 1171694230}
   inventoryNumber: {fileID: 1399167997}
@@ -50454,9 +50427,7 @@ MonoBehaviour:
   myID: {fileID: 0}
   myInventoryCount: {fileID: 1347564770}
   myIcon: {fileID: 1916641759}
-  myGlow: {fileID: 594765073}
   newPanel: {fileID: 0}
-  mainCanvas: {fileID: 356311114}
 --- !u!222 &2131948191
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -52,8 +52,10 @@ public class SwipingMovement : MonoBehaviour {
 	// TUTORIAL BOOLS
 	private bool firstSwipeTutorialElementsMoved = false;
 	private bool secondSwipeTutorialElementMoved = false;
-	// Element sprite.
-	public Sprite element {get; private set;}
+    public GenerationScript generationScript;
+
+    // Element sprite.
+    public Sprite element {get; private set;}
 	// Use this for initialization
 	void Start () {
 		gridSpace = LanePositions.GetDistanceBetweenLanes (0);
@@ -232,6 +234,7 @@ public class SwipingMovement : MonoBehaviour {
 		//increases the score
 		int points = GlobalVars.GATHERING_ZONES[laneIndex].getCurrentPointValue();
 		GlobalVars.GATHERING_CONTROLLER.updateScore(laneIndex, points);
-		Destroy(gameObject);
+        generationScript.destroyElement(gameObject);
+        Destroy(gameObject);
 	}
 }

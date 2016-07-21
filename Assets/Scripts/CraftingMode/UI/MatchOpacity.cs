@@ -3,7 +3,6 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class MatchOpacity : MonoBehaviour {
-	public Image mainImage;
 	public Image [] childImages;
 	public float transitionTime = 0.5f;
 	public Button myButton;

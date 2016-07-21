@@ -28,11 +28,7 @@ public class ScrollingUIText : MonoBehaviour {
 			counter = 0;
 		}
 	}
-	public void UpdateStats(){
-		myText = transform.GetComponent<Text>();
-		myString = myText.text;
-		myString += "         " + spacer;
-	}
+
 	private string shiftStringLeft () {
 		return  myString.Substring(1) + myString[0];
 	}
@@ -40,9 +36,5 @@ public class ScrollingUIText : MonoBehaviour {
 	//updates the text of the scrolling ui element
 	public void setText (string text) {
 		myString = text;
-	}
-
-	public void shiftGameObjectHorizontal (float amount) {
-		transform.position += new Vector3 (amount, 0);
 	}
 }

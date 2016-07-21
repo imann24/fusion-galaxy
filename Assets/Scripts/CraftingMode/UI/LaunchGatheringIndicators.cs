@@ -14,6 +14,8 @@ public class LaunchGatheringIndicators : MonoBehaviour {
 	private Image[] indicatorCircles;
 	private Text[] indicatorNumbers;
 
+    bool[] activeElement = { false, false, false, false };
+
     private int totalActive = 0;
 	
 	// Use this for initialization
@@ -28,13 +30,15 @@ public class LaunchGatheringIndicators : MonoBehaviour {
 
     
 	void UpdateButtons (int i, bool active) {
-		if (active) {
+		if (active && !activeElement[i]) {
 			indicatorShips[totalActive].color = ShipActiveColor;
 			indicatorCircles[totalActive].color = Color.white;
 			indicatorNumbers[totalActive].color = ShipInactiveColor;
+            activeElement[i] = true;
             totalActive++;
-		} else {
+		} else if(!active && activeElement[i]) {
             totalActive--;
+            activeElement[i] = false;
             indicatorShips[totalActive].color = ShipInactiveColor;
 			indicatorCircles[totalActive].color = ShipInactiveColor;
 			indicatorNumbers[totalActive].color = Color.white;

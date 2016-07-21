@@ -13,10 +13,6 @@ public class ButtonController : MonoBehaviour {
 	public static event ButtonPressAction OnButtonPress;
 	public static event ExitGatheringAction OnExitGathering;
 
-	//GameObject components
-	private Transform instructionScreenController;
-	private SpriteRenderer buttonUnclickedSprite;
-	private SpriteRenderer buttonClickedSprite;
 
 	//Buttons
 	public GameObject playButton;

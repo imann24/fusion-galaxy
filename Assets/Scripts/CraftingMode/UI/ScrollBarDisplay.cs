@@ -15,9 +15,6 @@ public class ScrollBarDisplay : MonoBehaviour {
 	public float scrollSpeed = 5f;
 
 	//gameobject references
-	public Sprite gatheringButton;
-	public Sprite craftingButton;
-	public Image scrollButton;
 	public Scrollbar scrollBar;
 	public enum Mode {Crafting, Gathering};
 	public static Mode mode = Mode.Gathering;
@@ -65,10 +62,8 @@ public class ScrollBarDisplay : MonoBehaviour {
 
 		//toggles the mode and changes the sprite
 		if (scrollBar.value > 0.5) {
-			//scrollButton.sprite = craftingButton;
 			mode = Mode.Gathering;
 		} else {
-			//scrollButton.sprite = gatheringButton;
 			mode = Mode.Crafting;
 		}
 
