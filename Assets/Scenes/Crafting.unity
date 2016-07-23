@@ -4731,7 +4731,7 @@ Canvas:
   m_OverrideSorting: 1
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 330
+  m_SortingOrder: 1000
 --- !u!114 &224268425
 MonoBehaviour:
   m_ObjectHideFlags: 0
