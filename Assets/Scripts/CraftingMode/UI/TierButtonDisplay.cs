@@ -109,6 +109,12 @@ public class TierButtonDisplay : MonoBehaviour {
 		UnsubscribeEvents();
 	}
 
+	void CheckForTutorials () {
+		if (CraftingTutorialController.BuyHintTutorialActive) {
+			CraftingTutorialComponent tutorialComponent;
+		}
+	}
+
 	//gets all the image and text references 
 	private void SetReferences () {
 		//sets the button
