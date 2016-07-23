@@ -87,7 +87,7 @@ using System.Collections.Generic;
 			GlobalVars.ELEMENT_SPRITES.Add("locked", locked);
 		}
 
-		updatePercentUnlocked();
+		UpdatePercentUnlocked();
 		if (!GlobalVars.SPRITES_LOADED) {
 			//creates all the element spawners
 			for (int i = 0; i < GlobalVars.ELEMENTS.Count; i++) {
@@ -278,7 +278,7 @@ using System.Collections.Generic;
 
 		//toggles the other tier buttons active and inactive
 		for (int i = tierOffset; i < tierButtonScript.Length; i++) {
-			tierButtonScript[i].updateTierProgress();
+			tierButtonScript[i].UpdateTierProgress();
 			/*if (!GlobalVars.TIER_UNLOCKED[i]) {
 				tierButtonScript[i].makeButtonLocked();
 			} else*/
@@ -333,7 +333,7 @@ using System.Collections.Generic;
 	}
 
 	//updates the unlock progress display
-	public void updatePercentUnlocked () {
+	public void UpdatePercentUnlocked () {
 		//sets the sprite based o how many elements are unlocked
 		float unlockedFraction = ((float)GlobalVars.NUMBER_ELEMENTS_UNLOCKED * (float) (unlockProgressSprites.Length - 1))/(float)GlobalVars.ELEMENTS.Count;
 		unlockProgress.sprite = unlockProgressSprites[(int) unlockedFraction];
@@ -349,6 +349,12 @@ using System.Collections.Generic;
 		//sets the text
 		numberUnlocked.text = unlockCount;
 
+		if (tierButtonScript != null) {
+			foreach (TierButtonDisplay tierButton in tierButtonScript) {
+				tierButton.UpdateTierProgress();
+				tierButton.UpdateButtonStatus();
+			}
+		}
 	}
 
 	public void lockAllTierButtons () {
@@ -356,7 +362,7 @@ using System.Collections.Generic;
 			tierButtonScript[i].makeButtonLocked();
 			GlobalVars.TIER_UNLOCKED[i] = false;
 		}
-		updatePercentUnlocked();
+		UpdatePercentUnlocked();
 	}
 
 	//unlocks a new element when it is crafted	
