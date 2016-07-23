@@ -70,19 +70,11 @@ public class TierButtonDisplay : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		SetReferences();
-		updateTierProgress();
-		isUnlocked = GlobalVars.TIER_UNLOCKED[tierNumber];
-		if (!isUnlocked) {
-		//	makeButtonLocked();
-			SetLocked();
-		} else {
-			SetUnselected();
-		}
-
+		UpdateTierProgress();
+		UpdateButtonStatus();
 		if (tierNumber == 1) {
 			SetSelected();
 		}
-
 
 		//subscribes the event to the button
 		TierButton.onClick.AddListener(() => { 
@@ -98,6 +90,15 @@ public class TierButtonDisplay : MonoBehaviour {
 
 		// Subscribes to events when the object is created
 		SubscribeEvents();
+	}
+
+	public void UpdateButtonStatus () {
+		isUnlocked = GlobalVars.TIER_UNLOCKED[tierNumber];
+		if (!isUnlocked) {
+			SetLocked();
+		} else {
+			SetUnselected();
+		}
 	}
 
 	void OnDestroy () {
@@ -322,7 +323,7 @@ public class TierButtonDisplay : MonoBehaviour {
 	}
 
 	//updates the surrounding border progress bar to show how many elements have been unlocked
-	public void updateTierProgress () {
+	public void UpdateTierProgress () {
 		SetProgressBarLengthAndSymbol();
 	}
 

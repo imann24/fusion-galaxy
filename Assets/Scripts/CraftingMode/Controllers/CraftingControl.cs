@@ -350,7 +350,7 @@ public class CraftingControl : MonoBehaviour {
                 	Handheld.Vibrate();
 				}
                 GlobalVars.NUMBER_ELEMENTS_UNLOCKED++;
-				panelControl.updatePercentUnlocked();
+				panelControl.UpdatePercentUnlocked();
 				isNew = true;
 
 				//checks if the whole tier of elements is unlocked and sends the event
@@ -368,7 +368,7 @@ public class CraftingControl : MonoBehaviour {
 				isNew = false;
 			}
 			PlayerPrefs.SetInt(result.getName()+GlobalVars.UNLOCK_STRING, 1); 
-            
+			CheckElementTierUnlock();
 			//makes the new element
 			myElementGameObject.name = result.getName();
 			resultElement = myElementGameObject.name;
@@ -379,6 +379,15 @@ public class CraftingControl : MonoBehaviour {
 			setIncompatibleMessage();
 			invalidCombination = true;
 		} 
+	}
+
+	void CheckElementTierUnlock () {
+		//if tier is not yet unlocked
+		if (!GlobalVars.TIER_UNLOCKED[resultTier]) {
+			OnTierUnlocked(resultTier);
+			GlobalVars.TIER_UNLOCKED[resultTier] = true;
+			GlobalVars.CRAFTING_CONTROLLER.UpdatePercentUnlocked();
+		}
 	}
 
 	//changes the result display between empty and full and displays/hides the element
@@ -488,11 +497,7 @@ public class CraftingControl : MonoBehaviour {
 		zone2Capturer.setElementCountText();
 		panelControl.updatePanelCounts();
 
-		//if tier is not yet unlocked
-		if (!GlobalVars.TIER_UNLOCKED[resultTier]) {
-			OnTierUnlocked(resultTier);
-			GlobalVars.TIER_UNLOCKED[resultTier] = true;
-		}
+		CheckElementTierUnlock();
 	}
 
 	

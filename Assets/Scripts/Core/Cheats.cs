@@ -9,7 +9,7 @@ public static class Cheats {
 		//increases all elements by default amount
 		IncreaseAllElements();
 		GlobalVars.NUMBER_ELEMENTS_UNLOCKED = GlobalVars.ELEMENTS.Count;
-		GlobalVars.CRAFTING_CONTROLLER.updatePercentUnlocked();
+		GlobalVars.CRAFTING_CONTROLLER.UpdatePercentUnlocked();
 		foreach (Element element in GlobalVars.ELEMENTS) {
 			element.unlock();
 			PlayerPrefs.SetInt(element.getName()+GlobalVars.UNLOCK_STRING, 1);
@@ -31,7 +31,7 @@ public static class Cheats {
 		ResetHintsUnlocked();
 		ResetPowerUpUpgradePurchases();
 		GlobalVars.NUMBER_ELEMENTS_UNLOCKED = GlobalVars.NUMBER_OF_LANES;
-		GlobalVars.CRAFTING_CONTROLLER.updatePercentUnlocked();
+		GlobalVars.CRAFTING_CONTROLLER.UpdatePercentUnlocked();
 		foreach (Element element in GlobalVars.ELEMENTS) {
 			//reset inventory amount to zero
 			PlayerPrefs.SetInt(element.getName(), 0);
@@ -64,7 +64,7 @@ public static class Cheats {
 	// whereas the current game splists the tiers into 9 (with 1 and 2 becoming tier 1)
 	public static void UnlockTier (int tier) {
 		if (GlobalVars.CRAFTING_CONTROLLER != null) {
-			GlobalVars.CRAFTING_CONTROLLER.updatePercentUnlocked();
+			GlobalVars.CRAFTING_CONTROLLER.UpdatePercentUnlocked();
 		}
 
 		if (GlobalVars.TIER_UNLOCKED == null) {
