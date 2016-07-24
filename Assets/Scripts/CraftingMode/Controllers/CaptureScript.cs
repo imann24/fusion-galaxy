@@ -28,7 +28,7 @@ public class CaptureScript : MonoBehaviour {
 	public delegate void CaptureElementAction();
 	public delegate void ClearElementAction();
 
-	// When the zone's elements is queued or dequeued
+	// When the zone's elements is enqueued or dequeued
 	public static event ToggleGatheringZoneReadyAction OnToggleGatheringZone;
 
 	// When the zone captures a new element
@@ -79,7 +79,8 @@ public class CaptureScript : MonoBehaviour {
 	public CraftingButtonController gatheringControl;
 	public Text zoneReadyText {get; private set;} 
 	private bool allElementsInZones; 
-	
+	bool cursorInZone;
+
 	// Use this for initialization
 	void Start () {
 		subscribe();
@@ -162,11 +163,19 @@ public class CaptureScript : MonoBehaviour {
 		unsubscribe();
 	}
 
+	void OnMouseDown () {
+		cursorInZone = true;
+	}
+
+	public void OnMouseExit () {
+		cursorInZone = false;
+	}
+
 	//forces element to delete even if it doesn't have a captured element
-	public void OnMouseDown () {
-		if (mode == Mode.Compiler && hasCapturedElement) {
-			GlobalVars.CRAFTER.OnMouseDown();
-		} else {
+	public void OnMouseUp () {
+		if (mode == Mode.Compiler && hasCapturedElement && cursorInZone) {
+			GlobalVars.CRAFTER.OnMouseUp();
+		} else if (mode != Mode.Compiler) {
 			//destroys the element if clicked on
 			if (hasCapturedElement && !CraftingTutorialController.GatheringTutorialActive && !CraftingTutorialController.CraftingTutorialActive) {
 				//calls the event
@@ -175,12 +184,12 @@ public class CaptureScript : MonoBehaviour {
 				}
 		
 				myImage.sprite = emptyIconSprite;
-
-				//gets the name for player prefs
-				string name = myElementGameObject.name;
-			
+				try {
 				//resets the name
 				myElementGameObject.name = "NoElement";
+				} catch {
+					Debug.Log(transform.parent.name);
+				}
 
 				hasCapturedElement = false;
 				

@@ -194,7 +194,7 @@ public class CraftingButtonController : MonoBehaviour {
 			elementsInDropZones[index] = zone.myElementGameObject.name;
 			for (int i = 0; i < gatheringZoneOccupied.Length; i++) {
 				if (elementsInDropZones[i] == elementsInDropZones[index] && i != index) { //if there's already an element that is the same, delete it from the first drop zone
-					gatheringDropZones[i].OnMouseDown();
+					gatheringDropZones[i].OnMouseUp();
 					readyToEnterGathering = false;
 				} 
 				if (!gatheringZoneOccupied[i]) { //if a zone is unoccpied

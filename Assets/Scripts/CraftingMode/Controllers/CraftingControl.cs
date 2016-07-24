@@ -124,12 +124,12 @@ public class CraftingControl : MonoBehaviour {
 		inventoryNumber.text = PlayerPrefs.GetInt(resultElement).ToString();
 	}
 
-	public void OnMouseDown () {
+	public void OnMouseUp () {
 		//clears the zone if it contains a base element 
 		if (containsBaseElement) {
 			containsBaseElement = false;
 			myElementSprite.enabled = false;
-			compiler.OnMouseDown();
+			compiler.OnMouseUp();
 			setEmptyMessage();
 		}
 
@@ -238,7 +238,7 @@ public class CraftingControl : MonoBehaviour {
 			toggleCraftedElement(true);
 		} else {
 			//clears the compiler
-			compiler.OnMouseDown();
+			compiler.OnMouseUp();
 			myElementSprite.enabled = false;
 		}
 	}
@@ -414,7 +414,7 @@ public class CraftingControl : MonoBehaviour {
                 
 			} else {
 				//removes element from compiler
-				compiler.OnMouseDown();
+				compiler.OnMouseUp();
 				myElementSprite.enabled = false;
 				spriteToggled = true;
 			}
@@ -477,8 +477,8 @@ public class CraftingControl : MonoBehaviour {
 	}
 
 	public void clearDropzZones () {
-		zone1Capturer.OnMouseDown ();
-		zone2Capturer.OnMouseDown ();
+		zone1Capturer.OnMouseUp ();
+		zone2Capturer.OnMouseUp ();
 		zone1HasElement = false;
 		zone2HasElement = false;
 	}

@@ -6,6 +6,8 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Image))]
 public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler, IPointerDownHandler
 {
+	const float dragOutOfCompilerThresold = 30f;
+
 	public bool dragOnSurfaces = true;
 
 
@@ -14,9 +16,10 @@ public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 	private bool isDropZone;
 	private bool isCompiler;
 	bool isDragging = false;
+	Vector2 dragOrigin;
 	private static Vector3 zoneScale =  new Vector3(0.3f, 0.3f);
 	private CaptureScript zoneController;
-	private string elementName; 
+
 	void Start () {
 		if (transform.parent.name.Contains ("Result")) {
 			isCompiler = true;
@@ -39,6 +42,7 @@ public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 
 	public void OnBeginDrag(PointerEventData eventData)
 	{
+		dragOrigin = eventData.position;
 		isDragging = true;
 
 		var canvas = FindInParents<Canvas>(gameObject);
@@ -58,11 +62,11 @@ public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 		CanvasGroup group = m_DraggingIcon.AddComponent<CanvasGroup>();
 		group.blocksRaycasts = false;
 
+		
 		//makes element render in front of everything else
 		Canvas iconCanvas = m_DraggingIcon.AddComponent<Canvas>();
-
-		m_DraggingIcon.GetComponent<Canvas> ().sortingOrder = 500;
-		m_DraggingIcon.GetComponent<Canvas> ().overrideSorting = true;
+		iconCanvas.sortingOrder = 500;
+		iconCanvas.overrideSorting = true;
 
 		//adds a collider to the elemnt so it can tell when it hits a drop zone
 		m_DraggingIcon.AddComponent<Rigidbody2D>().isKinematic = true;;
@@ -117,12 +121,18 @@ public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 		if (m_DraggingIcon != null) {
 			Destroy(m_DraggingIcon);
 			//clears the element from the zone
-			if (isDropZone || isCompiler) {
-				zoneController.OnMouseDown();
-			}
-
-			if (isCompiler) {
-				GlobalVars.CRAFTER.clearDropzZones();
+			bool clearedThreshold = dragOutOfCompilerThresold <= Vector2.Distance (
+				dragOrigin,
+				eventData.position
+			);
+			if (clearedThreshold) {
+				if (isCompiler) {
+					GlobalVars.CRAFTER.clearDropzZones();
+				}
+				if (isDropZone || isCompiler) {
+					zoneController.OnMouseExit();
+					zoneController.OnMouseUp();
+				}
 			}
 		}
 
@@ -130,12 +140,9 @@ public class DragMe : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHa
 	}
 
 	public void OnPointerClick (PointerEventData eventData) {
-		//gets the name of the element the script is on
-		elementName = GetComponent<Image>().sprite.name;
-
 		if (isDropZone) {
 			//clears the element
-			zoneController.OnMouseDown();
+			zoneController.OnMouseUp();
 		}
 	}
 
