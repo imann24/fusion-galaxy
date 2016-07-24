@@ -20,7 +20,7 @@ public class CraftingTutorialComponent: TutorialComponent {
 		}
 	}
 
-	public static int topSortLayer = 300;
+	public static int topSortLayer = 500;
 	public static Dictionary<TutorialType, List<CraftingTutorialComponent>> AllTutorialsComponents = new Dictionary<TutorialType, List<CraftingTutorialComponent>>();
 
 	//game objects whose sorting layers should not be sorted

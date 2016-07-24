@@ -402,4 +402,8 @@ public class CraftingTutorialController : MonoBehaviour {
 		}
 
 	}
+
+	public static void Teardown () {
+		CraftingTutorialComponent.ElementPanelsActive = 0;
+	}
 }

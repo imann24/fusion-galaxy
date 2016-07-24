@@ -132,6 +132,8 @@ public class CraftingButtonController : MonoBehaviour {
 			}
 		}
 
+		CraftingTutorialController.Teardown();
+
 		if (OnExitCrafting != null) {
 			Utility.Log("Exiting the crafting mode event");
 			OnExitCrafting();
@@ -400,23 +402,23 @@ public class CraftingButtonController : MonoBehaviour {
 	}
 
 	public void ResetToCraftingTutorial () {
-		Cheats.ResetToCraftingTutorial();
 		Application.LoadLevel((int)GlobalVars.Scenes.Crafting);
+		Cheats.ResetToCraftingTutorial();
 	}
 
 	public void ResetToBuyHintTutorial () {
-		Cheats.ResetToBuyHintTutorial();
 		Application.LoadLevel((int)GlobalVars.Scenes.Crafting);
+		Cheats.ResetToBuyHintTutorial();
 	}
 
 	public void ResetToPurchaseUpgradeTutorial () {
-		Cheats.ResetToPurchaseUpgradeTutorial();
 		Application.LoadLevel((int)GlobalVars.Scenes.Crafting);
+		Cheats.ResetToPurchaseUpgradeTutorial();
 	}
 
 	public void ResetToUnlockTierTutorial () {
-		Cheats.ResetToUnlockTierTutorial();
 		Application.LoadLevel((int)GlobalVars.Scenes.Crafting);
+		Cheats.ResetToUnlockTierTutorial();
 	}
 
 	public void IncreaseAllElements (int i) {
