@@ -157,6 +157,7 @@ public class CraftingTutorialComponent: TutorialComponent {
 						break;
 					}
 				} else {
+					animation.Stop();
 					image.enabled = false;
 				}
 			}
