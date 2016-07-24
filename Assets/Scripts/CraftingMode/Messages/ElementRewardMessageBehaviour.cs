@@ -19,7 +19,7 @@ public class ElementRewardMessageBehaviour : MessageBehaviour {
 	public string DisplayTitleText = "Element Discovery Bonus";
 
 	Image[] discovereDelements;
-	string rewardAmountMessage = "+{0})";
+	string rewardAmountMessage = "+{0}";
 	public void Init (string[] elementNames, int rewardAmount, bool includeBaseElements) {
 		SetDiscoveredElements(elementNames);
 		SetRewardAmount(rewardAmount);
