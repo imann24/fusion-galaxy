@@ -269,11 +269,10 @@ public class GenerationScript : MonoBehaviour {
 		} else { //continues through the script to generate elements pseudorandomely otherwise
 
 			//sets whether or not you can spawn powerups, based on whether you have any unlocked and whether the tutorials have ended
-			int spawnMaxIndex = (hasTutorialElementSpawned || 
+			int spawnMaxIndex = (Element.AllTierElementsUnlocked(1) && (hasTutorialElementSpawned || 
 			                     Utility.PlayerPrefIntToBool(GlobalVars.GATHERING_TUTORIAL_WATCHED_SWIPE) ||
 			                     Utility.PlayerPrefIntToBool(GlobalVars.GATHERING_TUTORIAL_WATCHED_POWER_UP)) &&
-				ActivatePowerUp.PowerUpsUnlocked() ? GlobalVars.NUMBER_OF_LANES+1 : GlobalVars.NUMBER_OF_LANES;
-
+				ActivatePowerUp.PowerUpsUnlocked() ? GlobalVars.NUMBER_OF_LANES+1 : GlobalVars.NUMBER_OF_LANES);
 			//determines the randomely spawned element
 			randomSpawnedElementIndex = Random.Range(0,spawnMaxIndex);
 		}

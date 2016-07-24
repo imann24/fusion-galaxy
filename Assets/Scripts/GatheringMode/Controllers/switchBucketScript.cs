@@ -234,7 +234,9 @@ public class switchBucketScript : MonoBehaviour {
 			antiGravAnimators [i].SetTrigger ("preSwapping");
 		}
 		foreach(GameObject elementInLane in ZoneCollisionDetection.GetOnScreenElements ()){
-			if(elementInLane != null){
+			if(elementInLane != null && elementInLane.GetComponent<MoveElementUp>() != null)
+            {
+                Debug.Log(elementInLane.name);
 				elementInLane.GetComponent<MoveElementDown>().enabled = false;
 				elementInLane.GetComponent<MoveElementUp>().enabled = true;
 				StartCoroutine(WaitBeforeResetComponents());
@@ -246,7 +248,10 @@ public class switchBucketScript : MonoBehaviour {
 	// Calling this method turns on and off the MoveElementDown and MoveElementUp components respectively.
 	void SetMoveComponents(MoveElementDown moveDownComponent, MoveElementUp moveUpComponent, bool moveDown, bool moveUp){
 		moveDownComponent.enabled = moveDown;
-		moveUpComponent.enabled = moveUp;
+        if (moveUpComponent != null)
+        {
+            moveUpComponent.enabled = moveUp;
+        } 
 	}
 	// This stops the elements from moving up and starts them moving down again or vice versa.
 
@@ -261,14 +266,15 @@ public class switchBucketScript : MonoBehaviour {
 		// Move the elements in the lanes.
 		foreach(GameObject elementInLane in ZoneCollisionDetection.ON_SCREEN_ELEMENTS){
 			if(elementInLane != null){
-				if(elementInLane.transform.position.x <= bucketPositions[laneChoice1].transform.position.x + 0.1f && elementInLane.transform.position.x >= bucketPositions[laneChoice1].transform.position.x - 0.1f){
+				if((elementInLane.transform.position.x <= bucketPositions[laneChoice1].transform.position.x + 0.1f && elementInLane.transform.position.x >= bucketPositions[laneChoice1].transform.position.x - 0.1f) && elementInLane.GetComponent<MoveElementUp>() != null){
 					SetMoveComponents(elementInLane.GetComponent<MoveElementDown>(), elementInLane.GetComponent<MoveElementUp>(), false, true);
 					elementMovePosition = elementInLane.transform.position;
 					elementMovePosition.x = bucketPositions[laneChoice2].transform.position.x;
 					// Adding an arch, minus means it becomes an underarch, plus means its an over arch. No change to y means it swaps directly across.
 					//elementMovePosition.y += 0.7f;
 					StartCoroutine(SwapElement(elementInLane, elementMovePosition));
-				}else if(elementInLane.transform.position.x <= bucketPositions[laneChoice2].transform.position.x + 0.1f && elementInLane.transform.position.x >= bucketPositions[laneChoice2].transform.position.x - 0.1f){
+				}else if((elementInLane.transform.position.x <= bucketPositions[laneChoice2].transform.position.x + 0.1f && elementInLane.transform.position.x >= bucketPositions[laneChoice2].transform.position.x - 0.1f) && elementInLane.GetComponent<MoveElementUp>() != null)
+                {
 					SetMoveComponents(elementInLane.GetComponent<MoveElementDown>(), elementInLane.GetComponent<MoveElementUp>(), false, true);
 					elementMovePosition = elementInLane.transform.position;
 					elementMovePosition.x = bucketPositions[laneChoice1].transform.position.x;
