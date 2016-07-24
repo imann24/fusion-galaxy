@@ -71,15 +71,15 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleIdentifier: com.massdigi.crafting
-  bundleVersion: 0.71
+  bundleIdentifier: com.massdigi.craftinglife
+  bundleVersion: 0.72
   preloadedAssets: []
   metroEnableIndependentInputSource: 0
   metroEnableLowLatencyPresentationAPI: 0
   xboxOneDisableKinectGpuReservation: 0
   virtualRealitySupported: 0
   productGUID: 28e5ed4098b0a44579bdda3de51cae4c
-  AndroidBundleVersionCode: 1
+  AndroidBundleVersionCode: 37
   AndroidMinSdkVersion: 9
   AndroidPreferredInstallLocation: 1
   aotOptions: 
