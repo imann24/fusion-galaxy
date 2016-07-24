@@ -439,6 +439,9 @@ using System.Collections.Generic;
 		//checks whether the conditions for each tutorial have been met and runs them if so (tutorials only play once per device, unless the player resets all progress)
 		if (OnCallTutorialEvent != null && OnCallIndexedTutorialEvent != null) {
 
+			// Used as an out variable when checking for the tierSwitch tutorial;
+			int tierSwitchIndex;
+
 			//the gathering tutorial
 			if (!Utility.PlayerPrefIntToBool(GlobalVars.ENTER_GATHERING_TUTORIAL_KEY)) {
 				OnCallTutorialEvent(TutorialType.Gathering);
@@ -482,21 +485,34 @@ using System.Collections.Generic;
 			} 
 
 			//tier switch
-			else if (!Utility.PlayerPrefIntToBool(GlobalVars.TIER_SWITCH_TUTORIAL_KEY) &&
-			           GlobalVars.TIER_UNLOCKED[2]) {
-
-				CallTierSwitchTutorial();
+			else if (ShouldCallTierSwitchTutorial(out tierSwitchIndex)) {
+				CallTierSwitchTutorial(tierSwitchIndex);
 			}	
 		} else {
-			Debug.LogError("The event is null");
+			Debug.LogError("One of tutorial events is null");
 		}
 	}
-	
-	int GetNewUnlockedTierIndex () {
-		// TODO: Implement intended functionality
-		// - Update player prefs w/ array logic
-		// - Check against unlocked tiers
-		return 2;
+
+	bool ShouldCallTierSwitchTutorial (out int targetTierIndex) {
+		int? unlockedTier = GetNewUnlockedTierIndex();
+		if (unlockedTier == null) {
+			targetTierIndex = -1;
+			return false;
+		} else {
+			targetTierIndex = (int) unlockedTier;
+			return true;
+		}
+	}
+
+	int? GetNewUnlockedTierIndex () {
+		int startingTier = 2;
+		for (int i = startingTier; i < GlobalVars.TIER_UNLOCKED.Length; i++) {
+			if (GlobalVars.TIER_UNLOCKED[i] && !Utility.PlayerPrefIntToBool(GlobalVars.TIER_SWITCH_TUTORIAL_KEY+i)) {
+				return i;
+			}
+		}
+
+		return null;
 	}
 
 	int? GetPurchaseHintTier () {
@@ -515,8 +531,10 @@ using System.Collections.Generic;
 		tutorialHint = hint;
 	}
 
-	public void CallTierSwitchTutorial () {
-		OnCallTutorialEvent(TutorialType.TierSwitch);
+	public void CallTierSwitchTutorial (int tier) {
+		OnCallIndexedTutorialEvent(TutorialType.TierSwitch, tier);
+		// Already set this tutorial as watched (easier than handling in TutorialController, because we have easy access to which tier it was)
+		Utility.SetPlayerPrefIntAsBool(GlobalVars.TIER_SWITCH_TUTORIAL_KEY+tier, true);
 	}
 #endregion
 }

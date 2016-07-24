@@ -330,8 +330,8 @@ public class TierButtonDisplay : MonoBehaviour {
 			SetStatus(Status.Unselected);
 			isUnlocked = true;
 			//plays the tier switch tutorial if it has not yet been watched
-			if (!Utility.PlayerPrefIntToBool(GlobalVars.TIER_SWITCH_TUTORIAL_KEY) && GlobalVars.CRAFTING_CONTROLLER != null) {
-				GlobalVars.CRAFTING_CONTROLLER.CallTierSwitchTutorial();
+			if (!Utility.PlayerPrefIntToBool(GlobalVars.TIER_SWITCH_TUTORIAL_KEY+tierNumber) && GlobalVars.CRAFTING_CONTROLLER != null) {
+				GlobalVars.CRAFTING_CONTROLLER.CallTierSwitchTutorial(tierNumber);
 			}
 		}
 	}
