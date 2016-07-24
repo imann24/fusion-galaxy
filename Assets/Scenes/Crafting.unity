@@ -5059,7 +5059,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3774b733aa5f483f9c4390141ad605a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TutorialStep: 1
+  TutorialStep: 2
   TutorialType: 3
 --- !u!114 &224268428
 MonoBehaviour:
