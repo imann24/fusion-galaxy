@@ -111,7 +111,6 @@ public class SwipingMovement : MonoBehaviour {
 
 	//selects the element on user tap.
 	void OnMouseDown(){
-        controller.GetComponent<PlayTutorial>().EnableDisableBlueHand();
 
         if (this.gameObject.name == GlobalVars.SWIPE_TUTORIAL_SECOND_ELEMENT_NAME && secondSwipeTutorialElementMoved){
 #if DEBUG
@@ -188,14 +187,16 @@ public class SwipingMovement : MonoBehaviour {
 			// Let the PlayTutorial script know that the ring and arrow has to mvoe and that the first element has been moved into the correct position.
 			controller.GetComponent<PlayTutorial>().ResetRingAndArrow();
 			controller.GetComponent<PlayTutorial>().MovedFirstElementOver();
-		}
+            controller.GetComponent<PlayTutorial>().EnableDisableBlueHand(false);
+        }
 		if(this.gameObject.name == GlobalVars.SWIPE_TUTORIAL_ELEMENT_NAME && (transform.position.x >= (LanePositions.GetLanePositions(0)[1].x - LanePositions.GetLaneTolerance(0)) && transform.position.x <= (LanePositions.GetLanePositions(0)[1].x + LanePositions.GetLaneTolerance(0))) && PlayerPrefs.GetInt(GlobalVars.GATHERING_TUTORIAL_WATCHED_SWIPE)==0 ){
 			isCorrectMove = true;
 			firstSwipeTutorialElementsMoved = true;
 			// Let the PlayTutorial script know that the ring and arrow has to mvoe and that the first element has been moved into the correct position.
 			controller.GetComponent<PlayTutorial>().ResetRingAndArrow();
 			controller.GetComponent<PlayTutorial>().MovedFirstElementOver();
-		}
+            controller.GetComponent<PlayTutorial>().EnableDisableBlueHand(false);
+        }
 		// If the player drags the element to far to the right then reset the element position.
 		if((this.gameObject.name == GlobalVars.SWIPE_TUTORIAL_ELEMENT_NAME 
 		   || this.gameObject.name == GlobalVars.SWIPE_TUTORIAL_SECOND_ELEMENT_NAME)
@@ -206,7 +207,6 @@ public class SwipingMovement : MonoBehaviour {
 			// Set the position of the element back to the location from which it was dragged.
 			transform.position = new Vector3(-5.2f, 6.5f, 0);
 			isCorrectMove = false;
-            controller.GetComponent<PlayTutorial>().EnableDisableBlueHand();
             if (OnTutorialElementMouseAction != null) {
 				OnTutorialElementMouseAction(false);
 			}

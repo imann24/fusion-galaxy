@@ -62,9 +62,9 @@ public class PlayTutorial : MonoBehaviour {
     public GameObject blueHand;
     private Vector3 blueHandStartPosition;
     IEnumerator BlueHandMovementCo;
+
     // Use this for initialization
     void Start () {
-
         hasPowerUpTutorialStarted = false;
 		hasPowerUpTutorialTapStarted = false;
 
@@ -157,7 +157,8 @@ public class PlayTutorial : MonoBehaviour {
         // Begin making the arrows scale up and down.
         //StartFlashingCoroutine ();
         // Start the dynamic animation
-        BlueHandAnimation(0);
+        //BlueHandAnimation(0);
+        blueHand.GetComponent<Animator>().SetTrigger("SwipeTut1");
         // Setting the correct location of the ringAndArrow and blue hand.
         SettingTutorialArrowsPositionAndScale (ringAndArrowForSwipeTutorial, element);
 	}
@@ -170,7 +171,9 @@ public class PlayTutorial : MonoBehaviour {
         // Begin making the arrows scale up and down.
         //StartFlashingCoroutine ();
         // Start the dynamic animation
-        BlueHandAnimation(1);
+        EnableDisableBlueHand(true);
+        blueHand.GetComponent<Animator>().SetTrigger("SwipeTut2");
+        //BlueHandAnimation(1);
         // Setting the correct location of the ringAndArrow and blue hand.
         SettingTutorialArrowsPositionAndScale (ringAndArrowForSwipeTutorial, element);
 	}
@@ -205,18 +208,14 @@ public class PlayTutorial : MonoBehaviour {
     // A function that stops the blue hand tutorial animation playing.
     public void StopBlueHandAnimation()
     {
-        StopCoroutine(BlueHandMovementCo);
+        blueHand.GetComponent<Animator>().ResetTrigger("SwipeTut1");
+        blueHand.GetComponent<Animator>().ResetTrigger("SwipeTut2");
+        //StopCoroutine(BlueHandMovementCo);
     }
     // A function to disable or enable the blue hand game object.
-    public void EnableDisableBlueHand()
+    public void EnableDisableBlueHand(bool status)
     {
-        if (blueHand.gameObject.activeSelf)
-        {
-            blueHand.gameObject.SetActive(false);
-        }else
-        {
-            blueHand.gameObject.SetActive(true);
-        }
+        blueHand.SetActive(status);
     }
 	// A function that takes in the tutorialArrow and a game object.
 	private void SettingTutorialArrowsPositionAndScale(GameObject tutorialArrowElement, GameObject element){
