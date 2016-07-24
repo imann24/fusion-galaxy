@@ -271,11 +271,10 @@ public class switchBucketScript : MonoBehaviour {
 					SetMoveComponents(elementInLane.GetComponent<MoveElementDown>(), elementInLane.GetComponent<MoveElementUp>(), false, true);
 					elementMovePosition = elementInLane.transform.position;
 					elementMovePosition.x = bucketPositions[laneChoice1].transform.position.x;
+                    // Adding an arch, minus means it becomes an underarch, plus means its an over arch. No change to y means it swaps directly across.
+                    //elementMovePosition.y += 0.7f;
+                    StartCoroutine(SwapElement(elementInLane, elementMovePosition));
                 }
-
-                // Adding an arch, minus means it becomes an underarch, plus means its an over arch. No change to y means it swaps directly across.
-                //elementMovePosition.y += 0.7f;
-                StartCoroutine(SwapElement(elementInLane, elementMovePosition));
             }
 		}
 		StartCoroutine(ChangeBackLaneBeam ());
