@@ -41,11 +41,12 @@ public class CraftingTutorialController : MonoBehaviour {
 
 	public static TutorialType CurrentTutorial = TutorialType.None;
 
-	//for the tutorial message board
-	static CanvasGroup TutorialMessageBoardCanvasGroup;
-	static Text TutorialMessageBoardText;
+	// For tier button related tutorials
+	public static int? ActiveTierButton = null;
 
-	
+	// For power up screen related tutorials
+	public static int? ActivePowerUp = null;
+
 	public static bool GatheringTutorialActive {
 		get {
 			return TutorialActive && CurrentTutorial == TutorialType.Gathering;
@@ -71,8 +72,6 @@ public class CraftingTutorialController : MonoBehaviour {
 
 	void Awake () {
 		Instance = this;
-
-		InitializeTutorialMessageBoard();
 		SubscribeEvents();
 	
 		//establishes the reference to the mask component
@@ -203,18 +202,37 @@ public class CraftingTutorialController : MonoBehaviour {
 	//takes an event call from main menu controller and executes the corresponding tutorial
 	//uses an enum Tutorial from MainMenuController to decide which tutorial to execute
 	private void TutorialEventHandler (TutorialType tutorial) {
-		if (tutorial == TutorialType.Gathering) {
+		switch (tutorial) {
+		case TutorialType.Gathering:
 			ExecuteTutorial(OnElementsDraggedIntoGatheringTutorialBegan, tutorial);
-		} else if (tutorial == TutorialType.Crafting) {
+			break;
+		case TutorialType.Crafting:
 			ExecuteTutorial(OnCraftingModeTutorialBegan, tutorial);
-		} else if (tutorial == TutorialType.TierSwitch) {
-			ExecuteTutorial(OnTierSwitchingTutorialBegan, tutorial);
-		} else if (tutorial == TutorialType.BuyHint) {
-			ExecuteTutorial(OnBuyHintTutorialBegan, tutorial);
-		} else if (tutorial == TutorialType.UpgradePowerup) {
-			ExecuteTutorial(OnBuyPowerUpUpgradeTutorialBegan, tutorial);
+			break;
 		}
+	}
 
+	// Handles tutorial that take an additional int as an argument
+	private void IndexedTutorialEventHandler (TutorialType tutorial, int index) {
+		switch (tutorial) {
+		case TutorialType.BuyHint:
+			ActiveTierButton = index;
+			ExecuteTutorial(OnBuyHintTutorialBegan, tutorial);
+			int firstTier = 1;
+			bool dontSwitchTier = (index == firstTier);
+			if (dontSwitchTier) {
+				Advance();
+			}
+			break;
+		case TutorialType.TierSwitch:
+			ActiveTierButton = index;
+			ExecuteTutorial(OnTierSwitchingTutorialBegan, tutorial);
+			break;
+		case TutorialType.UpgradePowerup:
+			ActivePowerUp = index;
+			ExecuteTutorial(OnBuyPowerUpUpgradeTutorialBegan, tutorial);
+			break;
+		}
 	}
 
 	//Gets the event that ends the tutorial in correspondce to the tutorail
@@ -234,39 +252,12 @@ public class CraftingTutorialController : MonoBehaviour {
 			return null;
 		}
 	}
-
-	//sets the reference to the tutorialmessageboard
-	private void InitializeTutorialMessageBoard () {
-		foreach (CanvasGroup canvasGroup in GetComponentsInChildren<CanvasGroup>()) {
-			if (canvasGroup.gameObject.name == "TutorialMessageBoard") {
-				TutorialMessageBoardCanvasGroup = canvasGroup;
-				TutorialMessageBoardText = TutorialMessageBoardCanvasGroup.transform.GetComponentInChildren<Text>();
-			}
-		}
-	}
-
+	
 	//turns the masks raycast blocking on and off
 	public static void ToggleMaskBlockingRayCastsInactive (bool active) {
 		MaskCanvasGroup.blocksRaycasts = !active;
 	}
-
-	//sets the tutorial message board
-	public static void SetTutorialMessageBoard (string text) {
-		TutorialMessageBoardCanvasGroup.alpha = 1f;
-		TutorialMessageBoardText.text = text;
-
-		//allows the user to end the tutorial on tap
-		ToggleEndTutorialOnTap(true);
-	}
-
-	//hides the tutorial message board
-	public static void HideTutorialMessageBoard () {
-		TutorialMessageBoardCanvasGroup.alpha = 0;
-
-		//disallows the user to end the tutorial on tap
-		ToggleEndTutorialOnTap(false);
-	}
-
+	
 	public static void Advance () {
 		Instance.AdvanceTutorial();
 	}
@@ -296,6 +287,7 @@ public class CraftingTutorialController : MonoBehaviour {
 	private void SubscribeEvents () {
 		//subscribes to the event calls form MainMenuController
 		MainMenuController.OnCallTutorialEvent += TutorialEventHandler;
+		MainMenuController.OnCallIndexedTutorialEvent += IndexedTutorialEventHandler;
 
 		//subscribes to internal events
 		OnElementsDraggedIntoGatheringTutorialBegan += TriggerOnElementsDraggedIntoGatheringTutorial;
@@ -318,6 +310,7 @@ public class CraftingTutorialController : MonoBehaviour {
 	private void UnsubscribeEvents () {
 		//unsubscribes from the event calls from MainMenuController
 		MainMenuController.OnCallTutorialEvent -= TutorialEventHandler;
+		MainMenuController.OnCallIndexedTutorialEvent -= IndexedTutorialEventHandler;
 
 		//unsubscribes to internal events
 		OnCraftingModeTutorialBegan -= TriggerOnElementsDraggedIntoGatheringTutorial;

@@ -1,8 +1,14 @@
-﻿using UnityEngine;
+﻿/*
+ * Authors: Ari Green, Isaiah Mann
+ * Description: Used to purchase hints regarding element names
+ */
+
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
 public class PurchaseHint : MonoBehaviour {
+	const int COST_PER_TIER = 10;
 	//event to purchase a hint
 	public delegate void PurchaseHintAction(string unlockedElementName);
 	public static event PurchaseHintAction OnPurchaseHint;
@@ -85,9 +91,21 @@ public class PurchaseHint : MonoBehaviour {
 		return costs;
 	}
 
+	public KeyValuePair<string, int>[] GetCostsForTier (int tier) {
+		int cost = GetCostForTier(tier);
+		KeyValuePair<string, int> [] costs = new KeyValuePair<string, int>[numberOfCosts];
+		costs[0] = new KeyValuePair<string, int>(myElem1, cost);
+		costs[1] = new KeyValuePair<string, int>(myElem2, cost);
+		costs[2] = new KeyValuePair<string, int>(myElem3, cost);
+		costs[3] = new KeyValuePair<string, int>(myElem4, cost);
+		return costs;
+	}
+	
 	public void SetCosts (int cost) {
 		myCost1 = myCost2 = myCost3 = myCost4 = cost;
 	}
 
-	
+	public static int GetCostForTier (int tier) {	
+		return tier * COST_PER_TIER;
+	}
 }

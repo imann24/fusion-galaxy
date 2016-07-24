@@ -81,6 +81,7 @@ public class TierButtonDisplay : MonoBehaviour {
 			if (OnLoadTier != null) {
 				OnLoadTier(tierNumber);
 			}
+			CheckForTutorials();
 		});
 
 		//calls the event once to make sure the progress bars in the crafting screen update at start
@@ -111,7 +112,14 @@ public class TierButtonDisplay : MonoBehaviour {
 
 	void CheckForTutorials () {
 		if (CraftingTutorialController.BuyHintTutorialActive) {
-			CraftingTutorialComponent tutorialComponent;
+			CraftingTutorialComponent[] tutorialComponents = GetComponents<CraftingTutorialComponent>();
+			if (tutorialComponents != null){
+				CraftingTutorialComponent hintTutorialComponent = tutorialComponents.ToList().Find(
+					component => component.TutorialType == TutorialType.BuyHint);
+				if (hintTutorialComponent != null && hintTutorialComponent.Active) {
+					CraftingTutorialController.Advance();
+				}
+			}
 		}
 	}
 

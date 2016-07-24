@@ -1,4 +1,5 @@
 /*
+ * Author(s): Isaiah Mann
  * Used to control the crafting/main menu/hub mode 
  * Loads up new tiers of elements when the buttons on the side are clicked
  * Calls the tutorials on load if the conditions are met
@@ -19,10 +20,12 @@ using System.Collections.Generic;
 	public delegate void ButtonPressAction();
 	public delegate void EnterMenuScreenAction();
 	public delegate void CallTutorialEventAction(TutorialType tutorial);
+	public delegate void CallIndexedTutorialEventAction(TutorialType tutorial, int index);
 	public delegate void LoadTierAction(int tier);
 	public static event ButtonPressAction OnButtonPress;
 	public static event EnterMenuScreenAction OnEnterMenu;
 	public static event CallTutorialEventAction OnCallTutorialEvent;
+	public static event CallIndexedTutorialEventAction OnCallIndexedTutorialEvent;
 	public static event LoadTierAction OnLoadTier;
 
 	public Sprite DefaultTierBackground;
@@ -382,15 +385,13 @@ using System.Collections.Generic;
 	public void callHintPanel(){
 		hintPanel.SetActive (true);
 		hintPanel.GetComponent<PurchaseHint> ().elementHint = activeElement;
-		int theCost = 10 * GlobalVars.ELEMENTS_BY_NAME [activeElement.ToLower ()].getTier ();
+		int elementTier = GlobalVars.ELEMENTS_BY_NAME[activeElement.ToLower()].getTier();
+		int theCost = PurchaseHint.GetCostForTier(elementTier);
 		bool wasPreviouslyBought = PlayerPrefs.GetInt (activeElement.ToLower () + "Hint") == 1;
 		hintPanel.transform.FindChild("AlreadyPurchased").gameObject.SetActive(wasPreviouslyBought);
 		hintPanel.transform.FindChild("NotYetPurchased").gameObject.SetActive(!wasPreviouslyBought);
 
-		hintPanel.GetComponent<PurchaseHint> ().myCost1 = 
-			hintPanel.GetComponent<PurchaseHint> ().myCost2 = 
-			hintPanel.GetComponent<PurchaseHint> ().myCost3 = 
-			hintPanel.GetComponent<PurchaseHint> ().myCost4 = theCost;
+		hintPanel.GetComponent<PurchaseHint> ().SetCosts(theCost);
 
 		for (int i = 1; i<=4; i++) {
 			int inventory = PlayerPrefs.GetInt (hintPanel.GetComponent<PurchaseHint> ().getCostElemType(i));
@@ -436,7 +437,7 @@ using System.Collections.Generic;
 	//calls any applicable tutorial events
 	private void CheckForTutorialEvents () {
 		//checks whether the conditions for each tutorial have been met and runs them if so (tutorials only play once per device, unless the player resets all progress)
-		if (OnCallTutorialEvent != null) {
+		if (OnCallTutorialEvent != null && OnCallIndexedTutorialEvent != null) {
 
 			//the gathering tutorial
 			if (!Utility.PlayerPrefIntToBool(GlobalVars.ENTER_GATHERING_TUTORIAL_KEY)) {
@@ -455,9 +456,21 @@ using System.Collections.Generic;
 			} 
 
 			//the buying a hint tutorial
-			else if (!Utility.PlayerPrefIntToBool(GlobalVars.BUY_HINT_TUTORIAL_KEY) &&
-			           Utility.SufficientElementsToPurchase(tutorialHint.GetCosts())) {
-				OnCallTutorialEvent(TutorialType.BuyHint);
+			else if (!Utility.PlayerPrefIntToBool(GlobalVars.BUY_HINT_TUTORIAL_KEY)) {
+				int? firstTierWithLockedElements = GetPurchaseHintTier();
+				bool elementsLeftToUnlock = true;
+				if (firstTierWithLockedElements == null) {
+					// If there is no tier with locked elements, count this tutorial as watched because it's no longer relevant
+					Utility.PlayerPrefIntToBool(GlobalVars.BUY_HINT_TUTORIAL_KEY, true);
+					elementsLeftToUnlock = false;
+				} 
+				if (elementsLeftToUnlock) {
+					int tierIndex = (int)firstTierWithLockedElements;
+					if (GlobalVars.TIER_UNLOCKED[tierIndex] &&
+					Utility.SufficientElementsToPurchase(tutorialHint.GetCostsForTier(tierIndex))) {
+						OnCallIndexedTutorialEvent(TutorialType.BuyHint, tierIndex);
+					}
+				}
 			} 
 
 			//the upgrading a powerup tutorial
@@ -475,8 +488,26 @@ using System.Collections.Generic;
 				CallTierSwitchTutorial();
 			}	
 		} else {
-			Debug.LogError("Tbe event is null");
+			Debug.LogError("The event is null");
 		}
+	}
+	
+	int GetNewUnlockedTierIndex () {
+		// TODO: Implement intended functionality
+		// - Update player prefs w/ array logic
+		// - Check against unlocked tiers
+		return 2;
+	}
+
+	int? GetPurchaseHintTier () {
+		int startAtSecondTier = 1;
+		for (int i = startAtSecondTier; i < GlobalVars.TIER_COUNT; i++) {
+			if (!Element.AllTierElementsUnlocked(i)) {
+				return i;
+			} 
+		}
+		// There are no tiers with locked elements, return null
+		return null;
 	}
 
 	//sets the PurchaseHint script
