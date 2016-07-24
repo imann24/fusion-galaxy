@@ -197,7 +197,7 @@ public class GenerationScript : MonoBehaviour {
 		//difficulty setting
 		defaultSpawnModifier = defaultFallSpeedModifier = 1;//0.6f + (0.9f * GlobalVars.NUMBER_ELEMENTS_UNLOCKED / ((float)GlobalVars.ELEMENTS.Count));
 		creationFrequency = 60f + (140f * GlobalVars.NUMBER_ELEMENTS_UNLOCKED / ((float)GlobalVars.ELEMENTS.Count));
-		elementMovementSpeed = 2 + (0.3f * GlobalVars.NUMBER_ELEMENTS_UNLOCKED / ((float)GlobalVars.ELEMENTS.Count));// 0.6f + (0.9f * GlobalVars.NUMBER_ELEMENTS_UNLOCKED / ((float)GlobalVars.ELEMENTS.Count));
+		elementMovementSpeed = GetBaseElementMovementSpeed(GlobalVars.NUMBER_ELEMENTS_UNLOCKED);// 0.6f + (0.9f * GlobalVars.NUMBER_ELEMENTS_UNLOCKED / ((float)GlobalVars.ELEMENTS.Count));
 
 		CollectionTimer.instance.setBaseCreationFrequency (creationFrequency);
 		CollectionTimer.instance.setBaseMovementSpeed (elementMovementSpeed); 
@@ -230,6 +230,24 @@ public class GenerationScript : MonoBehaviour {
 		elementNumbers = new int[6];
 
 		CheckForPowerUpTutorial ();
+	}
+
+	float GetBaseElementMovementSpeed (int elementsUnlocked) {
+		return 2 + (0.3f * ((float)elementsUnlocked) / ((float)GlobalVars.ELEMENTS.Count));
+	}
+
+	float GetOriginalMaxElementMovementSpeed () {
+		return GetBaseElementMovementSpeed(GlobalVars.ELEMENTS.Count) * 2.0f;
+	}
+
+	float GetModifiedMaxElementMovementSpeed () {
+		return (GetOriginalMaxElementMovementSpeed() - 
+			((GetOriginalMaxElementMovementSpeed() - 
+			  GetBaseElementMovementSpeed(GlobalVars.BASE_ELEMENT_NAMES.Length))/2f));
+	}
+
+	float GetClampedSpeed (float baseSpeed) {
+		return Mathf.Clamp(baseSpeed, 0, GetModifiedMaxElementMovementSpeed());
 	}
 
 	// Update is called once per frame
@@ -892,14 +910,14 @@ public class GenerationScript : MonoBehaviour {
 		ZoneCollisionDetection.addToOnScreenElements (spawnedElement);
 		SecondElementHasBeenSpawned();
 	}
-
+	
 	// Set the elementMovementSpeed to a new value.
 	public void setElementMovementSpeed(float newSpeed){
-		elementMovementSpeed = newSpeed;
+		elementMovementSpeed = GetClampedSpeed(newSpeed);
 	}
 	// Increase the elementMovementSpeed by the entered amount.
 	public void increaseElementMovementSpeed(float newSpeed){
-		elementMovementSpeed += newSpeed;
+		elementMovementSpeed = GetClampedSpeed(elementMovementSpeed + newSpeed);
 	}
 	// Set the creationFrequency to a new value.
 	public void setCreationFrequency(float newFrequency){
