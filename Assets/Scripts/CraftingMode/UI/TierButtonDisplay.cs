@@ -81,6 +81,7 @@ public class TierButtonDisplay : MonoBehaviour {
 			if (OnLoadTier != null) {
 				OnLoadTier(tierNumber);
 			}
+			CheckForTutorials();
 		});
 
 		//calls the event once to make sure the progress bars in the crafting screen update at start
@@ -107,6 +108,19 @@ public class TierButtonDisplay : MonoBehaviour {
 
 		// Unsubscribes from events when the object is destroyed
 		UnsubscribeEvents();
+	}
+
+	void CheckForTutorials () {
+		if (CraftingTutorialController.BuyHintTutorialActive) {
+			CraftingTutorialComponent[] tutorialComponents = GetComponents<CraftingTutorialComponent>();
+			if (tutorialComponents != null){
+				CraftingTutorialComponent hintTutorialComponent = tutorialComponents.ToList().Find(
+					component => component.TutorialType == TutorialType.BuyHint);
+				if (hintTutorialComponent != null && hintTutorialComponent.Active) {
+					CraftingTutorialController.Advance();
+				}
+			}
+		}
 	}
 
 	//gets all the image and text references 
@@ -316,8 +330,8 @@ public class TierButtonDisplay : MonoBehaviour {
 			SetStatus(Status.Unselected);
 			isUnlocked = true;
 			//plays the tier switch tutorial if it has not yet been watched
-			if (!Utility.PlayerPrefIntToBool(GlobalVars.TIER_SWITCH_TUTORIAL_KEY) && GlobalVars.CRAFTING_CONTROLLER != null) {
-				GlobalVars.CRAFTING_CONTROLLER.CallTierSwitchTutorial();
+			if (!Utility.PlayerPrefIntToBool(GlobalVars.TIER_SWITCH_TUTORIAL_KEY+tierNumber) && GlobalVars.CRAFTING_CONTROLLER != null) {
+				GlobalVars.CRAFTING_CONTROLLER.CallTierSwitchTutorial(tierNumber);
 			}
 		}
 	}

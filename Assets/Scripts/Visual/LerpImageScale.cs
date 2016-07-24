@@ -8,10 +8,14 @@ public class LerpImageScale : UIImageAnimation {
 	// Whether scale should return to 
 	public bool Loop;
 	IEnumerator lerpCoroutine;
-	
+
 	public override void Play () {
-		base.Play ();
-		callLerpScale(MaxScale, MinScale, Repeating, AnimationTime);
+		if (gameObject.activeInHierarchy) {
+			base.Play ();
+			callLerpScale(MaxScale, MinScale, Repeating, AnimationTime);
+		} else {
+			shouldPlayOnEnable = true;
+		}
 	}
 
 	public override void Stop () {

@@ -97,6 +97,7 @@ public static class Cheats {
 	//resets whether player has watched the tutorials
 	public static void ResetTutorialsWatched (bool ignoreGatheringTutorials = false) {
 		ToggleAllTutorialsWatched(false, ignoreGatheringTutorials);
+		CraftingTutorialComponent.ElementPanelsActive = 0;
 	}
 
 	public static void SetAllTutorialsAsWatched (bool ignoreGatheringTutorials = false) {
@@ -131,6 +132,7 @@ public static class Cheats {
 	}
 
 	public static void ResetToCraftingTutorial () {
+		CraftingTutorialComponent.ElementPanelsActive = 0;
 		ResetTutorialsWatched();
 		SetTutorialWatched(GlobalVars.ENTER_GATHERING_TUTORIAL_KEY);
 		IncreaseBaseElements(1);
@@ -143,6 +145,7 @@ public static class Cheats {
 	}
 
 	public static void ResetToBuyHintTutorial () {
+		CraftingTutorialComponent.ElementPanelsActive = 0;
 		LockAllElements();
 		SetTutorialWatched(GlobalVars.ENTER_GATHERING_TUTORIAL_KEY);
 		SetTutorialWatched(GlobalVars.CRAFTING_TUTORIAL_KEY);
@@ -150,6 +153,7 @@ public static class Cheats {
 	}
 
 	public static void ResetToPurchaseUpgradeTutorial () {
+		CraftingTutorialComponent.ElementPanelsActive = 0;
 		ResetPowerUpUpgradePurchases();
 		bool ignoreGatheringTutorials = true;
 		SetAllTutorialsAsWatched(ignoreGatheringTutorials);
