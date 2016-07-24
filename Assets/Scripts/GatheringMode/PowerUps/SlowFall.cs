@@ -3,9 +3,9 @@
 public class SlowFall : PowerUp {
 	public const string NAME = "SlowFall";
 	public static readonly string [] DESCRIPTIONS = new string[]{
-		"Tap or drag this ability into a specific lane to slow down the fall of elements contained.",//power 2, level 1
-		"Tap or drag this ability into a specific lane to significantly slow down the fall of elements contained.",//power 2, level 2
-		"Tap or drag this ability to significantly slow down the fall all elements.",//power 2, level 3
+		"Elements fall slower for a few seconds.",
+		"Elements fall slower for a few seconds.",
+		"Elements fall slower for a few seconds.",
 	};
 
 	//event call

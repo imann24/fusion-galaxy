@@ -362,6 +362,7 @@ public class CraftingTutorialComponent: TutorialComponent {
 
 		if (myCanvas != null) {
 			myCanvas.sortingOrder = mySortLayer;
+			myCanvas.overrideSorting = false;
 		}
 	}
 
