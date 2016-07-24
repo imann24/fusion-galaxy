@@ -74,18 +74,6 @@ public class GeneratePowerUpList : MonoBehaviour {
 		upgradeCardImages = new Sprite[]{upgradeCard0,upgradeCard1,upgradeCard2,upgradeCard3};
 
 		PowerUps = PowerUp.GetAll();
-
-		powerDescriptions = ArrayUtil.Concat (
-			LaneConversion.DESCRIPTIONS,
-			SlowFall.DESCRIPTIONS,
-			Fuel.DESCRIPTIONS,
-			Multiply.DESCRIPTIONS,
-			BucketShield.DESCRIPTIONS,
-			TapToCollect.DESCRIPTIONS,
-			Invincible.DESCRIPTIONS,
-			TotalConversion.DESCRIPTIONS,
-			CollectAll.DESCRIPTIONS
-		);
 			
 		bonusTexts = new string[TOTAL_BASE_POWERUPS*UPGRADE_LEVELS]{
 			"1 Lane",//power 1, level 1
@@ -190,7 +178,7 @@ public class GeneratePowerUpList : MonoBehaviour {
 			if (PowerUp.PowerUpUnlocked(currentPower)){
 				myPowerLevel = PowerUp.GetPowerUpLevel(currentPower);
 				newPower.transform.FindChild ("Name").GetComponent<Text>().text = powerNames[power];
-				newPower.transform.FindChild ("Name/Description").GetComponent<Text>().text = powerDescriptions[(power*UPGRADE_LEVELS)+(myPowerLevel)];
+				newPower.transform.FindChild ("Name/Description").GetComponent<Text>().text = currentPower.GetDescription();
 				newPower.transform.FindChild ("Bonus/BonusText").GetComponent<Text>().text = bonusTexts[(power*UPGRADE_LEVELS)+(myPowerLevel-1)];
 				newPower.transform.FindChild (BuyUpgrade.UpgradeBars).GetComponent<Image>().sprite = upgradeBarImages[myPowerLevel];
 				newPower.transform.FindChild ("PowerUpIcon").GetComponent<Image>().sprite = upgradeCardImages[myPowerLevel];

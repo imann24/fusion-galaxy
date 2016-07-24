@@ -109,7 +109,9 @@ public static class Cheats {
 		foreach (string tutorialKey in GlobalVars.AllCraftingModeTutorials) {
 			Utility.SetPlayerPrefIntAsBool(tutorialKey, tutorialWatched);
 		}
-
+		for (int i = 0; i < GlobalVars.TIER_COUNT; i++) {
+			Utility.SetPlayerPrefIntAsBool(GlobalVars.TIER_SWITCH_TUTORIAL_KEY+i, tutorialWatched);
+		}
 		if (!ignoreGatheringTutorials) {
 			//bools for gathering
 			Utility.SetPlayerPrefIntAsBool(GlobalVars.GATHERING_TUTORIAL_WATCHED_SWIPE, tutorialWatched);

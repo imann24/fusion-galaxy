@@ -11,9 +11,9 @@ using System.Collections;
 public class Multiply: PowerUp {
 	public const string NAME = "Multiply";
 	public static readonly string [] DESCRIPTIONS = new string[]{
-		"Tap or drag this ability into a specific lane to receive a score multiplier for the elements collected of that lane’s elemental type.",//power 4, level 1
-		"Tap or drag this ability into a specific lane to receive a score multiplier for the elements collected of that lane’s elemental type, and an adjacent lane’s elemental type.",//power 4, level 2
-		"Tap or drag this ability to receive a score multiplier for elements collected of all elemental types.",//power 4, level 3
+		"Each element you collect counts for more.",
+		"Each element you collect counts for more.",
+		"Each element you collect counts for more.",
 	};
 
 	//event

@@ -1,9 +1,9 @@
 public class TapToCollect : PowerUp {
 	public const string NAME = "TapToCollect";
 	public static readonly string [] DESCRIPTIONS = new string[]{
-		"Simply tap elements to automatically collect them.",//power 6, level 1
-		"Simply tap elements to automatically collect them.",//power 6, level 2
-		"Simply tap elements to automatically collect them.",//power 6, level 3
+		"Tap on elements to immediately collect them.",
+		"Tap on elements to immediately collect them.",
+		"Tap on elements to immediately collect them.",
 	};
 
 	//event call
