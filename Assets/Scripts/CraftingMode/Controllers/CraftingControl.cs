@@ -165,6 +165,10 @@ public class CraftingControl : MonoBehaviour {
 					int elementTier = element.getPanelIndex();
 					if (IntUtil.InRange(elementTier, TierButtonDisplay.AllTierButtons.Count)) {
 						Vector3 position = TierButtonDisplay.AllTierButtons[elementTier].transform.position;
+						if (result.getTier() == GlobalVars.TIER_COUNT) {
+							EventController.Event(EventController.ParticleGoldSparkesFallEvent, 
+							                      position);
+						}
 						EventController.Event(
 							EventController.ParticleSparklesFallEvent,
 							position);

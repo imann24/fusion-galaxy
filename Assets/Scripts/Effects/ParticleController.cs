@@ -11,12 +11,10 @@ using System.Collections.Generic;
 public class ParticleController : MonoBehaviour {
 	public float ZOffset = 100;
 	public GameObject ParticleSparklesFallPrefab;
+	public GameObject ParticleGoldSparklesFallPrefab;
 	public GameObject ParticleGlowBurstPrefab;
 	Dictionary<ParticleEffectType, Queue<GameObject>> spawnPools = new Dictionary<ParticleEffectType, Queue<GameObject>>();
 	
-	public Color DefaultSparklesColor;
-	public Color DefaultGlowBurstColor;
-	public Color GoldSparklesColor;
 	// Use this for initialization
 	void Awake () {
 		Init();
@@ -49,22 +47,17 @@ public class ParticleController : MonoBehaviour {
 
 	void HandlePositionEvent (string eventName, Vector3 position) {
 		GameObject particleObject = null;
-		if (eventName == EventController.ParticleSparklesFallEvent || eventName == EventController.ParticleGoldSparkesFallEvent) {
+		if (eventName == EventController.ParticleSparklesFallEvent) {
 			particleObject = SpawnEffect(ParticleEffectType.SparkleFall, position);
 		} else if (eventName == EventController.ParitcleGlowBurstEvent) {
 			particleObject = SpawnEffect(ParticleEffectType.GlowBurst, position);
+		} else if (eventName == EventController.ParticleGoldSparkesFallEvent) {
+			particleObject = SpawnEffect(ParticleEffectType.GoldSparkFall, position);
 		}
 		if (particleObject != null) {
 			ParticleSystem effect = particleObject.GetComponent<ParticleSystem>();
 			if (effect != null) {
 				effect.Play();
-				if (eventName == EventController.ParticleSparklesFallEvent) {
-					effect.startColor = DefaultSparklesColor;
-				} else if (eventName == EventController.ParitcleGlowBurstEvent) {
-					effect.startColor = DefaultGlowBurstColor;
-				} else if (eventName == EventController.ParticleGoldSparkesFallEvent) {
-					effect.startColor = GoldSparklesColor;
-				}
 				StartCoroutine(CollectOnEffectComplete(effect));
 			}
 		}
@@ -115,6 +108,9 @@ public class ParticleController : MonoBehaviour {
 			break;
 		case ParticleEffectType.GlowBurst:
 			effect = (GameObject) Instantiate(ParticleGlowBurstPrefab);
+			break;
+		case ParticleEffectType.GoldSparkFall:
+			effect = (GameObject) Instantiate(ParticleGoldSparklesFallPrefab);
 			break;
 		}
 		Transform effectTransform = effect.transform;
