@@ -122,7 +122,7 @@ public class GlobalVars {
 	public const string GATHERING_ZONE_DRAG_ANIMATION_KEY = "GatheringZoneDrag";
 	public const string CRAFTING_ZONE_DRAG_ANIMATION_KEY = "CraftingZoneDrag";
     //Release build boolean - SET TO TRUE FOR RELEASE BUILD
-    public static bool RELEASE_BUILD = false;
+    public static bool RELEASE_BUILD = true;
     #endregion
 
     #region ELEMENTS
