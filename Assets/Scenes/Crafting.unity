@@ -15097,7 +15097,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 510418602}
         m_MethodName: EndTutorialOnTap
         m_Mode: 1
         m_Arguments:
@@ -15634,7 +15634,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 510418602}
         m_MethodName: EndTutorialOnTap
         m_Mode: 1
         m_Arguments:
