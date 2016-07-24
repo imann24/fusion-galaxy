@@ -27,7 +27,11 @@ public abstract class PowerUp {
 	//script references
 	protected ZoneCollisionDetection [] allZones {get; set;}
 	protected GenerationScript controller {get; set;}
-	protected CollectionTimer timer {get; set;}
+	protected static CollectionTimer timer {
+		get {
+			return GlobalVars.GATHERING_TIMER;
+		}
+	}
 
 	public Sprite GetSprite () {
 		Sprite mySprite;
@@ -72,7 +76,6 @@ public abstract class PowerUp {
 		this.duration = duration;
 		allZones = GlobalVars.GATHERING_ZONES;
 		controller = GlobalVars.GATHERING_CONTROLLER;
-		timer = GlobalVars.GATHERING_TIMER;
 		level = GetPowerUpLevel(this);
 	}
 

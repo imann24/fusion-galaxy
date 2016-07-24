@@ -234,7 +234,7 @@ public class SwipingMovement : MonoBehaviour {
 		//increases the score
 		int points = GlobalVars.GATHERING_ZONES[laneIndex].getCurrentPointValue();
 		GlobalVars.GATHERING_CONTROLLER.updateScore(laneIndex, points);
-        generationScript.destroyElement(gameObject);
+        GlobalVars.GATHERING_CONTROLLER.destroyElement(gameObject);
         Destroy(gameObject);
 	}
 }

@@ -42,6 +42,7 @@ public class CollectionTimer : MonoBehaviour {
 		//global script reference
 		GlobalVars.GATHERING_TIMER = this;
 		GlobalVars.GATHERING_PLAYTIME = GlobalVars.COLLECT_TIME;
+		Debug.Log(GlobalVars.GATHERING_TIMER);
 	}
 
 	void Start () {
