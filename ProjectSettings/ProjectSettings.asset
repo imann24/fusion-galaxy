@@ -72,7 +72,7 @@ PlayerSettings:
     16:9: 1
     Others: 1
   bundleIdentifier: com.massdigi.craftinglife
-  bundleVersion: 0.69
+  bundleVersion: 0.70
   preloadedAssets: []
   metroEnableIndependentInputSource: 0
   metroEnableLowLatencyPresentationAPI: 0
