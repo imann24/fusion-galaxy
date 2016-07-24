@@ -25,8 +25,16 @@ public abstract class PowerUp {
 	public const int MAX_LEVEL = 3;
 
 	//script references
-	protected ZoneCollisionDetection [] allZones {get; set;}
-	protected GenerationScript controller {get; set;}
+	protected ZoneCollisionDetection [] allZones {
+		get {
+			return GlobalVars.GATHERING_ZONES;
+		}
+	}
+	protected GenerationScript controller {
+		get {
+			return GlobalVars.GATHERING_CONTROLLER;
+		}
+	}
 	protected static CollectionTimer timer {
 		get {
 			return GlobalVars.GATHERING_TIMER;
@@ -74,8 +82,6 @@ public abstract class PowerUp {
 		this.name = name;
 		this.descriptions = descriptions;
 		this.duration = duration;
-		allZones = GlobalVars.GATHERING_ZONES;
-		controller = GlobalVars.GATHERING_CONTROLLER;
 		level = GetPowerUpLevel(this);
 	}
 
