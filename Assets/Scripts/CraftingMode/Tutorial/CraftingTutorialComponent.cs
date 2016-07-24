@@ -326,6 +326,8 @@ public class CraftingTutorialComponent: TutorialComponent {
 			TierButtonDisplay tierButton = GetComponent<TierButtonDisplay>();
 			if (!IsActiveStep() || tierButton.tierNumber == activeTierButton) {
 				ToggleChildrenTutorialComponents(true);
+			} else {
+				return;
 			}
 		} else if (IsActiveStep()) {
 			ToggleChildrenTutorialComponents(true);

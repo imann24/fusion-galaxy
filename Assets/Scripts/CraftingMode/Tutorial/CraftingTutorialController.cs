@@ -44,9 +44,6 @@ public class CraftingTutorialController : MonoBehaviour {
 	// For tier button related tutorials
 	public static int? ActiveTierButton = null;
 
-	// For power up screen related tutorials
-	public static int? ActivePowerUp = null;
-
 	public static bool GatheringTutorialActive {
 		get {
 			return TutorialActive && CurrentTutorial == TutorialType.Gathering;
@@ -103,11 +100,14 @@ public class CraftingTutorialController : MonoBehaviour {
 			tutorial();
 		}
 
-		//turns on the mask to cover the game
-		ToggleMask(true);
+		if (tutorialEnum != TutorialType.UpgradePowerup) {
+			//turns on the mask to cover the game
+			ToggleMask(true);
+		}
 
 		tutorialHasEnded = false;
 		TutorialActive = true;
+
 
 		//sets the enum to track which tutorial the script is executing
 		CurrentTutorial = tutorialEnum;
@@ -209,6 +209,9 @@ public class CraftingTutorialController : MonoBehaviour {
 		case TutorialType.Crafting:
 			ExecuteTutorial(OnCraftingModeTutorialBegan, tutorial);
 			break;
+		case TutorialType.UpgradePowerup:
+			ExecuteTutorial(OnBuyPowerUpUpgradeTutorialBegan, tutorial);
+			break;
 		}
 	}
 
@@ -227,10 +230,6 @@ public class CraftingTutorialController : MonoBehaviour {
 		case TutorialType.TierSwitch:
 			ActiveTierButton = index;
 			ExecuteTutorial(OnTierSwitchingTutorialBegan, tutorial);
-			break;
-		case TutorialType.UpgradePowerup:
-			ActivePowerUp = index;
-			ExecuteTutorial(OnBuyPowerUpUpgradeTutorialBegan, tutorial);
 			break;
 		}
 	}

@@ -62,6 +62,9 @@ public class BuyUpgrade : MonoBehaviour {
 			EventController.Event(
 				EventController.ParitcleGlowBurstEvent,
 				GetUpgradeBarsPosition());
+
+			// Set this tutorial as watched even if it wasn't because the player has already performed the action
+			Utility.SetPlayerPrefIntAsBool(GlobalVars.UPGRADE_POWERUP_TUTORIAL_KEY, true);
 		}
 
 
