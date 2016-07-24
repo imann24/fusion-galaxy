@@ -28,9 +28,6 @@ public class LaneConversion : PowerUp {
     #region implemented abstract members of PowerUp
     public override void usePowerUp (int lane)
     {
-		if (controller == null) {
-			controller = GlobalVars.GATHERING_CONTROLLER;
-		}
 		if (OnLaneConversionActivated != null) {
 			OnLaneConversionActivated();
 		}

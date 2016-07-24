@@ -417,6 +417,10 @@ public class GenerationScript : MonoBehaviour {
 
     public void destroyElement(GameObject element)
     {
+		if (element == null) {
+			return;
+		}
+
         element.SetActive(false);
         if (this.gameObject.tag == "Zone1Collector")
         {
