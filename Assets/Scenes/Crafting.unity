@@ -6432,6 +6432,7 @@ MonoBehaviour:
   - {fileID: 594420561}
   - {fileID: 1419555456}
   playGatheringButton: {fileID: 277282776}
+  creditsButton: {fileID: 381641188}
   instructionScroll: {fileID: 1848828301}
   activeColor: {r: .980392218, g: .917647123, b: .854902029, a: 1}
   inactiveColor: {r: .333333343, g: .933333397, b: .866666734, a: 1}
@@ -8665,7 +8666,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
     m_PressedColor: {r: .45588237, g: 1, b: 1, a: 1}
-    m_DisabledColor: {r: .661764741, g: .661764741, b: .661764741, a: .501960814}
+    m_DisabledColor: {r: .661764741, g: .661764741, b: .661764741, a: .759000003}
     m_ColorMultiplier: 1
     m_FadeDuration: .100000001
   m_SpriteState:
@@ -8678,7 +8679,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 2003637245}
+  m_TargetGraphic: {fileID: 381641189}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:

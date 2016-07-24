@@ -177,6 +177,8 @@ public class CraftingTutorialController : MonoBehaviour {
 			EndBuyHintTutorial("none");
 		} else if (CurrentTutorial == TutorialType.UpgradePowerup) {
 			EndUpgradePowerupTutorial("none", 0);
+		} else if (CurrentTutorial == TutorialType.Crafting) {
+			EndCraftingTutorial("none", "none", "none", false);
 		}
 
 		EndTutorial();

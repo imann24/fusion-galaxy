@@ -42,6 +42,7 @@ public class CraftingButtonController : MonoBehaviour {
 	private List<CaptureScript> gatheringDropZoneQueue = new List<CaptureScript>();
 	private bool readyToEnterGathering = false;
 	public Button playGatheringButton;
+	public Button creditsButton;
 	public Text instructionScroll;
 
 	//page changer buttons
@@ -76,6 +77,51 @@ public class CraftingButtonController : MonoBehaviour {
 	void Awake () {
 		//global reference to script
 		GlobalVars.CRAFTING_BUTTON_CONTROLLER = this;
+		Subscribe();
+	}
+
+	void OnDestroy () {
+		Unsubscribe();
+	}
+
+	void Subscribe () {
+		// Tutorial beginning calls
+		CraftingTutorialController.OnBuyHintTutorialBegan += HandleEnterTutorial;
+		CraftingTutorialController.OnBuyPowerUpUpgradeTutorialBegan += HandleEnterTutorial;
+		CraftingTutorialController.OnElementsDraggedIntoGatheringTutorialBegan += HandleEnterTutorial;
+		CraftingTutorialController.OnCraftingModeTutorialBegan += HandleEnterTutorial;
+		CraftingTutorialController.OnTierSwitchingTutorialBegan += HandleEnterTutorial;
+
+		//tutorial completion calls
+		CraftingTutorialController.OnBuyHintTutorialComplete += HandleCompleteTutorial;
+		CraftingTutorialController.OnBuyPowerUpUpgradeTutorialComplete += HandleCompleteTutorial;
+		CraftingTutorialController.OnElementsDraggedIntoGatheringTutorialComplete += HandleCompleteTutorial;
+		CraftingTutorialController.OnCraftingModeTutorialComplete += HandleCompleteTutorial;
+		CraftingTutorialController.OnTierSwitchingTutorialComplete += HandleCompleteTutorial;
+	}
+
+	void Unsubscribe () {
+		// Tutorial beginning calls
+		CraftingTutorialController.OnBuyHintTutorialBegan -= HandleEnterTutorial;
+		CraftingTutorialController.OnBuyPowerUpUpgradeTutorialBegan -= HandleEnterTutorial;
+		CraftingTutorialController.OnElementsDraggedIntoGatheringTutorialBegan -= HandleEnterTutorial;
+		CraftingTutorialController.OnCraftingModeTutorialBegan -= HandleEnterTutorial;
+		CraftingTutorialController.OnTierSwitchingTutorialBegan -= HandleEnterTutorial;
+		
+		//tutorial completion calls
+		CraftingTutorialController.OnBuyHintTutorialComplete -= HandleCompleteTutorial;
+		CraftingTutorialController.OnBuyPowerUpUpgradeTutorialComplete -= HandleCompleteTutorial;
+		CraftingTutorialController.OnElementsDraggedIntoGatheringTutorialComplete -= HandleCompleteTutorial;
+		CraftingTutorialController.OnCraftingModeTutorialComplete -= HandleCompleteTutorial;
+		CraftingTutorialController.OnTierSwitchingTutorialComplete -= HandleCompleteTutorial;
+	}
+
+	void HandleEnterTutorial () {
+		creditsButton.interactable = false;
+	}
+
+	void HandleCompleteTutorial (float time) {
+		creditsButton.interactable = true;
 	}
 
 	// Use this for initialization
@@ -112,7 +158,7 @@ public class CraftingButtonController : MonoBehaviour {
 			OnButtonPress();
 		}
 
-		if (CraftingTutorialController.TutorialActive) {
+		if (CraftingTutorialController.TutorialActive && sceneName == GlobalVars.GATHERING_BUTTON_NAME) {
 			Utility.Log("Trying to load scene asynchronoushly");
 			StartCoroutine(LoadLevelAsync((int) GlobalVars.Scenes.Gathering));
 			loadingAsync = true;
@@ -392,6 +438,9 @@ public class CraftingButtonController : MonoBehaviour {
 			}
 		} else {
 			ScrollBarDisplay.mode = ScrollBarDisplay.Mode.Gathering;
+			if (CraftingTutorialController.CraftingTutorialActive) {
+				CraftingTutorialController.Instance.EndTutorialOnTap();
+			}
 		}
 	}
 
