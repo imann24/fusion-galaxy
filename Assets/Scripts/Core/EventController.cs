@@ -5,6 +5,7 @@ public static class EventController {
 	#region Event Names
 	public const string ParticleSparklesFallEvent = "SparklesFall";
 	public const string ParitcleGlowBurstEvent = "GlowBurst";
+	public const string ParticleGoldSparkesFallEvent = "GoldSparkles";
 	#endregion
 
 	public delegate void NamedPositionEvent (string eventName, Vector3 location);

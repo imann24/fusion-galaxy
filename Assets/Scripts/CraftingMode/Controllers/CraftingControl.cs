@@ -155,12 +155,20 @@ public class CraftingControl : MonoBehaviour {
 				SpawnerControl elementController;
 				if (GlobalVars.CRAFTING_CONTROLLER.TryGetElementController(
 					resultElement, out elementController)) {
+					if (result.getTier() == GlobalVars.TIER_COUNT) {
+						EventController.Event(EventController.ParticleGoldSparkesFallEvent, 
+						                      elementController.transform.position);
+					}
 					EventController.Event(EventController.ParticleSparklesFallEvent,
 					                      elementController.transform.position);
 				} else if (GlobalVars.ELEMENTS_BY_NAME.TryGetValue(resultElement, out element)) {
 					int elementTier = element.getPanelIndex();
 					if (IntUtil.InRange(elementTier, TierButtonDisplay.AllTierButtons.Count)) {
 						Vector3 position = TierButtonDisplay.AllTierButtons[elementTier].transform.position;
+						if (result.getTier() == GlobalVars.TIER_COUNT) {
+							EventController.Event(EventController.ParticleGoldSparkesFallEvent, 
+							                      position);
+						}
 						EventController.Event(
 							EventController.ParticleSparklesFallEvent,
 							position);

@@ -11,9 +11,10 @@ using System.Collections.Generic;
 public class ParticleController : MonoBehaviour {
 	public float ZOffset = 100;
 	public GameObject ParticleSparklesFallPrefab;
-	public GameObject ParticleGLowBurstPrefab;
+	public GameObject ParticleGoldSparklesFallPrefab;
+	public GameObject ParticleGlowBurstPrefab;
 	Dictionary<ParticleEffectType, Queue<GameObject>> spawnPools = new Dictionary<ParticleEffectType, Queue<GameObject>>();
-
+	
 	// Use this for initialization
 	void Awake () {
 		Init();
@@ -50,6 +51,8 @@ public class ParticleController : MonoBehaviour {
 			particleObject = SpawnEffect(ParticleEffectType.SparkleFall, position);
 		} else if (eventName == EventController.ParitcleGlowBurstEvent) {
 			particleObject = SpawnEffect(ParticleEffectType.GlowBurst, position);
+		} else if (eventName == EventController.ParticleGoldSparkesFallEvent) {
+			particleObject = SpawnEffect(ParticleEffectType.GoldSparkFall, position);
 		}
 		if (particleObject != null) {
 			ParticleSystem effect = particleObject.GetComponent<ParticleSystem>();
@@ -104,7 +107,10 @@ public class ParticleController : MonoBehaviour {
 			effect = (GameObject) Instantiate(ParticleSparklesFallPrefab);
 			break;
 		case ParticleEffectType.GlowBurst:
-			effect = (GameObject) Instantiate(ParticleGLowBurstPrefab);
+			effect = (GameObject) Instantiate(ParticleGlowBurstPrefab);
+			break;
+		case ParticleEffectType.GoldSparkFall:
+			effect = (GameObject) Instantiate(ParticleGoldSparklesFallPrefab);
 			break;
 		}
 		Transform effectTransform = effect.transform;

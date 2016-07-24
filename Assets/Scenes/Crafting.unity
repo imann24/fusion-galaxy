@@ -49112,10 +49112,6 @@ Prefab:
       propertyPath: m_Pivot.y
       value: .5
       objectReference: {fileID: 0}
-    - target: {fileID: 11401480, guid: e4e305a3b6d08436a813ccfef80c3ad7, type: 2}
-      propertyPath: ZOffset
-      value: 500
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e4e305a3b6d08436a813ccfef80c3ad7, type: 2}
   m_IsPrefabParent: 0
