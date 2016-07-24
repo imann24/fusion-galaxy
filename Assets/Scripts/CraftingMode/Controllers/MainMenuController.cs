@@ -1,4 +1,5 @@
 /*
+ * Author(s): Isaiah Mann
  * Used to control the crafting/main menu/hub mode 
  * Loads up new tiers of elements when the buttons on the side are clicked
  * Calls the tutorials on load if the conditions are met
@@ -19,10 +20,12 @@ using System.Collections.Generic;
 	public delegate void ButtonPressAction();
 	public delegate void EnterMenuScreenAction();
 	public delegate void CallTutorialEventAction(TutorialType tutorial);
+	public delegate void CallIndexedTutorialEventAction(TutorialType tutorial, int index);
 	public delegate void LoadTierAction(int tier);
 	public static event ButtonPressAction OnButtonPress;
 	public static event EnterMenuScreenAction OnEnterMenu;
 	public static event CallTutorialEventAction OnCallTutorialEvent;
+	public static event CallIndexedTutorialEventAction OnCallIndexedTutorialEvent;
 	public static event LoadTierAction OnLoadTier;
 
 	public Sprite DefaultTierBackground;
@@ -87,7 +90,7 @@ using System.Collections.Generic;
 			GlobalVars.ELEMENT_SPRITES.Add("locked", locked);
 		}
 
-		updatePercentUnlocked();
+		UpdatePercentUnlocked();
 		if (!GlobalVars.SPRITES_LOADED) {
 			//creates all the element spawners
 			for (int i = 0; i < GlobalVars.ELEMENTS.Count; i++) {
@@ -278,7 +281,7 @@ using System.Collections.Generic;
 
 		//toggles the other tier buttons active and inactive
 		for (int i = tierOffset; i < tierButtonScript.Length; i++) {
-			tierButtonScript[i].updateTierProgress();
+			tierButtonScript[i].UpdateTierProgress();
 			/*if (!GlobalVars.TIER_UNLOCKED[i]) {
 				tierButtonScript[i].makeButtonLocked();
 			} else*/
@@ -333,7 +336,7 @@ using System.Collections.Generic;
 	}
 
 	//updates the unlock progress display
-	public void updatePercentUnlocked () {
+	public void UpdatePercentUnlocked () {
 		//sets the sprite based o how many elements are unlocked
 		float unlockedFraction = ((float)GlobalVars.NUMBER_ELEMENTS_UNLOCKED * (float) (unlockProgressSprites.Length - 1))/(float)GlobalVars.ELEMENTS.Count;
 		unlockProgress.sprite = unlockProgressSprites[(int) unlockedFraction];
@@ -349,6 +352,12 @@ using System.Collections.Generic;
 		//sets the text
 		numberUnlocked.text = unlockCount;
 
+		if (tierButtonScript != null) {
+			foreach (TierButtonDisplay tierButton in tierButtonScript) {
+				tierButton.UpdateTierProgress();
+				tierButton.UpdateButtonStatus();
+			}
+		}
 	}
 
 	public void lockAllTierButtons () {
@@ -356,7 +365,7 @@ using System.Collections.Generic;
 			tierButtonScript[i].makeButtonLocked();
 			GlobalVars.TIER_UNLOCKED[i] = false;
 		}
-		updatePercentUnlocked();
+		UpdatePercentUnlocked();
 	}
 
 	//unlocks a new element when it is crafted	
@@ -376,15 +385,13 @@ using System.Collections.Generic;
 	public void callHintPanel(){
 		hintPanel.SetActive (true);
 		hintPanel.GetComponent<PurchaseHint> ().elementHint = activeElement;
-		int theCost = 10 * GlobalVars.ELEMENTS_BY_NAME [activeElement.ToLower ()].getTier ();
+		int elementTier = GlobalVars.ELEMENTS_BY_NAME[activeElement.ToLower()].getTier();
+		int theCost = PurchaseHint.GetCostForTier(elementTier);
 		bool wasPreviouslyBought = PlayerPrefs.GetInt (activeElement.ToLower () + "Hint") == 1;
 		hintPanel.transform.FindChild("AlreadyPurchased").gameObject.SetActive(wasPreviouslyBought);
 		hintPanel.transform.FindChild("NotYetPurchased").gameObject.SetActive(!wasPreviouslyBought);
 
-		hintPanel.GetComponent<PurchaseHint> ().myCost1 = 
-			hintPanel.GetComponent<PurchaseHint> ().myCost2 = 
-			hintPanel.GetComponent<PurchaseHint> ().myCost3 = 
-			hintPanel.GetComponent<PurchaseHint> ().myCost4 = theCost;
+		hintPanel.GetComponent<PurchaseHint> ().SetCosts(theCost);
 
 		for (int i = 1; i<=4; i++) {
 			int inventory = PlayerPrefs.GetInt (hintPanel.GetComponent<PurchaseHint> ().getCostElemType(i));
@@ -430,7 +437,10 @@ using System.Collections.Generic;
 	//calls any applicable tutorial events
 	private void CheckForTutorialEvents () {
 		//checks whether the conditions for each tutorial have been met and runs them if so (tutorials only play once per device, unless the player resets all progress)
-		if (OnCallTutorialEvent != null) {
+		if (OnCallTutorialEvent != null && OnCallIndexedTutorialEvent != null) {
+
+			// Used as an out variable when checking for the tierSwitch tutorial;
+			int tierSwitchIndex;
 
 			//the gathering tutorial
 			if (!Utility.PlayerPrefIntToBool(GlobalVars.ENTER_GATHERING_TUTORIAL_KEY)) {
@@ -449,9 +459,21 @@ using System.Collections.Generic;
 			} 
 
 			//the buying a hint tutorial
-			else if (!Utility.PlayerPrefIntToBool(GlobalVars.BUY_HINT_TUTORIAL_KEY) &&
-			           Utility.SufficientElementsToPurchase(tutorialHint.GetCosts())) {
-				OnCallTutorialEvent(TutorialType.BuyHint);
+			else if (!Utility.PlayerPrefIntToBool(GlobalVars.BUY_HINT_TUTORIAL_KEY)) {
+				int? firstTierWithLockedElements = GetPurchaseHintTier();
+				bool elementsLeftToUnlock = true;
+				if (firstTierWithLockedElements == null) {
+					// If there is no tier with locked elements, count this tutorial as watched because it's no longer relevant
+					Utility.PlayerPrefIntToBool(GlobalVars.BUY_HINT_TUTORIAL_KEY, true);
+					elementsLeftToUnlock = false;
+				} 
+				if (elementsLeftToUnlock) {
+					int tierIndex = (int)firstTierWithLockedElements;
+					if (GlobalVars.TIER_UNLOCKED[tierIndex] &&
+					Utility.SufficientElementsToPurchase(tutorialHint.GetCostsForTier(tierIndex))) {
+						OnCallIndexedTutorialEvent(TutorialType.BuyHint, tierIndex);
+					}
+				}
 			} 
 
 			//the upgrading a powerup tutorial
@@ -463,14 +485,45 @@ using System.Collections.Generic;
 			} 
 
 			//tier switch
-			else if (!Utility.PlayerPrefIntToBool(GlobalVars.TIER_SWITCH_TUTORIAL_KEY) &&
-			           GlobalVars.TIER_UNLOCKED[2]) {
-
-				CallTierSwitchTutorial();
+			else if (ShouldCallTierSwitchTutorial(out tierSwitchIndex)) {
+				CallTierSwitchTutorial(tierSwitchIndex);
 			}	
 		} else {
-			Debug.LogError("Tbe event is null");
+			Debug.LogError("One of tutorial events is null");
 		}
+	}
+
+	bool ShouldCallTierSwitchTutorial (out int targetTierIndex) {
+		int? unlockedTier = GetNewUnlockedTierIndex();
+		if (unlockedTier == null) {
+			targetTierIndex = -1;
+			return false;
+		} else {
+			targetTierIndex = (int) unlockedTier;
+			return true;
+		}
+	}
+
+	int? GetNewUnlockedTierIndex () {
+		int startingTier = 2;
+		for (int i = startingTier; i < GlobalVars.TIER_UNLOCKED.Length; i++) {
+			if (GlobalVars.TIER_UNLOCKED[i] && !Utility.PlayerPrefIntToBool(GlobalVars.TIER_SWITCH_TUTORIAL_KEY+i)) {
+				return i;
+			}
+		}
+
+		return null;
+	}
+
+	int? GetPurchaseHintTier () {
+		int startAtSecondTier = 1;
+		for (int i = startAtSecondTier; i < GlobalVars.TIER_COUNT; i++) {
+			if (!Element.AllTierElementsUnlocked(i)) {
+				return i;
+			} 
+		}
+		// There are no tiers with locked elements, return null
+		return null;
 	}
 
 	//sets the PurchaseHint script
@@ -478,8 +531,10 @@ using System.Collections.Generic;
 		tutorialHint = hint;
 	}
 
-	public void CallTierSwitchTutorial () {
-		OnCallTutorialEvent(TutorialType.TierSwitch);
+	public void CallTierSwitchTutorial (int tier) {
+		OnCallIndexedTutorialEvent(TutorialType.TierSwitch, tier);
+		// Already set this tutorial as watched (easier than handling in TutorialController, because we have easy access to which tier it was)
+		Utility.SetPlayerPrefIntAsBool(GlobalVars.TIER_SWITCH_TUTORIAL_KEY+tier, true);
 	}
 #endregion
 }

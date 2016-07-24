@@ -18,6 +18,7 @@ public class UIImageAnimation : MonoBehaviour {
 	public bool PlayOnStart;
 	public float AnimationTime = 1f;
 	protected bool playing;
+	protected bool shouldPlayOnEnable;
 	bool _hidden = false;
 	public bool Hidden {
 		get {
@@ -90,6 +91,12 @@ public class UIImageAnimation : MonoBehaviour {
 	protected virtual void Start () {
 		if (PlayOnStart && !playing) {
 			Play ();
+		}
+	}
+
+	protected virtual void OnEnable () {
+		if (shouldPlayOnEnable) {
+			Play();
 		}
 	}
 

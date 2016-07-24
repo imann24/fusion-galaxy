@@ -12,7 +12,6 @@ public class MessageController : MonoBehaviour {
 
 	public GameObject ElementRewardMessagePrefab;
 	public GameObject PowerupUnlockedMessagePrefab;
-	GameObject currentMessage;
 	bool initializedAsSingleton;
 
 	void Awake () {
@@ -40,7 +39,6 @@ public class MessageController : MonoBehaviour {
 		default:
 			return null;
 		}
-		currentMessage = message;
 		message.transform.SetParent(transform);
 		message.transform.localPosition = Vector2.zero;
 		message.transform.localScale = Vector2.one;
@@ -65,10 +63,8 @@ public class MessageController : MonoBehaviour {
 		}
 	}
 
-	public void CloseCurrentMessage () {
-		if (currentMessage != null) {
-			Destroy(currentMessage);
-		}
+	public void CloseMessage (MessageBehaviour message) {
+		Destroy(message.gameObject);
 	}
 
 	void Subscribe () {

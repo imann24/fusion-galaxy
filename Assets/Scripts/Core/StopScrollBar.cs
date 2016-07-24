@@ -3,7 +3,6 @@ using System.Collections;
 
 //stops the scrollbar when it reaches the bottom
 public class StopScrollBar : MonoBehaviour {
-	bool onScreen;
 	Vector3 maxHeight;
 	public static GameObject lastCredit;
 

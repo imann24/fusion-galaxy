@@ -13,12 +13,8 @@ public class TogglePause : MonoBehaviour {
 	//scene references
 	public GameObject playButton;
 	public GameObject exitButton;
-	private SpriteRenderer playIcon;
-	private SpriteRenderer pauseIcon;
 	public GameObject time;
 	//game states
-	private bool buttonShouldChange = false;
-	private bool gameIsPaused = false;
 	public Sprite pauseSprite, playSprite;
 	public GameObject actualPauseButton;
 	public GameObject pauseBackground;
@@ -30,11 +26,7 @@ public class TogglePause : MonoBehaviour {
 	}
 
 	void Update () {
-		//checks if the button should change
-		if (gameIsPaused != GlobalVars.PAUSED) {
-			buttonShouldChange = true;
-			gameIsPaused = GlobalVars.PAUSED;
-		}
+
 	}
 
 	//note: this is not currently active, instead togglePause is called by the Unity UI event system

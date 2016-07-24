@@ -8,9 +8,9 @@ using UnityEngine;
 public class LaneConversion : PowerUp {
 	public const string NAME = "LaneConversion";
 	public static readonly string [] DESCRIPTIONS = new string[]{
-		"Tap or drag this ability into a specific lane to convert the elements contained to the lane’s elemental type.",//power 1, level 1
-		"Tap or drag this ability into a specific lane to convert the elements contained, and an adjacent lane, to each lane’s elemental type.",//power 1, level 2
-		"Tap or drag this ability to convert the elements contained within each lane to the lane’s elemental type.",//power 1, level 3
+		"A lane’s falling elements become the same type.",
+		"A lane’s falling elements become the same type.",
+		"A lane’s falling elements become the same type.",
 	};
 
 	//event call

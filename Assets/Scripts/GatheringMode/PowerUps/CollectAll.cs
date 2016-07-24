@@ -1,9 +1,9 @@
 public class CollectAll : PowerUp {
 	public const string NAME = "CollectAll";
 	public readonly static string [] DESCRIPTIONS = new string[]{
-		"Tap or drag this ability into a specific lane to automatically collect all elements in that lane.",//power 9, level 1
-		"Tap or drag this ability into a specific lane to automatically collect all elements in that lane and an adjacent lane.",//power 9, level 2
-		"Tap or drag this ability to automatically collect all elements in all lanes.",//power 9, level 3
+		"Automatically collect elements, when fully upgraded it collects all elements on screen.",
+		"Automatically collect elements, when fully upgraded it collects all elements on screen.",
+		"Automatically collect elements, when fully upgraded it collects all elements on screen.",
 	};
 
 	public CollectAll (): base (NAME, DESCRIPTIONS, null) {}

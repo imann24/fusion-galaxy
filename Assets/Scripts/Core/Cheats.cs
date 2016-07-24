@@ -9,7 +9,7 @@ public static class Cheats {
 		//increases all elements by default amount
 		IncreaseAllElements();
 		GlobalVars.NUMBER_ELEMENTS_UNLOCKED = GlobalVars.ELEMENTS.Count;
-		GlobalVars.CRAFTING_CONTROLLER.updatePercentUnlocked();
+		GlobalVars.CRAFTING_CONTROLLER.UpdatePercentUnlocked();
 		foreach (Element element in GlobalVars.ELEMENTS) {
 			element.unlock();
 			PlayerPrefs.SetInt(element.getName()+GlobalVars.UNLOCK_STRING, 1);
@@ -29,8 +29,9 @@ public static class Cheats {
 		//makes it so that the tutorials play again on launch
 		ResetTutorialsWatched();
 		ResetHintsUnlocked();
+		ResetPowerUpUpgradePurchases();
 		GlobalVars.NUMBER_ELEMENTS_UNLOCKED = GlobalVars.NUMBER_OF_LANES;
-		GlobalVars.CRAFTING_CONTROLLER.updatePercentUnlocked();
+		GlobalVars.CRAFTING_CONTROLLER.UpdatePercentUnlocked();
 		foreach (Element element in GlobalVars.ELEMENTS) {
 			//reset inventory amount to zero
 			PlayerPrefs.SetInt(element.getName(), 0);
@@ -63,7 +64,7 @@ public static class Cheats {
 	// whereas the current game splists the tiers into 9 (with 1 and 2 becoming tier 1)
 	public static void UnlockTier (int tier) {
 		if (GlobalVars.CRAFTING_CONTROLLER != null) {
-			GlobalVars.CRAFTING_CONTROLLER.updatePercentUnlocked();
+			GlobalVars.CRAFTING_CONTROLLER.UpdatePercentUnlocked();
 		}
 
 		if (GlobalVars.TIER_UNLOCKED == null) {
@@ -96,6 +97,7 @@ public static class Cheats {
 	//resets whether player has watched the tutorials
 	public static void ResetTutorialsWatched (bool ignoreGatheringTutorials = false) {
 		ToggleAllTutorialsWatched(false, ignoreGatheringTutorials);
+		CraftingTutorialComponent.ElementPanelsActive = 0;
 	}
 
 	public static void SetAllTutorialsAsWatched (bool ignoreGatheringTutorials = false) {
@@ -107,7 +109,9 @@ public static class Cheats {
 		foreach (string tutorialKey in GlobalVars.AllCraftingModeTutorials) {
 			Utility.SetPlayerPrefIntAsBool(tutorialKey, tutorialWatched);
 		}
-
+		for (int i = 0; i < GlobalVars.TIER_COUNT; i++) {
+			Utility.SetPlayerPrefIntAsBool(GlobalVars.TIER_SWITCH_TUTORIAL_KEY+i, tutorialWatched);
+		}
 		if (!ignoreGatheringTutorials) {
 			//bools for gathering
 			Utility.SetPlayerPrefIntAsBool(GlobalVars.GATHERING_TUTORIAL_WATCHED_SWIPE, tutorialWatched);
@@ -130,6 +134,7 @@ public static class Cheats {
 	}
 
 	public static void ResetToCraftingTutorial () {
+		CraftingTutorialComponent.ElementPanelsActive = 0;
 		ResetTutorialsWatched();
 		SetTutorialWatched(GlobalVars.ENTER_GATHERING_TUTORIAL_KEY);
 		IncreaseBaseElements(1);
@@ -142,6 +147,7 @@ public static class Cheats {
 	}
 
 	public static void ResetToBuyHintTutorial () {
+		CraftingTutorialComponent.ElementPanelsActive = 0;
 		LockAllElements();
 		SetTutorialWatched(GlobalVars.ENTER_GATHERING_TUTORIAL_KEY);
 		SetTutorialWatched(GlobalVars.CRAFTING_TUTORIAL_KEY);
@@ -149,6 +155,7 @@ public static class Cheats {
 	}
 
 	public static void ResetToPurchaseUpgradeTutorial () {
+		CraftingTutorialComponent.ElementPanelsActive = 0;
 		ResetPowerUpUpgradePurchases();
 		bool ignoreGatheringTutorials = true;
 		SetAllTutorialsAsWatched(ignoreGatheringTutorials);

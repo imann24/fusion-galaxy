@@ -3,6 +3,6 @@ using System.Collections;
 
 public abstract class MessageBehaviour : MonoBehaviour {
 	public void Close () {
-		MessageController.Instance.CloseCurrentMessage();
+		MessageController.Instance.CloseMessage(this);
 	}
 }

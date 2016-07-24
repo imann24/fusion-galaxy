@@ -1,9 +1,9 @@
 public class BucketShield : PowerUp {
 	public const string NAME = "BucketShield";
 	public static readonly string [] DESCRIPTIONS = new string[]{
-		"Tap or drag this ability into a specific lane to give that lane no miss penalty for the next 2 incorrect elements that fall into it.",//power 5, level 1
-		"Tap or drag this ability into a specific lane to give that lane no miss penalty for the next 4 incorrect elements that fall into it.",//power 5, level 2
-		"Tap or drag this ability to give all lanes no miss penalty for the next 4 incorrect elements that fall into them, for each lane.",//power 5, level 3
+		"You can miss a few elements without penalty.",
+		"You can miss a few elements without penalty.",
+		"You can miss a few elements without penalty.",
 	};
 
 	private int bucketShieldHitPoints;

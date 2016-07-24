@@ -23,8 +23,6 @@ public class StartScreenButtonController : MonoBehaviour {
 	// And Crafting.unity for Commercial Use
 	public static event SceneLoadAction OnLoadScene;
 
-	// A reference to the buttom that loads the game
-	private Button myButton;
 
 	// Used to load the scene asynchonously (in the background)
 	AsyncOperation backgroundLoadGame;

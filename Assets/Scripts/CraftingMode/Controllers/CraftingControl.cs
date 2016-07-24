@@ -32,23 +32,15 @@ public class CraftingControl : MonoBehaviour {
 	public static event IncorrectElementCraftAction OnIncorrectCraft;
 	public static event ReadyToCraftAction OnReadyToCraft;
 
-	//player feedback text (tunable)
-	private string elementCreatedMain = "Created";
-	private string elementCreatedSub = "Tap to Collect";
-
-	private string defaultMain = "";
 	private string defaultSub = "Select \n Materials";
 
-	private string oneElementInMain = "";
 	private string oneElementInSub = "Select \n Materials";
 
 	private string bothElementsInMain = "";
 	private string bothElementsInSub = "";
 
-	private string insufficientAmountsMain = "[Not Enough Materials]";
 	private string insufficientAmountsSub = "!";
 
-	private string wrongCombinationMain = "[Incompatible]";
 	private string wrongCombinationSub = "Error 770";
 
 	public Color errorColor = Color.red;
@@ -63,8 +55,10 @@ public class CraftingControl : MonoBehaviour {
 	private bool zone1HasElement;
 	private bool zone2HasElement;
 	public bool ElementIsReadyToCraft {
-		get;
-		private set;
+		get
+        {
+            return zone1HasElement && zone2HasElement && GlobalVars.RECIPES_BY_NAME.ContainsKey(parentElement1 + parentElement2) && validInventoryAmounts();
+        }
 	}
 	private CaptureScript zone1Capturer;
 	private CaptureScript zone2Capturer;
@@ -78,6 +72,8 @@ public class CraftingControl : MonoBehaviour {
 	public GameObject myElementGameObject;
 	public Image myElementContainer;
 	public Image myElementConatinerEmpty;
+
+    public Sprite elementNotUnlockedImage;
 
 	//feedback messages to player/button 
 	public Text subMessage;
@@ -128,19 +124,16 @@ public class CraftingControl : MonoBehaviour {
 		inventoryNumber.text = PlayerPrefs.GetInt(resultElement).ToString();
 	}
 
-	public void OnMouseDown () {
+	public void OnMouseUp () {
 		//clears the zone if it contains a base element 
 		if (containsBaseElement) {
 			containsBaseElement = false;
 			myElementSprite.enabled = false;
-			compiler.OnMouseDown();
+			compiler.OnMouseUp();
 			setEmptyMessage();
 		}
 
-		//disables crafting when there are not two elements
-		if (!zone1HasElement || !zone2HasElement) {
-			ElementIsReadyToCraft = false;
-		} else {
+        if (zone1HasElement && zone2HasElement) {
 			//plays the zone animations if either one has insuficent resources
 			if (PlayerPrefs.GetInt(parentElement1) <= 0) {
 				zone1Capturer.playNoElementsAnimation();
@@ -152,8 +145,10 @@ public class CraftingControl : MonoBehaviour {
 		}
 
 		if (ElementIsReadyToCraft) {
-			//calls the event to create an element
-			Element element;
+            combine();
+            toggleCraftedElement(true);
+            //calls the event to create an element
+            Element element;
 			if (OnElementCreated != null && validInventoryAmounts()) {
 				OnElementCreated(resultElement, parentElement1, parentElement2, isNew);
 				UnlockElement();
@@ -175,7 +170,6 @@ public class CraftingControl : MonoBehaviour {
 
 			//lowers the flag to craft if the player has run out of either element
 			else if (!validInventoryAmounts()) {
-				ElementIsReadyToCraft = false;
 				setInsufficientMessage();
 				if (OnIncorrectCraft != null) {
 					OnIncorrectCraft();
@@ -229,7 +223,6 @@ public class CraftingControl : MonoBehaviour {
 				if (OnReadyToCraft != null) {
 					OnReadyToCraft(true);
 				}
-				combine ();
 			} else {
 				if (GlobalVars.RECIPES_BY_NAME.ContainsKey(parentElement1 + parentElement2)) {
 					resultElement = GlobalVars.RECIPES_BY_NAME[parentElement1 + parentElement2].getName();
@@ -237,17 +230,15 @@ public class CraftingControl : MonoBehaviour {
 
 					//alerts the capture zone that it contains an elmeent
 					compiler.elementHasBeenCapured();
-					myElementSprite.sprite = GlobalVars.ELEMENT_SPRITES[resultElement];
-				} else {
-					ElementIsReadyToCraft = false;
-					//myElementSprite.enabled = false;
+                    myElementSprite.sprite = GlobalVars.ELEMENT_SPRITES[resultElement];
+					
 				}
 				setInsufficientMessage();
 			}
 			toggleCraftedElement(true);
 		} else {
 			//clears the compiler
-			compiler.OnMouseDown();
+			compiler.OnMouseUp();
 			myElementSprite.enabled = false;
 		}
 	}
@@ -344,7 +335,7 @@ public class CraftingControl : MonoBehaviour {
 	}
 
     //sets up the combination for a new element
-    public void combine () {
+    private void combine () {
         //element gameobject
 		if (GlobalVars.RECIPES_BY_NAME.ContainsKey(parentElement1+parentElement2)) {//checks if the elements combine to form a third
 			containsBaseElement = false;
@@ -359,7 +350,7 @@ public class CraftingControl : MonoBehaviour {
                 	Handheld.Vibrate();
 				}
                 GlobalVars.NUMBER_ELEMENTS_UNLOCKED++;
-				panelControl.updatePercentUnlocked();
+				panelControl.UpdatePercentUnlocked();
 				isNew = true;
 
 				//checks if the whole tier of elements is unlocked and sends the event
@@ -377,31 +368,53 @@ public class CraftingControl : MonoBehaviour {
 				isNew = false;
 			}
 			PlayerPrefs.SetInt(result.getName()+GlobalVars.UNLOCK_STRING, 1); 
-            
+			CheckElementTierUnlock();
 			//makes the new element
 			myElementGameObject.name = result.getName();
 			resultElement = myElementGameObject.name;
 			resultTier = result.getTier()-1;
 			setBothElementsInMessage();
-			ElementIsReadyToCraft = true;
 			invalidCombination = false;
 		} else { // if the combination is incorrect, plays the rejection sound
 			setIncompatibleMessage();
 			invalidCombination = true;
-			ElementIsReadyToCraft = false;
 		} 
+	}
+
+	void CheckElementTierUnlock () {
+		//if tier is not yet unlocked
+		if (!GlobalVars.TIER_UNLOCKED[resultTier]) {
+			OnTierUnlocked(resultTier);
+			GlobalVars.TIER_UNLOCKED[resultTier] = true;
+			GlobalVars.CRAFTING_CONTROLLER.UpdatePercentUnlocked();
+		}
 	}
 
 	//changes the result display between empty and full and displays/hides the element
 	public void toggleCraftedElement (bool active) {
 		bool spriteToggled = false;
 		if (active) {
-			myElementGameObject.name = resultElement;
+            if (GlobalVars.RECIPES_BY_NAME.ContainsKey(parentElement1 + parentElement2))
+            {
+
+                resultElement = GlobalVars.RECIPES_BY_NAME[parentElement1 + parentElement2].getName();
+            }
+
+            myElementGameObject.name = resultElement;
 			if (GlobalVars.RECIPES_BY_NAME.ContainsKey(parentElement1+parentElement2) && resultElement == GlobalVars.RECIPES_BY_NAME[parentElement1+parentElement2].getName()) {
-				myElementSprite.sprite = GlobalVars.ELEMENT_SPRITES[resultElement];
+
+                if (GlobalVars.ELEMENTS_BY_NAME[resultElement].isElementUnlocked())
+                {
+                    myElementSprite.sprite = GlobalVars.ELEMENT_SPRITES[resultElement];
+                }
+                else
+                {
+                    myElementSprite.sprite = elementNotUnlockedImage;
+                }
+                
 			} else {
 				//removes element from compiler
-				compiler.OnMouseDown();
+				compiler.OnMouseUp();
 				myElementSprite.enabled = false;
 				spriteToggled = true;
 			}
@@ -464,8 +477,8 @@ public class CraftingControl : MonoBehaviour {
 	}
 
 	public void clearDropzZones () {
-		zone1Capturer.OnMouseDown ();
-		zone2Capturer.OnMouseDown ();
+		zone1Capturer.OnMouseUp ();
+		zone2Capturer.OnMouseUp ();
 		zone1HasElement = false;
 		zone2HasElement = false;
 	}
@@ -484,11 +497,7 @@ public class CraftingControl : MonoBehaviour {
 		zone2Capturer.setElementCountText();
 		panelControl.updatePanelCounts();
 
-		//if tier is not yet unlocked
-		if (!GlobalVars.TIER_UNLOCKED[resultTier]) {
-			OnTierUnlocked(resultTier);
-			GlobalVars.TIER_UNLOCKED[resultTier] = true;
-		}
+		CheckElementTierUnlock();
 	}
 
 	

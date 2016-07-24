@@ -10,7 +10,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 
 public class switchBucketScript : MonoBehaviour {
 	//event call
@@ -39,16 +38,10 @@ public class switchBucketScript : MonoBehaviour {
 	private List<int> listOfLanesChoosen;
 	// A counter for the amount of repeats in a list.
 	private int repeatCounter;
-	// A counter to keep track of the amount of swap in a game.
-	private int swapCounter = 0;
-	// The position elements, that are in lanes that are going to be swapped, are going to be moved to.
-	private Vector3 elementMovePosition;
 	// A raycast for detecting an element in a lane.
 	private RaycastHit elementHit;
 	// An array to store which lanes have elements in them when the raycast is fired.
 	private List<GameObject> lanesWithHits;
-	// A int that counts the size of lanesWithHits
-	private int laneHitCounter =0;
 	// Arrays to hold the animators in the 4 lanes.
 	public Animator[] antiGravAnimators = new Animator[4];
 	public Animator[] middleLanes = new Animator[4];
@@ -134,7 +127,7 @@ public class switchBucketScript : MonoBehaviour {
 			if(this.GetComponent<CollectionTimer> ().getIsCountingDown()){
 				timePassed += Time.deltaTime;
 			}
-			if ((int)timePassed % 15 == 0) {// && swapCounter <= 1) { // If a certain amount of seconds have passed then swap the buckets.
+			if ((int)timePassed % 15 == 0) {// If a certain amount of seconds have passed then swap the buckets.
 				//TODO: Add a condition that checks if the tutorial is playing.
 				if(!isSwappingCurrently && !isOverThresholdSwapping && !GlobalVars.IS_SWIPE_TUTORIAL_CURRENTLY_PLAYING){
 					isSwappingCurrently = true;
@@ -144,7 +137,6 @@ public class switchBucketScript : MonoBehaviour {
 					bucketLocationChoice1 = bucketPositions [laneChoice1].transform.position;
 					bucketLocationChoice2 = bucketPositions [laneChoice2].transform.position;
 					StartCoroutine(WaitBeforeSwap());
-					swapCounter++;
 					timePassed++;
 				}
 			}
@@ -266,6 +258,7 @@ public class switchBucketScript : MonoBehaviour {
 		// Move the elements in the lanes.
 		foreach(GameObject elementInLane in ZoneCollisionDetection.ON_SCREEN_ELEMENTS){
 			if(elementInLane != null){
+				Vector3 elementMovePosition;
 				if((elementInLane.transform.position.x <= bucketPositions[laneChoice1].transform.position.x + 0.1f && elementInLane.transform.position.x >= bucketPositions[laneChoice1].transform.position.x - 0.1f) && elementInLane.GetComponent<MoveElementUp>() != null){
 					SetMoveComponents(elementInLane.GetComponent<MoveElementDown>(), elementInLane.GetComponent<MoveElementUp>(), false, true);
 					elementMovePosition = elementInLane.transform.position;
@@ -278,11 +271,12 @@ public class switchBucketScript : MonoBehaviour {
 					SetMoveComponents(elementInLane.GetComponent<MoveElementDown>(), elementInLane.GetComponent<MoveElementUp>(), false, true);
 					elementMovePosition = elementInLane.transform.position;
 					elementMovePosition.x = bucketPositions[laneChoice1].transform.position.x;
-					// Adding an arch, minus means it becomes an underarch, plus means its an over arch. No change to y means it swaps directly across.
-					//elementMovePosition.y += 0.7f;
-					StartCoroutine(SwapElement(elementInLane, elementMovePosition));
-				}
-			}
+                }
+
+                // Adding an arch, minus means it becomes an underarch, plus means its an over arch. No change to y means it swaps directly across.
+                //elementMovePosition.y += 0.7f;
+                StartCoroutine(SwapElement(elementInLane, elementMovePosition));
+            }
 		}
 		StartCoroutine(ChangeBackLaneBeam ());
 		// End of moving elements

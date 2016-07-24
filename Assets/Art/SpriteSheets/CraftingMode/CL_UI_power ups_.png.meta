@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 108d7d56ae76448d6915aee5b4021af1
-timeCreated: 1436809262
+timeCreated: 1468795890
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -86,7 +86,7 @@ TextureImporter:
         width: 210
         height: 255
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: CL_UI_power ups__3
       rect:
@@ -96,7 +96,7 @@ TextureImporter:
         width: 210
         height: 255
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: CL_UI_power ups__4
       rect:
@@ -146,8 +146,8 @@ TextureImporter:
         width: 176
         height: 23
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      pivot: {x: .5, y: .5}
+      border: {x: 28, y: 0, z: 32, w: 0}
   spritePackingTag: crafting_ui
   userData: 
   assetBundleName: 

@@ -1,9 +1,9 @@
 public class Fuel : PowerUp {
 	public const string NAME = "Fuel";
 	public static readonly string [] DESCRIPTIONS = new string[]{
-		"Your fuel does not deplete for a certain duration.",//power 3, level 1
-		"You gain additional fuel and it does not deplete for a certain duration.",//power 3, level 2
-		"You gain a significant amount of additional fuel and it does not deplete for a certain duration.",//power 3, level 3
+		"You get more time to collect elements.",
+		"You get more time to collect elements.",
+		"You get more time to collect elements.",
 	};
 
 	//event call

@@ -38,6 +38,8 @@ public class MixpanelController : MonoBehaviour
 		// singleton setup - don't destroy this when loading
 		if(instance == null)
 		{
+			// Set Mixpanel Token: this is project specific
+			Mixpanel.Token = "476095c9962954c0f3ebf45b819df7da";
 			instance = this;
 			DontDestroyOnLoad(this.gameObject);
 			//disables the in start screen bool if the game loads from a different scene
@@ -59,9 +61,6 @@ public class MixpanelController : MonoBehaviour
 
 	void Start()
 	{
-		// Set Mixpanel Token: this is project specific
-		Mixpanel.Token = "476095c9962954c0f3ebf45b819df7da";
-
 		// Not sure if this is required or not, clears all super properties in the SuperProperties dictionary
 		Mixpanel.SuperProperties.Clear();
 

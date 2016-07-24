@@ -1,11 +1,15 @@
-//#define DEBUG
+/*
+ * Author: Isaiah Mann
+ * Description: Controls behaviour of objects in tutorials
+ * Note: Most objects should have a Canvas component attached to them for this script to work correctly (unless they are on the NoSortList)
+ */
+
 using UnityEngine;
 using UnityEngine.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 
-[RequireComponent(typeof(Canvas))]
 public class CraftingTutorialComponent: TutorialComponent {
 
 	static CraftingTutorialComponent () {
@@ -16,7 +20,7 @@ public class CraftingTutorialComponent: TutorialComponent {
 		}
 	}
 
-	public static int topSortLayer = 300;
+	public static int topSortLayer = 500;
 	public static Dictionary<TutorialType, List<CraftingTutorialComponent>> AllTutorialsComponents = new Dictionary<TutorialType, List<CraftingTutorialComponent>>();
 
 	//game objects whose sorting layers should not be sorted
@@ -41,13 +45,9 @@ public class CraftingTutorialComponent: TutorialComponent {
 	private int mySortLayer;
 	private Canvas myCanvas;
 	bool hidden;
-
+	public bool Active {get; private set;}
 	//for children
 	private MaskableGraphic[] MyTutorialComponents;
-
-	//for the buying hints tutorial
-	private const string BuyingHintMessage = "Click a locked element panel to buy its hint";
-
 
 	public static Dictionary<TutorialType, int> CurrentTutorialSteps;
 
@@ -171,15 +171,23 @@ public class CraftingTutorialComponent: TutorialComponent {
 	private void EstablishReferences () {
 		//checks whether its on the no sort list
 		onNoSortList = OnNoSortList(gameObject);
-
-		myCanvas = GetComponent<Canvas>();
-		mySortLayer = myCanvas.sortingOrder;
+		if (!onNoSortList) {
+			myCanvas = GetComponent<Canvas>();
+			if (myCanvas == null) {
+				myCanvas = gameObject.AddComponent<Canvas>();
+			}
+			mySortLayer = myCanvas.sortingOrder;
+		}
 		MyTutorialComponents = GetChildrenTutorialComponents();
 	}
 
 	//checks whether the gameobject that has the script attached is an element panel
 	private bool IsElementPanel () {
-		return GetComponent<SpawnerControl>()!=null;
+		return GetComponent<SpawnerControl>() !=null;
+	}
+
+	bool IsTierButton () {
+		return GetComponent<TierButtonDisplay>() != null;
 	}
 
 	//checks whether the associated element in the tutorial is insufficent
@@ -308,10 +316,24 @@ public class CraftingTutorialComponent: TutorialComponent {
 				ToggleChildrenTutorialComponents(true);
 			}
 
+		} else if (IsTierButton()) {
+			int activeTierButton;
+			try {
+				activeTierButton = (int) CraftingTutorialController.ActiveTierButton;
+			} catch {
+				return;
+			}
+			TierButtonDisplay tierButton = GetComponent<TierButtonDisplay>();
+			if (IsActiveStep() && tierButton.tierNumber == activeTierButton) {
+				ToggleChildrenTutorialComponents(true);
+			} else {
+				return;
+			}
 		} else if (IsActiveStep()) {
 			ToggleChildrenTutorialComponents(true);
 		}
-
+		// Needs to be set below the above check because certain elements should not be activated if there are a sufficient amount
+		Active = true;
 		if (onNoSortList) {
 			return;
 		} else {
@@ -322,7 +344,7 @@ public class CraftingTutorialComponent: TutorialComponent {
 
 	//sends the component back to its original sorting layer
 	public void DeactivateComponent () {
-
+		Active = false;
 		if (IsElementPanel() && ElementPanelsActive > 0) {
 			ElementPanelsActive--;
 		}
@@ -340,6 +362,7 @@ public class CraftingTutorialComponent: TutorialComponent {
 
 		if (myCanvas != null) {
 			myCanvas.sortingOrder = mySortLayer;
+			myCanvas.overrideSorting = false;
 		}
 	}
 
@@ -380,10 +403,6 @@ public class CraftingTutorialComponent: TutorialComponent {
 		foreach (CraftingTutorialComponent component in AllTutorialsComponents[tutorialType]) {
 			component.ActivateComponent();
 		}
-
-		if (tutorialType == TutorialType.BuyHint && ElementPanelsActive == 0) {
-			DisplayTutorialMessage(TutorialType.BuyHint);
-		}
 	}
 
 	//changes the count on the elment panels based on the tutorial
@@ -414,20 +433,6 @@ public class CraftingTutorialComponent: TutorialComponent {
 		foreach (CraftingTutorialComponent component in AllTutorialsComponents[tutorialType]) {
 			component.DeactivateComponent();
 		}
-
-		HideTutorialMessage();
-	}
-
-	//shows the tutorial message
-	public static void DisplayTutorialMessage (TutorialType tutorialType) {
-		if (tutorialType == TutorialType.BuyHint) {
-			CraftingTutorialController.SetTutorialMessageBoard(BuyingHintMessage);
-		}
-	}
-
-	//hides the tutorial message
-	public static void HideTutorialMessage () {
-		CraftingTutorialController.HideTutorialMessageBoard();
 	}
 
 	public static CraftingTutorialComponent GetStep (TutorialType type, int step) {

@@ -4,9 +4,9 @@ using System.Collections;
 public class Invincible : PowerUp {
 	public const string NAME = "Invincible";
 	public static readonly string [] DESCRIPTIONS = new string[]{
-		"Tap or drag this ability into a specific lane to give that lane no miss penalty for a small amount of time.",//power 7, level 1
-		"Tap or drag this ability into a specific lane to give that lane no miss penalty for a decent amount of time.",//power 7, level 2
-		"Tap or drag this ability to give all lanes no miss penalty for a decent amount of time.",//power 7, level 3
+		"You can miss elements without penalty for a few seconds.",
+		"You can miss elements without penalty for a few seconds.",
+		"You can miss elements without penalty for a few seconds.",
 	};
 
 	private float spawnRateModifier = 1f;
