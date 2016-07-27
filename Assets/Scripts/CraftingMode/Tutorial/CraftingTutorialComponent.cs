@@ -24,7 +24,7 @@ public class CraftingTutorialComponent: TutorialComponent {
 	public static Dictionary<TutorialType, List<CraftingTutorialComponent>> AllTutorialsComponents = new Dictionary<TutorialType, List<CraftingTutorialComponent>>();
 
 	//game objects whose sorting layers should not be sorted
-	private static string [] NoSortList = {"PowerUpButton(Clone)"};
+	private static string [] NoSortList = {"PowerUpButton(Clone)", "ElementClass"};
 	private static TutorialType ActiveTutorialType = TutorialType.None;
 
 	public TutorialType TutorialType;
@@ -388,7 +388,7 @@ public class CraftingTutorialComponent: TutorialComponent {
 	//checks whether a gameobject is on the no sort list
 	public bool OnNoSortList (GameObject tutorialComponent) {
 		foreach (string tutorialComponentName in NoSortList) {
-			if (tutorialComponent.name == tutorialComponentName) {
+			if (tutorialComponent.name.Contains(tutorialComponentName)) {
 				return true;
 			}
 		}
