@@ -75,38 +75,11 @@ public class switchBucketScript : MonoBehaviour {
 
 		//binds the bucket swap function to the over threshold event
 		// only used for the Neuro'motion Medical implementation
-		if (GlobalVars.MEDICAL_USE) {
-
-			//subscribes to events
-			SDKEventManager.OnOverThreshold += StartOverThresholdSwitching;
-			SDKEventManager.OnUnderThreshold += EndOverThresholdSwitching;
-			SDKEventManager.OnNearThreshold += NearThreshold;
-			PlayTutorial.OnTutorialComplete += HandleOnTutorialComplete;
-
-			//transparent orange
-			startColor = new Color(1.0f, 110f/255f, 38f/255f, 0);
-			//half transparent orange
-			endColor = new Color(1.0f, 110f/255f, 38f/255f, 0.5f);
-
-			SDKEventManager.Instance.ChangeIndicator();
-			//if already over threshold, starting switching
-			if (SDKEventManager.MyEmotionZone == EmotionZone.OVER_EMOTION_ZONE) {
-				StartOverThresholdSwitching();
-			}
-		}
 	}
 
 	// Unbinds the references to the events when the gameobject is destroyed
 	void OnDestroy () {
 		CollectionTimer.OnEndGame -= HaltResumeSpawning;
-
-		//unbinds the bucket swap function to the over threshold event
-		if (GlobalVars.MEDICAL_USE) {
-			SDKEventManager.OnOverThreshold -= StartOverThresholdSwitching;
-			SDKEventManager.OnNearThreshold -= NearThreshold;
-			SDKEventManager.OnUnderThreshold -= EndOverThresholdSwitching;
-			PlayTutorial.OnTutorialComplete -= HandleOnTutorialComplete;
-		}
 	}
 
 	void Update () {
@@ -511,15 +484,6 @@ public class switchBucketScript : MonoBehaviour {
 			while (isSwappingCurrently) {
 				yield return new WaitForEndOfFrame();
 
-			}
-		}
-	}
-
-	// Starts the bucket swapping once the tutorial is complete if the player is currently over emotion
-	void HandleOnTutorialComplete () {
-		if (GlobalVars.MEDICAL_USE) { 
-			if (SDKEventManager.MyEmotionZone == EmotionZone.OVER_EMOTION_ZONE) {
-				StartOverThresholdSwitching();
 			}
 		}
 	}

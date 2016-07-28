@@ -201,9 +201,7 @@ public class CraftingButtonController : MonoBehaviour {
 			Application.LoadLevel((int)GlobalVars.Scenes.Wiki);
 		} else if (sceneName == "Credits") {
 			Application.LoadLevel((int)GlobalVars.Scenes.Credits);
-		} else if (sceneName == "SDK" && GlobalVars.MEDICAL_USE) { //loads up the SDK settings
-			SDKEventManager.LoadSDKScene();
-		}
+		} 
 	}
 
 	//loads the scene asynchronously to give the tutorial complete event time to fire

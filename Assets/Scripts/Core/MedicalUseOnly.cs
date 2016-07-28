@@ -16,15 +16,6 @@ public class MedicalUseOnly : MonoBehaviour {
 				myImage.enabled = true;
 			}
 
-			if (gameObject.name == "MedicalUI" && Application.loadedLevel == (int) GlobalVars.Scenes.Gathering) {
-				//sets the zone indicator
-				for (int i = 0; i < transform.childCount; i++) {
-					if (transform.GetChild(i).name == "ZoneIndicator") {
-						SDKEventManager.SetIndicatorLight((zoneIndicator = transform.GetChild(i).GetComponent<Image>()));
-					}
-				}
-			}
-
 			Text myText = gameObject.GetComponentInChildren<Text>();
 			if (myText != null) {
 				myText.enabled = true;

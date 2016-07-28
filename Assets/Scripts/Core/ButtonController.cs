@@ -20,21 +20,6 @@ public class ButtonController : MonoBehaviour {
 	public GameObject pauseBackground;
 	public GameObject pauseButton;
 
-	// Use this for initialization
-	void Start () {
-		//adds an event call to exit the game on invalid game event
-		if (GlobalVars.MEDICAL_USE) {
-			SDKEventManager.OnInvalidGame += loadSDKSettings;
-		}
-	}
-
-	void OnDestroy () {
-		//removes the event call to exit the game on invalid game event
-		if (GlobalVars.MEDICAL_USE) {
-			SDKEventManager.OnInvalidGame -= loadSDKSettings;
-		}
-	}
-
 	//starts gathering mode
 	public void playGathering () {
 		if (OnButtonPress != null) {
@@ -93,21 +78,7 @@ public class ButtonController : MonoBehaviour {
 		Utility.ShowLoadScreen();
 		Application.LoadLevel((int)GlobalVars.Scenes.Gathering);
 	}
-
-
-	//loads the SDK Settings menu
-	public void loadSDKSettings () {
-		//sends the event for a button press
-		if (OnButtonPress != null) {
-			OnButtonPress();
-		}
-
-		//shows the load screen
-		Utility.ShowLoadScreen();
-
-		SDKEventManager.LoadSDKScene();
-	}
-
+	
 	public void toggleVibrateEnabled (bool isEnabled) {
 		SettingsUtil.ToggleVibrate(isEnabled);
 	}
